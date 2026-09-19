@@ -23,6 +23,15 @@
   "privacyNote": "Your answers stay in this tab and disappear when you close it.",
   "pathEyebrow": "Seven stages",
   "pathTitle": "A path, not a rank",
+  "pathHint": "Choose a stage to read its description.",
+  "exploreStageLabel": "Read about Stage {stage}: {name}",
+  "stageDetailsTitle": "Stages in the source text",
+  "closeStageDetails": "Close description",
+  "previousStage": "Previous stage",
+  "nextStage": "Next stage",
+  "backToResults": "Back to results",
+  "viewResults": "View results",
+  "homeLabel": "Home",
   "pathAssessmentNote": "All seven stages remain visible. The questionnaire checks only practical expectations associated with I–IV. V and VI include mystical graces that answers about habits cannot establish; the source gives only a name for VII.",
   "backToIntro": "Back",
   "yourProgress": "Your progress",
@@ -275,6 +284,25 @@
   "criteriaEyebrow": "Each requirement is checked",
   "criteriaHelp": "See the exact expectation alongside your answer. You can review any threshold I–IV. “Inapplicable” is reserved for explicit circumstances such as no fall or no realistic opportunity for Mass; it is not additional evidence of maturity. Supported practical requirements do not confirm a mystical state.",
   "criteriaSelectLabel": "Review the requirements for",
+  "criteriaVisual": {
+    "supportedCount": "{met} of {total} requirements supported by your answers",
+    "noneApplicable": "These requirements do not apply in the circumstances given.",
+    "reviewDomain": "View these requirements",
+    "legendTitle": "What do these symbols mean?",
+    "legendIntro": "Each number counts individual requirements, not points. Open an area to compare each requirement with your answer.",
+    "labels": {
+      "met": "Supported",
+      "notMet": "Not supported",
+      "unknown": "Unclear",
+      "notTriggered": "Not applicable"
+    },
+    "descriptions": {
+      "met": "Your answer matches the practical requirement being reviewed. This is not confirmation of a spiritual stage.",
+      "notMet": "Your answer does not match this particular requirement. Open it to see exactly what the source expects.",
+      "unknown": "An answer is missing, uncertain, or inconsistent with another answer. Unclear does not mean failed.",
+      "notTriggered": "The stated circumstances make this requirement inapplicable. It is neither a failed check nor evidence of progress."
+    }
+  },
   "criterionStatuses": {
     "met": "Answer supports the requirement",
     "notMet": "Answer does not support it",

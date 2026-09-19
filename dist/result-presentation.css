@@ -1,0 +1,138 @@
+/* Presentation only: counts describe checks, not scores or spiritual progress. */
+.profile-card .profile-heading {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.profile-card .profile-heading > div { min-width: 0; width: 100%; }
+.profile-card .profile-heading h2 { font-size: clamp(1.6rem, 2.4vw, 2rem); line-height: 1.22; }
+.profile-card .profile-heading .confidence-badge { white-space: normal; }
+.profile-card .domain-profile { gap: 12px; margin-top: 22px; }
+
+.domain-row.criteria-visual-domain {
+  gap: 9px;
+  padding: 17px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(246, 239, 229, 0.025);
+}
+
+.criteria-visual-domain .domain-row-head {
+  color: var(--paper);
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.criteria-visual-domain .domain-supported-count {
+  margin: 0;
+  color: var(--paper-muted);
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.criteria-visual-counts,
+.criterion-group summary .criteria-visual-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 2px 0 0;
+}
+
+.status-chip,
+.criterion-group summary .status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 100%;
+  min-height: 30px;
+  margin: 0;
+  padding: 5px 8px;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.status-chip-met,
+.criterion-group summary .status-chip-met { color: #d3e8c9; background: rgba(116, 128, 106, 0.13); }
+.status-chip-notMet,
+.criterion-group summary .status-chip-notMet { color: #f8c2b8; background: rgba(141, 52, 72, 0.1); }
+.status-chip-unknown,
+.criterion-group summary .status-chip-unknown { color: #f2c45c; background: rgba(223, 163, 45, 0.06); }
+.status-chip-notTriggered,
+.criterion-group summary .status-chip-notTriggered { color: #c9c1b7; background: rgba(246, 239, 229, 0.03); }
+
+.status-icon { flex: 0 0 auto; vertical-align: middle; }
+.status-chip .status-icon { width: 17px; height: 17px; }
+.status-chip .status-chip-label,
+.criterion-group summary .status-chip-label { display: inline; margin: 0; color: inherit; font-size: inherit; font-weight: inherit; }
+.status-chip .status-chip-count,
+.criterion-group summary .status-chip-count { display: inline; margin: 0 0 0 2px; color: inherit; font-size: inherit; font-weight: 750; font-variant-numeric: tabular-nums; }
+
+.domain-review-button {
+  display: inline-flex;
+  justify-self: start;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 8px 0 0;
+  border: 0;
+  background: none;
+  color: var(--gold-bright);
+  font-size: 0.79rem;
+  text-align: left;
+  cursor: pointer;
+}
+.domain-review-button svg { flex-shrink: 0; }
+.domain-review-button:hover { text-decoration: underline; text-underline-offset: 4px; }
+.criterion-status > .status-icon { margin-right: 6px; }
+
+.criteria-visual-legend {
+  margin-top: 18px;
+  padding: 13px 15px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.06);
+  font-size: 0.82rem;
+}
+.criteria-visual-legend > summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold-bright);
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
+}
+.criteria-visual-legend > summary::-webkit-details-marker { display: none; }
+.criteria-visual-legend > summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 1.3rem;
+  line-height: 1;
+}
+.criteria-visual-legend[open] > summary::after { content: "−"; }
+.criteria-visual-legend > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; border-radius: 3px; }
+.criteria-visual-legend p { margin: 8px 0 0; color: var(--paper-muted); line-height: 1.6; }
+.criteria-visual-legend > p { margin-top: 15px; }
+.criteria-visual-legend ul { display: grid; gap: 14px; list-style: none; padding: 0; margin: 18px 0 2px; }
+.criteria-visual-legend li { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 9px; align-items: start; }
+.criteria-visual-legend li strong { color: var(--paper); }
+.criteria-visual-legend li p { margin-top: 3px; }
+.status-legend-symbol { display: inline-flex; padding-top: 1px; background: transparent; }
+
+@media (max-width: 480px) {
+  .domain-row.criteria-visual-domain { padding: 14px; }
+  .status-chip, .criterion-group summary .status-chip { font-size: 0.72rem; }
+  .profile-card .profile-heading h2 { font-size: 1.75rem; }
+}
+
+@media print {
+  .domain-row.criteria-visual-domain { break-inside: avoid; border-color: #ccc; background: white; }
+  .criteria-visual-domain .domain-row-head { color: #14202a; }
+  .criteria-visual-domain .domain-supported-count { color: #4d5961; }
+  .status-chip, .criterion-group summary .status-chip { color: #14202a; background: white; border-color: #899097; }
+  .domain-review-button, .criteria-visual-legend { display: none !important; }
+}

@@ -73,11 +73,22 @@ Translations, stage descriptions, interface labels, accessibility text, and ques
 - `dist/mystical-config.js` contains its stable IDs and allowed values, with no scoring rules;
 - `dist/assessment-config.js` contains versioned IDs, source references and accepted, exempt or unknown options for each threshold;
 - `dist/assessment-engine.js` is the pure all-required-criteria evaluator;
+- `dist/result-presentation.js` and `.css` render accessible icon-and-label requirement summaries, with their text in the locale files;
 - `dist/app.js` contains rendering, navigation, temporary session handling and browser-tool integration.
 
 To add a language, copy its locale, question-bank and mystical-module files, register the language on `window.spiritualLocales`, `window.spiritualQuestions` and `window.spiritualMysticalContent`, load them before `app.js`, and add the language to the selector in `dist/index.html`. Core question IDs, order, option indices and expectation keys must stay aligned with `questionBlueprints`; optional IDs and values must match `spiritualMysticalReflection.questions`.
 
 ## Questionnaire model
+
+### Exploring stages and returning to results
+
+All seven stages on the home page are clickable before taking the questionnaire. Each opens a keyboard-accessible dialog with the existing translated source description, source reference and relevant limits. Previous/next buttons browse I–VII; Escape or the close button returns focus to the stage that opened it. VII retains the explicit notice that its criteria were not supplied. Exploring descriptions never changes answers or assigns a result.
+
+After all 28 questions have an answer or explicit skip, **View results** appears on the home page and **Back to results** appears while reviewing answers. Returning always recalculates from the current answers. Home navigation and refresh preserve both core and optional reports; restarting clears them and hides the result shortcuts.
+
+Result overview cards show only nonzero condition counts with four distinct icons and text labels: supported, unsupported, unclear, and inapplicable. A legend explains these meanings; each area links to its exact expanded requirements. Exemptions are not counted as supported, and the UI introduces no score or percentage. The calculation rules are unchanged.
+
+### Core questions
 
 The questionnaire contains 28 concrete questions across seven areas. Each has its own answer descriptions rather than a generic frequency scale:
 
@@ -115,4 +126,6 @@ Source descriptions preserve their original coverage: I and II have six areas, I
 
 ## Verification
 
-Run `node --test tests/*.test.cjs`. Tests cover individual gate failures, unknown/conditional answers, source and translation alignment, exact IV requirements, result explanations, language changes, session restoration and version migration. No real user answers are used.
+Run `node --test tests/*.test.cjs`. Tests cover individual gate failures, unknown/conditional answers, source and translation alignment, exact IV requirements, result explanations, language changes, session restoration and version migration. They also check stage exploration, recalculation via result shortcuts, optional report isolation and icon/count presentation. No real user answers are used.
+
+`node tests/browser-smoke.cjs` uses an isolated local Chrome profile to verify desktop/mobile layouts, native dialog Escape and focus behavior, requirement-detail links, radios, refresh and print rendering.

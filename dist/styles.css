@@ -433,12 +433,28 @@ h1 {
 
 .stage-path li {
   position: relative;
-  display: grid;
-  grid-template-columns: 40px 1fr;
-  gap: 14px;
-  align-items: center;
-  min-height: 62px;
+  display: block;
 }
+
+.stage-explore-button {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr) 16px;
+  width: 100%;
+  gap: 10px;
+  align-items: center;
+  min-height: 72px;
+  padding: 10px 8px 10px 0;
+  text-align: left;
+  color: var(--paper);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.stage-explore-button:hover { border-color: var(--line-strong); background: rgba(223, 163, 45, 0.07); }
+.stage-explore-arrow { width: 16px; height: 16px; fill: none; stroke: var(--gold-bright); stroke-width: 1.6; }
+.path-hint { margin: 12px 0 0; color: var(--paper-muted); font-size: 0.86rem; }
 
 .stage-dot {
   position: relative;
@@ -501,6 +517,36 @@ h1 {
 .progress-panel {
   padding-top: 12px;
 }
+
+.progress-navigation { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.return-results-button { color: var(--gold-bright); text-align: left; }
+.progress-navigation svg, .result-navigation svg { flex-shrink: 0; }
+.result-navigation { grid-column: 1 / -1; }
+
+.stage-dialog {
+  width: min(760px, calc(100% - 28px));
+  max-height: calc(100dvh - 40px);
+  margin: auto;
+  padding: 0;
+  color: var(--paper);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-lg);
+  background: var(--ink-soft);
+  box-shadow: var(--shadow);
+}
+.stage-dialog[open] { display: flex; flex-direction: column; }
+.stage-dialog::backdrop { background: rgba(15, 10, 7, 0.78); backdrop-filter: blur(6px); }
+body:has(.stage-dialog[open]) { overflow: hidden; }
+.stage-dialog-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; padding: 16px 28px; border-bottom: 1px solid var(--line); }
+.stage-dialog-header .eyebrow { margin: 0; font-size: 0.68rem; }
+.stage-dialog-header .text-button { font-size: 0.85rem; }
+.stage-dialog-content { overflow-y: auto; overscroll-behavior: contain; padding: 28px; }
+.stage-dialog-content > .eyebrow { font-size: 0.75rem; }
+.stage-dialog h2 { margin: 0; font: 500 clamp(1.7rem, 4vw, 2.4rem)/1.2 Georgia, "Times New Roman", serif; }
+.stage-dialog-note { margin: 16px 0 0; color: var(--gold-bright); font-size: 0.85rem; }
+.stage-dialog-navigation { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 28px; border-top: 1px solid var(--line); }
+.stage-dialog-navigation button { padding: 12px 14px; font-size: 0.85rem; }
+#stage-dialog-position { color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
 
 .text-button {
   display: inline-flex;
@@ -756,6 +802,7 @@ h1 {
 .result-card {
   position: relative;
   overflow: hidden;
+  align-self: start;
 }
 
 .result-card::after {
@@ -828,6 +875,10 @@ h1 {
 .result-copy .stage-result {
   margin-top: 0;
 }
+
+/* Let long translated stage names use the full text column, not the narrow
+   space remaining beside the numeral. */
+.result-copy .stage-result > div { grid-column: 1 / -1; }
 
 .result-ascent {
   min-width: 0;
@@ -1356,6 +1407,7 @@ h1 {
   .path-card { min-height: auto; }
   .question-layout { grid-template-columns: 1fr; gap: 24px; }
   .progress-panel { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; padding: 0 4px; }
+  .progress-navigation { grid-column: 1 / -1; flex-direction: row; flex-wrap: wrap; justify-content: space-between; }
   .progress-copy { display: none; }
   .progress-track { margin: 0; }
   .progress-domain { grid-column: 1 / -1; margin: -8px 0 0; }
@@ -1395,6 +1447,10 @@ h1 {
   .result-actions button { width: 100%; }
   .mystical-question .answer-options { grid-template-columns: 1fr; }
   .mystical-actions { align-items: stretch; flex-direction: column; }
+  .stage-dialog-header { padding: 12px 18px; }
+  .stage-dialog-content { padding: 22px 18px; }
+  .stage-dialog-navigation { padding: 14px; gap: 8px; }
+  .stage-dialog-navigation button { padding: 10px; max-width: 42%; font-size: 0.8rem; }
 }
 
 @media print {
@@ -1404,6 +1460,8 @@ h1 {
   .site-header,
   .site-footer,
   .result-actions,
+  .result-navigation,
+  .stage-dialog,
   .method-note { display: none !important; }
   #mystical-fields, .mystical-actions, #mystical-progress, #mystical-timeframe, #mystical-privacy,
   #mystical-section[data-has-answers="false"] { display: none !important; }

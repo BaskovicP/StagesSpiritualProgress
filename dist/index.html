@@ -15,6 +15,7 @@
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23211914'/%3E%3Cpath d='M18 48c16-4 10-25 29-32' fill='none' stroke='%23dfa32d' stroke-width='5' stroke-linecap='round'/%3E%3Ccircle cx='18' cy='48' r='5' fill='%23f6efe5'/%3E%3Ccircle cx='47' cy='16' r='5' fill='%238d3448'/%3E%3C/svg%3E"
     />
     <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./result-presentation.css" />
     <script src="./locales/en.js" defer></script>
     <script src="./locales/hr.js" defer></script>
     <script src="./questions/en.js" defer></script>
@@ -24,6 +25,7 @@
     <script src="./mystical-config.js" defer></script>
     <script src="./assessment-config.js" defer></script>
     <script src="./assessment-engine.js" defer></script>
+    <script src="./result-presentation.js" defer></script>
     <script src="./app.js" defer></script>
   </head>
   <body>
@@ -90,6 +92,7 @@
               <button id="restart-button" class="secondary-button" type="button" hidden>
                 <span data-i18n="restart">Start over</span>
               </button>
+              <button id="intro-results-button" class="secondary-button" type="button" data-i18n="viewResults" hidden>View results</button>
             </div>
 
             <p class="privacy-note">
@@ -104,6 +107,7 @@
             <div class="path-card-head">
               <p class="eyebrow" data-i18n="pathEyebrow">Seven stages</p>
               <h2 id="path-title" data-i18n="pathTitle">A path, not a rank</h2>
+              <p class="path-hint" data-i18n="pathHint">Choose a stage to read its description.</p>
             </div>
             <ol class="stage-path" id="stage-path"></ol>
             <p class="path-assessment-note" data-i18n="pathAssessmentNote">
@@ -114,10 +118,16 @@
 
         <section id="question-view" class="view question-layout" hidden>
           <aside class="progress-panel">
+            <div class="progress-navigation">
             <button id="exit-button" class="text-button" type="button">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
-              <span data-i18n="backToIntro">Back</span>
+              <span data-i18n="homeLabel">Home</span>
             </button>
+            <button id="question-results-button" class="text-button return-results-button" type="button" hidden>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v14H4zM8 10h8M8 14h5" /></svg>
+              <span data-i18n="backToResults">Back to results</span>
+            </button>
+            </div>
             <div class="progress-copy">
               <p class="eyebrow" data-i18n="yourProgress">Your progress</p>
               <p><span id="question-number">1</span> / <span id="question-total">1</span></p>
@@ -154,6 +164,12 @@
         </section>
 
         <section id="result-view" class="view result-layout" hidden aria-labelledby="result-heading">
+          <nav class="result-navigation">
+            <button id="result-home-button" class="text-button" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
+              <span data-i18n="homeLabel">Home</span>
+            </button>
+          </nav>
           <article class="result-card">
             <div class="result-card-topline">
               <p class="eyebrow" data-i18n="resultEyebrow">Your closest pattern</p>
@@ -232,6 +248,7 @@
               <span id="criteria-badge" class="confidence-badge"></span>
             </div>
             <div id="domain-profile" class="domain-profile"></div>
+            <div id="criteria-legend"></div>
             <p id="answered-summary" class="answered-summary"></p>
             <p id="criteria-summary" class="confidence-summary"></p>
           </aside>
@@ -309,6 +326,30 @@
           </details>
         </section>
       </main>
+
+      <dialog id="stage-dialog" class="stage-dialog" aria-labelledby="stage-dialog-heading">
+        <div class="stage-dialog-header">
+          <p class="eyebrow" data-i18n="stageDetailsTitle">Stages in the source text</p>
+          <button id="stage-dialog-close" class="text-button" type="button">
+            <span data-i18n="closeStageDetails">Close description</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 12" /></svg>
+          </button>
+        </div>
+        <div id="stage-dialog-content" class="stage-dialog-content">
+          <p id="stage-dialog-family" class="eyebrow"></p>
+          <h2 id="stage-dialog-heading" tabindex="-1"></h2>
+          <p id="stage-dialog-note" class="stage-dialog-note" hidden></p>
+          <p class="source-description-intro" data-i18n="sourceDescriptionIntro"></p>
+          <div id="stage-dialog-description" class="source-description-body"></div>
+          <p id="stage-dialog-reference" class="source-description-reference"></p>
+          <p class="source-description-caution" data-i18n="sourceDescriptionCaution"></p>
+        </div>
+        <div class="stage-dialog-navigation">
+          <button id="stage-dialog-previous" class="secondary-button" type="button" data-i18n="previousStage">Previous stage</button>
+          <span id="stage-dialog-position" aria-live="polite" aria-atomic="true"></span>
+          <button id="stage-dialog-next" class="secondary-button" type="button" data-i18n="nextStage">Next stage</button>
+        </div>
+      </dialog>
 
       <footer class="site-footer">
         <p data-i18n="footerNote">For personal reflection; not a substitute for spiritual direction or confession.</p>

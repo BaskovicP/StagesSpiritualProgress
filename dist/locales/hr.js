@@ -23,6 +23,15 @@
   "privacyNote": "Tvoji odgovori ostaju u ovoj kartici i nestaju kada je zatvoriš.",
   "pathEyebrow": "Sedam stupnjeva",
   "pathTitle": "Put, a ne rang-lista",
+  "pathHint": "Odaberi stupanj i pročitaj njegov opis.",
+  "exploreStageLabel": "Pročitaj opis: {stage}. {name}",
+  "stageDetailsTitle": "Stupnjevi prema izvornom tekstu",
+  "closeStageDetails": "Zatvori opis",
+  "previousStage": "Prethodni stupanj",
+  "nextStage": "Sljedeći stupanj",
+  "backToResults": "Natrag na rezultate",
+  "viewResults": "Prikaži rezultate",
+  "homeLabel": "Početna",
   "pathAssessmentNote": "Svih sedam stupnjeva ostaje prikazano. Upitnik provjerava samo praktična očekivanja povezana sa stupnjevima I–IV. V. i VI. uključuju mistične milosti koje odgovori o navikama ne mogu potvrditi, a za VII. izvor daje samo naziv.",
   "backToIntro": "Natrag",
   "yourProgress": "Tvoj napredak",
@@ -275,6 +284,25 @@
   "criteriaEyebrow": "Svaki uvjet ima svoju provjeru",
   "criteriaHelp": "Ovdje vidiš točno očekivanje i svoj odgovor. Možeš pregledati bilo koji prag I–IV. „Nije primjenjivo” vrijedi samo za izričitu okolnost poput izostanka pada ili stvarne mogućnosti mise; ne predstavlja dodatni dokaz zrelosti. Ispunjeni praktični uvjeti ne potvrđuju mistično stanje.",
   "criteriaSelectLabel": "Pogledaj uvjete za",
+  "criteriaVisual": {
+    "supportedCount": "Odgovori podupiru {met} od ukupno {total} uvjeta",
+    "noneApplicable": "Ovi uvjeti nisu primjenjivi u navedenim okolnostima.",
+    "reviewDomain": "Pogledaj ove uvjete",
+    "legendTitle": "Što znače ove oznake?",
+    "legendIntro": "Svaki broj označava pojedine uvjete, a ne bodove. Otvori područje i usporedi svaki uvjet sa svojim odgovorom.",
+    "labels": {
+      "met": "Poduprto",
+      "notMet": "Nije poduprto",
+      "unknown": "Nejasno",
+      "notTriggered": "Nije primjenjivo"
+    },
+    "descriptions": {
+      "met": "Tvoj odgovor odgovara praktičnom uvjetu koji se provjerava. To nije potvrda duhovnog stupnja.",
+      "notMet": "Tvoj odgovor ne odgovara ovom konkretnom uvjetu. Otvori ga i pogledaj što izvor očekuje.",
+      "unknown": "Odgovor nedostaje, nesiguran je ili nije usklađen s drugim odgovorom. Nejasno ne znači neuspjeh.",
+      "notTriggered": "Zbog navedenih okolnosti ovaj uvjet nije primjenjiv. To nije neuspjela provjera, ali ni dokaz napretka."
+    }
+  },
   "criterionStatuses": {
     "met": "Odgovor podupire uvjet",
     "notMet": "Odgovor ne podupire uvjet",

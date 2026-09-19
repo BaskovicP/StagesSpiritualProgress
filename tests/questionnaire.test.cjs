@@ -14,10 +14,12 @@ function boot(language = 'hr', storage = new Map()) {
   function element(selector) {
     if (selector.startsWith('#')) assert.ok(html.includes(`id="${selector.slice(1)}"`), selector);
     if (!nodes.has(selector)) nodes.set(selector, {
-      textContent: '', innerHTML: '', dataset: {}, attributes: {}, listeners: {}, hidden: false,
+      textContent: '', innerHTML: '', dataset: {}, attributes: {}, listeners: {}, hidden: false, open: false,
       setAttribute(k, v) { this.attributes[k] = String(v); },
       addEventListener(k, fn) { this.listeners[k] = fn; },
-      querySelector() { return { textContent: '' }; },
+      querySelector() { return { textContent: '', focus() {} }; },
+      showModal() { this.open = true; },
+      close() { this.open = false; this.listeners.close?.(); },
       focus() {}
     });
     return nodes.get(selector);
@@ -444,4 +446,165 @@ test('invalid or obsolete optional saved data is discarded without invalidating 
   assert.deepEqual(stored(preserved).answers, core);
   assert.deepEqual(stored(preserved).mysticalAnswers, {});
   assert.equal(preserved.call('calculate_spiritual_reflection_result').stage, 4);
+});
+
+function openStage(app, index) {
+  app.element('#stage-path').listeners.click({
+    target: {
+      closest(selector) {
+        assert.equal(selector, '[data-stage-index]');
+        return { dataset: { stageIndex: String(index) }, focus() {} };
+      }
+    }
+  });
+}
+
+function assertStageDialog(app, language, index) {
+  const copy = app.window.spiritualLocales[language];
+  const stage = copy.stages[index];
+  const roman = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII'][index];
+  assert.equal(app.element('#stage-dialog').open, true);
+  assert.equal(app.element('#stage-dialog-heading').textContent, `${roman}. ${stage.name}`);
+  const expectedDescription = stage.sourceDescription.length
+    ? stage.sourceDescription.map(({ domain, text }) => `<p><strong>${escaped(copy.domains[domain])}:</strong> ${escaped(text)}</p>`).join('')
+    : `<p>${escaped(stage.summary)}</p>`;
+  assert.equal(app.element('#stage-dialog-description').innerHTML, expectedDescription,
+    `${language} ${roman}: educational dialog uses the supplied source, not an invented score description`);
+  if (stage.assessmentNote) {
+    assert.ok(app.element('#stage-dialog-note').textContent.includes(stage.assessmentNote));
+    assert.equal(app.element('#stage-dialog-note').hidden, false);
+  }
+  assert.equal(app.element('#stage-dialog-reference').textContent,
+    copy.sourceDescriptionReference.replaceAll('{stage}', roman));
+  assert.equal(app.element('#stage-dialog-previous').disabled, index === 0);
+  assert.equal(app.element('#stage-dialog-next').disabled, index === 6);
+}
+
+test('all seven source stages are browsable from the start without answering or calculating', () => {
+  for (const language of ['hr', 'en']) {
+    const app = boot(language);
+    const stageButtons = [...app.element('#stage-path').innerHTML.matchAll(/<button\b[^>]*data-stage-index="(\d)"[^>]*>/g)];
+    assert.deepEqual(stageButtons.map(match => Number(match[1])), [0, 1, 2, 3, 4, 5, 6]);
+    assert.equal(app.element('#intro-view').hidden, false);
+    const before = stored(app);
+    for (let index = 0; index < 7; index++) {
+      openStage(app, index);
+      assertStageDialog(app, language, index);
+      assert.equal(app.element('#intro-view').hidden, false);
+      assert.equal(app.element('#result-view').hidden, true);
+      app.element('#stage-dialog-close').listeners.click();
+      assert.equal(app.element('#stage-dialog').open, false);
+      assert.deepEqual(stored(app).answers, before.answers);
+      assert.deepEqual(stored(app).mysticalAnswers, before.mysticalAnswers);
+      assert.equal(stored(app).view, 'intro');
+    }
+    assert.equal(app.window.spiritualLocales[language].stages[6].sourceDescription.length, 0,
+      'VII stays named but no source requirements are invented');
+  }
+});
+
+test('stage dialog paging stops at I and VII and follows an in-place language switch', () => {
+  const app = boot('hr');
+  openStage(app, 0);
+  app.element('#stage-dialog-previous').listeners.click();
+  assertStageDialog(app, 'hr', 0);
+  for (let index = 1; index < 7; index++) {
+    app.element('#stage-dialog-next').listeners.click();
+    assertStageDialog(app, 'hr', index);
+  }
+  app.element('#stage-dialog-next').listeners.click();
+  assertStageDialog(app, 'hr', 6);
+  app.element('#language-select').listeners.change({ target: { value: 'en' } });
+  assertStageDialog(app, 'en', 6);
+  assert.equal(stored(app).language, 'en');
+  for (let index = 5; index >= 0; index--) {
+    app.element('#stage-dialog-previous').listeners.click();
+    assertStageDialog(app, 'en', index);
+  }
+  app.element('#stage-dialog-close').listeners.click();
+  assert.equal(app.element('#stage-dialog').open, false);
+  assert.deepEqual(stored(app).answers, {});
+});
+
+function assertResultLinks(app, available) {
+  for (const selector of ['#intro-results-button', '#question-results-button']) {
+    assert.equal(app.element(selector).hidden, !available, `${selector}: only a completed questionnaire can return to results`);
+  }
+}
+
+test('result return becomes available only after the last answer or explicit skip, and reset removes it', () => {
+  const app = boot('hr');
+  assertResultLinks(app, false);
+  const questions = app.window.spiritualAssessment.questionBlueprints;
+  setAnswers(app, Object.fromEntries(questions.slice(0, -1).map(question => [question.id, 'skip'])));
+  assertResultLinks(app, false);
+  app.element('#next-button').listeners.click();
+  const input = new app.HTMLInputElement();
+  input.value = 'skip';
+  app.element('#answer-options').listeners.change({ target: input });
+  assertResultLinks(app, true);
+  app.element('#question-results-button').listeners.click();
+  assert.equal(app.element('#result-view').hidden, false);
+  assert.equal(app.element('#result-number').textContent, '—', 'All skips produce an unknown result, not a stage');
+  app.element('#result-home-button').listeners.click();
+  assert.equal(app.element('#intro-view').hidden, false);
+  assertResultLinks(app, true);
+  app.element('#intro-results-button').listeners.click();
+  assert.equal(app.element('#result-view').hidden, false);
+  assert.equal(app.element('#result-number').textContent, '—');
+  app.element('#retake-button').listeners.click();
+  assertResultLinks(app, false);
+  assert.deepEqual(stored(app).answers, {});
+});
+
+test('returning to results recalculates edits and preserves core and mystical reports through home, refresh and translation', () => {
+  const app = boot('hr');
+  const answers = { ...strongAnswers(app), 'examen-frequency-v4': 2 };
+  assert.equal(resultFor(app, answers).stage, 3);
+  setMysticalAnswers(app, ['yes', 'unsure', 'no', 'skip', 'lasting', 'discussed']);
+  const mystical = stored(app).mysticalAnswers;
+  app.element('#result-home-button').listeners.click();
+  assert.equal(app.element('#intro-view').hidden, false);
+  assert.deepEqual(stored(app).answers, answers);
+  assert.deepEqual(stored(app).mysticalAnswers, mystical);
+  openStage(app, 5);
+  app.element('#stage-dialog-close').listeners.click();
+  assert.deepEqual(stored(app).answers, answers, 'Learning about a stage cannot change questionnaire choices');
+  assert.deepEqual(stored(app).mysticalAnswers, mystical);
+
+  const fromHome = boot('hr', app.storage);
+  assert.equal(fromHome.element('#intro-view').hidden, false);
+  assertResultLinks(fromHome, true);
+  fromHome.element('#intro-results-button').listeners.click();
+  assert.equal(fromHome.element('#result-number').textContent, 'III');
+  const index = fromHome.window.spiritualAssessment.questionBlueprints.findIndex(question => question.id === 'examen-frequency-v4');
+  fromHome.element('#criteria-checks').listeners.click({ target: { closest() { return { dataset: { reviewQuestion: String(index) } }; } } });
+  assert.equal(fromHome.element('#question-view').hidden, false);
+  const input = new fromHome.HTMLInputElement();
+  input.value = '1';
+  fromHome.element('#answer-options').listeners.change({ target: input });
+  assert.equal(stored(fromHome).answers['examen-frequency-v4'], 1);
+
+  const fromQuestion = boot('hr', fromHome.storage);
+  assert.equal(fromQuestion.element('#question-view').hidden, false);
+  assertResultLinks(fromQuestion, true);
+  fromQuestion.element('#language-select').listeners.change({ target: { value: 'en' } });
+  assertResultLinks(fromQuestion, true);
+  fromQuestion.element('#question-results-button').listeners.click();
+  assert.equal(fromQuestion.element('#result-view').hidden, false);
+  assert.equal(fromQuestion.element('#result-number').textContent, 'II', 'Return recomputes the changed criterion, not a cached III');
+  assert.equal(fromQuestion.element('#result-heading').textContent, fromQuestion.window.spiritualLocales.en.stages[1].name);
+  assert.deepEqual(stored(fromQuestion).answers, { ...answers, 'examen-frequency-v4': 1 });
+  assert.deepEqual(stored(fromQuestion).mysticalAnswers, mystical);
+  assertReportedSummary(fromQuestion, 'en');
+
+  let prevented = false;
+  fromQuestion.element('.brand').listeners.click({ preventDefault() { prevented = true; } });
+  assert.equal(prevented, true, 'Home link must not navigate away and erase view context');
+  assert.equal(fromQuestion.element('#intro-view').hidden, false);
+  assert.deepEqual(stored(fromQuestion).mysticalAnswers, mystical);
+  fromQuestion.element('#restart-button').listeners.click();
+  assertResultLinks(fromQuestion, false);
+  assert.deepEqual(stored(fromQuestion).answers, {});
+  assert.deepEqual(stored(fromQuestion).mysticalAnswers, {});
 });

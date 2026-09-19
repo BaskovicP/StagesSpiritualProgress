@@ -86,6 +86,45 @@ async function main() {
     await pause(100);
   }
   assert.equal(await evaluate('window.spiritualAssessment.questionnaireVersion'), 4);
+  await evaluate(`document.documentElement.style.scrollBehavior = 'auto'`);
+  for (const language of ['hr', 'en']) {
+    await evaluate(`(() => { const select = document.querySelector('#language-select'); select.value = '${language}'; select.dispatchEvent(new Event('change', { bubbles: true })); })()`);
+    assert.equal(await evaluate(`document.querySelectorAll('#stage-path button[data-stage-index]').length`), 7);
+    assert.equal(await evaluate(`document.querySelector('#intro-results-button').hidden`), true);
+    for (let stageIndex = 0; stageIndex < 7; stageIndex += 1) {
+      const dialog = await evaluate(`(() => {
+        document.querySelector('[data-stage-index="${stageIndex}"]').click();
+        const stage = window.spiritualLocales['${language}'].stages[${stageIndex}];
+        return { open: document.querySelector('#stage-dialog').open, focused: document.activeElement.id,
+          titleMatches: document.querySelector('#stage-dialog-heading').textContent.endsWith(stage.name),
+          sourceMatches: stage.sourceDescription.every(item => document.querySelector('#stage-dialog-description').textContent.includes(item.text)),
+          first: document.querySelector('#stage-dialog-previous').disabled, last: document.querySelector('#stage-dialog-next').disabled,
+          noAnswers: Object.keys(JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v4')).answers).length === 0 };
+      })()`);
+      assert.equal(dialog.open, true);
+      assert.equal(dialog.focused, 'stage-dialog-heading');
+      assert.equal(dialog.titleMatches && dialog.sourceMatches && dialog.noAnswers, true);
+      assert.equal(dialog.first, stageIndex === 0);
+      assert.equal(dialog.last, stageIndex === 6);
+      await evaluate(`document.querySelector('#stage-dialog-close').click()`);
+    }
+    for (const width of [1440, 390, 320]) {
+      await cdp('Emulation.setDeviceMetricsOverride', { width, height: 1100, deviceScaleFactor: 1, mobile: width < 600 });
+      await evaluate(`document.querySelector('[data-stage-index="4"]').click()`);
+      const geometry = await evaluate(`(() => { const dialog = document.querySelector('#stage-dialog'); const rect = dialog.getBoundingClientRect(); return { left: rect.left, right: rect.right, width: innerWidth, clientWidth: dialog.clientWidth, scrollWidth: dialog.scrollWidth, height: rect.height }; })()`);
+      assert.ok(geometry.left >= 0 && geometry.right <= width + 1 && geometry.height <= 1100, JSON.stringify(geometry));
+      assert.ok(geometry.scrollWidth <= geometry.clientWidth + 1, JSON.stringify(geometry));
+      const screenshot = await cdp('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
+      const file = path.join(screenshotDirectory, `${language}-${width}-stage-explorer.png`);
+      fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
+      console.log(`Screenshot: ${file}`);
+      await cdp('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+      await cdp('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+      await evaluate('new Promise(resolve => requestAnimationFrame(resolve))');
+      assert.equal(await evaluate(`document.querySelector('#stage-dialog').open`), false);
+      assert.equal(await evaluate(`document.activeElement.dataset.stageIndex`), '4');
+    }
+  }
   await evaluate(`window.__strongAnswers = (() => {
     const answers = {};
     for (const q of window.spiritualAssessment.questionBlueprints) {
@@ -118,6 +157,18 @@ async function main() {
       assert.ok(result.heading.length > 0);
       assert.ok(result.criteria.length > 40);
     }
+    const returnNavigation = await evaluate(`(() => {
+      document.querySelector('#result-home-button').click();
+      const home = !document.querySelector('#intro-view').hidden && !document.querySelector('#intro-results-button').hidden;
+      document.querySelector('#intro-results-button').click();
+      const returned = !document.querySelector('#result-view').hidden;
+      document.querySelector('#review-button').click();
+      const reviewing = !document.querySelector('#question-view').hidden && !document.querySelector('#question-results-button').hidden;
+      document.querySelector('#question-results-button').click();
+      const result = !document.querySelector('#result-view').hidden && document.querySelector('#result-number').textContent === 'IV';
+      return { home, returned, reviewing, result };
+    })()`);
+    assert.deepEqual(returnNavigation, { home: true, returned: true, reviewing: true, result: true });
     for (const width of [1440, 390]) {
       await cdp('Emulation.setDeviceMetricsOverride', { width, height: 1100, deviceScaleFactor: 1, mobile: width < 600 });
       await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
@@ -203,6 +254,36 @@ async function main() {
   const reviewFile = path.join(screenshotDirectory, 'hr-1440-stage-III-checks-for-IV.png');
   fs.writeFileSync(reviewFile, Buffer.from(reviewScreenshot.data, 'base64'));
   console.log(`Screenshot: ${reviewFile}`);
+  for (const width of [1440, 390, 320]) {
+    await cdp('Emulation.setDeviceMetricsOverride', { width, height: 1100, deviceScaleFactor: 1, mobile: width < 600 });
+    const cards = await evaluate(`(() => {
+      const card = document.querySelector('.profile-card'); card.scrollIntoView({ block: 'start', behavior: 'instant' });
+      const chips = [...card.querySelectorAll('.status-chip')];
+      return { allLabelled: chips.every(chip => chip.querySelector('svg[aria-hidden="true"]') && chip.querySelector('.status-chip-label').textContent.length > 0),
+        allPositive: chips.every(chip => Number(chip.querySelector('.status-chip-count').textContent) > 0),
+        failed: card.querySelectorAll('.status-chip-notMet').length, legend: card.querySelectorAll('.criteria-visual-legend li').length,
+        scrollWidth: document.documentElement.scrollWidth, width: innerWidth };
+    })()`);
+    assert.equal(cards.allLabelled && cards.allPositive, true);
+    assert.ok(cards.failed > 0);
+    assert.equal(cards.legend, 4);
+    assert.ok(cards.scrollWidth <= cards.width + 1, JSON.stringify(cards));
+    const screenshot = await cdp('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
+    const file = path.join(screenshotDirectory, `hr-${width}-criteria-overview.png`);
+    fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
+    console.log(`Screenshot: ${file}`);
+  }
+  const criteriaLink = await evaluate(`(() => {
+    const select = document.querySelector('#criteria-stage-select'); select.value = '1'; select.dispatchEvent(new Event('change', {bubbles:true}));
+    document.querySelector('[data-review-domain="examen"]').click();
+    const group = document.querySelector('[data-criteria-domain="examen"]');
+    return { open: group.open, focused: group.querySelector('summary') === document.activeElement,
+      stage: select.value, text: group.textContent, keyboardReachable: group.querySelector('summary').tabIndex >= 0 };
+  })()`);
+  assert.equal(criteriaLink.open && criteriaLink.focused && criteriaLink.keyboardReachable, true);
+  assert.equal(criteriaLink.stage, '4');
+  assert.ok(criteriaLink.text.includes('Odgovor ne podupire uvjet'));
+  await cdp('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1100, deviceScaleFactor: 1, mobile: false });
   await cdp('Emulation.setEmulatedMedia', { media: 'print' });
   const print = await evaluate(`(() => {
     const card = document.querySelector('.criteria-card');
@@ -226,7 +307,7 @@ async function main() {
   assert.equal(await evaluate(`getComputedStyle(document.querySelector('#mystical-section')).display`), 'none');
   assert.equal(await evaluate(`window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({}).stage`), 3);
   assert.deepEqual(exceptions, []);
-  console.log('PASS: real Chrome renders null and I–IV, optional mystical radios and keyboard navigation in both languages; desktop/mobile without overflow, refresh preserves reports, print summaries visible, scoring unchanged, no uncaught exceptions.');
+  console.log('PASS: seven source dialogs, Escape/focus, home/result navigation, criteria icons/detail links, bilingual results and mystical radios; desktop/mobile without overflow, refresh/print, unchanged scoring, no uncaught exceptions.');
 }
 
 main().catch((error) => { console.error(error); process.exitCode = 1; }).finally(async () => {

@@ -12,6 +12,7 @@
   const questionCopies = window.spiritualQuestions;
   const mysticalConfig = window.spiritualMysticalReflection;
   const mysticalCopies = window.spiritualMysticalContent;
+  const resultPresentation = window.spiritualResultPresentation;
 
 
   const elements = {
@@ -56,6 +57,8 @@
   }
 
   let ascentAnimationFrame = 0;
+  let selectedStageIndex = 0;
+  let stageOpenerIndex = 0;
 
   function detectLanguage() {
     const supported = Object.keys(translations);
@@ -138,6 +141,7 @@
     });
 
     renderStagePath();
+    if (document.querySelector("#stage-dialog").open) renderStageDetails();
     renderSourceGuide();
     updateStartLabel();
     if (state.view === "question") renderQuestion();
@@ -149,15 +153,52 @@
     elements.stagePath.innerHTML = copy.stages
       .map((stage, index) => `
         <li class="${stage.assessmentNote ? "is-unassessed" : ""}">
+          <button type="button" class="stage-explore-button" data-stage-index="${index}" aria-haspopup="dialog" aria-label="${escapeHtml(format(copy.exploreStageLabel, {stage:toRoman(index + 1),name:stage.name}))}">
           <span class="stage-dot" aria-hidden="true"></span>
           <span class="stage-copy">
             <strong>${toRoman(index + 1)}. ${escapeHtml(stage.name)}</strong>
             <span>${escapeHtml(copy.families[stage.family])}</span>
             ${stage.assessmentNote ? `<small>${escapeHtml(stage.assessmentNote)}</small>` : ""}
           </span>
+          <svg class="stage-explore-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg>
+          </button>
         </li>
       `)
       .join("");
+  }
+
+  function renderStageDetails() {
+    const copy = translations[state.language];
+    const stage = copy.stages[selectedStageIndex];
+    document.querySelector("#stage-dialog-heading").textContent = `${toRoman(selectedStageIndex + 1)}. ${stage.name}`;
+    document.querySelector("#stage-dialog-family").textContent = copy.families[stage.family];
+    document.querySelector("#stage-dialog-description").innerHTML = stage.sourceDescription.length
+      ? sourceParagraphs(stage, copy) : `<p>${escapeHtml(stage.summary)}</p>`;
+    document.querySelector("#stage-dialog-note").textContent = stage.assessmentNote || "";
+    document.querySelector("#stage-dialog-note").hidden = !stage.assessmentNote;
+    document.querySelector("#stage-dialog-reference").textContent = format(copy.sourceDescriptionReference, {stage:toRoman(selectedStageIndex + 1)});
+    document.querySelector("#stage-dialog-position").textContent = `${selectedStageIndex + 1} / ${copy.stages.length}`;
+    document.querySelector("#stage-dialog-previous").disabled = selectedStageIndex === 0;
+    document.querySelector("#stage-dialog-next").disabled = selectedStageIndex === copy.stages.length - 1;
+  }
+
+  function openStageDetails(index) {
+    if (!Number.isInteger(index) || index < 0 || index >= translations[state.language].stages.length) return;
+    selectedStageIndex = index;
+    stageOpenerIndex = index;
+    renderStageDetails();
+    document.querySelector("#stage-dialog").showModal();
+    document.querySelector("#stage-dialog-content").scrollTop = 0;
+    document.querySelector("#stage-dialog-heading").focus();
+  }
+
+  function moveStageDetails(offset) {
+    const next = selectedStageIndex + offset;
+    if (next < 0 || next >= translations[state.language].stages.length) return;
+    selectedStageIndex = next;
+    renderStageDetails();
+    document.querySelector("#stage-dialog-content").scrollTop = 0;
+    document.querySelector("#stage-dialog-heading").focus();
   }
 
   function renderQuestion() {
@@ -207,8 +248,9 @@
     elements.introView.hidden = view !== "intro";
     elements.questionView.hidden = view !== "question";
     elements.resultView.hidden = view !== "result";
+    updateResultNavigation();
     persistState();
-    window.scrollTo({ top: 0, behavior: "smooth" });
+    window.scrollTo({ top: 0, behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
   }
 
   function openQuestionnaire() {
@@ -221,6 +263,19 @@
     showView("intro");
     updateStartLabel();
     requestAnimationFrame(() => elements.startButton.focus());
+  }
+
+  function updateResultNavigation() {
+    const complete = isComplete();
+    document.querySelector("#intro-results-button").hidden = !complete;
+    document.querySelector("#question-results-button").hidden = !complete;
+  }
+
+  function openResults() {
+    if (!isComplete()) return;
+    showView("result");
+    renderResult();
+    requestAnimationFrame(() => document.querySelector("#result-heading").focus());
   }
 
   function movePrevious() {
@@ -250,9 +305,7 @@
       elements.assessmentMessage.hidden = false;
       return;
     }
-    showView("result");
-    renderResult();
-    requestAnimationFrame(() => document.querySelector("#result-heading").focus());
+    openResults();
   }
 
   function sourceParagraphs(stage, copy) {
@@ -265,10 +318,6 @@
       <section><h3>${toRoman(index + 5)}. ${escapeHtml(stage.name)}</h3>
       ${stage.sourceDescription.length ? sourceParagraphs(stage,copy) : `<p>${escapeHtml(stage.summary)}</p>`}
       </section>`).join("");
-  }
-
-  function countChecks(checks) {
-    return {met:checks.filter(c=>c.status==="met").length,notMet:checks.filter(c=>c.status==="notMet").length,unknown:checks.filter(c=>c.status==="unknown").length,notTriggered:checks.filter(c=>c.status==="notTriggered").length,total:checks.length};
   }
 
   function renderMysticalSummary() {
@@ -323,10 +372,6 @@
     renderMysticalSummary();
   }
 
-  function describeCounts(checks,copy) {
-    return format(copy.criteriaCounts,countChecks(checks));
-  }
-
   function renderCriteria(result,stageNumber) {
     const copy=translations[state.language];
     const checks=result.stageChecks[stageNumber - 1].checks;
@@ -335,14 +380,14 @@
       const domainChecks=checks.filter(check=>check.domain===domain);
       if(!domainChecks.length)return "";
       const needsReview=domainChecks.some(check=>["notMet","unknown"].includes(check.status));
-      return `<details class="criterion-group" ${needsReview ? "open" : ""}>
-        <summary>${escapeHtml(copy.domains[domain])}<span>${escapeHtml(describeCounts(domainChecks,copy))}</span></summary>
+      return `<details class="criterion-group" data-criteria-domain="${domain}" ${needsReview ? "open" : ""}>
+        <summary>${escapeHtml(copy.domains[domain])}${resultPresentation.renderCounts(domainChecks,copy)}</summary>
         <ul>${domainChecks.map(check=>{
           const index=questionBlueprints.findIndex(question=>question.id===check.id);
           const question=questionCopies[state.language][index];
           const selected=Number.isInteger(check.selected) ? question.options[check.selected] || copy.notAnswered : copy.preferNot;
           return `<li class="criterion-item">
-            <span class="criterion-status criterion-status-${check.status}">${escapeHtml(copy.criterionStatuses[check.status])}</span>
+            <span class="criterion-status criterion-status-${check.status}">${resultPresentation.statusIcon(check.status)}${escapeHtml(copy.criterionStatuses[check.status])}</span>
             <h4>${escapeHtml(question.expectations[check.ruleStage])}</h4>
             <p>${escapeHtml(copy.yourAnswer)} ${escapeHtml(selected)}</p>
             ${check.status==="unknown" ? `<p>${escapeHtml(copy.criterionUnknownNote)}</p>` : ""}
@@ -377,9 +422,9 @@
     document.querySelector("#domain-profile").innerHTML=domainOrder.map(domain=>{
       const checks=targetChecks.filter(check=>check.domain===domain);
       if(!checks.length)return "";
-      return `<div class="domain-row"><div class="domain-row-head"><strong>${escapeHtml(copy.domains[domain])}</strong></div>
-      <p class="domain-criteria-counts">${escapeHtml(describeCounts(checks,copy))}</p></div>`;
+      return resultPresentation.renderDomain(domain, checks, copy);
     }).join("");
+    document.querySelector("#criteria-legend").innerHTML = resultPresentation.renderLegend(copy);
     document.querySelector("#answered-summary").textContent=format(copy.answeredSummary,{answered:result.answeredCount,total:questionBlueprints.length,skipped:result.skippedCount});
     document.querySelector("#criteria-summary").textContent=copy.criteriaSummary;
     document.querySelector("#criteria-stage-select").innerHTML=copy.stages.slice(0,highestAssessedStage).map((item,index)=>`<option value="${index + 1}" ${index + 1===result.targetStage ? "selected" : ""}>${toRoman(index + 1)}. ${escapeHtml(item.name)}</option>`).join("");
@@ -665,6 +710,23 @@
     if (window.confirm(translations[state.language].restartConfirm)) clearAndRetake();
   });
   elements.exitButton.addEventListener("click", returnToIntro);
+  elements.brandLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    returnToIntro();
+  });
+  document.querySelector("#intro-results-button").addEventListener("click", openResults);
+  document.querySelector("#question-results-button").addEventListener("click", openResults);
+  document.querySelector("#result-home-button").addEventListener("click", returnToIntro);
+  elements.stagePath.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-stage-index]");
+    if (button) openStageDetails(Number(button.dataset.stageIndex));
+  });
+  document.querySelector("#stage-dialog-previous").addEventListener("click", () => moveStageDetails(-1));
+  document.querySelector("#stage-dialog-next").addEventListener("click", () => moveStageDetails(1));
+  document.querySelector("#stage-dialog-close").addEventListener("click", () => document.querySelector("#stage-dialog").close());
+  document.querySelector("#stage-dialog").addEventListener("close", () => {
+    elements.stagePath.querySelector(`[data-stage-index="${stageOpenerIndex}"]`)?.focus();
+  });
   elements.previousButton.addEventListener("click", movePrevious);
   elements.nextButton.addEventListener("click", moveNext);
   elements.reviewButton.addEventListener("click", () => {
@@ -676,6 +738,18 @@
     if (Number.isInteger(selectedStage) && selectedStage >= 1 && selectedStage <= highestAssessedStage) {
       renderCriteria(calculateResult(), selectedStage);
     }
+  });
+  document.querySelector("#domain-profile").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-review-domain]");
+    if (!button || !domainOrder.includes(button.dataset.reviewDomain)) return;
+    const result = calculateResult();
+    document.querySelector("#criteria-stage-select").value = String(result.targetStage);
+    renderCriteria(result, result.targetStage);
+    const group = document.querySelector(`[data-criteria-domain="${button.dataset.reviewDomain}"]`);
+    if (!group) return;
+    group.open = true;
+    group.scrollIntoView({block:"start",behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+    group.querySelector("summary").focus({preventScroll:true});
   });
   document.querySelector("#criteria-checks").addEventListener("click", (event) => {
     const button = event.target.closest("[data-review-question]");
@@ -713,6 +787,7 @@
     state.answers[blueprint.id] = event.target.value === "skip" ? "skip" : Number(event.target.value);
     persistState();
     elements.nextButton.disabled = false;
+    updateResultNavigation();
     elements.assessmentMessage.hidden = true;
   });
 
