@@ -6,8 +6,8 @@
   const questionBlueprints = assessment.questionBlueprints;
   const minimumAnswers = 21;
   const minimumItemsPerDomain = 2;
-  const storageVersion = 1;
-  const storageKey = "spiritual-progress-reflection:v1";
+  const storageVersion = 2;
+  const storageKey = "spiritual-progress-reflection:v2";
 
   const translations = window.spiritualLocales;
 

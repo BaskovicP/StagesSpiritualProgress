@@ -25,6 +25,9 @@ For this uncalibrated seven-domain prototype:
 - Half of the items are reverse-keyed to reduce simple agreement or repeated-click response patterns.
 - The same five frequency choices are used throughout to lower cognitive burden.
 - Wording avoids naming stages or displaying item scores.
+- Each statement asks about one recognizable response or practice rather than requiring the visitor to interpret an abstract spiritual term.
+- Each example mirrors the behavior in its statement and adds needed boundaries without signaling a preferred response.
+- Items about Mass, confession, helping others, and accepting difficulty explicitly account for availability, health, caregiving, justice, and other real duties.
 
 Reverse wording can itself create method effects, so the balance should be tested through cognitive interviews and factor analysis rather than assumed to work.
 
