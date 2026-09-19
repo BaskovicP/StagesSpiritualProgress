@@ -6,6 +6,8 @@
   const questionBlueprints = assessment.questionBlueprints;
   const minimumAnswers = 21;
   const minimumItemsPerDomain = 2;
+  const storageVersion = 1;
+  const storageKey = "spiritual-progress-reflection:v1";
 
   const translations = window.spiritualLocales;
 
@@ -32,12 +34,17 @@
     retakeButton: document.querySelector("#retake-button")
   };
 
+  const restoredState = readStoredState();
   const state = {
-    language: detectLanguage(),
-    currentIndex: 0,
-    answers: {},
-    view: "intro"
+    language: restoredState?.language ?? detectLanguage(),
+    currentIndex: restoredState?.currentIndex ?? 0,
+    answers: restoredState?.answers ?? {},
+    view: restoredState?.view ?? "intro"
   };
+
+  if (state.view === "result" && !hasMinimumCoverage(getAnsweredEntries())) {
+    state.view = "question";
+  }
 
   let ascentAnimationFrame = 0;
 
@@ -49,6 +56,49 @@
       if (supported.includes(base)) return base;
     }
     return "en";
+  }
+
+  function readStoredState() {
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(storageKey) || "null");
+      if (!saved || saved.version !== storageVersion) return null;
+
+      const answers = {};
+      questionBlueprints.forEach((question) => {
+        const answer = saved.answers?.[question.id];
+        if (answer === "skip" || (Number.isInteger(answer) && answer >= 0 && answer < 5)) {
+          answers[question.id] = answer;
+        }
+      });
+
+      const language = Object.hasOwn(translations, saved.language)
+        ? saved.language
+        : detectLanguage();
+      const currentIndex = Number.isInteger(saved.currentIndex)
+        ? clamp(saved.currentIndex, 0, questionBlueprints.length - 1)
+        : 0;
+      const view = ["intro", "question", "result"].includes(saved.view)
+        ? saved.view
+        : "intro";
+
+      return { language, currentIndex, answers, view };
+    } catch {
+      return null;
+    }
+  }
+
+  function persistState() {
+    try {
+      sessionStorage.setItem(storageKey, JSON.stringify({
+        version: storageVersion,
+        language: state.language,
+        currentIndex: state.currentIndex,
+        answers: state.answers,
+        view: state.view
+      }));
+    } catch {
+      // The questionnaire remains usable when browser storage is unavailable.
+    }
   }
 
   function applyLanguage() {
@@ -130,6 +180,7 @@
     elements.introView.hidden = view !== "intro";
     elements.questionView.hidden = view !== "question";
     elements.resultView.hidden = view !== "result";
+    persistState();
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -149,6 +200,7 @@
     if (state.currentIndex === 0) return;
     state.currentIndex -= 1;
     renderQuestion();
+    persistState();
     requestAnimationFrame(() => document.querySelector("#question-title").focus());
   }
 
@@ -159,6 +211,7 @@
     if (state.currentIndex < questionBlueprints.length - 1) {
       state.currentIndex += 1;
       renderQuestion();
+      persistState();
       requestAnimationFrame(() => document.querySelector("#question-title").focus());
       return;
     }
@@ -172,6 +225,7 @@
       const anySkipped = questionBlueprints.findIndex((question) => state.answers[question.id] === "skip");
       state.currentIndex = firstSkipped >= 0 ? firstSkipped : (anySkipped >= 0 ? anySkipped : 0);
       renderQuestion();
+      persistState();
       elements.assessmentMessage.textContent = translations[state.language].needMore;
       elements.assessmentMessage.hidden = false;
       return;
@@ -628,6 +682,7 @@
   elements.languageSelect.addEventListener("change", (event) => {
     state.language = event.target.value;
     applyLanguage();
+    persistState();
   });
 
   elements.startButton.addEventListener("click", openQuestionnaire);
@@ -644,10 +699,12 @@
     if (!(event.target instanceof HTMLInputElement)) return;
     const blueprint = questionBlueprints[state.currentIndex];
     state.answers[blueprint.id] = event.target.value === "skip" ? "skip" : Number(event.target.value);
+    persistState();
     elements.nextButton.disabled = false;
     elements.assessmentMessage.hidden = true;
   });
 
   applyLanguage();
+  showView(state.view);
   registerWebMcpTools();
 })();

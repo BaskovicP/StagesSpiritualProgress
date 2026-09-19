@@ -4,14 +4,16 @@ A private, independent, bilingual (English/Croatian) browser questionnaire for r
 
 ## Privacy
 
-The application is completely static. It does not use:
+The application is completely static. It uses `sessionStorage` only to preserve the current questionnaire state across refreshes in the same browser tab. That temporary state is cleared when the tab's page session ends.
+
+It does not use:
 
 - a backend or database;
-- cookies, local storage, or session storage;
+- cookies or local storage;
 - analytics, trackers, accounts, or identifiers;
 - network requests after the page assets load.
 
-Answers and results exist only in JavaScript memory for the currently open tab.
+Answers, the current question, result view, and language choice are saved only in that tab's temporary session storage. They are never transmitted to a server.
 
 ## Cloudflare Pages deployment
 
