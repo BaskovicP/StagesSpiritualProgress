@@ -1,6 +1,6 @@
 # Spiritual Progress Reflection
 
-A private, independent, bilingual (English/Croatian) browser questionnaire for reflecting on the seven named stages of spiritual progress. Version 4 checks explicit practical expectations associated with I–IV, without averaging or assigning mystical states. V–VI remain educational descriptions and VII is named only in the source. It is not an official publication or assessment of any organization.
+A private, independent, bilingual (English/Croatian) browser questionnaire for reflecting on the seven named stages of spiritual progress. Version 5 compares practical expectations associated with I–VI, without averaging or authenticating spiritual or mystical states. V–VI use explicitly limited practical proxies, not the full source descriptions; VII is named only in the source. It is not an official publication or assessment of any organization.
 
 ## Privacy
 
@@ -69,32 +69,33 @@ Translations, stage descriptions, interface labels, accessibility text, and ques
 
 - `dist/locales/en.js` and `hr.js` contain interface copy and source descriptions;
 - `dist/questions/en.js` and `hr.js` contain questions, answer descriptions, stories, clarifications and criterion explanations;
-- `dist/questions/mystical-en.js` and `mystical-hr.js` contain the separate optional mystical-experience module and its UI copy;
-- `dist/mystical-config.js` contains its stable IDs and allowed values, with no scoring rules;
+- `dist/growth-guidance.js` contains bilingual practical next steps and selects them from unresolved criteria;
 - `dist/assessment-config.js` contains versioned IDs, source references and accepted, exempt or unknown options for each threshold;
 - `dist/assessment-engine.js` is the pure all-required-criteria evaluator;
 - `dist/result-presentation.js` and `.css` render accessible icon-and-label requirement summaries, with their text in the locale files;
 - `dist/app.js` contains rendering, navigation, temporary session handling and browser-tool integration.
 
-To add a language, copy its locale, question-bank and mystical-module files, register the language on `window.spiritualLocales`, `window.spiritualQuestions` and `window.spiritualMysticalContent`, load them before `app.js`, and add the language to the selector in `dist/index.html`. Core question IDs, order, option indices and expectation keys must stay aligned with `questionBlueprints`; optional IDs and values must match `spiritualMysticalReflection.questions`.
+To add a language, provide its locale, question bank and growth guidance, load them before `app.js`, and add it to the language selector. Question IDs, order, option indices and expectation keys must match `questionBlueprints`.
 
 ## Questionnaire model
 
 ### Exploring stages and returning to results
 
-All seven stages on the home page are clickable before taking the questionnaire. Each opens a keyboard-accessible dialog with the existing translated source description, source reference and relevant limits. Previous/next buttons browse I–VII; Escape or the close button returns focus to the stage that opened it. VII retains the explicit notice that its criteria were not supplied. Exploring descriptions never changes answers or assigns a result.
+All seven home-page stages have visible buttons, arrows and “Read description” labels. “Explore all stages” opens a single dialog with seven expandable descriptions, also available from results. Individual stages open their own descriptions with previous/next controls. Escape and Close return focus to the opener; browsing changes no answers. VII retains its missing-source notice.
 
-After all 28 questions have an answer or explicit skip, **View results** appears on the home page and **Back to results** appears while reviewing answers. Returning always recalculates from the current answers. Home navigation and refresh preserve both core and optional reports; restarting clears them and hides the result shortcuts.
+After all 36 questions have an answer or explicit skip, **View results** appears on the home page and **Back to results** appears while reviewing answers. Returning always recalculates from the current answers. Home navigation and refresh preserve practical answers; restarting clears them and hides the result shortcuts.
 
-Result overview cards show only nonzero condition counts with four distinct icons and text labels: supported, unsupported, unclear, and inapplicable. A legend explains these meanings; each area links to its exact expanded requirements. Exemptions are not counted as supported, and the UI introduces no score or percentage. The calculation rules are unchanged.
+Result overview cards show only nonzero condition counts with four distinct icons and text labels: supported, unsupported, unclear, and inapplicable. A legend explains these meanings; each area links to its exact expanded requirements. Exemptions are not counted as supported, and the UI introduces no score or percentage. No mystical-experience questionnaire is loaded or displayed.
 
-Every card now also reports that area's independently supported practical threshold (I–IV). All seven areas are shown even if the overall result is incomplete. The card's counts and detail link refer to its own next unsupported threshold, or IV when no higher practical threshold is assessed. These domain profiles never feed back into the overall result. Identical requirement sets produce a range (mortal sin currently III–IV); absent lower-stage criteria and insufficient evidence are disclosed rather than assigned an invented lower stage. Exemptions alone do not establish a domain level. Questions, options, core rules and session version remain unchanged.
+Every card reports its independently supported practical threshold and its own next unresolved requirements. Source ceilings are III for mortal sin, IV for venial sin/examen/sacraments and VI for imperfections/suffering/prayer. Merely inheriting a foundation does not relabel a domain as V or VI. Unknown lower levels are not invented, and exemptions alone do not establish a level. Domain profiles do not feed back into the overall conjunction.
+
+Each area includes tailored next-step suggestions for its unresolved checks. One is immediately visible; additional suggestions expand in place. Unknown evidence receives clarification guidance, never an instruction to increase austerity. At the source ceiling, maintenance advice replaces a fictitious higher threshold. Links return to the exact question, and new results recalculate after edits. All criterion/answer combinations are handled by the same rule-based selector, not an average or a generic stage slogan.
 
 The [seven-area gradation proposal](GRADATION-PROPOSAL.hr.md) distinguishes the source descriptions, what current questions can detect, and a possible future descriptive grading approach. That proposal is not a new scoring algorithm.
 
 ### Core questions
 
-The questionnaire contains 28 concrete questions across seven areas. Each has its own answer descriptions rather than a generic frequency scale:
+The questionnaire contains 36 concrete questions across seven areas. Each has its own answer descriptions rather than a generic frequency scale:
 
 1. serious sin;
 2. venial sin;
@@ -106,21 +107,15 @@ The questionnaire contains 28 concrete questions across seven areas. Each has it
 
 Every question includes an always-visible short fictional story and clarification in both languages. Answer about actual practice during the past eight weeks, except where a question explicitly asks about an established schedule (quarterly confession cannot be judged from an eight-week event count). Skipping is always possible; unknown evidence cannot support a required criterion.
 
-See [the complete question–story–source review](QUESTIONNAIRE-SOURCE-MAP.hr.md) for the current Croatian items, answer descriptions, criteria and exact source sections. Version 4 uses new item identifiers and a new session version, so earlier answers are not silently reused.
+See [the complete question–story–source review](QUESTIONNAIRE-SOURCE-MAP.hr.md) for the current Croatian items, answer descriptions, criteria and exact source sections. Version 5 preserves all original 28 question IDs, wording and options and adds eight practical items for V–VI. Same-tab v4 answers migrate by stable ID; a former result resumes at the first new unanswered item. Removed experience reports are discarded, the old v4 storage record is removed after a successful v5 write, and restarting cannot resurrect it. Incompatible v3 answers are not reused.
 
-No average, fractional stage, confidence percentage or bootstrap interval is calculated. The result reports the highest consecutive set of practical requirements supported, or no sufficiently supported pattern. Each condition is supported, unsupported, unknown or explicitly inapplicable. Strong answers elsewhere cannot compensate for a failed condition. The result includes a selectable I–IV criterion review with the exact expectation, chosen answer and a link back to that question. Even fully supported IV practical criteria do not establish every spiritual characteristic or mystical experience of that stage. V–VII are not automatically assigned.
+No average, fractional stage, confidence percentage or bootstrap interval is calculated. The result reports the highest consecutive set of practical requirements supported, or no sufficiently supported pattern. Each condition is supported, unsupported, unknown or explicitly inapplicable. Strong answers elsewhere cannot compensate for a failed condition. The result includes a selectable I–VI criterion review with the exact expectation, chosen answer and a link back to that question. Even fully supported VI practical criteria do not establish the full spiritual stage or any mystical grace. A conspicuous V–VI result notice explains this limitation. VII is never assigned.
 
 See [`ASSESSMENT-NOTES.md`](./ASSESSMENT-NOTES.md) for the design rationale, interpretation limits, and the validation work required before making psychometric claims.
 
 ## Source descriptions on the result page
 
-### Optional mystical-experience questions
-
-An always-visible card on the result page offers six optional questions about contemplative prayer, inner purification, unusual phenomena, a reported sense of union with God, lasting everyday changes, and spiritual direction. Opening the card is optional, regardless of the practical result. Each question has a story, clarification, neutral answer choices and a source note. These are self-reports for discernment, not tests of supernatural authenticity or evidence assigning VI or VII. The supplied source only names VII; the union question is explicitly supplemental, not an invented VII criterion.
-
-The module is not restricted to eight weeks, is not required to obtain a result, and cannot raise or lower that result. The summary repeats only selected answers. It can be printed with the result, even when the form is closed. No blank optional form is printed. Optional answers remain separate from core answers in the same tab's temporary `sessionStorage`; there is a separate clear button, and restarting clears both. Version 1 of this module does not invalidate existing version 4 core progress. Changing the module version drops only its optional answers.
-
-See [the optional-module source notes](MYSTICAL-REFLECTION-NOTES.md) for the theological scope and source distinctions.
+The former optional experience questionnaire, its runtime files and its persisted reports have been removed. New V–VI questions concern ordinary choices, love, prayerful habits and prudent service only.
 
 ### Stage descriptions
 
@@ -130,6 +125,6 @@ Source descriptions preserve their original coverage: I and II have six areas, I
 
 ## Verification
 
-Run `node --test tests/*.test.cjs`. Tests cover individual gate failures, unknown/conditional answers, source and translation alignment, exact IV requirements, result explanations, language changes, session restoration and version migration. They also check stage exploration, recalculation via result shortcuts, optional report isolation and icon/count presentation. No real user answers are used.
+Run `node --test tests/*.test.cjs`. Tests cover individual gate failures, unknown/conditional answers, source and translation alignment, exact IV requirements, result explanations, language changes, session restoration and version migration. They also check stage exploration, recalculation via result shortcuts, removal of experience reports, v4-to-v5 migration, per-criterion next-step coverage, strict V/VI requirements and icon/count presentation. No real user answers are used.
 
 `node tests/browser-smoke.cjs` uses an isolated local Chrome profile to verify desktop/mobile layouts, native dialog Escape and focus behavior, requirement-detail links, radios, refresh and print rendering.

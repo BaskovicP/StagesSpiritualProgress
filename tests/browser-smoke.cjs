@@ -7,8 +7,8 @@ const path = require('node:path');
 const { spawn } = require('node:child_process');
 
 const root = path.resolve(__dirname, '../dist');
-const profile = fs.mkdtempSync('/private/tmp/spiritual-v4-browser-');
-const screenshotDirectory = fs.mkdtempSync('/private/tmp/spiritual-v4-screenshots-');
+const profile = fs.mkdtempSync('/private/tmp/spiritual-v5-browser-');
+const screenshotDirectory = fs.mkdtempSync('/private/tmp/spiritual-v5-screenshots-');
 const chromePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 let browser;
@@ -85,12 +85,18 @@ async function main() {
     if (await evaluate('Boolean(window.__reflectionTools?.has("calculate_spiritual_reflection_result"))')) break;
     await pause(100);
   }
-  assert.equal(await evaluate('window.spiritualAssessment.questionnaireVersion'), 4);
+  assert.equal(await evaluate('window.spiritualAssessment.questionnaireVersion'), 5);
   await evaluate(`document.documentElement.style.scrollBehavior = 'auto'`);
   for (const language of ['hr', 'en']) {
     await evaluate(`(() => { const select = document.querySelector('#language-select'); select.value = '${language}'; select.dispatchEvent(new Event('change', { bubbles: true })); })()`);
     assert.equal(await evaluate(`document.querySelectorAll('#stage-path button[data-stage-index]').length`), 7);
     assert.equal(await evaluate(`document.querySelector('#intro-results-button').hidden`), true);
+    await evaluate(`document.querySelector('#all-stages-button').click()`);
+    assert.equal(await evaluate(`document.querySelectorAll('#stage-all-descriptions .all-stage-entry').length`), 7);
+    assert.equal(await evaluate(`getComputedStyle(document.querySelector('#stage-dialog-navigation')).display`), 'none');
+    await evaluate(`document.querySelector('#stage-dialog-close').click()`);
+    await evaluate('new Promise(resolve => requestAnimationFrame(resolve))');
+    assert.equal(await evaluate(`document.activeElement.id`), 'all-stages-button');
     for (let stageIndex = 0; stageIndex < 7; stageIndex += 1) {
       const dialog = await evaluate(`(() => {
         document.querySelector('[data-stage-index="${stageIndex}"]').click();
@@ -99,7 +105,7 @@ async function main() {
           titleMatches: document.querySelector('#stage-dialog-heading').textContent.endsWith(stage.name),
           sourceMatches: stage.sourceDescription.every(item => document.querySelector('#stage-dialog-description').textContent.includes(item.text)),
           first: document.querySelector('#stage-dialog-previous').disabled, last: document.querySelector('#stage-dialog-next').disabled,
-          noAnswers: Object.keys(JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v4')).answers).length === 0 };
+          noAnswers: Object.keys(JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v5')).answers).length === 0 };
       })()`);
       assert.equal(dialog.open, true);
       assert.equal(dialog.focused, 'stage-dialog-heading');
@@ -140,7 +146,7 @@ async function main() {
 
   for (const language of ['hr', 'en']) {
     await evaluate(`(() => { const select = document.querySelector('#language-select'); select.value = '${language}'; select.dispatchEvent(new Event('change', { bubbles: true })); })()`);
-    for (const stage of [null, 1, 2, 3, 4]) {
+    for (const stage of [null, 1, 2, 3, 4, 5, 6]) {
       const result = await evaluate(`(() => {
         const answers = { ...window.__strongAnswers };
         const expectedStage = ${JSON.stringify(stage)};
@@ -148,6 +154,8 @@ async function main() {
         if (expectedStage === 1) answers['prayer-vocal-v4'] = 1;
         if (expectedStage === 2) answers['examen-frequency-v4'] = 1;
         if (expectedStage === 3) answers['examen-frequency-v4'] = 2;
+        if (expectedStage === 4) answers['imperfections-consent-v5'] = 1;
+        if (expectedStage === 5) answers['prayer-self-forgetfulness-v5'] = 1;
         window.__reflectionTools.get('set_spiritual_reflection_answers').execute({ answers: Object.entries(answers).map(([questionId, optionIndex]) => ({ questionId, optionIndex })) });
         const result = window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({});
         return { stage: result.stage, heading: document.querySelector('#result-heading').textContent, visible: !document.querySelector('#result-view').hidden, criteria: document.querySelector('#criteria-checks').textContent };
@@ -158,7 +166,7 @@ async function main() {
       assert.ok(result.criteria.length > 40);
       if (stage === 2) {
         const independentProfiles = await evaluate(`(() => {
-          const saved = sessionStorage.getItem('spiritual-progress-reflection:v4');
+          const saved = sessionStorage.getItem('spiritual-progress-reflection:v5');
           const cards = document.querySelectorAll('#domain-profile [data-domain-level]');
           const prayerButton = document.querySelector('[data-review-domain="prayer"]');
           const examenButton = document.querySelector('[data-review-domain="examen"]');
@@ -172,12 +180,12 @@ async function main() {
           const examenOpen = document.querySelector('[data-criteria-domain="examen"]').open;
           const api = window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({});
           return { count: cards.length, prayer: prayer.dataset.domainLevel, examen: examen.dataset.domainLevel,
-            named: prayer.textContent.includes(window.spiritualLocales['${language}'].stages[3].name),
+            named: prayer.textContent.includes(window.spiritualLocales['${language}'].stages[5].name),
             prayerTarget, examenTarget, prayerOpen, examenOpen, overall: api.stage, apiCount: api.domainProfiles.length,
-            unchanged: saved === sessionStorage.getItem('spiritual-progress-reflection:v4') };
+            unchanged: saved === sessionStorage.getItem('spiritual-progress-reflection:v5') };
         })()`);
-        assert.deepEqual(independentProfiles, { count: 7, prayer: '4-4', examen: '2-2', named: true,
-          prayerTarget: '4', examenTarget: '3', prayerOpen: true, examenOpen: true,
+        assert.deepEqual(independentProfiles, { count: 7, prayer: '6-6', examen: '2-2', named: true,
+          prayerTarget: '6', examenTarget: '3', prayerOpen: true, examenOpen: true,
           overall: 2, apiCount: 7, unchanged: true });
       }
     }
@@ -189,7 +197,7 @@ async function main() {
       document.querySelector('#review-button').click();
       const reviewing = !document.querySelector('#question-view').hidden && !document.querySelector('#question-results-button').hidden;
       document.querySelector('#question-results-button').click();
-      const result = !document.querySelector('#result-view').hidden && document.querySelector('#result-number').textContent === 'IV';
+      const result = !document.querySelector('#result-view').hidden && document.querySelector('#result-number').textContent === 'VI';
       return { home, returned, reviewing, result };
     })()`);
     assert.deepEqual(returnNavigation, { home: true, returned: true, reviewing: true, result: true });
@@ -206,62 +214,32 @@ async function main() {
           JSON.stringify({ issue: 'Overlapping ascent labels', language, width, previous: labels[index - 1], next: labels[index] }));
       }
       const screenshot = await cdp('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
-      const file = path.join(screenshotDirectory, `${language}-${width}-stage-IV.png`);
+      const file = path.join(screenshotDirectory, `${language}-${width}-stage-VI.png`);
       fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
       console.log(`Screenshot: ${file}`);
     }
 
-    // Optional experience reports use real radios, not a second scoring path.
-    const optional = await evaluate(`(() => {
-      if (document.querySelector('#mystical-fields').hidden) document.querySelector('#mystical-toggle').click();
-      const first = document.querySelector('[data-mystical-question="contemplation"][value="yes"]');
-      first.focus(); first.click();
-      return { focusRetained: document.activeElement === first, checked: first.checked,
-        count: document.querySelectorAll('.mystical-question').length,
-        labelled: [...document.querySelectorAll('.mystical-question')].every(group => group.querySelector('legend').textContent.length > 20 && document.getElementById(group.getAttribute('aria-describedby'))) };
-    })()`);
-    assert.equal(optional.focusRetained, true);
-    assert.equal(optional.checked, true);
-    assert.equal(optional.count, 6);
-    assert.equal(optional.labelled, true);
-    await cdp('Input.dispatchKeyEvent', { type: 'keyDown', key: 'ArrowDown', code: 'ArrowDown', windowsVirtualKeyCode: 40 });
-    await cdp('Input.dispatchKeyEvent', { type: 'keyUp', key: 'ArrowDown', code: 'ArrowDown', windowsVirtualKeyCode: 40 });
-    assert.equal(await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v4')).mysticalAnswers.contemplation`), 'unsure');
-    await evaluate(`(() => {
-      const reports = { contemplation: 'yes', purification: 'yes', phenomena: 'yes', union: 'yes', fruits: 'lasting', discernment: 'ongoing' };
-      for (const [id, value] of Object.entries(reports)) document.querySelector('[data-mystical-question="' + id + '"][value="' + value + '"]').click();
-    })()`);
-    assert.equal(await evaluate(`window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({}).stage`), 4);
-    assert.equal(await evaluate(`document.querySelectorAll('#mystical-summary dd').length`), 6);
-    for (const width of [1440, 390]) {
-      await cdp('Emulation.setDeviceMetricsOverride', { width, height: 1100, deviceScaleFactor: 1, mobile: width < 600 });
-      await evaluate(`document.querySelector('#mystical-section').scrollIntoView({ block: 'start' })`);
-      await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
-      const geometry = await evaluate(`({ width: innerWidth, scrollWidth: document.documentElement.scrollWidth, emptyLabels: [...document.querySelectorAll('#mystical-fields label')].filter(label => !label.textContent.trim()).length })`);
-      assert.ok(geometry.scrollWidth <= width + 1, JSON.stringify({ language, width, geometry }));
-      assert.equal(geometry.emptyLabels, 0);
-      const screenshot = await cdp('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
-      const file = path.join(screenshotDirectory, `${language}-${width}-mystical.png`);
-      fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
-      console.log(`Screenshot: ${file}`);
-    }
-    await evaluate(`document.querySelector('#mystical-toggle').click()`);
-    assert.equal(await evaluate(`document.querySelector('#mystical-fields').hidden`), true);
-    assert.equal(await evaluate(`document.querySelectorAll('#mystical-summary dd').length`), 6);
   }
 
-  const savedBeforeReload = await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v4'))`);
+  assert.equal(await evaluate(`document.querySelector('#mystical-section')`), null);
+  assert.equal(await evaluate(`document.querySelectorAll('.domain-growth').length`), 7);
+  assert.equal(await evaluate(`document.querySelector('#result-scope').hidden`), false);
+  assert.equal(await evaluate(`document.querySelector('#criteria-stage-select').options.length`), 6);
+  await evaluate(`document.querySelector('[data-result-stage-index="5"]').click()`);
+  assert.equal(await evaluate(`document.querySelector('#stage-dialog').open`), true);
+  assert.ok((await evaluate(`document.querySelector('#stage-dialog-heading').textContent`)).startsWith('VI.'));
+  await evaluate(`document.querySelector('#stage-dialog-close').click()`);
+  await evaluate('new Promise(resolve => requestAnimationFrame(resolve))');
+  assert.equal(await evaluate(`document.activeElement.dataset.resultStageIndex`), '5');
+  const savedBeforeReload = await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v5'))`);
   await cdp('Page.reload', { ignoreCache: true });
   for (let attempt = 0; attempt < 100; attempt += 1) {
     if (await evaluate('Boolean(window.__reflectionTools?.has("calculate_spiritual_reflection_result"))')) break;
     await pause(100);
   }
-  const savedAfterReload = await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v4'))`);
+  const savedAfterReload = await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v5'))`);
   assert.deepEqual(savedAfterReload.answers, savedBeforeReload.answers);
-  assert.deepEqual(savedAfterReload.mysticalAnswers, savedBeforeReload.mysticalAnswers);
-  assert.equal(await evaluate(`document.querySelectorAll('#mystical-summary dd').length`), 6);
-  assert.equal(await evaluate(`document.querySelector('#mystical-fields').hidden`), true);
-  await evaluate(`window.__strongAnswers = JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v4')).answers`);
+  await evaluate(`window.__strongAnswers = JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v5')).answers`);
   await cdp('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1100, deviceScaleFactor: 1, mobile: false });
   const review = await evaluate(`(() => {
     const select = document.querySelector('#language-select'); select.value = 'hr'; select.dispatchEvent(new Event('change', { bubbles: true }));
@@ -308,6 +286,47 @@ async function main() {
   assert.equal(criteriaLink.stage, '4');
   assert.ok(criteriaLink.text.includes('Odgovor ne podupire uvjet'));
   await cdp('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1100, deviceScaleFactor: 1, mobile: false });
+  const growthNavigation = await evaluate(`(() => {
+    const button = document.querySelector('[data-review-domain="examen"]').closest('.domain-row').querySelector('[data-growth-question]');
+    const index = Number(button.dataset.growthQuestion);
+    const before = JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v5')).answers;
+    button.click();
+    const prompt = document.querySelector('#question-title').textContent;
+    const expected = window.spiritualQuestions.hr[index].title;
+    document.querySelector('#question-results-button').click();
+    return { correct: prompt === expected, returned: !document.querySelector('#result-view').hidden,
+      unchanged: JSON.stringify(before) === JSON.stringify(JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v5')).answers) };
+  })()`);
+  assert.deepEqual(growthNavigation, {correct:true,returned:true,unchanged:true});
+  const lowerArea = await evaluate(`(() => {
+    const answers={...window.__strongAnswers,'venial-vigilance-v4':0,'venial-regret-v4':0};
+    window.__reflectionTools.get('set_spiritual_reflection_answers').execute({answers:Object.entries(answers).map(([questionId,optionIndex])=>({questionId,optionIndex}))});
+    const result=window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({});
+    const card=document.querySelector('[data-review-domain="venialSin"]').closest('.domain-row');
+    const more=card.querySelector('.growth-more'); more.open=true;
+    return {stage:result.stage,step:card.querySelector('.domain-growth h4').textContent,
+      count:card.querySelectorAll('[data-growth-id]').length,action:card.querySelector('.growth-item').textContent};
+  })()`);
+  assert.equal(lowerArea.stage,1);
+  assert.ok(lowerArea.step.includes('II.'));
+  assert.equal(lowerArea.count,2);
+  assert.ok(lowerArea.action.includes('Nemoj propust odmah otpisati'));
+  for (const width of [1440,390,320]) {
+    await cdp('Emulation.setDeviceMetricsOverride', {width,height:1100,deviceScaleFactor:1,mobile:width<600});
+    await evaluate(`document.querySelector('#result-stages-button').click()`);
+    const geometry = await evaluate(`(() => { const dialog=document.querySelector('#stage-dialog'); return {visible:dialog.open,scroll:dialog.scrollWidth,width:dialog.clientWidth}; })()`);
+    assert.equal(geometry.visible,true);
+    assert.ok(geometry.scroll<=geometry.width+1);
+    const screenshot = await cdp('Page.captureScreenshot', {format:'png',captureBeyondViewport:false});
+    const file=path.join(screenshotDirectory,'hr-'+width+'-all-stages.png');
+    fs.writeFileSync(file,Buffer.from(screenshot.data,'base64'));
+    console.log('Screenshot: '+file);
+    await cdp('Input.dispatchKeyEvent', {type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+    await cdp('Input.dispatchKeyEvent', {type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});
+    await evaluate('new Promise(resolve=>requestAnimationFrame(resolve))');
+    assert.equal(await evaluate(`document.activeElement.id`),'result-stages-button');
+  }
+  await cdp('Emulation.setDeviceMetricsOverride', {width:1440,height:1100,deviceScaleFactor:1,mobile:false});
   await cdp('Emulation.setEmulatedMedia', { media: 'print' });
   const print = await evaluate(`(() => {
     const card = document.querySelector('.criteria-card');
@@ -319,19 +338,8 @@ async function main() {
   assert.ok(print.height > 100 && print.text > 40);
   assert.ok(print.items > 0);
   assert.equal(print.visibleItems, print.items, JSON.stringify(print));
-  const mysticalPrint = await evaluate(`({
-    section: getComputedStyle(document.querySelector('#mystical-section')).display,
-    fields: getComputedStyle(document.querySelector('#mystical-fields')).display,
-    answers: [...document.querySelectorAll('#mystical-summary dd')].filter(item => item.getBoundingClientRect().height > 0).length
-  })`);
-  assert.notEqual(mysticalPrint.section, 'none');
-  assert.equal(mysticalPrint.fields, 'none');
-  assert.equal(mysticalPrint.answers, 6);
-  await evaluate(`document.querySelector('#mystical-clear').click()`);
-  assert.equal(await evaluate(`getComputedStyle(document.querySelector('#mystical-section')).display`), 'none');
-  assert.equal(await evaluate(`window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({}).stage`), 3);
   assert.deepEqual(exceptions, []);
-  console.log('PASS: seven source dialogs, Escape/focus, home/result navigation, independent domain levels and their own detail targets, criteria icons, bilingual results and mystical radios; desktop/mobile without overflow, refresh/print, unchanged scoring, no uncaught exceptions.');
+  console.log('PASS: seven source dialogs, Escape/focus, home/result navigation, independent domain levels and their own detail targets, criteria icons, tailored practical guidance and bilingual results; desktop/mobile without overflow, refresh/print, strict I–VI practical thresholds, no uncaught exceptions.');
 }
 
 main().catch((error) => { console.error(error); process.exitCode = 1; }).finally(async () => {

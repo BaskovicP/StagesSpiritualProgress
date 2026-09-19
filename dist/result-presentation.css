@@ -1,4 +1,26 @@
 /* Presentation only: counts describe checks, not scores or spiritual progress. */
+@media (min-width: 901px) {
+  .result-layout > .result-card, .result-layout > .profile-card { grid-column: 1 / -1; }
+  .result-card .result-overview { grid-template-columns: minmax(205px, 310px) minmax(0, 1fr); align-items: start; }
+  .profile-card .domain-profile { grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+}
+.growth-intro { margin: 14px 0; color: var(--paper-muted); line-height: 1.65; font-size: .85rem; }
+.domain-growth { margin-top: 12px; padding: 16px; border-radius: 12px; border: 1px solid rgba(223,163,45,.22); background: rgba(223,163,45,.05); }
+.domain-growth h4 { margin: 0 0 12px; color: var(--gold-bright); font-size: .9rem; line-height: 1.5; }
+.domain-growth p { font-size: .85rem; line-height: 1.7; margin: 10px 0 0; color: var(--paper-muted); }
+.domain-growth .growth-expectation { font-weight: 650; color: var(--paper); font-size: .8rem; }
+.growth-review { margin-top: 8px; min-height: 44px; font-size: .78rem; text-align: left; }
+.growth-more { margin-top: 16px; border-top: 1px solid var(--line); padding-top: 12px; }
+.growth-more > summary { color: var(--gold-bright); cursor: pointer; font-size: .8rem; line-height: 1.6; }
+.growth-more > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
+.growth-more .growth-item { margin-top: 16px; }
+@media print {
+  .growth-intro, .domain-growth h4, .domain-growth p, .domain-growth .growth-expectation { color: #14202a; }
+  .domain-growth { background: white; border-color: #ccc; }
+  .growth-review { display: none !important; }
+  .growth-more::details-content { display: block; }
+  .growth-more > .growth-item { display: block !important; }
+}
 .profile-card .profile-heading {
   flex-direction: column;
   align-items: flex-start;

@@ -461,6 +461,132 @@
     "expectations": {
       "4": "Participate in Mass consistently and fervently with faith and love, rather than only being physically present."
     }
+  },
+  {
+    "id": "imperfections-consent-v5",
+    "kicker": "Impulse and consent",
+    "title": "When a known imperfection arises, how far do I knowingly let it continue?",
+    "example": "Peter feels an impulse to turn the conversation back to himself. On one occasion he deliberately continues. On another he notices halfway through speaking. On a third he notices the first impulse but does not follow it. These are the situations this question distinguishes.",
+    "clarification": "Think of a known imperfection, not every feeling or unwanted thought. A first involuntary impulse is not free consent. Quickly regretting deliberate consent is different from never going beyond the impulse. Choose uncertainty if you cannot distinguish these situations.",
+    "options": [
+      "I recognize the imperfection but often deliberately continue.",
+      "I sometimes knowingly consent, although I soon regret it.",
+      "I recognize no fully deliberate consent; sometimes I become aware only after it has begun.",
+      "I recognize only the first spontaneous impulse, without accepting it further.",
+      "I cannot reliably distinguish impulse, partial awareness and consent."
+    ],
+    "expectations": {
+      "5": "Known imperfections occur only with partial awareness, without recognized fully deliberate consent.",
+      "6": "Known imperfections go no further than the first spontaneous impulse, without further acceptance."
+    }
+  },
+  {
+    "id": "imperfections-loving-care-v5",
+    "kicker": "Care motivated by love",
+    "title": "How do I attend to a known imperfection during an ordinary day?",
+    "example": "Anna knows she seeks praise. Before a conversation she remembers that she wants to listen sincerely. She does this out of love, not to prove her perfection, and works at it carefully even when nobody notices.",
+    "clarification": "This does not mean constantly checking every thought or becoming anxious about mistakes. It asks about careful, sustained practice motivated by love, rather than occasional effort or protecting a good image of yourself.",
+    "options": [
+      "I usually pay little attention beforehand and remember only afterward.",
+      "I make an effort in some situations, but my attention is not sustained.",
+      "I carefully and consistently attend to the known imperfection out of love for God and others."
+    ],
+    "expectations": {
+      "5": "Guard against known imperfections energetically, carefully and with love."
+    }
+  },
+  {
+    "id": "suffering-joyful-acceptance-v5",
+    "kicker": "Love within real difficulty",
+    "title": "In real difficulties, was acceptance with peace and quiet joy my usual response?",
+    "example": "John spends several weeks helping a sick relative. Fatigue and sadness are real. Alongside them, he usually accepts the care with peace and quiet joy in being able to love—not just during one particularly good moment.",
+    "clarification": "This does not ask whether you enjoy pain or have no sadness, fear or need for help. The source describes joyful acceptance with peace, rather than an occasional sense of meaning. Having no comparable situation is not evidence of less faith.",
+    "options": [
+      "I endured the difficulty, but this acceptance was not usual.",
+      "There were moments of peace and quiet joy, but not a sustained pattern.",
+      "Acceptance with peace and the quiet joy of love was usual, even with pain and struggle.",
+      "There was no such situation, or I cannot assess it."
+    ],
+    "expectations": {
+      "5": "Usually embrace real difficulty joyfully and with peace, rather than only occasionally recognizing meaning."
+    }
+  },
+  {
+    "id": "suffering-service-v5",
+    "kicker": "Another person's good and my comfort",
+    "title": "When reasonable help for someone required giving up some comfort, what did I actually choose?",
+    "example": "Mary can spend an evening with a lonely neighbor without neglecting her family or health. She freely accepts the effort because it genuinely helps, not because discomfort is good in itself. The question distinguishes occasional choices from a sustained willingness.",
+    "clarification": "A voluntary sacrifice means prudent help, not seeking danger, injury, sleep deprivation or abuse. The source sets no number of sacrifices. Distinguishing occasional from sustained practice is this application's interpretation, not proof of holiness.",
+    "options": [
+      "I usually choose my comfort even when I could reasonably help.",
+      "Sometimes I freely and gladly accept that effort for another person's good.",
+      "I consistently and gladly choose another person's genuine good even when it requires a reasonable personal sacrifice.",
+      "There were no such opportunities, or I cannot assess it."
+    ],
+    "expectations": {
+      "5": "Sometimes freely and gladly accept a reasonable sacrifice for others.",
+      "6": "Show a sustained, joyful willingness to make prudent sacrifices for others, not to seek pain."
+    }
+  },
+  {
+    "id": "prayer-daily-life-v5",
+    "kicker": "Prayer beyond prayer time",
+    "title": "Does my relationship with God remain present while I carry out everyday work?",
+    "example": "During work, Peter briefly thanks God, asks for help before a difficult conversation and tries to choose lovingly. He does not interrupt his duties to recite prayers all day.",
+    "clarification": "This asks about a habitual prayerful orientation during work and relationships, not constant conscious repetition, a special feeling of God's presence or a mystical experience. Giving work your full attention is compatible with a life of prayer.",
+    "options": [
+      "Prayer is mostly limited to time set aside for it.",
+      "I sometimes turn to God during work, but this is not yet habitual.",
+      "My relationship with God habitually permeates my work and relationships while I attend carefully to my duties."
+    ],
+    "expectations": {
+      "5": "Live a habitual life of prayer during external work without neglecting duties."
+    }
+  },
+  {
+    "id": "prayer-detachment-v5",
+    "kicker": "Freedom from my own preferences",
+    "title": "How does my desire to love God affect my attachment to preferences, praise and comfort?",
+    "example": "Anna wants the last word in a discussion. She sees it is unnecessary and freely lets the other person speak. Another time she lets go of seeking praise. She repeats such choices out of love, not self-hatred.",
+    "clarification": "Detachment does not reject healthy enjoyment, personal worth or necessary self-care. This asks about a sustained desire for freedom from selfish attachments that is visible in concrete choices.",
+    "options": [
+      "The desire mostly remains an idea; I rarely change my choices.",
+      "I sometimes give up a preference, but often put it before love and duties again.",
+      "I consistently desire greater freedom to love and show it in concrete, prudent acts of self-renunciation."
+    ],
+    "expectations": {
+      "5": "Show a sustained desire for detachment, prudent self-renunciation and love of God."
+    }
+  },
+  {
+    "id": "prayer-desire-v5",
+    "kicker": "A longing that shapes life",
+    "title": "Is longing for the Eucharist and full communion with God a lasting orientation of my life?",
+    "example": "John looks forward to encountering Christ in the Eucharist and prepares as he can. Hope for life with God encourages him to love his family more patiently today. It does not make him want to escape life or his duties.",
+    "clarification": "This does not require intense feelings every time or Communion more often than is reasonable and appropriate. Longing for heaven here means hope for communion with God, never wishing for death or rejecting present life.",
+    "options": [
+      "This is not yet a real orientation of my life.",
+      "This desire arises occasionally, but is not sustained.",
+      "Longing for the Eucharist and communion with God consistently shapes my prayer and everyday life."
+    ],
+    "expectations": {
+      "5": "Nurture a sustained longing for the Eucharist and full communion with God while living present duties."
+    }
+  },
+  {
+    "id": "prayer-self-forgetfulness-v5",
+    "kicker": "Love without recognition",
+    "title": "When the good I do goes unnoticed, how much does seeking recognition direct my next choices?",
+    "example": "Mary has helped for a long time, but someone else receives the thanks. She may feel an initial sting of disappointment. She does not turn helping into a search for recognition: she continues to love, with healthy boundaries and care for her own needs.",
+    "clarification": "The source's 'self-forgetfulness' is considered here only through a practical fruit: freedom from preoccupation with one's reputation. It does not mean loss of dignity, suppressed feelings or tolerating exploitation. One selfless act is not a sustained pattern, and this answer cannot confirm contemplation.",
+    "options": [
+      "Recognition strongly determines how much I keep helping.",
+      "I return to the other person's good, but the desire for recognition still often directs me.",
+      "The good of God and my neighbor consistently matters more than recognition; I do not nurture the first impulse to put myself forward."
+    ],
+    "expectations": {
+      "6": "Show sustained freedom from seeking personal recognition in serving God and neighbor; this is a limited practical indicator, not confirmation of mystical self-forgetfulness."
+    }
   }
 ]);
 })();

@@ -5,7 +5,7 @@
   // Section references identify the supplied markdown, not validated cutoffs.
   // Later stage rules replace earlier rules for an item; other lower-stage criteria remain required.
   window.spiritualAssessment = Object.freeze({
-    "questionnaireVersion": 4,
+    "questionnaireVersion": 5,
     "domainOrder": [
       "seriousSin",
       "venialSin",
@@ -15,7 +15,8 @@
       "examen",
       "sacraments"
     ],
-    "highestAssessedStage": 4,
+    "highestAssessedStage": 6,
+    "domainStageLimits": {"seriousSin":3,"venialSin":4,"imperfections":6,"suffering":6,"prayer":6,"examen":4,"sacraments":4},
     "questionBlueprints": [
       {
         "id": "mortal-occasions-v4",
@@ -639,6 +640,150 @@
         ],
         "requirements": {
           "4": {
+            "accepted": [
+              2
+            ]
+          }
+        },
+        "optionCount": 3
+      },
+      {
+        "id": "imperfections-consent-v5",
+        "domain": "imperfections",
+        "sources": [
+          "V. Imperfections",
+          "VI. Imperfections"
+        ],
+        "requirements": {
+          "5": {
+            "accepted": [
+              2,
+              3
+            ]
+          },
+          "6": {
+            "accepted": [
+              3
+            ]
+          }
+        },
+        "unknownOptions": [
+          4
+        ],
+        "optionCount": 5
+      },
+      {
+        "id": "imperfections-loving-care-v5",
+        "domain": "imperfections",
+        "sources": [
+          "V. Imperfections"
+        ],
+        "requirements": {
+          "5": {
+            "accepted": [
+              2
+            ]
+          }
+        },
+        "optionCount": 3
+      },
+      {
+        "id": "suffering-joyful-acceptance-v5",
+        "domain": "suffering",
+        "sources": [
+          "V. Suffering",
+          "VI. Suffering"
+        ],
+        "requirements": {
+          "5": {
+            "accepted": [
+              2
+            ]
+          }
+        },
+        "unknownOptions": [
+          3
+        ],
+        "optionCount": 4
+      },
+      {
+        "id": "suffering-service-v5",
+        "domain": "suffering",
+        "sources": [
+          "V. Suffering",
+          "VI. Suffering"
+        ],
+        "requirements": {
+          "5": {
+            "accepted": [
+              1,
+              2
+            ]
+          },
+          "6": {
+            "accepted": [
+              2
+            ]
+          }
+        },
+        "unknownOptions": [
+          3
+        ],
+        "optionCount": 4
+      },
+      {
+        "id": "prayer-daily-life-v5",
+        "domain": "prayer",
+        "sources": [
+          "V. Prayer"
+        ],
+        "requirements": {
+          "5": {
+            "accepted": [
+              2
+            ]
+          }
+        },
+        "optionCount": 3
+      },
+      {
+        "id": "prayer-detachment-v5",
+        "domain": "prayer",
+        "sources": [
+          "V. Prayer"
+        ],
+        "requirements": {
+          "5": {
+            "accepted": [
+              2
+            ]
+          }
+        },
+        "optionCount": 3
+      },
+      {
+        "id": "prayer-desire-v5",
+        "domain": "prayer",
+        "sources": [
+          "V. Prayer"
+        ],
+        "requirements": {
+          "5": {
+            "accepted": [
+              2
+            ]
+          }
+        },
+        "optionCount": 3
+      },
+      {
+        "id": "prayer-self-forgetfulness-v5",
+        "domain": "prayer",
+        "sources": [
+          "VI. Prayer"
+        ],
+        "requirements": {
+          "6": {
             "accepted": [
               2
             ]

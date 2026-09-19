@@ -10,8 +10,6 @@
 
   const translations = window.spiritualLocales;
   const questionCopies = window.spiritualQuestions;
-  const mysticalConfig = window.spiritualMysticalReflection;
-  const mysticalCopies = window.spiritualMysticalContent;
   const resultPresentation = window.spiritualResultPresentation;
 
 
@@ -47,18 +45,18 @@
     language: restoredState?.language ?? detectLanguage(),
     currentIndex: restoredState?.currentIndex ?? 0,
     answers: restoredState?.answers ?? {},
-    mysticalAnswers: restoredState?.mysticalAnswers ?? {},
-    mysticalOpen: restoredState?.mysticalOpen ?? false,
     view: restoredState?.view ?? "intro"
   };
 
   if (state.view === "result" && !isComplete()) {
     state.view = "question";
+    state.currentIndex = questionBlueprints.findIndex(question => state.answers[question.id] === undefined);
   }
 
   let ascentAnimationFrame = 0;
   let selectedStageIndex = 0;
-  let stageOpenerIndex = 0;
+  let stageOpener = null;
+  let stageDialogMode = "single";
 
   function detectLanguage() {
     const supported = Object.keys(translations);
@@ -72,8 +70,9 @@
 
   function readStoredState() {
     try {
-      const saved = JSON.parse(sessionStorage.getItem(storageKey) || "null");
-      if (!saved || saved.version !== storageVersion) return null;
+      const current = sessionStorage.getItem(storageKey);
+      const saved = JSON.parse(current || sessionStorage.getItem("spiritual-progress-reflection:v4") || "null");
+      if (!saved || ![4, storageVersion].includes(saved.version)) return null;
 
       const answers = {};
       questionBlueprints.forEach((question) => {
@@ -93,15 +92,7 @@
         ? saved.view
         : "intro";
 
-      const mysticalAnswers = {};
-      if (saved.mysticalVersion === mysticalConfig.version) {
-        mysticalConfig.questions.forEach((question) => {
-          const answer = saved.mysticalAnswers?.[question.id];
-          if (question.options.includes(answer)) mysticalAnswers[question.id] = answer;
-        });
-      }
-      const mysticalOpen = saved.mysticalVersion === mysticalConfig.version && saved.mysticalOpen === true;
-      return { language, currentIndex, answers, view, mysticalAnswers, mysticalOpen };
+      return { language, currentIndex, answers, view };
     } catch {
       return null;
     }
@@ -114,11 +105,10 @@
         language: state.language,
         currentIndex: state.currentIndex,
         answers: state.answers,
-        mysticalVersion: mysticalConfig.version,
-        mysticalAnswers: state.mysticalAnswers,
-        mysticalOpen: state.mysticalOpen,
         view: state.view
       }));
+      // Core v4 answers migrate by stable ID; removed experience reports are discarded.
+      sessionStorage.removeItem("spiritual-progress-reflection:v4");
     } catch {
       // The questionnaire remains usable when browser storage is unavailable.
     }
@@ -152,12 +142,13 @@
     const copy = translations[state.language];
     elements.stagePath.innerHTML = copy.stages
       .map((stage, index) => `
-        <li class="${stage.assessmentNote ? "is-unassessed" : ""}">
+        <li class="${index >= highestAssessedStage ? "is-unassessed" : ""}">
           <button type="button" class="stage-explore-button" data-stage-index="${index}" aria-haspopup="dialog" aria-label="${escapeHtml(format(copy.exploreStageLabel, {stage:toRoman(index + 1),name:stage.name}))}">
           <span class="stage-dot" aria-hidden="true"></span>
           <span class="stage-copy">
             <strong>${toRoman(index + 1)}. ${escapeHtml(stage.name)}</strong>
             <span>${escapeHtml(copy.families[stage.family])}</span>
+            <span class="stage-explore-label">${escapeHtml(copy.readStage)}</span>
             ${stage.assessmentNote ? `<small>${escapeHtml(stage.assessmentNote)}</small>` : ""}
           </span>
           <svg class="stage-explore-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg>
@@ -169,6 +160,21 @@
 
   function renderStageDetails() {
     const copy = translations[state.language];
+    const all = stageDialogMode === "all";
+    document.querySelector("#stage-single-content").hidden = all;
+    document.querySelector("#stage-all-descriptions").hidden = !all;
+    document.querySelector("#stage-dialog-navigation").hidden = all;
+    if (all) {
+      document.querySelector("#stage-dialog-heading").textContent = copy.allStagesTitle;
+      document.querySelector("#stage-dialog-family").textContent = copy.pathEyebrow;
+      document.querySelector("#stage-all-descriptions").innerHTML = copy.stages.map((item, index) =>
+        `<details class="all-stage-entry"><summary><span>${toRoman(index + 1)}. ${escapeHtml(item.name)}</span><span class="stage-open-hint">${escapeHtml(copy.readStage)}</span></summary>
+        <p class="all-stage-family">${escapeHtml(copy.families[item.family])}</p>${item.assessmentNote ? `<p class="stage-dialog-note">${escapeHtml(item.assessmentNote)}</p>` : ""}
+        ${item.sourceDescription.length ? sourceParagraphs(item, copy) : `<p>${escapeHtml(item.summary)}</p>`}
+        <p class="source-description-reference">${escapeHtml(format(copy.sourceDescriptionReference, {stage:toRoman(index + 1)}))}</p></details>`).join("")
+        + `<p class="source-description-caution">${escapeHtml(copy.sourceDescriptionCaution)}</p>`;
+      return;
+    }
     const stage = copy.stages[selectedStageIndex];
     document.querySelector("#stage-dialog-heading").textContent = `${toRoman(selectedStageIndex + 1)}. ${stage.name}`;
     document.querySelector("#stage-dialog-family").textContent = copy.families[stage.family];
@@ -182,10 +188,20 @@
     document.querySelector("#stage-dialog-next").disabled = selectedStageIndex === copy.stages.length - 1;
   }
 
-  function openStageDetails(index) {
+  function openStageDetails(index, opener) {
     if (!Number.isInteger(index) || index < 0 || index >= translations[state.language].stages.length) return;
     selectedStageIndex = index;
-    stageOpenerIndex = index;
+    stageDialogMode = "single";
+    stageOpener = opener || document.activeElement;
+    renderStageDetails();
+    document.querySelector("#stage-dialog").showModal();
+    document.querySelector("#stage-dialog-content").scrollTop = 0;
+    document.querySelector("#stage-dialog-heading").focus();
+  }
+
+  function openAllStages(event) {
+    stageDialogMode = "all";
+    stageOpener = event?.currentTarget || document.activeElement;
     renderStageDetails();
     document.querySelector("#stage-dialog").showModal();
     document.querySelector("#stage-dialog-content").scrollTop = 0;
@@ -320,58 +336,6 @@
       </section>`).join("");
   }
 
-  function renderMysticalSummary() {
-    const copy = mysticalCopies[state.language];
-    const entries = copy.questions.filter(question => Object.hasOwn(state.mysticalAnswers, question.id));
-    document.querySelector("#mystical-progress").textContent = format(copy.progress, {
-      answered: entries.length, total: mysticalConfig.questions.length
-    });
-    document.querySelector("#mystical-clear").disabled = entries.length === 0;
-    document.querySelector("#mystical-section").setAttribute("data-has-answers", String(entries.length > 0));
-    // Repeat only the person's chosen descriptions. No spiritual interpretation
-    // is inferred, and none of this state is passed to calculateResult().
-    document.querySelector("#mystical-summary").innerHTML = entries.length
-      ? `<dl>${entries.map(question => {
-        const option = question.options.find(item => item.value === state.mysticalAnswers[question.id]);
-        return `<div><dt>${escapeHtml(question.title)}</dt><dd>${escapeHtml(option.label)}</dd></div>`;
-      }).join("")}</dl>`
-      : `<p>${escapeHtml(copy.summaryEmpty)}</p>`;
-  }
-
-  function renderMystical() {
-    const copy = mysticalCopies[state.language];
-    const labels = {
-      "mystical-kicker": copy.kicker, "mystical-heading": copy.title,
-      "mystical-intro": copy.intro, "mystical-timeframe": copy.timeframe,
-      "mystical-privacy": copy.privacy, "mystical-clear": copy.clearButton,
-      "mystical-summary-title": copy.summaryTitle, "mystical-summary-note": copy.summaryNote
-    };
-    Object.entries(labels).forEach(([id, text]) => { document.querySelector(`#${id}`).textContent = text; });
-    const toggle = document.querySelector("#mystical-toggle");
-    toggle.textContent = state.mysticalOpen ? copy.hideButton : copy.startButton;
-    toggle.setAttribute("aria-expanded", String(state.mysticalOpen));
-    const fields = document.querySelector("#mystical-fields");
-    fields.hidden = !state.mysticalOpen;
-    fields.innerHTML = copy.questions.map((question, index) => `
-      <fieldset class="mystical-question" aria-describedby="mystical-${question.id}-clarification">
-        <legend>${index + 1}. ${escapeHtml(question.title)}</legend>
-        <div class="question-example">
-          <p class="question-example-label">${escapeHtml(translations[state.language].exampleLabel)}</p>
-          <p class="mystical-story">${escapeHtml(question.example)}</p>
-        </div>
-        <p id="mystical-${question.id}-clarification" class="question-clarification">${escapeHtml(question.clarification)}</p>
-        <div class="answer-options">${question.options.map(option => `
-          <label class="answer-option">
-            <input type="radio" name="mystical-${question.id}" data-mystical-question="${question.id}" value="${option.value}" ${state.mysticalAnswers[question.id] === option.value ? "checked" : ""} />
-            <span class="answer-content">${escapeHtml(option.label)}</span>
-          </label>`).join("")}
-        </div>
-        <p class="mystical-source"><strong>${escapeHtml(copy.sourceLabel)}</strong> ${escapeHtml(question.sourceNote)}</p>
-      </fieldset>`).join("");
-    document.querySelector("#mystical-status").textContent = "";
-    renderMysticalSummary();
-  }
-
   function renderCriteria(result,stageNumber) {
     const copy=translations[state.language];
     const checks=result.stageChecks[stageNumber - 1].checks;
@@ -408,6 +372,8 @@
     document.querySelector("#result-family").textContent=stage ? copy.families[stage.family] : copy.mixedFamily;
     document.querySelector("#result-heading").textContent=stage ? stage.name : copy.mixedTitle;
     document.querySelector("#result-summary").textContent=stage ? copy.resultSummary : copy.mixedSummary;
+    document.querySelector("#result-scope").hidden = !(result.stage >= 5);
+    document.querySelector("#result-scope").textContent = copy.advancedPracticalNote;
     const describedStage=result.stage || result.targetStage;
     const description=copy.stages[describedStage - 1];
     document.querySelector("#source-description-heading").textContent=`${toRoman(describedStage)}. ${description.name}`;
@@ -419,14 +385,14 @@
       ? copy.upperLimitNote : format(copy.nextThreshold,{stage:toRoman(result.targetStage)});
     document.querySelector("#profile-title").textContent=copy.domainLevels.title;
     document.querySelector("#domain-profile").innerHTML=result.domainProfiles.map(profile =>
-      resultPresentation.renderDomain(profile.domain, profile.targetChecks, copy, profile)
+      resultPresentation.renderDomain(profile.domain, profile.targetChecks, copy, profile,
+        window.spiritualGrowthGuidance.describe(profile, questionCopies[state.language], copy, state.language))
     ).join("");
     document.querySelector("#criteria-legend").innerHTML = resultPresentation.renderLegend(copy);
     document.querySelector("#answered-summary").textContent=format(copy.answeredSummary,{answered:result.answeredCount,total:questionBlueprints.length,skipped:result.skippedCount});
     document.querySelector("#criteria-summary").textContent=copy.criteriaSummary;
     document.querySelector("#criteria-stage-select").innerHTML=copy.stages.slice(0,highestAssessedStage).map((item,index)=>`<option value="${index + 1}" ${index + 1===result.targetStage ? "selected" : ""}>${toRoman(index + 1)}. ${escapeHtml(item.name)}</option>`).join("");
     renderCriteria(result,result.targetStage);
-    renderMystical();
   }
 
   function renderAscent(result, copy) {
@@ -455,11 +421,13 @@
         const classes = ["ascent-stage"];
         if (stageNumber === result.stage) classes.push("is-closest");
 
-        if (item.assessmentNote) classes.push("is-unassessed");
+        if (stageNumber > highestAssessedStage) classes.push("is-unassessed");
         return `
           <li class="${classes.join(" ")} ascent-stage-${stageNumber}">
+            <button type="button" class="ascent-stage-button" data-result-stage-index="${index}" aria-haspopup="dialog" aria-label="${escapeHtml(format(copy.exploreStageLabel,{stage:toRoman(stageNumber),name:item.name}))}">
             <strong><span>${toRoman(stageNumber)}</span>${escapeHtml(item.name)}</strong>
             <small>${escapeHtml(copy.families[item.family])}</small>
+            </button>
           </li>
         `;
       })
@@ -514,9 +482,6 @@
 
   function clearAndRetake() {
     state.answers = {};
-    state.mysticalAnswers = {};
-    state.mysticalOpen = false;
-    renderMystical();
     state.currentIndex = 0;
     showView("question");
     renderQuestion();
@@ -715,15 +680,21 @@
   document.querySelector("#intro-results-button").addEventListener("click", openResults);
   document.querySelector("#question-results-button").addEventListener("click", openResults);
   document.querySelector("#result-home-button").addEventListener("click", returnToIntro);
+  document.querySelector("#all-stages-button").addEventListener("click", openAllStages);
+  document.querySelector("#result-stages-button").addEventListener("click", openAllStages);
   elements.stagePath.addEventListener("click", (event) => {
     const button = event.target.closest("[data-stage-index]");
-    if (button) openStageDetails(Number(button.dataset.stageIndex));
+    if (button) openStageDetails(Number(button.dataset.stageIndex), button);
+  });
+  document.querySelector("#result-ascent-labels").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-result-stage-index]");
+    if (button) openStageDetails(Number(button.dataset.resultStageIndex), button);
   });
   document.querySelector("#stage-dialog-previous").addEventListener("click", () => moveStageDetails(-1));
   document.querySelector("#stage-dialog-next").addEventListener("click", () => moveStageDetails(1));
   document.querySelector("#stage-dialog-close").addEventListener("click", () => document.querySelector("#stage-dialog").close());
   document.querySelector("#stage-dialog").addEventListener("close", () => {
-    elements.stagePath.querySelector(`[data-stage-index="${stageOpenerIndex}"]`)?.focus();
+    stageOpener?.focus();
   });
   elements.previousButton.addEventListener("click", movePrevious);
   elements.nextButton.addEventListener("click", moveNext);
@@ -738,6 +709,14 @@
     }
   });
   document.querySelector("#domain-profile").addEventListener("click", (event) => {
+    const review = event.target.closest("[data-growth-question]");
+    if (review) {
+      const index = Number(review.dataset.growthQuestion);
+      if (!Number.isInteger(index) || index < 0 || index >= questionBlueprints.length) return;
+      state.currentIndex = index;
+      openQuestionnaire();
+      return;
+    }
     const button = event.target.closest("[data-review-domain]");
     if (!button || !domainOrder.includes(button.dataset.reviewDomain)) return;
     const result = calculateResult();
@@ -758,28 +737,6 @@
     openQuestionnaire();
   });
   elements.printButton.addEventListener("click", () => window.print());
-  document.querySelector("#mystical-toggle").addEventListener("click", () => {
-    state.mysticalOpen = !state.mysticalOpen;
-    renderMystical();
-    persistState();
-  });
-  document.querySelector("#mystical-clear").addEventListener("click", () => {
-    state.mysticalAnswers = {};
-    renderMystical();
-    persistState();
-    document.querySelector("#mystical-toggle").focus();
-  });
-  document.querySelector("#mystical-fields").addEventListener("change", (event) => {
-    const input = event.target;
-    if (!(input instanceof HTMLInputElement)) return;
-    const question = mysticalConfig.questions.find(item => item.id === input.dataset.mysticalQuestion);
-    if (!question || !question.options.includes(input.value)) return;
-    state.mysticalAnswers[question.id] = input.value;
-    persistState();
-    // Do not replace the radio inputs here: preserve focus and arrow-key use.
-    renderMysticalSummary();
-    document.querySelector("#mystical-status").textContent = mysticalCopies[state.language].answerSaved;
-  });
   elements.retakeButton.addEventListener("click", clearAndRetake);
   elements.optionsRoot.addEventListener("change", (event) => {
     if (!(event.target instanceof HTMLInputElement)) return;

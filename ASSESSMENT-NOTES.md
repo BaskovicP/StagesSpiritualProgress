@@ -1,4 +1,4 @@
-# Assessment design notes — version 4
+# Assessment design notes — version 5
 
 ## What changed and why
 
@@ -12,7 +12,7 @@ The supplied markdown names seven stages and describes I–VI. It does not conta
 
 The application makes these conservative design decisions explicit:
 
-- It compares only practical expectations associated with I–IV. V and VI include infused prayer and contemplation; ordinary self-reported habits cannot establish those graces. VII has no supplied description.
+- It compares practical expectations associated with I–VI. For V–VI it deliberately omits the source's mystical descriptors from the assessment; the result is only a practical-pattern comparison, not attainment of relative or heroic perfection. VII has no supplied description.
 - Higher candidates retain the positive foundations of lower candidates. Lower-stage deficiencies (weak resistance, superficial sorrow, intermittent examen) are not prerequisites that must be preserved.
 - In particular, III's mortal-sin minimum is retained at IV, whose source section has no separate mortal-sin paragraph.
 - II's quarterly-confession minimum is retained when III adds an established regular schedule.
@@ -20,11 +20,11 @@ The application makes these conservative design decisions explicit:
 - Most items concern the previous eight weeks. Confession instead concerns an established practice over recent months: an eight-week event count cannot establish or refute a quarterly schedule.
 - Absence of a recognized fully knowing and freely chosen grave act is the conservative practical III check. The source's rare surprise/doubt case is not automatically adjudicated by the app; uncertainty remains unknown.
 
-Even complete support for IV practical requirements does not confirm the full spiritual stage. The app cannot authenticate prayer of Quiet, infused contemplation, passive purification, or mystical phenomena. A separate optional module asks directly about self-reported experiences for discussion and discernment; those answers are never passed to the assessment engine and cannot change the practical result. Optional source descriptors (simplicity may emerge, purification often occurs, extraordinary phenomena sometimes occur) are not universal requirements. See `MYSTICAL-REFLECTION-NOTES.md` for the module's source mapping and limits.
+Even complete support for VI practical requirements does not confirm a full spiritual stage. The app cannot authenticate prayer of Quiet, infused contemplation, passive purification or mystical phenomena. The former optional experience-report module has been removed entirely. No experience report is used, and there is no hidden experience criterion.
 
 ## Decision rule
 
-For a question q and a candidate threshold k in I–IV, take the most recent configured requirement for q at or below k. A question not yet required at k is not evaluated for that candidate.
+For a question q and a candidate threshold k in I–VI, take the most recent configured requirement for q at or below k. A question not yet required at k is not evaluated for that candidate.
 
 Each required check returns one of four states:
 
@@ -37,15 +37,15 @@ A candidate is supported only when every required check is supported or explicit
 
 The result is the highest consecutively supported practical threshold, or no supported pattern when the baseline cannot be established. It never defaults to I merely because II fails. Source I itself assumes some prayer, regular Mass and confession, with regret and adequate confession after an actual mortal fall.
 
-The results screen first reviews the next unsupported candidate (or IV if all practical candidates pass). A selector lets the reader inspect all four sets of requirements. Each entry displays the expectation, their actual answer, its status, source sections and a way to revisit that question. Counts describe checks only, not spiritual percentages.
+The results screen first reviews the next unsupported candidate (or VI if all practical candidates pass). A selector lets the reader inspect all six sets of requirements. Each entry displays the expectation, their actual answer, its status, source sections and a way to revisit that question. Counts describe checks only, not spiritual percentages.
 
 ## Key practical expectations
 
 ### Independent domain profiles
 
-The results also describe each of the seven areas separately. For each I–IV threshold the engine reuses the existing evaluated checks for that domain, including conditional checks against the full set of answers. Every earlier configured threshold for that domain must hold; another area's strong answers cannot compensate. No-domain-rule rows are explicitly unassessed, not evidence of that stage. Permitted exemptions may satisfy conditions but at least one positively supported condition is needed to label a domain level.
+The results also describe each of the seven areas separately. For each threshold up to the domain's source ceiling the engine reuses the existing evaluated checks for that domain, including conditional checks against the full set of answers. Every earlier configured threshold for that domain must hold; another area's strong answers cannot compensate. No-domain-rule rows are explicitly unassessed, not evidence of that stage. Permitted exemptions may satisfy conditions but at least one positively supported condition is needed to label a domain level.
 
-The highest supported domain threshold is presented as a practical pattern, never a spiritual verdict. Adjacent thresholds with identical item IDs and accepted/exempt option sets are reported as a range. Currently mortal-sin III and IV cannot be distinguished. If the earliest configured domain threshold is not supported, no lower level is inferred; imperfections have checks only at IV, for example. The card reviews its own first unresolved threshold (or IV when all configured checks pass), independent of the overall result's next threshold. None of these profiles is averaged or used to modify the overall conjunction. The original questions and criteria are unchanged.
+The highest supported domain threshold is presented as a practical pattern, never a spiritual verdict. Source ceilings are III for mortal sin; IV for venial sin, examen and sacraments; and VI for imperfections, suffering and prayer. These ceilings limit domain labels only: all lower positive foundations remain required for the overall V–VI result. Adjacent identical criteria, if configured, yield a range. Absent lower criteria do not imply an invented low level. Each card reviews its own first unresolved threshold, or the ceiling if all domain criteria hold. No domain profile is averaged or used to change the overall conjunction.
 
 ### Source-based criteria
 
@@ -71,7 +71,7 @@ The original detailed descriptions remain visible separately, including the sour
 - A general intention to improve does not substitute for repeated virtue practice, prudent renunciation and prompt return after a recognized imperfection.
 - An average response category has no stage value at all.
 
-The 28 questions are distributed according to these needs rather than forced into four equal items per area. The current complete question, story, option and criterion mapping is in QUESTIONNAIRE-SOURCE-MAP.hr.md.
+The 36 questions are distributed according to these needs rather than forced into four equal items per area. The current complete question, story, option and criterion mapping is in QUESTIONNAIRE-SOURCE-MAP.hr.md.
 
 ## Conditional, inaccessible and uncertain situations
 
@@ -90,7 +90,7 @@ Illness, emotional pain, unwanted impulses, necessary care, leaving abuse, rest 
 - The configuration contains stable question IDs, source references and accepted/exempt/unknown answer indices.
 - The pure engine evaluates configured criteria; the application renders results and handles navigation.
 - Version 4 has new question IDs and session version. Version 3 answers are never reinterpreted as answers to the new questions.
-- Optional mystical self-reports have independent version 1, IDs and allowed string values. They are stored separately and never change completion, criteria, stage or counts in the core assessment. Adding this module preserves current version 4 core answers.
+- Version 5 retains v4's 28 items unchanged, adds eight IDs ending in `-v5`, migrates only valid stable-ID practical answers and removes the old v4 record after a successful save. The former mystical reports are discarded. Incomplete migrated results resume at the first unanswered question. Version 3 remains incompatible.
 - Current progress and language survive refresh in the same tab through sessionStorage. There is no server, analytics, remote calculation or transmission of answers.
 - Static Cloudflare packaging includes all runtime files. No clinical or psychometric validation claim is made.
 
@@ -99,3 +99,17 @@ Illness, emotional pain, unwanted impulses, necessary care, leaving abuse, rest 
 Automated tests exercise each gate independently, unknown and invalid answers, conditional consistency, exact IV requirements, both languages, result text, source coverage, session restoration and migration. They test implementation behavior, not theological or psychometric validity.
 
 Qualified source review, cognitive interviews in both languages, evidence about interpretation and response bias, and empirical validation would still be needed before any accuracy claim. Neither a longer questionnaire nor stricter thresholds alone supplies that evidence.
+
+## Additional practical criteria for V–VI
+
+Seven new items first apply at V: recognized consent to imperfections only with partial awareness; careful vigilance motivated by love; habitual joyful acceptance with peace in real difficulty; voluntary prudent sacrifice for others; prayer permeating work; a sustained desire for detachment and divine love; and longing for Eucharistic and full communion with God. VI tightens the consent item to the first impulse only, tightens voluntary service to a sustained pattern, and adds an eighth item concerning freedom from seeking recognition.
+
+The source's V–VI language does not supply numeric frequencies, an eight-week diagnostic window or a scale of self-forgetfulness. In particular, the occasional/sustained distinction and recognition-based item are declared author interpretations. They cannot establish the mystical properties named in V–VI. All earlier practical gates must still hold; all-IV answers with missing advanced items stay at IV, not V or VI.
+
+Special graces or extraordinary signs are not universal markers to demand from everyone: [Catechism 2014](https://www.vatican.va/content/catechism/en/part_three/section_one/chapter_three/article_2/iv_christian_holiness.html). Moral culpability also cannot be inferred from a bare count of events: [Catechism 1857–1862](https://www.vatican.va/content/catechism/en/part_three/section_one/chapter_one/article_8/iv_the_gravity_of_sin_mortal_and_venial_sin.html). These contextual safeguards do not add new scoring criteria.
+
+## Next steps for every answer combination
+
+Guidance is selected for each of the seven areas from its own first unresolved threshold, regardless of the overall result or other areas. Each configured question and rule stage has a Croatian and English practice suggestion; multiple unmet criteria yield multiple suggestions rather than compensating for one another. The first is shown immediately, the rest expand. A button reopens the exact question.
+
+Unknown, skipped and contradictory evidence gets clarification guidance, not a judgment or a more demanding practice. Explicit exemptions generate no remedial task. When all available domain requirements hold, domain-specific maintenance advice states the source limit instead of inventing a transition to VII or more exams/confessions. Suggestions are pastoral examples, not source quotations or extra conditions, and never affect scoring. No practices recommend deliberate injury, unsafe sacrifice, deprivation or neglect of duties.

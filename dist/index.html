@@ -20,10 +20,8 @@
     <script src="./locales/hr.js" defer></script>
     <script src="./questions/en.js" defer></script>
     <script src="./questions/hr.js" defer></script>
-    <script src="./questions/mystical-en.js" defer></script>
-    <script src="./questions/mystical-hr.js" defer></script>
-    <script src="./mystical-config.js" defer></script>
     <script src="./assessment-config.js" defer></script>
+    <script src="./growth-guidance.js" defer></script>
     <script src="./assessment-engine.js" defer></script>
     <script src="./result-presentation.js" defer></script>
     <script src="./app.js" defer></script>
@@ -73,7 +71,7 @@
                 <span data-i18n="dimensions">dimensions</span>
               </div>
               <div>
-                <strong>12–15</strong>
+                <strong>15–20</strong>
                 <span data-i18n="minutes">minutes</span>
               </div>
               <div>
@@ -109,6 +107,7 @@
               <h2 id="path-title" data-i18n="pathTitle">A path, not a rank</h2>
               <p class="path-hint" data-i18n="pathHint">Choose a stage to read its description.</p>
             </div>
+            <button id="all-stages-button" class="secondary-button all-stages-button" type="button" aria-haspopup="dialog" data-i18n="allStagesButton">Explore all stages</button>
             <ol class="stage-path" id="stage-path"></ol>
             <p class="path-assessment-note" data-i18n="pathAssessmentNote">
               Stage VII appears in the source diagram, but the supplied pages give no criteria for it. It is shown as the horizon of the path and is not assigned by this questionnaire.
@@ -132,7 +131,7 @@
               <p class="eyebrow" data-i18n="yourProgress">Your progress</p>
               <p><span id="question-number">1</span> / <span id="question-total">1</span></p>
             </div>
-            <progress id="question-progress" class="progress-track" value="1" max="28"></progress>
+            <progress id="question-progress" class="progress-track" value="1" max="36"></progress>
             <p class="progress-domain" id="progress-domain"></p>
           </aside>
 
@@ -165,6 +164,7 @@
 
         <section id="result-view" class="view result-layout" hidden aria-labelledby="result-heading">
           <nav class="result-navigation">
+            <button id="result-stages-button" class="text-button" type="button" aria-haspopup="dialog" data-i18n="allStagesButton">Explore all stages</button>
             <button id="result-home-button" class="text-button" type="button">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6" /></svg>
               <span data-i18n="homeLabel">Home</span>
@@ -183,11 +183,12 @@
               <div
                 id="result-ascent"
                 class="result-ascent"
-                role="img"
+                role="group"
               >
                 <p class="result-ascent-title" data-i18n="ascentTitle">Your place on the path</p>
-                <div class="ascent-plot" aria-hidden="true">
-                  <svg class="ascent-curve" viewBox="0 0 76 560" preserveAspectRatio="none">
+                <p class="ascent-click-hint" data-i18n="pathHint"></p>
+                <div class="ascent-plot">
+                  <svg class="ascent-curve" viewBox="0 0 76 560" preserveAspectRatio="none" aria-hidden="true">
                     <path
                       class="ascent-curve-glow"
                       d="M30 530 C18 500 26 470 38 446 C50 420 50 388 42 362 C34 334 36 304 52 278 C68 250 62 220 48 194 C34 168 36 136 46 110 C56 84 48 54 54 26"
@@ -225,6 +226,7 @@
                   </div>
                 </div>
                 <p id="result-summary" class="result-summary"></p>
+                <p id="result-scope" class="advanced-practical-note" hidden></p>
                 <div class="range-note">
                   <span class="range-icon" aria-hidden="true"></span>
                   <div>
@@ -248,31 +250,12 @@
               <span id="criteria-badge" class="confidence-badge"></span>
             </div>
             <p class="domain-profile-intro" data-i18n="domainProfileIntro"></p>
+            <p class="growth-intro" data-i18n="growthIntro"></p>
             <div id="domain-profile" class="domain-profile"></div>
             <div id="criteria-legend"></div>
             <p id="answered-summary" class="answered-summary"></p>
             <p id="criteria-summary" class="confidence-summary"></p>
           </aside>
-
-          <section id="mystical-section" class="mystical-card" aria-labelledby="mystical-heading">
-            <p id="mystical-kicker" class="eyebrow"></p>
-            <h2 id="mystical-heading"></h2>
-            <p id="mystical-intro" class="mystical-intro"></p>
-            <p id="mystical-timeframe" class="mystical-guidance"></p>
-            <div class="mystical-actions">
-              <button id="mystical-toggle" class="secondary-button" type="button" aria-expanded="false" aria-controls="mystical-fields"></button>
-              <button id="mystical-clear" class="text-button" type="button" disabled></button>
-            </div>
-            <p id="mystical-privacy" class="mystical-guidance"></p>
-            <p id="mystical-progress" class="mystical-progress"></p>
-            <div id="mystical-fields" hidden></div>
-            <p id="mystical-status" class="sr-only" role="status" aria-live="polite"></p>
-            <div class="mystical-summary-card">
-              <h3 id="mystical-summary-title"></h3>
-              <div id="mystical-summary"></div>
-              <p id="mystical-summary-note" class="mystical-guidance"></p>
-            </div>
-          </section>
 
           <section class="criteria-card" aria-labelledby="criteria-heading">
             <p class="eyebrow" data-i18n="criteriaEyebrow">Every requirement matters</p>
@@ -295,7 +278,7 @@
           </section>
 
           <details class="source-guide method-note">
-            <summary data-i18n="advancedSourceTitle">Why stages V–VII are not assigned</summary>
+            <summary data-i18n="advancedSourceTitle">What this practical comparison can and cannot tell you</summary>
             <div>
               <p data-i18n="upperLimitNote"></p>
               <div id="advanced-source-guide"></div>
@@ -339,13 +322,16 @@
         <div id="stage-dialog-content" class="stage-dialog-content">
           <p id="stage-dialog-family" class="eyebrow"></p>
           <h2 id="stage-dialog-heading" tabindex="-1"></h2>
+          <div id="stage-single-content">
           <p id="stage-dialog-note" class="stage-dialog-note" hidden></p>
           <p class="source-description-intro" data-i18n="sourceDescriptionIntro"></p>
           <div id="stage-dialog-description" class="source-description-body"></div>
           <p id="stage-dialog-reference" class="source-description-reference"></p>
           <p class="source-description-caution" data-i18n="sourceDescriptionCaution"></p>
+          </div>
+          <div id="stage-all-descriptions" hidden></div>
         </div>
-        <div class="stage-dialog-navigation">
+        <div id="stage-dialog-navigation" class="stage-dialog-navigation">
           <button id="stage-dialog-previous" class="secondary-button" type="button" data-i18n="previousStage">Previous stage</button>
           <span id="stage-dialog-position" aria-live="polite" aria-atomic="true"></span>
           <button id="stage-dialog-next" class="secondary-button" type="button" data-i18n="nextStage">Next stage</button>

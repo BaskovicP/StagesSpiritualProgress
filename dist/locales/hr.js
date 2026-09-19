@@ -23,7 +23,7 @@
   "privacyNote": "Tvoji odgovori ostaju u ovoj kartici i nestaju kada je zatvoriš.",
   "pathEyebrow": "Sedam stupnjeva",
   "pathTitle": "Put, a ne rang-lista",
-  "pathHint": "Odaberi stupanj i pročitaj njegov opis.",
+  "pathHint": "Klikni ili dodirni bilo koji stupanj: otvara se opis i konkretna obilježja.",
   "exploreStageLabel": "Pročitaj opis: {stage}. {name}",
   "stageDetailsTitle": "Stupnjevi prema izvornom tekstu",
   "closeStageDetails": "Zatvori opis",
@@ -32,7 +32,7 @@
   "backToResults": "Natrag na rezultate",
   "viewResults": "Prikaži rezultate",
   "homeLabel": "Početna",
-  "pathAssessmentNote": "Svih sedam stupnjeva ostaje prikazano. Upitnik provjerava samo praktična očekivanja povezana sa stupnjevima I–IV. V. i VI. uključuju mistične milosti koje odgovori o navikama ne mogu potvrditi, a za VII. izvor daje samo naziv.",
+  "pathAssessmentNote": "Upitnik uspoređuje praktične obrasce I–VI. Ne potvrđuje cjelovit duhovni stupanj ni mistične milosti. VII. je prikazan samo prema nazivu jer za njega nema opisa u priloženom izvoru.",
   "backToIntro": "Natrag",
   "yourProgress": "Tvoj napredak",
   "chooseClosest": "Misli na proteklih osam tjedana, osim kada pitanje izričito pita za ustaljeni raspored. Odaberi opis onoga što se stvarno događalo, a ne svoje namjere ili najbolji dan. Ako nijedan opis ne odgovara ili nisi siguran, preskoči. Priča samo pojašnjava pitanje.",
@@ -45,7 +45,7 @@
   "footerIdentity": "Stupnjevi duhovnog napretka",
   "resultEyebrow": "Praktična očekivanja koja odgovori podupiru",
   "ascentTitle": "Usporedba s izvornim opisom",
-  "ascentUnassessedNote": "I–IV: praktični uvjeti. V–VII: samo izvorni opisi, bez dodjele.",
+  "ascentUnassessedNote": "I–VI: praktična usporedba, ne potvrda duhovnoga stanja. VII: bez procjene.",
   "ascentPosition": "Odgovori podupiru praktične uvjete povezane s {stage}. stupnjem. To nije potvrda duhovnog stupnja.",
   "calculatedLocally": "Izračunato na ovom uređaju",
   "resultRangeLabel": "Granica ove provjere",
@@ -61,7 +61,7 @@
   "printResult": "Ispiši rezultat",
   "retake": "Izbriši i ponovi",
   "methodTitle": "Kako se provjeravaju uvjeti",
-  "methodBody": "Nema zbrajanja bodova, prosjeka ni zaokruživanja. Svako pitanje ima konkretne dopuštene opise odgovora za pojedini prag. Za usporedbu s višim pragom svi njegovi praktični uvjeti, kao i pozitivni temelji nižih pragova, moraju biti poduprti. Jedan nepoduprt ili nepoznat obavezni uvjet zaustavlja tu usporedbu. Izričito uvjetne stavke mogu biti neprimjenjive, ali to se navodi odvojeno i nije dokaz napretka. Ne primjenjuju se doslovno sve rečenice nižih stupnjeva: slabosti poput površnog kajanja nisu preduvjeti za rast. Izvor ne daje ovaj algoritam; pravila su konzervativna autorska operacionalizacija njegovih opisa. Nasljeđivanje pozitivnih uvjeta, uključujući zadržavanje kriterija smrtnoga grijeha iz III. na IV. i tromjesečnog minimuma ispovijedi iz II. na III., odluke su ove aplikacije. Mistične milosti, molitva smirenosti i pasivno čišćenje nisu provjerljivi ovim upitnikom; zato se govori samo o praktičnim uvjetima I–IV. V–VII se ne dodjeljuju. Nema postotka točnosti ili sigurnosti u svetost.",
+  "methodBody": "Nema zbrajanja bodova, prosjeka ni zaokruživanja. Za svaki prag I–VI svi njegovi praktični uvjeti i pozitivni temelji nižih pragova moraju biti poduprti. Nepoduprt ili nepoznat obavezni uvjet zaustavlja viši rezultat. Dopuštene neprimjenjive okolnosti navode se odvojeno i nisu dokaz napretka. Slabosti nižih stupnjeva nisu zahtjevi koje treba zadržati. Izvor ne daje ovaj algoritam: pragovi, nasljeđivanje pozitivnih temelja i razlikovanje povremene od postojane žrtve autorske su operacionalizacije. Za V–VI dodatno se provjeravaju praktični opisi nesavršenosti, patnje i molitvenoga života; mistični elementi izvora izostavljeni su iz procjene i time nisu potvrđeni. Pojedinačno područje ne dobiva viši broj samo zato što se isti uvjeti nasljeđuju. VII. se ne procjenjuje. Nema postotka sigurnosti ni potvrde svetosti.",
   "methodPrivacy": "Odgovori, napredak, rezultat i jezik čuvaju se samo u privremenoj memoriji ove kartice kako bi preživjeli osvježavanje stranice. Nikada se ne šalju i brišu se zatvaranjem kartice. Ne upotrebljavaju se kolačići, analitika ni identifikatori.",
   "notAnswered": "Bez odgovora",
   "answeredSummary": "Odabrano {answered} od {total} odgovora · preskočeno {skipped}. Odabran nejasan odgovor također ostaje nepoznat za provjeru.",
@@ -221,7 +221,7 @@
           "text": "Molitva prožima svakodnevni život, čak i za vrijeme poslova. Postoji snažna želja za odricanjem od sebe, potpunim predanjem Bogu, nenavezanošću i božanskom ljubavlju te čežnja za Euharistijom i nebom. Izvor spominje različite stupnjeve ulivene molitve, koja se prima kao Božji dar, te često pasivno čišćenje, odnosno čišćenje koje Bog izvodi u duši."
         }
       ],
-      "assessmentNote": "Opis, ne dodjeljuje se"
+      "assessmentNote": "U procjeni samo praktični opisi; mistične milosti nisu potvrđene."
     },
     {
       "name": "Herojska savršenost",
@@ -240,7 +240,7 @@
           "text": "Izvor opisuje nadnaravne milosti kontemplacije, ponekad praćene izvanrednim pojavama, te duboka pasivna čišćenja. Snažnim asketskim jezikom govori o zanemarivanju vlastitog ja sve do potpunog samozaborava i o tome da se trpljenju daje prednost pred radostima. To je opis iz teksta, a ne potvrda takvih iskustava kod osobe koja ispunjava upitnik."
         }
       ],
-      "assessmentNote": "Opis, ne dodjeljuje se"
+      "assessmentNote": "U procjeni samo praktični opisi; mistične milosti nisu potvrđene."
     },
     {
       "name": "Potpuna svetost",
@@ -282,7 +282,7 @@
   "criteriaCounts": "Poduprto {met} · nije poduprto {notMet} · nepoznato {unknown} · nije primjenjivo {notTriggered}",
   "criteriaSummary": "Ovo su brojevi provjera, ne postotak duhovnog napretka ili pouzdanosti. Jedan nepoduprt ili nepoznat obavezni uvjet dovoljan je da viši prag ne bude poduprt.",
   "criteriaEyebrow": "Svaki uvjet ima svoju provjeru",
-  "criteriaHelp": "Ovdje vidiš točno očekivanje i svoj odgovor. Možeš pregledati bilo koji prag I–IV. „Nije primjenjivo” vrijedi samo za izričitu okolnost poput izostanka pada ili stvarne mogućnosti mise; ne predstavlja dodatni dokaz zrelosti. Ispunjeni praktični uvjeti ne potvrđuju mistično stanje.",
+  "criteriaHelp": "Ovdje vidiš točno očekivanje i svoj odgovor. Možeš pregledati pragove I–VI. „Nije primjenjivo” vrijedi samo za izričitu okolnost poput izostanka pada ili stvarne mogućnosti mise; nije dodatni dokaz zrelosti. V–VI se uspoređuju samo po praktičnim opisima, ne po mističnim milostima.",
   "criteriaSelectLabel": "Pogledaj uvjete za",
   "criteriaVisual": {
     "supportedCount": "Odgovori podupiru {met} od ukupno {total} uvjeta",
@@ -303,13 +303,12 @@
       "notTriggered": "Zbog navedenih okolnosti ovaj uvjet nije primjenjiv. To nije neuspjela provjera, ali ni dokaz napretka."
     }
   },
-  "domainProfileIntro": "Svako područje uspoređuje se zasebno s praktičnim uvjetima I–IV. Zato npr. molitva i ispit savjesti mogu odgovarati različitim pragovima. Ukupni rezultat nije njihov prosjek: i dalje traži sve potrebne uvjete. Ovo nije dodjela duhovnih stupnjeva.",
+  "domainProfileIntro": "Svako se područje procjenjuje zasebno, samo do stupnja za koji izvor i pitanja daju zaseban praktični uvjet. Zato neka područja završavaju na III. ili IV., a druga se uspoređuju do VI. Pozitivni temelji zadržavaju se u višem ukupnom rezultatu, ali nema prosjeka.",
   "domainLevels": {
     "title": "Kojem stupnju odgovara pojedino područje?",
     "label": "Poduprti praktični obrazac",
     "range": "{from}–{to}. — zajednički uvjeti",
-    "scope": "Svi provjereni uvjeti ovog područja do navedenog praga poduprti su, uz dopuštene iznimke. Ostala područja procjenjuju se zasebno.",
-    "sameCriteria": "Postojeća pitanja za ovo područje ne razlikuju ova dva praga. Zato se prikazuje raspon, a ne precizniji stupanj bez podloge.",
+    "sameCriteria": "Pitanja ne razlikuju navedene praktične pragove. Prikazuje se raspon, bez izmišljanja preciznijeg stupnja.",
     "notEstablished": "Stupanj nije razlučen",
     "noMatch": "Provjera ovog područja počinje na pragu {stage}. Odgovori zasad ne podupiru cijeli provjereni prag ili nema dovoljno podataka. Niži se stupanj ne dodjeljuje automatski.",
     "checking": "Uvjeti koji su prikazani ispod: {stage}. prag"
@@ -326,7 +325,22 @@
   "yourAnswer": "Tvoj odgovor:",
   "reviewThisAnswer": "Pregledaj ovo pitanje",
   "nextThreshold": "Svi uvjeti za {stage}. prag nisu poduprti. Pogledaj konkretna očekivanja i odgovore u provjeri ispod; ne radi se o prosječnom broju bodova.",
-  "upperLimitNote": "IV. je najviši prag praktičnih uvjeta koji ovaj upitnik uspoređuje. I kada su svi poduprti, time nisu potvrđene sve duhovne osobine IV. stupnja. V. i VI. uključuju milosti ulivene molitve i kontemplacije; obične navike ih ne dokazuju. Za VII. priloženi izvor nema opis. Svi ostaju vidljivi kao dio izvornog puta.",
-  "advancedSourceTitle": "Zašto se V–VII ne dodjeljuju — izvorni opisi"
+  "upperLimitNote": "VI. je najviša praktična usporedba u ovom upitniku. Odgovori ne potvrđuju kontemplaciju, ulivenu molitvu, pasivno čišćenje ni cjelovit duhovni stupanj. VII. nema opisne kriterije u priloženom izvoru i ne procjenjuje se.",
+  "advancedSourceTitle": "Što praktična usporedba može, a što ne može pokazati",
+  "readStage": "Pročitaj opis",
+  "allStagesButton": "Istraži sve faze",
+  "allStagesTitle": "Svih sedam faza na jednom mjestu",
+  "advancedPracticalNote": "V. i VI. ovdje označavaju samo poduprte praktične obrasce. Izvor uključuje i ulivenu molitvu, kontemplaciju i pasivno čišćenje — to se ne ispituje niti potvrđuje. Rezultat nije tvrdnja da si postigao relativnu ili herojsku savršenost.",
+  "growthIntro": "Uz svako područje nalazi se prijedlog sljedećeg koraka prema tvojem odgovoru. Odaberi jedan ostvariv korak; prijedlozi nisu dodatni uvjeti, jamstvo napretka ni zamjena za duhovno vodstvo.",
+  "growth": {
+    "heading": "Sljedeći korak prema {stage}. pragu",
+    "maintainTitle": "Što njegovati dalje",
+    "unknownTitle": "Najprije razjasni",
+    "practiceLabel": "Pokušaj u svakodnevici",
+    "more": "Još prijedloga ({count})",
+    "review": "Provjeri svoj odgovor",
+    "unknownAction": "Za ovaj uvjet nema dovoljno jasnog podatka. Prisjeti se stvarne situacije i ponovno pročitaj pitanje. Ako nije bilo prilike ili i dalje nisi siguran, ostavi nepoznato; nemoj pretpostaviti da trebaš strožu praksu.",
+    "scope": "Malen korak za praksu — ne obećanje višeg stupnja."
+  }
 });
 })();

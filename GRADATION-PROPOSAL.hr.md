@@ -2,9 +2,9 @@
 
 ## Status ovog dokumenta
 
-Ovo je pregled priloženog `stages-of-spiritual-progress.md` i prijedlog kako dalje opisivati odgovore. Nije novi algoritam ni potvrda duhovnoga stupnja. Postojećih 28 pitanja, šest neobveznih pitanja o iskustvima i ponuđeni odgovori ostaju nepromijenjeni.
+Ovo je pregled priloženog `stages-of-spiritual-progress.md`, ažuriran za verziju 5. Izvorni opisi nisu algoritam ni potvrda duhovnoga stupnja. Izvornih 28 praktičnih pitanja ostalo je nepromijenjeno; dodano je osam praktičnih pitanja za V–VI. Dodatak o mističnim iskustvima uklonjen je.
 
-Kartice sada zasebno pokazuju najviši praktični prag koji podupiru odgovori u pojedinom području, prema postojećim uvjetima I–IV. Ukupni rezultat i dalje traži sve njegove uvjete; ne računa se prosjek kartica. V–VI sadrže i mistične opise koji se ne mogu potvrditi automatski, a VII. u priloženom izvoru nema opis.
+Kartice sada zasebno pokazuju najviši praktični prag koji podupiru odgovori u pojedinom području, prema praktičnim uvjetima I–VI i granici opisa svakog područja. Ukupni rezultat i dalje traži sve njegove uvjete; ne računa se prosjek kartica. Na V–VI ispituju se samo ograničeni praktični opisi, ne mistične milosti; VII. u priloženom izvoru nema opis.
 
 Važna razlika: **izvor opisuje razvoj**, a **trenutačni algoritam provjerava određene praktične uvjete**. To nije ista stvar. Ako provjera nekog područja počinje tek na II. ili IV., nepoduprt viši prag ne dokazuje automatski određeni niži stupanj.
 
@@ -19,7 +19,7 @@ Os razvoja: **slab otpor → vjeran otpor i izbjegavanje prigoda → odsutnost p
 | III. | Smrtni grijeh izostaje ili je krajnje rijedak u iznenadnoj situaciji, pri čemu je često upitno je li uopće smrtan. Nakon pada snažno kajanje i želja za pokorom. |
 | IV–VI. | Nema zasebnog odlomka o smrtnom grijehu. Ne treba izmišljati nove numeričke granice. |
 
-**Moguća procjena:** odvojeno gledati otpor, izbjegavanje poznatih prigoda, stvarni pristanak i odgovor nakon stvarnog pada. Ne brojiti neželjene misli ili napasti kao padove. Sadašnja aplikacija na IV. zadržava praktične uvjete III. To je izričita odluka aplikacije, pa kartica prikazuje **III–IV**, ne lažno precizan IV.
+**Moguća procjena:** odvojeno gledati otpor, izbjegavanje poznatih prigoda, stvarni pristanak i odgovor nakon stvarnog pada. Ne brojiti neželjene misli ili napasti kao padove. Ukupna procjena zadržava praktične temelje III. i na višim pragovima kao autorsku odluku. Pojedinačna kartica ipak završava na **III.**, jer izvor ne daje viši zasebni kriterij za ovo područje.
 
 ## 2. Laki grijeh
 
@@ -47,7 +47,7 @@ Os razvoja: **opravdavanje i želja bez djela → stvarna borba iz ljubavi → s
 | V. | Vrlo brižno i s ljubavlju čuva se nesavršenosti; javljaju se tek uz djelomičnu svijest. |
 | VI. | Ostaje samo prvi spontani poticaj, bez daljnjeg pristajanja. |
 
-**Moguća procjena:** gledati prepoznavanje, opravdavanje, stvarne postupke, stupanj pristanka i brzinu povratka. Sadašnja pitanja dobro provjeravaju praktične uvjete IV., ali ne razlikuju V. i VI. Samo prvi neželjeni poriv ne smije postati razlog za samookrivljavanje. Nepoduprt IV. također nije automatski III.; izvor ne daje usporediv opis za I–II.
+**Moguća procjena:** gledati prepoznavanje, opravdavanje, stvarne postupke, stupanj pristanka i brzinu povratka. Uz praktične uvjete IV., verzija 5 dodaje pitanje o brižnoj pažnji iz ljubavi i pitanje koje razlikuje djelomičnu svijest od prvoga poriva. To su samoprijavljeni praktični obrasci V–VI, ne potvrđeni duhovni stupnjevi. Samo prvi neželjeni poriv ne smije postati razlog za samookrivljavanje. Nepoduprt IV. također nije automatski III.; izvor ne daje usporediv opis za I–II.
 
 ## 4. Patnja
 
@@ -77,7 +77,7 @@ Os razvoja praktičnih navika: **povremeno → redovito → postojano razmatranj
 | V. | Molitva prožima rad i život. Nenavezanost, božanska ljubav, čežnja za Euharistijom i nebom; ulivena molitva i često pasivno čišćenje. |
 | VI. | Nadnaravne milosti kontemplacije, ponekad izvanredne pojave; izražena pasivna čišćenja i dubok samozaborav. |
 
-**Moguća procjena:** zadržati zasebne provjere redovitosti, razmatranja, vjernosti u suhoći, osobnog odgovora i produljenja kada dužnosti dopuštaju. Više minuta ili snažniji osjećaji nisu potvrda više molitve. Praktični prag IV. ne potvrđuje sve njegove mistične osobine. Šest dodatnih pitanja o iskustvima ostaje nebodovano i služi razlučivanju.
+**Moguća procjena:** zadržati zasebne provjere redovitosti, razmatranja, vjernosti u suhoći, osobnog odgovora i produljenja kada dužnosti dopuštaju. Više minuta ili snažniji osjećaji nisu potvrda više molitve. Praktični prag IV. ne potvrđuje sve njegove mistične osobine. Upitnik o iskustvima uklonjen je. Nova pitanja ispituju odnos s Bogom tijekom poslova, nenavezanost, čežnju za Euharistijom i zajedništvom s Bogom te nesebično služenje bez traženja priznanja. Posljednje je samo praktični pokazatelj, ne potvrda mističnog samozaborava.
 
 ## 6. Ispit savjesti — eksamen
 
@@ -115,11 +115,11 @@ Za **Potpunu svetost** priložene stranice daju samo naziv. Ne postoji osnova da
 
 Predlažem dva jasno odvojena prikaza:
 
-1. **Opisni profil sedam područja:** za svako područje pokazati koje osobine izvor opisuje, što odgovori podupiru i što ostaje nejasno. Ne moraju sva područja pokazivati isti prag. Postojeće kartice sada to rade pomoću sadašnjih praktičnih uvjeta, uz raspon kada se pragovi ne razlikuju.
+1. **Opisni profil sedam područja:** za svako područje pokazati koje osobine izvor opisuje, što odgovori podupiru i što ostaje nejasno. Ne moraju sva područja pokazivati isti prag. Kartice to rade pomoću praktičnih uvjeta do izvorne granice svakog područja: smrtni grijeh do III.; laki grijeh, ispit savjesti i sakramenti do IV.; nesavršenosti, patnja i molitva do VI.
 2. **Ukupni kriterijski rezultat:** zadržati pravilo da moraju biti poduprti svi potrebni praktični uvjeti. Bez prosjeka sedam područja, jer snažna molitva ne nadoknađuje namjeran pristanak na laki grijeh ili izostanak ispita savjesti.
 
 Za finiju buduću gradaciju možemo mapirati **opise pojedinih postojećih odgovora** na odgovarajuće odlomke izvora. To nije isto što i brojčano vrednovati redni broj odgovora. Primjer: „ne prakticiram ispit savjesti” odgovara opisu I. u tom području, a „najmanje jednom dnevno” jednoj osobini III.; ostali odgovori tek trebaju pokazati ostale osobine tog područja. Gdje nema opisa ili razlike između pragova, treba zadržati raspon ili neprocijenjenost.
 
 Ne predlažem univerzalnu formulu 0–100, decimalni stupanj poput 3,7 niti postotak sigurnosti. Izvor ne daje takvu mjernu ljestvicu. Češće nije u svakom području automatski bolje, a mistične milosti nisu nastavak obične skale učestalosti. Nejasnoća, izostanak prilike i proturječan odgovor također nisu isto što i nizak stupanj.
 
-**Što je već provedeno:** zasebna usporedba svakog područja pomoću postojećih uvjeta I–IV, odgovarajući rasponi, jasna ograničenja i poveznica na konkretne uvjete tog područja. **Što je samo prijedlog za dogovor:** dodatno opisno mapiranje nižih stupnjeva koji nemaju pozitivne kriterije u sadašnjoj konfiguraciji. Ni pitanja ni postojeći ukupni izračun nisu promijenjeni.
+**Provedeno u verziji 5:** zasebni praktični profili s granicama izvora, osam novih pitanja za praktične obrasce V–VI i konkretan sljedeći korak za svaki nepoduprt uvjet. Nejasan odgovor vodi razjašnjenju, a ne strožoj praksi. Pri izvornoj granici područja prikazuje se što nastaviti njegovati, bez izmišljanja novih zahtjeva. Dodatno opisno mapiranje niskih stupnjeva bez pozitivnih kriterija ostaje samo prijedlog. Ukupni algoritam i dalje zahtijeva sve uvjete, bez prosjeka.

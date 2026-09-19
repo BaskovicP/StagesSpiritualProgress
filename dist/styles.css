@@ -1230,37 +1230,6 @@ body:has(.stage-dialog[open]) { overflow: hidden; }
   line-height: 1.55;
 }
 
-.mystical-card {
-  grid-column: 1 / -1;
-  min-width: 0;
-  padding: clamp(22px, 4vw, 40px);
-  border: 1px solid rgba(223, 163, 45, 0.35);
-  border-radius: var(--radius-lg);
-  background: linear-gradient(135deg, rgba(223, 163, 45, 0.08), transparent 70%), var(--ink-soft);
-}
-
-.mystical-card h2 { margin: 0; font-size: clamp(1.8rem, 3vw, 2.5rem); line-height: 1.2; }
-.mystical-intro, .mystical-guidance { max-width: 85ch; color: var(--paper-muted); line-height: 1.7; }
-.mystical-intro { margin: 20px 0 12px; }
-.mystical-guidance { font-size: 0.9rem; }
-.mystical-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 24px; }
-.mystical-progress { color: var(--gold-bright); font-size: 0.88rem; }
-.mystical-question { min-width: 0; margin: 34px 0 0; padding: 24px 0; border: 0; border-top: 1px solid var(--line-strong); }
-.mystical-question legend { max-width: 85ch; padding: 0 14px 0 0; font-size: clamp(1.1rem, 2vw, 1.35rem); font-weight: 650; line-height: 1.5; }
-.mystical-question .question-example { max-width: 85ch; margin-top: 0; }
-.mystical-story { margin: 0; color: var(--paper-muted); line-height: 1.65; }
-.mystical-question .question-clarification { max-width: 85ch; }
-.mystical-question .answer-options { max-width: 85ch; margin-top: 22px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.mystical-question .answer-content { height: 100%; }
-.mystical-source { max-width: 100ch; color: var(--muted); font-size: 0.8rem; line-height: 1.65; }
-.mystical-summary-card { border-top: 1px solid var(--line-strong); margin-top: 22px; padding-top: 22px; }
-.mystical-summary-card h3 { margin: 0 0 12px; font-size: 1.35rem; }
-#mystical-summary { max-width: 85ch; color: var(--paper-muted); line-height: 1.65; }
-#mystical-summary dl { margin: 0; }
-#mystical-summary dl > div { padding: 14px 0; border-bottom: 1px solid var(--line); }
-#mystical-summary dt { font-weight: 600; }
-#mystical-summary dd { margin: 6px 0 0; color: var(--gold-bright); }
-
 .source-description-card {
   grid-column: 1 / -1;
   min-width: 0;
@@ -1414,7 +1383,6 @@ body:has(.stage-dialog[open]) { overflow: hidden; }
   .result-layout { grid-template-columns: 1fr; }
   .result-actions,
   .source-description-card,
-  .mystical-card,
   .criteria-card,
   .method-note { grid-column: 1; }
 }
@@ -1445,8 +1413,6 @@ body:has(.stage-dialog[open]) { overflow: hidden; }
   .confidence-badge { display: inline-block; margin-top: 12px; }
   .result-actions { display: grid; grid-template-columns: 1fr; }
   .result-actions button { width: 100%; }
-  .mystical-question .answer-options { grid-template-columns: 1fr; }
-  .mystical-actions { align-items: stretch; flex-direction: column; }
   .stage-dialog-header { padding: 12px 18px; }
   .stage-dialog-content { padding: 22px 18px; }
   .stage-dialog-navigation { padding: 14px; gap: 8px; }
@@ -1463,12 +1429,6 @@ body:has(.stage-dialog[open]) { overflow: hidden; }
   .result-navigation,
   .stage-dialog,
   .method-note { display: none !important; }
-  #mystical-fields, .mystical-actions, #mystical-progress, #mystical-timeframe, #mystical-privacy,
-  #mystical-section[data-has-answers="false"] { display: none !important; }
-  .mystical-card { grid-column: 1; color: #14202a; border: 1px solid #d7d7d7; background: #fff; }
-  .mystical-card .eyebrow, .mystical-card h2, #mystical-summary dd { color: #14202a; }
-  .mystical-intro, .mystical-guidance, #mystical-summary { color: #4d5961; }
-  #mystical-summary dl > div { break-inside: avoid; }
   .site-shell { width: 100%; }
   .app-shell { display: block; padding: 0; }
   .result-layout { display: grid !important; grid-template-columns: 1fr; }
@@ -1514,4 +1474,29 @@ body:has(.stage-dialog[open]) { overflow: hidden; }
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
+}
+
+/* Visible stage exploration and source-aligned practical next steps. */
+[hidden] { display: none !important; }
+.all-stages-button { position: relative; z-index: 1; margin-top: 20px; width: 100%; border-color: var(--gold); color: var(--gold-bright); }
+.stage-explore-button { border-color: var(--line); background: rgba(246,239,229,.025); margin-bottom: 8px; }
+.stage-copy .stage-explore-label { color: var(--gold-bright); font-size: .72rem; text-transform: none; letter-spacing: 0; margin-top: 5px; }
+.stage-explore-arrow { width: 20px; height: 20px; }
+.path-hint { line-height: 1.65; }
+.result-navigation { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+#stage-all-descriptions { margin-top: 24px; }
+.all-stage-entry { border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; margin: 12px 0; }
+.all-stage-entry > summary { cursor: pointer; color: var(--gold-bright); line-height: 1.5; font-weight: 650; }
+.all-stage-entry > summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 5px; border-radius: 4px; }
+.stage-open-hint { display: block; margin-top: 4px; color: var(--paper-muted); font-size: .75rem; font-weight: 400; }
+.all-stage-entry p { color: var(--paper-muted); line-height: 1.75; font-size: .9rem; }
+.all-stage-entry p strong { color: var(--paper); }
+.all-stage-family { text-transform: uppercase; letter-spacing: .08em; font-size: .72rem !important; }
+.ascent-click-hint { margin: 0 0 12px; color: var(--paper-muted); font-size: .7rem; line-height: 1.5; }
+.ascent-stage-button { display: block; width: 100%; min-height: 44px; border: 0; border-bottom: 1px dotted var(--line-strong); border-radius: 4px; background: transparent; color: inherit; padding: 2px 4px; text-align: left; cursor: pointer; }
+.ascent-stage-button:hover { background: rgba(223,163,45,.1); }
+.ascent-stage-button:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+.advanced-practical-note { border-left: 3px solid var(--gold); padding: 14px 18px; background: rgba(223,163,45,.06); color: var(--gold-bright); line-height: 1.75; font-size: .9rem; }
+@media print {
+  .advanced-practical-note { color: #14202a; background: white; border-color: #899097; }
 }

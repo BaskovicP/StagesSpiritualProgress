@@ -1,4 +1,4 @@
-# Pitanja, priče i uvjeti prema izvornom markdownu — verzija 4
+# Pitanja, priče i uvjeti prema izvornom markdownu — verzija 5
 
 Izvor: `stages-of-spiritual-progress.md`. Pitanja i priče autorske su prilagodbe, ne citati. Ovo je kriterijska pomoć za promišljanje, ne potvrda duhovnog stupnja ili psihometrijski validirani test.
 
@@ -9,13 +9,13 @@ Izvor: `stages-of-spiritual-progress.md`. Pitanja i priče autorske su prilagodb
 - Ako pitanje ima uvjet za više pragova, koristi se najnoviji uvjet do odabranog praga. Ostali raniji uvjeti i dalje vrijede.
 - Preskakanje, nesigurnost i proturječni odgovori znače nepoznat uvjet. Nepoznat uvjet ne potvrđuje viši prag, ali nije osobni neuspjeh.
 - Izričita neprimjenjivost (npr. nije bilo pada) navodi se odvojeno. Ne donosi bodove niti dokazuje višu zrelost.
-- V–VII nisu mogući dodijeljeni rezultati. I za IV govori se samo o provjerljivim praktičnim očekivanjima, ne o potvrdi cijelog mističnog stanja.
+- I–VI mogući su praktični obrasci, ne potvrđeni duhovni stupnjevi. Osam novih pitanja provjerava ograničene praktične opise V–VI, bez pitanja o mističnim iskustvima. VII. se ne procjenjuje.
 - I nije automatski rezultat: ako ni njegovi pozitivni temelji nisu poduprti, prikazuje se nepotpun ili miješan obrazac.
 - Većina pitanja odnosi se na osam tjedana; ustaljena praksa ispovijedi procjenjuje se kroz posljednje mjesece, jer osam tjedana nije dovoljno za tromjesečni raspored.
 
 Pravila nasljeđivanja i tumačenje izraza poput „redovito” ili „stalno” autorske su odluke aplikacije, ne algoritam koji je izvor propisao. Vidi `ASSESSMENT-NOTES.md` za granice primjene.
 
-Uz rezultat je dostupan i zaseban neobvezan dodatak sa šest izravnih pitanja o mističnim iskustvima. On se ne boduje i ne mijenja nijedan praktični prag. Njegove veze s izvorom i dopunska pitanja uz VII. opisani su u [MYSTICAL-REFLECTION-NOTES.md](MYSTICAL-REFLECTION-NOTES.md).
+Uz svako područje prikazuju se praktični prijedlozi povezani s prvim nepoduprtim uvjetima. To su autorski pastoralni primjeri, ne dodatni kriteriji izvora. Nejasan odgovor dobiva poziv na razjašnjenje, ne strožu praksu.
 
 ## Sva pitanja
 
@@ -772,3 +772,211 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
 - **IV. prag:** Postojano i žarko sudjelovati na misi s vjerom i ljubavlju, ne samo biti fizički prisutan. Podupiru ga odgovori 3.
+
+## Dodatni praktični opisi V–VI (bez ispitivanja mističnih iskustava)
+
+V–VI ovdje označavaju samo podudarnost ograničenih praktičnih opisa; mistični dijelovi izvora nisu provjereni. Pozitivni temelji I–IV ostaju nužni. Izvor ne propisuje ovu metodu niti broj pitanja.
+
+### 29. Kad se javi prepoznata nesavršenost, koliko joj svjesno dopuštam da se nastavi?
+
+**ID:** `imperfections-consent-v5`
+
+**Područje:** Nesavršenosti
+
+**Izvorni odlomci:** V. Imperfections; VI. Imperfections
+
+**Kratka priča:** Petar osjeti poriv da razgovor opet okrene na sebe. Jednom ga svjesno nastavi. Drugi put shvati što radi tek usred rečenice. Treći put primijeti prvi poriv, ali ga ne slijedi. Pitanje razlikuje te situacije.
+
+**Pojašnjenje:** Misli na vlastitu poznatu nesavršenost, ne na svaki osjećaj ili nenamjernu misao. 'Prvi poriv' nije grijeh ni slobodan pristanak. Za najstroži opis nije dovoljno da se brzo pokaješ nakon svjesnog pristanka. Ako ne razlikuješ ove situacije, odaberi da ne možeš procijeniti.
+
+**Ponuđeni odgovori:**
+
+1. Prepoznam nesavršenost, ali je često svjesno nastavim.
+2. Ponekad svjesno pristanem, iako ubrzo požalim.
+3. Ne prepoznajem potpuno svjestan pristanak; ponekad shvatim što radim tek kad je već počelo.
+4. Prepoznajem samo prvi spontani poriv, bez njegova daljnjeg prihvaćanja.
+5. Ne mogu pouzdano razlikovati poriv, djelomičnu svijest i pristanak.
+
+Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
+
+**Praktični uvjeti koje ovo pitanje provjerava:**
+
+- **V. prag:** Prepoznate nesavršenosti javljaju se samo uz djelomičnu svijest, bez prepoznatog potpuno svjesnog pristanka. Podupiru ga odgovori 3, 4.
+- **VI. prag:** Kod prepoznatih nesavršenosti ostaje samo prvi spontani poriv, bez daljnjeg prihvaćanja. Podupiru ga odgovori 4.
+
+**Nepoznato, ne automatski ispunjeno:** odgovori 5.
+
+### 30. Kako se kroz običan dan odnosim prema svojoj poznatoj nesavršenosti?
+
+**ID:** `imperfections-loving-care-v5`
+
+**Područje:** Nesavršenosti
+
+**Izvorni odlomci:** V. Imperfections
+
+**Kratka priča:** Ana zna da traži pohvalu. Prije razgovora sjeti se da želi iskreno saslušati drugoga. To ne radi da bi sebi dokazala savršenstvo, nego iz ljubavi; na tome radi pažljivo i kada nitko ne primjećuje.
+
+**Pojašnjenje:** Ne traži se neprestano provjeravanje svake misli ni tjeskoba zbog pogreške. Pita se postoji li brižna, postojana praksa motivirana ljubavlju, a ne samo povremeni napor ili želja za boljom slikom o sebi.
+
+**Ponuđeni odgovori:**
+
+1. Uglavnom ne pazim na to unaprijed; sjetim se tek poslije.
+2. Uložim trud u nekim situacijama, ali pažnja još nije postojana.
+3. Brižno i postojano pazim na poznatu nesavršenost iz ljubavi prema Bogu i drugima.
+
+Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
+
+**Praktični uvjeti koje ovo pitanje provjerava:**
+
+- **V. prag:** Energično, brižno i iz ljubavi čuvati se prepoznatih nesavršenosti. Podupiru ga odgovori 3.
+
+### 31. U stvarnim teškoćama je li prihvaćanje s mirom i tihom radošću bilo moj uobičajeni odgovor?
+
+**ID:** `suffering-joyful-acceptance-v5`
+
+**Područje:** Patnja
+
+**Izvorni odlomci:** V. Suffering; VI. Suffering
+
+**Kratka priča:** Ivan više tjedana pomaže bolesnom članu obitelji. Umor i tuga su stvarni. Uz njih, uobičajeno prihvaća brigu s mirom i tihom radošću što može ljubiti — ne samo u jednom posebno dobrom trenutku.
+
+**Pojašnjenje:** Ne pita se sviđa li ti se bol niti traži odsutnost tuge, straha ili potrebe za pomoći. Izvor za V. opisuje radosno prihvaćanje s mirom, a ne samo povremeni trenutak smisla. Ako nema stvarne situacije za usporedbu, to nije dokaz manjka vjere.
+
+**Ponuđeni odgovori:**
+
+1. Teškoću sam podnosio, ali takvo prihvaćanje nije bilo uobičajeno.
+2. Ponekad je bilo mira i tihe radosti, ali ne postojano.
+3. Prihvaćanje s mirom i tihom radošću ljubavi bilo je uobičajeno, i uz bol i borbu.
+4. Nije bilo takve situacije ili to ne mogu procijeniti.
+
+Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
+
+**Praktični uvjeti koje ovo pitanje provjerava:**
+
+- **V. prag:** Stvarnu teškoću uobičajeno prihvaćati radosno i s mirom, ne samo povremeno prepoznati smisao. Podupiru ga odgovori 3.
+
+**Nepoznato, ne automatski ispunjeno:** odgovori 4.
+
+### 32. Kad je razumna pomoć drugome zahtijevala odricanje od moje udobnosti, što sam stvarno birao?
+
+**ID:** `suffering-service-v5`
+
+**Područje:** Patnja
+
+**Izvorni odlomci:** V. Suffering; VI. Suffering
+
+**Kratka priča:** Marija može bez zanemarivanja obitelji i zdravlja odvojiti večer za usamljenog susjeda. Ne bira neugodu radi neugode: slobodno prihvati taj napor jer će susjedu stvarno pomoći. Pitanje razlikuje povremeni izbor od postojane spremnosti.
+
+**Pojašnjenje:** Dobrovoljna žrtva znači razboritu pomoć, ne traženje opasnosti, ozljeđivanje, uskraćivanje sna ili pristajanje na zlostavljanje. Izvor ne propisuje broj žrtava; razlika između povremene i postojane prakse ovdje je autorski način provjere, ne dokaz svetosti.
+
+**Ponuđeni odgovori:**
+
+1. Uglavnom izaberem udobnost i kad bih razumno mogao pomoći.
+2. Ponekad slobodno i rado prihvatim takav napor radi dobra drugoga.
+3. Postojano i rado biram stvarno dobro drugoga, i kada traži razumnu osobnu žrtvu.
+4. Nije bilo takvih prilika ili ne mogu procijeniti.
+
+Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
+
+**Praktični uvjeti koje ovo pitanje provjerava:**
+
+- **V. prag:** Ponekad slobodno i rado preuzeti razumnu žrtvu radi dobra drugih. Podupiru ga odgovori 2, 3.
+- **VI. prag:** Pokazivati postojanu, radosnu spremnost na razumnu žrtvu radi drugih; nije riječ o traženju boli. Podupiru ga odgovori 3.
+
+**Nepoznato, ne automatski ispunjeno:** odgovori 4.
+
+### 33. Ostaje li odnos s Bogom prisutan i dok obavljam svakodnevne poslove?
+
+**ID:** `prayer-daily-life-v5`
+
+**Područje:** Molitva
+
+**Izvorni odlomci:** V. Prayer
+
+**Kratka priča:** Petar usred posla na trenutak zahvali Bogu, prije teškog razgovora zamoli pomoć, a odluku nastoji donijeti iz ljubavi. Ne prekida svoje dužnosti da bi cijeli dan izgovarao molitve.
+
+**Pojašnjenje:** Pita se za uobičajenu molitvenu usmjerenost kroz rad i odnose, ne za stalno svjesno ponavljanje riječi, osobit osjećaj Božje prisutnosti ili mistično iskustvo. Sabrana pažnja na posao ne proturječi molitvenom životu.
+
+**Ponuđeni odgovori:**
+
+1. Molitva uglavnom ostaje ograničena na odvojeno vrijeme za nju.
+2. Ponekad se obratim Bogu i tijekom poslova, ali to još nije navika.
+3. Odnos s Bogom uobičajeno prožima moj rad i odnose, uz pozorno obavljanje dužnosti.
+
+Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
+
+**Praktični uvjeti koje ovo pitanje provjerava:**
+
+- **V. prag:** Njegovati uobičajen život molitve i tijekom vanjskih poslova, bez zanemarivanja dužnosti. Podupiru ga odgovori 3.
+
+### 34. Kako se želja za ljubavlju prema Bogu vidi u odnosu prema mojim prohtjevima, pohvalama i udobnosti?
+
+**ID:** `prayer-detachment-v5`
+
+**Područje:** Molitva
+
+**Izvorni odlomci:** V. Prayer
+
+**Kratka priča:** Ana želi posljednju riječ u raspravi. Prepozna da to nije potrebno i slobodno prepusti riječ drugome. Drugi put odustane od traženja pohvale. Takve odluke ponavlja iz ljubavi, a ne zato što mrzi sebe.
+
+**Pojašnjenje:** Nenavezanost nije odbacivanje zdrave radosti, vlastite vrijednosti ili potrebne skrbi o sebi. Pita se za stvarnu, postojanu želju za slobodom od sebičnih vezanosti, vidljivu u konkretnim odlukama.
+
+**Ponuđeni odgovori:**
+
+1. Želja postoji uglavnom u mislima; odluke rijetko mijenjam.
+2. Ponekad se odreknem prohtjeva, ali često mu opet podredim ljubav i dužnosti.
+3. Postojano želim veću slobodu za ljubav i to pokazujem konkretnim, razboritim odricanjima.
+
+Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
+
+**Praktični uvjeti koje ovo pitanje provjerava:**
+
+- **V. prag:** Pokazivati postojanu želju za nenavezanošću, razboritim odricanjem od sebe i ljubavlju prema Bogu. Podupiru ga odgovori 3.
+
+### 35. Jesu li čežnja za Euharistijom i za punim zajedništvom s Bogom trajno usmjerenje mojega života?
+
+**ID:** `prayer-desire-v5`
+
+**Područje:** Molitva
+
+**Izvorni odlomci:** V. Prayer
+
+**Kratka priča:** Ivan raduje se susretu s Kristom u Euharistiji i priprema se koliko može. Nada u život s Bogom potiče ga da danas strpljivije voli obitelj. Ne želi pobjeći od života ni od obveza.
+
+**Pojašnjenje:** Ne traži se snažan osjećaj svaki put niti češća pričest nego što je razumno i primjereno. Čežnja za nebom ovdje znači nadu u zajedništvo s Bogom, nikada želju za smrću ili odbacivanje sadašnjega života.
+
+**Ponuđeni odgovori:**
+
+1. To mi zasad nije stvarno usmjerenje života.
+2. Ta se želja javlja povremeno, ali nije postojana.
+3. Čežnja za Euharistijom i zajedništvom s Bogom postojano usmjerava moju molitvu i svakodnevni život.
+
+Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
+
+**Praktični uvjeti koje ovo pitanje provjerava:**
+
+- **V. prag:** Njegovati postojanu čežnju za Euharistijom i punim zajedništvom s Bogom, živeći sadašnje dužnosti. Podupiru ga odgovori 3.
+
+### 36. Kad dobro koje činim ostane neprimijećeno, koliko traženje priznanja upravlja mojim daljnjim izborima?
+
+**ID:** `prayer-self-forgetfulness-v5`
+
+**Područje:** Molitva
+
+**Izvorni odlomci:** VI. Prayer
+
+**Kratka priča:** Marija dugo pomaže, ali zahvalu dobije netko drugi. Može osjetiti prvi ubod razočaranja. Ipak ne okreće pomoć u potragu za priznanjem: nastavlja ljubiti, uz zdrave granice i bez zanemarivanja vlastitih potreba.
+
+**Pojašnjenje:** Izvorni 'samozaborav' ovdje se provjerava samo kroz praktični plod: slobodu od zaokupljenosti vlastitim ugledom. To nije gubitak dostojanstva, potiskivanje osjećaja ili obveza trpljenja iskorištavanja. Jedan nesebičan postupak nije postojan obrazac i ovaj odgovor ne potvrđuje kontemplaciju.
+
+**Ponuđeni odgovori:**
+
+1. Priznanje snažno određuje koliko ću dalje pomagati.
+2. Vratim se dobru drugoga, ali me želja za priznanjem još često vodi.
+3. Dobro Boga i bližnjega postojano mi je važnije od priznanja; ne hranim prvi poriv za isticanjem sebe.
+
+Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
+
+**Praktični uvjeti koje ovo pitanje provjerava:**
+
+- **VI. prag:** Pokazivati postojanu slobodu od traženja vlastitog priznanja u služenju Bogu i bližnjemu; to je ograničen praktični pokazatelj, ne potvrda mističnoga samozaborava. Podupiru ga odgovori 3.

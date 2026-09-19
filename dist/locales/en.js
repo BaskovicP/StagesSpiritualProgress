@@ -23,7 +23,7 @@
   "privacyNote": "Your answers stay in this tab and disappear when you close it.",
   "pathEyebrow": "Seven stages",
   "pathTitle": "A path, not a rank",
-  "pathHint": "Choose a stage to read its description.",
+  "pathHint": "Click or tap any stage to open its description and concrete characteristics.",
   "exploreStageLabel": "Read about Stage {stage}: {name}",
   "stageDetailsTitle": "Stages in the source text",
   "closeStageDetails": "Close description",
@@ -32,7 +32,7 @@
   "backToResults": "Back to results",
   "viewResults": "View results",
   "homeLabel": "Home",
-  "pathAssessmentNote": "All seven stages remain visible. The questionnaire checks only practical expectations associated with I–IV. V and VI include mystical graces that answers about habits cannot establish; the source gives only a name for VII.",
+  "pathAssessmentNote": "This questionnaire compares practical patterns for I–VI. It cannot confirm a complete spiritual stage or mystical graces. VII is shown by name only because the supplied source gives no description.",
   "backToIntro": "Back",
   "yourProgress": "Your progress",
   "chooseClosest": "Think about the past eight weeks, unless a question explicitly asks about your established schedule. Choose what actually happened, not your intentions or your best day. Skip if no description fits or you are unsure. The story only explains the question.",
@@ -45,7 +45,7 @@
   "footerIdentity": "Stages of Spiritual Progress",
   "resultEyebrow": "Practical expectations supported by your answers",
   "ascentTitle": "Comparison with the source",
-  "ascentUnassessedNote": "I–IV: practical requirements. V–VII: source descriptions only, not assigned.",
+  "ascentUnassessedNote": "I–VI: practical comparison, not confirmation of a spiritual state. VII: unassessed.",
   "ascentPosition": "Your answers support the practical requirements associated with Stage {stage}. This does not confirm your spiritual stage.",
   "calculatedLocally": "Calculated on this device",
   "resultRangeLabel": "Limit of this review",
@@ -61,7 +61,7 @@
   "printResult": "Print result",
   "retake": "Clear & retake",
   "methodTitle": "How the requirements are checked",
-  "methodBody": "There is no sum, average, or rounding. Each question has concrete answer descriptions that support a particular threshold. Every practical requirement of a higher threshold, together with the positive foundations of lower thresholds, must be supported. One unsupported or unknown mandatory requirement prevents that comparison. Explicitly conditional requirements may be inapplicable; they are reported separately and are not evidence of progress. Not every sentence of lower stages is inherited literally: deficiencies such as superficial remorse are not prerequisites for growth. The source does not supply this algorithm; the rules are a conservative, app-authored operationalization of its descriptions. Inheriting positive requirements, including retaining III's mortal-sin criteria at IV and II's quarterly confession minimum at III, is an application design decision. Mystical graces, prayer of Quiet, and passive purification cannot be established here; the output therefore concerns only practical requirements associated with I–IV. V–VII are not assigned. There is no percentage of accuracy or confidence in sanctity.",
+  "methodBody": "There is no point total, averaging or rounding. Every threshold I–VI requires all its practical criteria and the positive foundations of earlier thresholds. Any unsupported or unknown required condition blocks a higher result. Permitted inapplicable circumstances are listed separately and do not prove progress. Weaknesses in lower descriptions are not requirements to retain. The source does not supply this algorithm: thresholds, inheritance of positive foundations and the distinction between occasional and sustained sacrifice are author-defined operationalizations. V–VI additionally check practical descriptions of imperfections, suffering and prayerful life; mystical elements are excluded from assessment and are not confirmed. An individual area is not given a higher number merely because the same requirements are inherited. VII is not assessed. There is no confidence percentage or confirmation of holiness.",
   "methodPrivacy": "Answers, progress, result, and language are kept only in this tab’s temporary session storage so they survive a refresh. They are never transmitted and are cleared when the tab is closed. No cookies, analytics, or identifiers are used.",
   "notAnswered": "Not answered",
   "answeredSummary": "{answered} of {total} answers selected · {skipped} skipped. An explicit uncertain answer also remains unknown for the relevant check.",
@@ -221,7 +221,7 @@
           "text": "Prayer becomes a habitual way of life, even during everyday work. There is a strong desire for self-renunciation, complete surrender to God, detachment, and divine love, together with a longing for the Eucharist and Heaven. The source mentions different degrees of infused prayer, received as God's gift, and often passive purification: God's purifying work in the soul."
         }
       ],
-      "assessmentNote": "Described, not assigned"
+      "assessmentNote": "Assessment covers practical descriptions only; mystical graces are not confirmed."
     },
     {
       "name": "Heroic Perfection",
@@ -240,7 +240,7 @@
           "text": "The source describes supernatural graces of contemplation, sometimes accompanied by extraordinary phenomena, and profound passive purifications. In strong ascetical language, it speaks of disregard for self to the point of complete self-forgetfulness and a preference for suffering over joys. This is the text's description, not confirmation of these experiences in the person completing the questionnaire."
         }
       ],
-      "assessmentNote": "Described, not assigned"
+      "assessmentNote": "Assessment covers practical descriptions only; mystical graces are not confirmed."
     },
     {
       "name": "Complete Sanctity",
@@ -282,7 +282,7 @@
   "criteriaCounts": "Supported {met} · unsupported {notMet} · unknown {unknown} · inapplicable {notTriggered}",
   "criteriaSummary": "These are counts of checks, not a percentage of spiritual progress or reliability. A single unsupported or unknown mandatory requirement prevents support for a higher threshold.",
   "criteriaEyebrow": "Each requirement is checked",
-  "criteriaHelp": "See the exact expectation alongside your answer. You can review any threshold I–IV. “Inapplicable” is reserved for explicit circumstances such as no fall or no realistic opportunity for Mass; it is not additional evidence of maturity. Supported practical requirements do not confirm a mystical state.",
+  "criteriaHelp": "See each exact expectation and your answer. You can review thresholds I–VI. 'Not applicable' is used only for explicit circumstances such as no fall or no real access to weekday Mass; it is not extra evidence of maturity. V–VI compare practical descriptions only, not mystical graces.",
   "criteriaSelectLabel": "Review the requirements for",
   "criteriaVisual": {
     "supportedCount": "{met} of {total} requirements supported by your answers",
@@ -303,13 +303,12 @@
       "notTriggered": "The stated circumstances make this requirement inapplicable. It is neither a failed check nor evidence of progress."
     }
   },
-  "domainProfileIntro": "Each area is compared separately with practical requirements for I–IV. Prayer and examination of conscience, for example, may support different thresholds. The overall result is not their average: all required conditions must still hold. This does not assign spiritual stages.",
+  "domainProfileIntro": "Each area is assessed separately, only as far as the source and questions provide a distinct practical criterion. Some areas therefore stop at III or IV, while others can be compared through VI. Positive foundations remain required in higher overall results, but there is no averaging.",
   "domainLevels": {
     "title": "Which stage does each area resemble?",
     "label": "Supported practical pattern",
     "range": "{from}–{to} — shared requirements",
-    "scope": "All checked requirements in this area up to this threshold are supported, allowing stated exceptions. Other areas are considered separately.",
-    "sameCriteria": "The existing questions for this area do not distinguish these two thresholds. A range is shown instead of an unsupported, more precise level.",
+    "sameCriteria": "The questions do not distinguish these practical thresholds. A range is shown without inventing a more precise stage.",
     "notEstablished": "Level not established",
     "noMatch": "Checks for this area begin at threshold {stage}. The answers do not yet support a complete assessed threshold or there is insufficient evidence. A lower stage is not assigned automatically.",
     "checking": "Requirements shown below: threshold {stage}"
@@ -326,7 +325,22 @@
   "yourAnswer": "Your answer:",
   "reviewThisAnswer": "Review this question",
   "nextThreshold": "Not every requirement for threshold {stage} is supported. Review the specific expectations and answers below; this is not an average score.",
-  "upperLimitNote": "IV is the highest threshold of practical requirements compared here. Even when all are supported, not every spiritual characteristic of Stage IV has been established. V and VI include graces of infused prayer and contemplation; ordinary habits do not prove them. The supplied source has no description for VII. All remain visible as part of the source's path.",
-  "advancedSourceTitle": "Why V–VII are not assigned — source descriptions"
+  "upperLimitNote": "VI is the highest practical comparison in this questionnaire. Answers do not confirm contemplation, infused prayer, passive purification or a complete spiritual stage. The supplied source gives no descriptive criteria for VII, so it is not assessed.",
+  "advancedSourceTitle": "What this practical comparison can and cannot tell you",
+  "readStage": "Read description",
+  "allStagesButton": "Explore all stages",
+  "allStagesTitle": "All seven stages in one place",
+  "advancedPracticalNote": "V and VI here indicate supported practical patterns only. The source also includes infused prayer, contemplation and passive purification—none is tested or confirmed. The result does not claim you have attained relative or heroic perfection.",
+  "growthIntro": "Each area includes a suggested next step based on your answers. Choose one achievable action; these suggestions are not additional criteria, a guarantee of progress or a substitute for spiritual direction.",
+  "growth": {
+    "heading": "Next step toward threshold {stage}",
+    "maintainTitle": "What to nurture next",
+    "unknownTitle": "Clarify this first",
+    "practiceLabel": "Try in everyday life",
+    "more": "More suggestions ({count})",
+    "review": "Review your answer",
+    "unknownAction": "There is not enough clear information for this criterion. Recall a real situation and reread the question. If there was no opportunity or you remain unsure, leave it unknown; do not assume you need a stricter practice.",
+    "scope": "A small practical step—not a promise of a higher stage."
+  }
 });
 })();

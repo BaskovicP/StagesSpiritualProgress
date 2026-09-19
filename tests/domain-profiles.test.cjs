@@ -26,10 +26,10 @@ test('all seven areas are described independently without changing the overall c
   assert.equal(profile(result,'examen').stageFrom,2);
   assert.equal(profile(result,'examen').stageTo,2);
   assert.equal(profile(result,'examen').targetStage,3);
-  assert.equal(profile(result,'prayer').stageFrom,4);
-  assert.equal(profile(result,'prayer').stageTo,4);
-  assert.equal(profile(result,'prayer').targetStage,4);
-  assert.equal(profile(result,'imperfections').stageTo,4);
+  assert.equal(profile(result,'prayer').stageFrom,6);
+  assert.equal(profile(result,'prayer').stageTo,6);
+  assert.equal(profile(result,'prayer').targetStage,6);
+  assert.equal(profile(result,'imperfections').stageTo,6);
   const noOverall = evaluate(config,{...answers,'prayer-vocal-v4':0});
   assert.equal(noOverall.stage,null);
   assert.equal(profile(noOverall,'prayer').stageTo,null);
@@ -37,18 +37,23 @@ test('all seven areas are described independently without changing the overall c
   assert.equal(noOverall.domainProfiles.length,7);
 });
 
-test('indistinguishable criteria yield III–IV, not a spurious exact IV for mortal sin', () => {
+test('source ceilings prevent inherited foundations being mislabelled as higher domain stages', () => {
   const result = evaluate(config,strong());
   const area = profile(result,'seriousSin');
   assert.equal(area.stageFrom,3);
-  assert.equal(area.stageTo,4);
-  assert.equal(area.targetStage,4);
+  assert.equal(area.stageTo,3);
+  assert.equal(area.targetStage,3);
   assert.equal(profile(result,'venialSin').stageFrom,4);
+  assert.equal(profile(result,'examen').stageTo,4);
+  assert.equal(profile(result,'sacraments').stageTo,4);
+  assert.equal(profile(result,'imperfections').stageTo,6);
+  assert.equal(profile(result,'suffering').stageTo,6);
+  assert.equal(profile(result,'prayer').stageTo,6);
   for (const language of ['hr','en']) {
     const copy = context.window.spiritualLocales[language];
     const html = presentation.renderDomain(area.domain,area.targetChecks,copy,area);
-    assert.match(html,/data-domain-level="3-4"/);
-    assert.ok(html.includes(copy.domainLevels.sameCriteria));
+    assert.match(html,/data-domain-level="3-3"/);
+    assert.ok(html.includes(copy.stages[2].name));
   }
 });
 
@@ -94,7 +99,7 @@ test('domain targets are their own first unresolved threshold and display the co
       assert.equal(JSON.stringify(area.targetChecks),JSON.stringify(target.checks));
       if (area.stageTo && area.stageFrom === area.stageTo) assert.ok(html.includes(copy.stages[area.stageTo-1].name));
       assert.doesNotMatch(html,/%|<progress\b|<meter\b/);
-      assert.ok(area.stageTo === null || area.stageTo <= 4);
+      assert.ok(area.stageTo === null || area.stageTo <= 6);
     }
     assert.equal(JSON.stringify(result),before);
   }

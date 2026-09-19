@@ -461,6 +461,132 @@
     "expectations": {
       "4": "Postojano i žarko sudjelovati na misi s vjerom i ljubavlju, ne samo biti fizički prisutan."
     }
+  },
+  {
+    "id": "imperfections-consent-v5",
+    "kicker": "Poriv i moj pristanak",
+    "title": "Kad se javi prepoznata nesavršenost, koliko joj svjesno dopuštam da se nastavi?",
+    "example": "Petar osjeti poriv da razgovor opet okrene na sebe. Jednom ga svjesno nastavi. Drugi put shvati što radi tek usred rečenice. Treći put primijeti prvi poriv, ali ga ne slijedi. Pitanje razlikuje te situacije.",
+    "clarification": "Misli na vlastitu poznatu nesavršenost, ne na svaki osjećaj ili nenamjernu misao. 'Prvi poriv' nije grijeh ni slobodan pristanak. Za najstroži opis nije dovoljno da se brzo pokaješ nakon svjesnog pristanka. Ako ne razlikuješ ove situacije, odaberi da ne možeš procijeniti.",
+    "options": [
+      "Prepoznam nesavršenost, ali je često svjesno nastavim.",
+      "Ponekad svjesno pristanem, iako ubrzo požalim.",
+      "Ne prepoznajem potpuno svjestan pristanak; ponekad shvatim što radim tek kad je već počelo.",
+      "Prepoznajem samo prvi spontani poriv, bez njegova daljnjeg prihvaćanja.",
+      "Ne mogu pouzdano razlikovati poriv, djelomičnu svijest i pristanak."
+    ],
+    "expectations": {
+      "5": "Prepoznate nesavršenosti javljaju se samo uz djelomičnu svijest, bez prepoznatog potpuno svjesnog pristanka.",
+      "6": "Kod prepoznatih nesavršenosti ostaje samo prvi spontani poriv, bez daljnjeg prihvaćanja."
+    }
+  },
+  {
+    "id": "imperfections-loving-care-v5",
+    "kicker": "Pažnja iz ljubavi",
+    "title": "Kako se kroz običan dan odnosim prema svojoj poznatoj nesavršenosti?",
+    "example": "Ana zna da traži pohvalu. Prije razgovora sjeti se da želi iskreno saslušati drugoga. To ne radi da bi sebi dokazala savršenstvo, nego iz ljubavi; na tome radi pažljivo i kada nitko ne primjećuje.",
+    "clarification": "Ne traži se neprestano provjeravanje svake misli ni tjeskoba zbog pogreške. Pita se postoji li brižna, postojana praksa motivirana ljubavlju, a ne samo povremeni napor ili želja za boljom slikom o sebi.",
+    "options": [
+      "Uglavnom ne pazim na to unaprijed; sjetim se tek poslije.",
+      "Uložim trud u nekim situacijama, ali pažnja još nije postojana.",
+      "Brižno i postojano pazim na poznatu nesavršenost iz ljubavi prema Bogu i drugima."
+    ],
+    "expectations": {
+      "5": "Energično, brižno i iz ljubavi čuvati se prepoznatih nesavršenosti."
+    }
+  },
+  {
+    "id": "suffering-joyful-acceptance-v5",
+    "kicker": "Ljubav usred stvarne teškoće",
+    "title": "U stvarnim teškoćama je li prihvaćanje s mirom i tihom radošću bilo moj uobičajeni odgovor?",
+    "example": "Ivan više tjedana pomaže bolesnom članu obitelji. Umor i tuga su stvarni. Uz njih, uobičajeno prihvaća brigu s mirom i tihom radošću što može ljubiti — ne samo u jednom posebno dobrom trenutku.",
+    "clarification": "Ne pita se sviđa li ti se bol niti traži odsutnost tuge, straha ili potrebe za pomoći. Izvor za V. opisuje radosno prihvaćanje s mirom, a ne samo povremeni trenutak smisla. Ako nema stvarne situacije za usporedbu, to nije dokaz manjka vjere.",
+    "options": [
+      "Teškoću sam podnosio, ali takvo prihvaćanje nije bilo uobičajeno.",
+      "Ponekad je bilo mira i tihe radosti, ali ne postojano.",
+      "Prihvaćanje s mirom i tihom radošću ljubavi bilo je uobičajeno, i uz bol i borbu.",
+      "Nije bilo takve situacije ili to ne mogu procijeniti."
+    ],
+    "expectations": {
+      "5": "Stvarnu teškoću uobičajeno prihvaćati radosno i s mirom, ne samo povremeno prepoznati smisao."
+    }
+  },
+  {
+    "id": "suffering-service-v5",
+    "kicker": "Dobro drugoga i moja udobnost",
+    "title": "Kad je razumna pomoć drugome zahtijevala odricanje od moje udobnosti, što sam stvarno birao?",
+    "example": "Marija može bez zanemarivanja obitelji i zdravlja odvojiti večer za usamljenog susjeda. Ne bira neugodu radi neugode: slobodno prihvati taj napor jer će susjedu stvarno pomoći. Pitanje razlikuje povremeni izbor od postojane spremnosti.",
+    "clarification": "Dobrovoljna žrtva znači razboritu pomoć, ne traženje opasnosti, ozljeđivanje, uskraćivanje sna ili pristajanje na zlostavljanje. Izvor ne propisuje broj žrtava; razlika između povremene i postojane prakse ovdje je autorski način provjere, ne dokaz svetosti.",
+    "options": [
+      "Uglavnom izaberem udobnost i kad bih razumno mogao pomoći.",
+      "Ponekad slobodno i rado prihvatim takav napor radi dobra drugoga.",
+      "Postojano i rado biram stvarno dobro drugoga, i kada traži razumnu osobnu žrtvu.",
+      "Nije bilo takvih prilika ili ne mogu procijeniti."
+    ],
+    "expectations": {
+      "5": "Ponekad slobodno i rado preuzeti razumnu žrtvu radi dobra drugih.",
+      "6": "Pokazivati postojanu, radosnu spremnost na razumnu žrtvu radi drugih; nije riječ o traženju boli."
+    }
+  },
+  {
+    "id": "prayer-daily-life-v5",
+    "kicker": "Molitva izvan vremena molitve",
+    "title": "Ostaje li odnos s Bogom prisutan i dok obavljam svakodnevne poslove?",
+    "example": "Petar usred posla na trenutak zahvali Bogu, prije teškog razgovora zamoli pomoć, a odluku nastoji donijeti iz ljubavi. Ne prekida svoje dužnosti da bi cijeli dan izgovarao molitve.",
+    "clarification": "Pita se za uobičajenu molitvenu usmjerenost kroz rad i odnose, ne za stalno svjesno ponavljanje riječi, osobit osjećaj Božje prisutnosti ili mistično iskustvo. Sabrana pažnja na posao ne proturječi molitvenom životu.",
+    "options": [
+      "Molitva uglavnom ostaje ograničena na odvojeno vrijeme za nju.",
+      "Ponekad se obratim Bogu i tijekom poslova, ali to još nije navika.",
+      "Odnos s Bogom uobičajeno prožima moj rad i odnose, uz pozorno obavljanje dužnosti."
+    ],
+    "expectations": {
+      "5": "Njegovati uobičajen život molitve i tijekom vanjskih poslova, bez zanemarivanja dužnosti."
+    }
+  },
+  {
+    "id": "prayer-detachment-v5",
+    "kicker": "Sloboda od vlastitih prohtjeva",
+    "title": "Kako se želja za ljubavlju prema Bogu vidi u odnosu prema mojim prohtjevima, pohvalama i udobnosti?",
+    "example": "Ana želi posljednju riječ u raspravi. Prepozna da to nije potrebno i slobodno prepusti riječ drugome. Drugi put odustane od traženja pohvale. Takve odluke ponavlja iz ljubavi, a ne zato što mrzi sebe.",
+    "clarification": "Nenavezanost nije odbacivanje zdrave radosti, vlastite vrijednosti ili potrebne skrbi o sebi. Pita se za stvarnu, postojanu želju za slobodom od sebičnih vezanosti, vidljivu u konkretnim odlukama.",
+    "options": [
+      "Želja postoji uglavnom u mislima; odluke rijetko mijenjam.",
+      "Ponekad se odreknem prohtjeva, ali često mu opet podredim ljubav i dužnosti.",
+      "Postojano želim veću slobodu za ljubav i to pokazujem konkretnim, razboritim odricanjima."
+    ],
+    "expectations": {
+      "5": "Pokazivati postojanu želju za nenavezanošću, razboritim odricanjem od sebe i ljubavlju prema Bogu."
+    }
+  },
+  {
+    "id": "prayer-desire-v5",
+    "kicker": "Čežnja koja usmjerava život",
+    "title": "Jesu li čežnja za Euharistijom i za punim zajedništvom s Bogom trajno usmjerenje mojega života?",
+    "example": "Ivan raduje se susretu s Kristom u Euharistiji i priprema se koliko može. Nada u život s Bogom potiče ga da danas strpljivije voli obitelj. Ne želi pobjeći od života ni od obveza.",
+    "clarification": "Ne traži se snažan osjećaj svaki put niti češća pričest nego što je razumno i primjereno. Čežnja za nebom ovdje znači nadu u zajedništvo s Bogom, nikada želju za smrću ili odbacivanje sadašnjega života.",
+    "options": [
+      "To mi zasad nije stvarno usmjerenje života.",
+      "Ta se želja javlja povremeno, ali nije postojana.",
+      "Čežnja za Euharistijom i zajedništvom s Bogom postojano usmjerava moju molitvu i svakodnevni život."
+    ],
+    "expectations": {
+      "5": "Njegovati postojanu čežnju za Euharistijom i punim zajedništvom s Bogom, živeći sadašnje dužnosti."
+    }
+  },
+  {
+    "id": "prayer-self-forgetfulness-v5",
+    "kicker": "Ljubav bez traženja priznanja",
+    "title": "Kad dobro koje činim ostane neprimijećeno, koliko traženje priznanja upravlja mojim daljnjim izborima?",
+    "example": "Marija dugo pomaže, ali zahvalu dobije netko drugi. Može osjetiti prvi ubod razočaranja. Ipak ne okreće pomoć u potragu za priznanjem: nastavlja ljubiti, uz zdrave granice i bez zanemarivanja vlastitih potreba.",
+    "clarification": "Izvorni 'samozaborav' ovdje se provjerava samo kroz praktični plod: slobodu od zaokupljenosti vlastitim ugledom. To nije gubitak dostojanstva, potiskivanje osjećaja ili obveza trpljenja iskorištavanja. Jedan nesebičan postupak nije postojan obrazac i ovaj odgovor ne potvrđuje kontemplaciju.",
+    "options": [
+      "Priznanje snažno određuje koliko ću dalje pomagati.",
+      "Vratim se dobru drugoga, ali me želja za priznanjem još često vodi.",
+      "Dobro Boga i bližnjega postojano mi je važnije od priznanja; ne hranim prvi poriv za isticanjem sebe."
+    ],
+    "expectations": {
+      "6": "Pokazivati postojanu slobodu od traženja vlastitog priznanja u služenju Bogu i bližnjemu; to je ograničen praktični pokazatelj, ne potvrda mističnoga samozaborava."
+    }
   }
 ]);
 })();

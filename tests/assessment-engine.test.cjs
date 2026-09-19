@@ -46,7 +46,7 @@ test('all source-gate profiles are evaluated without averages, randomness or pro
     }
   }
   assert.equal(evaluate(fixture(), strongAnswers()).stage, 4);
-  assert.throws(() => evaluate({ ...fixture(), highestAssessedStage: 6 }, strongAnswers()), /I–IV/);
+  assert.throws(() => evaluate({ ...fixture(), highestAssessedStage: 7 }, strongAnswers()), /I–VI/);
 });
 
 test('each individual required gate blocks its candidate; high answers cannot compensate', () => {

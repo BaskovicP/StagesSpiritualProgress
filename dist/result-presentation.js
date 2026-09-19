@@ -30,13 +30,30 @@
     ).join("")}</span>`;
   }
 
-  function renderDomain(domain, checks, copy, profile = null) {
+  function renderGrowth(growth, copy) {
+    if (!growth) return "";
+    const roman = number => ["I", "II", "III", "IV", "V", "VI"][number - 1];
+    const heading = growth.items.length
+      ? format(copy.growth.heading, {stage:roman(growth.targetStage)}) : copy.growth.maintainTitle;
+    const item = entry => `<div class="growth-item" data-growth-id="${escapeHtml(entry.id)}">
+      <p class="growth-expectation">${escapeHtml(entry.status === "unknown" ? copy.growth.unknownTitle : entry.expectation)}</p>
+      <p>${escapeHtml(entry.action)}</p>
+      <button type="button" class="text-button growth-review" data-growth-question="${entry.index}">${escapeHtml(copy.growth.review)}</button>
+    </div>`;
+    return `<section class="domain-growth" aria-label="${escapeHtml(heading)}">
+      <h4><span aria-hidden="true">↗</span> ${escapeHtml(heading)}</h4>
+      ${growth.items.length ? item(growth.items[0]) : `<p>${escapeHtml(growth.maintenance)}</p>`}
+      ${growth.items.length > 1 ? `<details class="growth-more"><summary>${escapeHtml(format(copy.growth.more, {count:growth.items.length - 1}))}</summary>${growth.items.slice(1).map(item).join("")}</details>` : ""}
+    </section>`;
+  }
+
+  function renderDomain(domain, checks, copy, profile = null, growth = null) {
     if (!checks.length) return "";
     const counts = countChecks(checks);
     const summary = counts.notTriggered === counts.total
       ? copy.criteriaVisual.noneApplicable
       : format(copy.criteriaVisual.supportedCount, counts);
-    const roman = number => ["I", "II", "III", "IV"][number - 1];
+    const roman = number => ["I", "II", "III", "IV", "V", "VI"][number - 1];
     let level = "";
     if (profile) {
       const hasStage = profile.stageTo !== null;
@@ -58,6 +75,7 @@
       ${level}
       <p class="domain-supported-count">${escapeHtml(summary)}</p>
       ${renderCounts(checks, copy)}
+      ${renderGrowth(growth, copy)}
       <button class="domain-review-button" type="button" data-review-domain="${escapeHtml(domain)}" aria-label="${escapeHtml(`${copy.criteriaVisual.reviewDomain}: ${copy.domains[domain]}`)}">${escapeHtml(copy.criteriaVisual.reviewDomain)}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button>
     </div>`;
   }

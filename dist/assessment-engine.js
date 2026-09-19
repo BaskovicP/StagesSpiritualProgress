@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const MAXIMUM_ASSESSED_STAGE = 4;
+  const MAXIMUM_ASSESSED_STAGE = 6;
   const hasOwn = (object, key) => Object.prototype.hasOwnProperty.call(object, key);
   const isOption = (value, question) => Number.isInteger(value) && value >= 0 && value < question.optionCount;
 
@@ -11,7 +11,7 @@
     }
     const highest = assessment.highestAssessedStage;
     if (!Number.isInteger(highest) || highest < 1 || highest > MAXIMUM_ASSESSED_STAGE) {
-      throw new TypeError("Only practical expectations for Stages I–IV can be assessed.");
+      throw new TypeError("Only practical expectations for Stages I–VI can be assessed.");
     }
     const questions = new Map();
     for (const question of assessment.questionBlueprints) {
@@ -27,7 +27,7 @@
         throw new TypeError(`Invalid uncertain options for ${question.id}.`);
       }
       for (const [stage, rule] of Object.entries(question.requirements)) {
-        if (!/^[1-4]$/.test(stage) || !rule || !validateOptions(rule.accepted) ||
+        if (!/^[1-6]$/.test(stage) || Number(stage) > highest || !rule || !validateOptions(rule.accepted) ||
             (rule.exempt !== undefined && !validateOptions(rule.exempt))) {
           throw new TypeError(`Invalid stage requirement for ${question.id}.`);
         }
@@ -120,7 +120,8 @@
     }).sort((a, b) => a[0].localeCompare(b[0])));
     return order.filter(domain => domains.has(domain)).map(domain => {
       let foundationStatus = "supported";
-      const stages = stageChecks.map(candidate => {
+      const ceiling = assessment.domainStageLimits?.[domain] ?? assessment.highestAssessedStage;
+      const stages = stageChecks.filter(candidate => candidate.stage <= ceiling).map(candidate => {
         const checks = candidate.checks.filter(check => check.domain === domain);
         const summary = summarizeChecks(checks);
         if (!checks.length) return { stage: candidate.stage, checks, ...summary, status: "notAssessed" };
@@ -143,7 +144,7 @@
       }
       const target = assessed.find(candidate => ["notSupported", "incomplete"].includes(candidate.status)) || assessed.at(-1);
       return {
-        domain, stageFrom, stageTo: highest?.stage ?? null,
+        domain, stageFrom, stageTo: highest?.stage ?? null, sourceCeiling: ceiling,
         firstAssessedStage: assessed[0]?.stage ?? null,
         targetStage: target?.stage ?? null, targetChecks: target?.checks ?? [], stages
       };
