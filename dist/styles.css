@@ -359,6 +359,13 @@ h1 {
   stroke-linejoin: round;
 }
 
+.intro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
 .privacy-note {
   display: flex;
   align-items: center;
@@ -1172,6 +1179,8 @@ h1 {
   .app-shell { padding: 42px 0; }
   h1 { font-size: clamp(3rem, 17vw, 4.8rem); }
   .summary-row { justify-content: space-between; gap: 12px; }
+  .intro-actions { display: grid; grid-template-columns: 1fr; }
+  .intro-actions button { width: 100%; }
   .path-card { padding: 28px 22px 22px; border-radius: 22px; }
   .question-card { padding: 26px 18px 22px; border-radius: 22px; }
   .answer-content { padding: 15px 14px; }

@@ -30,16 +30,61 @@ Reverse wording can itself create method effects, so the balance should be teste
 
 ## Current scoring
 
-Responses are mapped to a six-point continuum. Reverse-keyed items are scored in the opposite direction. Item scores are averaged within domains, and domain means receive equal weight in the overall score.
+Let the selected response category be \(x \in \{0,1,2,3,4\}\), from **never or almost never** through **almost always**.
+
+For a direct-keyed item, its score is:
+
+\[
+s = 1 + 1.25x
+\]
+
+This produces the five scores **1, 2.25, 3.5, 4.75, and 6**. For a reverse-keyed item:
+
+\[
+s_{reverse} = 7 - s
+\]
+
+Consequently, a higher item score always points in the direction of a higher stage, regardless of how the statement is worded.
+
+For each domain \(d\), the answered item scores in that domain are averaged:
+
+\[
+D_d = \frac{1}{n_d}\sum_{i=1}^{n_d}s_{di}
+\]
+
+The overall score is the unweighted mean of the seven domain means:
+
+\[
+S = \frac{1}{7}\sum_{d=1}^{7}D_d
+\]
+
+This gives every domain equal influence even when some domains have four answered items and others have only two or three. A result is shown only after at least 21 items have been answered and every domain has at least two answers.
+
+The displayed stage is the nearest whole number:
+
+\[
+\text{stage} = \operatorname{clamp}(\operatorname{round}(S), 1, 6)
+\]
+
+Thus, for example, an overall score from 2.50 through 3.49 is displayed as Stage III. Exact half-points round upward.
+
+### Pattern stability and interval
 
 The displayed **pattern stability** is calculated locally:
 
-1. Resample the answered items within every domain 1,000 times with replacement.
-2. Recalculate the equally weighted overall result for every resample.
-3. Report the percentage of resamples returning the same nearest stage.
-4. Report the stage range containing the middle 95% of resampled scores.
+1. Within each domain, draw \(n_d\) answered item scores **with replacement** from that domain's answered scores.
+2. Recalculate all seven domain means and their equally weighted overall score.
+3. Repeat this process 1,000 times.
+4. **Pattern stability** is the proportion of those 1,000 overall scores that round to the originally selected stage.
+5. The internal 95% interval uses the 2.5th and 97.5th percentiles of the 1,000 overall scores. Its endpoints are converted to stages for display, while ensuring the selected stage remains inside the shown range.
 
-This is an internal sensitivity analysis. It does not include test–retest error, social-desirability bias, construct validity, translation effects, or errors caused by the stage framework itself. It must not be labeled “95% accurate.”
+The qualitative badge is assigned using deliberately conservative development thresholds:
+
+- **High stability:** at least 26 answered items, at least three answers per domain, at least 80% same-stage resamples, and a raw 95% interval no wider than 1.0 score point.
+- **Moderate stability:** at least 21 answered items, at least two answers per domain, at least 60% same-stage resamples, and a raw 95% interval no wider than 1.8 score points.
+- **Low stability:** anything else.
+
+These thresholds are design heuristics, not empirically calibrated cutoffs. The calculation is an internal sensitivity analysis. It does not include test–retest error, social-desirability bias, construct validity, translation effects, or errors caused by the stage framework itself. It must not be labeled “95% accurate,” and the stability percentage must not be interpreted as the probability that the person is truly in that stage.
 
 ## Work required for a validated instrument
 

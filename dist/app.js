@@ -21,6 +21,7 @@
     questionView: document.querySelector("#question-view"),
     resultView: document.querySelector("#result-view"),
     startButton: document.querySelector("#start-button"),
+    restartButton: document.querySelector("#restart-button"),
     exitButton: document.querySelector("#exit-button"),
     previousButton: document.querySelector("#previous-button"),
     nextButton: document.querySelector("#next-button"),
@@ -502,11 +503,13 @@
   }
 
   function updateStartLabel() {
-    const label = Object.keys(state.answers).length
+    const hasProgress = Object.keys(state.answers).length > 0;
+    const label = hasProgress
       ? translations[state.language].continue
       : translations[state.language].start;
     const span = elements.startButton.querySelector("span");
     if (span) span.textContent = label;
+    elements.restartButton.hidden = !hasProgress;
   }
 
   function average(values) {
@@ -686,6 +689,9 @@
   });
 
   elements.startButton.addEventListener("click", openQuestionnaire);
+  elements.restartButton.addEventListener("click", () => {
+    if (window.confirm(translations[state.language].restartConfirm)) clearAndRetake();
+  });
   elements.exitButton.addEventListener("click", returnToIntro);
   elements.previousButton.addEventListener("click", movePrevious);
   elements.nextButton.addEventListener("click", moveNext);
