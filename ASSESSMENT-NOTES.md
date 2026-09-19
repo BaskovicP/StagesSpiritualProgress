@@ -20,7 +20,7 @@ The application makes these conservative design decisions explicit:
 - Most items concern the previous eight weeks. Confession instead concerns an established practice over recent months: an eight-week event count cannot establish or refute a quarterly schedule.
 - Absence of a recognized fully knowing and freely chosen grave act is the conservative practical III check. The source's rare surprise/doubt case is not automatically adjudicated by the app; uncertainty remains unknown.
 
-Even complete support for IV practical requirements does not confirm the full spiritual stage. The app does not test prayer of Quiet, infused contemplation, passive purification, or the authenticity of mystical phenomena. Optional source descriptors (simplicity may emerge, purification often occurs, extraordinary phenomena sometimes occur) are not universal requirements.
+Even complete support for IV practical requirements does not confirm the full spiritual stage. The app cannot authenticate prayer of Quiet, infused contemplation, passive purification, or mystical phenomena. A separate optional module asks directly about self-reported experiences for discussion and discernment; those answers are never passed to the assessment engine and cannot change the practical result. Optional source descriptors (simplicity may emerge, purification often occurs, extraordinary phenomena sometimes occur) are not universal requirements. See `MYSTICAL-REFLECTION-NOTES.md` for the module's source mapping and limits.
 
 ## Decision rule
 
@@ -82,6 +82,7 @@ Illness, emotional pain, unwanted impulses, necessary care, leaving abuse, rest 
 - The configuration contains stable question IDs, source references and accepted/exempt/unknown answer indices.
 - The pure engine evaluates configured criteria; the application renders results and handles navigation.
 - Version 4 has new question IDs and session version. Version 3 answers are never reinterpreted as answers to the new questions.
+- Optional mystical self-reports have independent version 1, IDs and allowed string values. They are stored separately and never change completion, criteria, stage or counts in the core assessment. Adding this module preserves current version 4 core answers.
 - Current progress and language survive refresh in the same tab through sessionStorage. There is no server, analytics, remote calculation or transmission of answers.
 - Static Cloudflare packaging includes all runtime files. No clinical or psychometric validation claim is made.
 

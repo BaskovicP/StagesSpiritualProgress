@@ -28,6 +28,7 @@ function boot(language = 'hr', storage = new Map()) {
     scrollTo() {}, addEventListener() {}, print() {}, confirm() { return true; },
     matchMedia() { return { matches: true }; }
   };
+  class HTMLInputElement {}
   const context = vm.createContext({
     window,
     document: {
@@ -42,15 +43,15 @@ function boot(language = 'hr', storage = new Map()) {
       setItem(k, v) { storage.set(k, v); }
     },
     AbortController, console, performance,
-    HTMLInputElement: class {},
+    HTMLInputElement,
     requestAnimationFrame(fn) { fn(0); return 1; },
     cancelAnimationFrame() {}
   });
-  for (const file of ['locales/en.js', 'locales/hr.js', 'questions/en.js', 'questions/hr.js', 'assessment-config.js', 'assessment-engine.js', 'app.js']) {
+  for (const [, file] of html.matchAll(/<script\b[^>]*\bsrc="\.\/([^"]+)"[^>]*><\/script>/g)) {
     vm.runInContext(fs.readFileSync(path.join(root, 'dist', file), 'utf8'), context, { filename: file });
   }
   return {
-    window, nodes, storage, element,
+    window, nodes, storage, element, HTMLInputElement,
     call(name, input) { return registered.get(name).execute(input); }
   };
 }
@@ -250,4 +251,197 @@ test('the maintained source map matches every current Croatian question, story, 
       if (validReferences.size) assert.ok(validReferences.has(reference), `Original markdown section: ${reference}`);
     }
   }
+});
+
+const reflectionStorageKey = 'spiritual-progress-reflection:v4';
+const mysticalIds = ['contemplation', 'purification', 'phenomena', 'union', 'fruits', 'discernment'];
+
+function stored(app) {
+  return JSON.parse(app.storage.get(reflectionStorageKey));
+}
+
+function escaped(text) {
+  return text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+}
+
+function setMysticalAnswer(app, questionId, value) {
+  const input = new app.HTMLInputElement();
+  input.dataset = { mysticalQuestion: questionId };
+  input.value = value;
+  input.checked = true;
+  app.element('#mystical-fields').listeners.change({ target: input });
+}
+
+function setMysticalAnswers(app, values) {
+  for (const [index, id] of mysticalIds.entries()) setMysticalAnswer(app, id, values[index]);
+}
+
+function assertReportedSummary(app, language) {
+  const summary = app.element('#mystical-summary').innerHTML;
+  const answers = stored(app).mysticalAnswers;
+  for (const question of app.window.spiritualMysticalContent[language].questions) {
+    if (!Object.hasOwn(answers, question.id)) continue;
+    const option = question.options.find(option => option.value === answers[question.id]);
+    assert.ok(summary.includes(escaped(question.title)), question.id);
+    assert.ok(summary.includes(escaped(option.label)), `${question.id}: selected report, not inferred classification`);
+  }
+}
+
+test('six optional mystical prompts have aligned bilingual stories and explicit source notes', () => {
+  const app = boot();
+  const config = app.window.spiritualMysticalReflection;
+  assert.equal(config.version, 1);
+  assert.deepEqual(Array.from(config.questions, question => question.id), mysticalIds);
+  for (const language of ['hr', 'en']) {
+    const bank = app.window.spiritualMysticalContent[language].questions;
+    assert.equal(bank.length, 6);
+    assert.equal(new Set(bank.map(question => question.id)).size, 6);
+    for (const [index, question] of bank.entries()) {
+      const blueprint = config.questions[index];
+      assert.equal(question.id, blueprint.id);
+      assert.deepEqual(Array.from(question.options, option => option.value), Array.from(blueprint.options));
+      assert.equal(new Set(blueprint.options).size, blueprint.options.length);
+      assert.ok(blueprint.options.includes('skip'));
+      for (const property of ['title', 'example', 'clarification', 'sourceNote']) {
+        assert.equal(typeof question[property], 'string', `${language}.${question.id}.${property}`);
+        assert.ok(question[property].trim().length > 20, `${language}.${question.id}.${property}`);
+      }
+      assert.ok(question.options.every(option => typeof option.label === 'string' && option.label.trim().length));
+      assert.ok(!app.window.spiritualAssessment.questionBlueprints.some(core => core.id === question.id), 'Optional reports never become core criteria');
+    }
+  }
+  for (const id of mysticalIds.slice(0, 4)) {
+    assert.deepEqual(Array.from(config.questions.find(question => question.id === id).options), ['yes', 'unsure', 'no', 'skip']);
+  }
+});
+
+test('no optional report, uncertainty, skips or highest mystical claims change null or I–IV results', () => {
+  const answerSets = [
+    ['yes', 'yes', 'yes', 'yes', 'lasting', 'ongoing'],
+    ['no', 'no', 'no', 'no', 'none', 'notYet'],
+    ['unsure', 'unsure', 'unsure', 'unsure', 'unsure', 'notApplicable'],
+    ['skip', 'skip', 'skip', 'skip', 'skip', 'skip']
+  ];
+  const patterns = [[null, { 'prayer-vocal-v4': 0 }], [1, { 'prayer-vocal-v4': 1 }],
+    [2, { 'examen-frequency-v4': 1 }], [3, { 'examen-frequency-v4': 2 }], [4, {}]];
+  for (const language of ['hr', 'en']) {
+    const app = boot(language);
+    for (const [stage, change] of patterns) {
+      const baseline = resultFor(app, { ...strongAnswers(app), ...change });
+      assert.equal(baseline.stage, stage);
+      const expected = JSON.stringify(baseline);
+      for (const values of answerSets) {
+        setMysticalAnswers(app, values);
+        assert.equal(JSON.stringify(app.call('calculate_spiritual_reflection_result')), expected,
+          `Optional self-reports must not change ${language} stage ${stage}, source criteria or uncertainty`);
+        assertReportedSummary(app, language);
+      }
+      app.element('#mystical-clear').listeners.click();
+      assert.deepEqual(stored(app).mysticalAnswers, {});
+      assert.equal(JSON.stringify(app.call('calculate_spiritual_reflection_result')), expected);
+    }
+  }
+});
+
+test('every allowed mystical response is persisted but cannot bypass a failed IV criterion', () => {
+  const app = boot();
+  const core = { ...strongAnswers(app), 'examen-frequency-v4': 2 };
+  const baseline = resultFor(app, core);
+  assert.equal(baseline.stage, 3);
+  for (const question of app.window.spiritualMysticalReflection.questions) {
+    for (const value of question.options) {
+      setMysticalAnswer(app, question.id, value);
+      assert.equal(stored(app).mysticalAnswers[question.id], value);
+      assert.equal(JSON.stringify(app.call('calculate_spiritual_reflection_result')), JSON.stringify(baseline));
+    }
+  }
+  const beforeInvalid = stored(app).mysticalAnswers;
+  setMysticalAnswer(app, 'contemplation', 'invented-value');
+  setMysticalAnswer(app, 'not-a-question', 'yes');
+  assert.deepEqual(stored(app).mysticalAnswers, beforeInvalid, 'Event tampering cannot add invalid choices');
+  assert.deepEqual(stored(app).answers, core);
+});
+
+test('optional module is voluntary, refresh-safe, translatable and independently clearable', () => {
+  const app = boot('hr');
+  const core = strongAnswers(app);
+  resultFor(app, core);
+  assert.equal(app.element('#mystical-fields').hidden, true, 'Direct questions are optional, closed initially');
+  app.element('#mystical-toggle').listeners.click();
+  assert.equal(app.element('#mystical-fields').hidden, false);
+  assert.equal(stored(app).mysticalOpen, true);
+  setMysticalAnswers(app, ['yes', 'unsure', 'no', 'skip', 'lasting', 'discussed']);
+  const answers = stored(app).mysticalAnswers;
+  assert.equal(stored(app).mysticalVersion, 1);
+  assert.ok(app.element('#mystical-progress').textContent.includes('6'), 'Answered and skipped choices are counted');
+  assertReportedSummary(app, 'hr');
+  app.element('#language-select').listeners.change({ target: { value: 'en' } });
+  assert.deepEqual(stored(app).mysticalAnswers, answers);
+  assertReportedSummary(app, 'en');
+
+  const reloaded = boot('hr', app.storage);
+  assert.equal(reloaded.element('#result-view').hidden, false);
+  assert.equal(reloaded.element('#mystical-fields').hidden, false);
+  assert.equal(stored(reloaded).language, 'en');
+  assert.deepEqual(stored(reloaded).mysticalAnswers, answers);
+  assert.deepEqual(stored(reloaded).answers, core);
+  assertReportedSummary(reloaded, 'en');
+  reloaded.element('#mystical-toggle').listeners.click();
+  assert.equal(reloaded.element('#mystical-fields').hidden, true);
+  assert.deepEqual(stored(reloaded).mysticalAnswers, answers, 'Closing does not discard reports');
+  assertReportedSummary(reloaded, 'en');
+  reloaded.element('#mystical-clear').listeners.click();
+  assert.deepEqual(stored(reloaded).mysticalAnswers, {});
+  assert.deepEqual(stored(reloaded).answers, core, 'Clearing optional reports retains the original answers');
+  assert.equal(reloaded.call('calculate_spiritual_reflection_result').stage, 4);
+  setMysticalAnswer(reloaded, 'contemplation', 'yes');
+  reloaded.element('#retake-button').listeners.click();
+  assert.deepEqual(stored(reloaded).answers, {});
+  assert.deepEqual(stored(reloaded).mysticalAnswers, {});
+  assert.equal(stored(reloaded).mysticalOpen, false);
+  assert.equal(reloaded.element('#mystical-fields').hidden, true);
+  assert.doesNotMatch(reloaded.element('#mystical-fields').innerHTML, /\bchecked\b/);
+  assert.doesNotMatch(reloaded.element('#mystical-summary').innerHTML, /<dd>/);
+  assert.ok(reloaded.element('#mystical-summary').innerHTML.includes(reloaded.window.spiritualMysticalContent.en.summaryEmpty));
+});
+
+test('invalid or obsolete optional saved data is discarded without invalidating the v4 questionnaire', () => {
+  const initial = boot('hr');
+  const core = strongAnswers(initial);
+  resultFor(initial, core);
+  const saved = stored(initial);
+  const tampered = new Map([[reflectionStorageKey, JSON.stringify({
+    ...saved,
+    mysticalVersion: 1,
+    mysticalOpen: true,
+    mysticalAnswers: {
+      contemplation: 4, purification: 'wrong', phenomena: 'yes', union: null,
+      fruits: 'lasting', discernment: 'ongoing', extra: 'yes'
+    }
+  })]]);
+  const filtered = boot('hr', tampered);
+  assert.deepEqual(stored(filtered).mysticalAnswers, { phenomena: 'yes', fruits: 'lasting', discernment: 'ongoing' });
+  assert.deepEqual(stored(filtered).answers, core);
+  assert.equal(filtered.call('calculate_spiritual_reflection_result').stage, 4);
+
+  const obsolete = new Map([[reflectionStorageKey, JSON.stringify({
+    ...saved, mysticalVersion: 999, mysticalOpen: true, mysticalAnswers: { contemplation: 'yes' }
+  })]]);
+  const upgraded = boot('hr', obsolete);
+  assert.deepEqual(stored(upgraded).mysticalAnswers, {});
+  assert.equal(stored(upgraded).mysticalOpen, false);
+  assert.deepEqual(stored(upgraded).answers, core);
+  assert.equal(upgraded.call('calculate_spiritual_reflection_result').stage, 4);
+
+  const legacy = new Map([[reflectionStorageKey, JSON.stringify(saved)]]);
+  const legacySaved = JSON.parse(legacy.get(reflectionStorageKey));
+  delete legacySaved.mysticalVersion;
+  delete legacySaved.mysticalAnswers;
+  delete legacySaved.mysticalOpen;
+  legacy.set(reflectionStorageKey, JSON.stringify(legacySaved));
+  const preserved = boot('hr', legacy);
+  assert.deepEqual(stored(preserved).answers, core);
+  assert.deepEqual(stored(preserved).mysticalAnswers, {});
+  assert.equal(preserved.call('calculate_spiritual_reflection_result').stage, 4);
 });

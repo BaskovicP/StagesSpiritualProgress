@@ -135,7 +135,58 @@ async function main() {
       fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
       console.log(`Screenshot: ${file}`);
     }
+
+    // Optional experience reports use real radios, not a second scoring path.
+    const optional = await evaluate(`(() => {
+      if (document.querySelector('#mystical-fields').hidden) document.querySelector('#mystical-toggle').click();
+      const first = document.querySelector('[data-mystical-question="contemplation"][value="yes"]');
+      first.focus(); first.click();
+      return { focusRetained: document.activeElement === first, checked: first.checked,
+        count: document.querySelectorAll('.mystical-question').length,
+        labelled: [...document.querySelectorAll('.mystical-question')].every(group => group.querySelector('legend').textContent.length > 20 && document.getElementById(group.getAttribute('aria-describedby'))) };
+    })()`);
+    assert.equal(optional.focusRetained, true);
+    assert.equal(optional.checked, true);
+    assert.equal(optional.count, 6);
+    assert.equal(optional.labelled, true);
+    await cdp('Input.dispatchKeyEvent', { type: 'keyDown', key: 'ArrowDown', code: 'ArrowDown', windowsVirtualKeyCode: 40 });
+    await cdp('Input.dispatchKeyEvent', { type: 'keyUp', key: 'ArrowDown', code: 'ArrowDown', windowsVirtualKeyCode: 40 });
+    assert.equal(await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v4')).mysticalAnswers.contemplation`), 'unsure');
+    await evaluate(`(() => {
+      const reports = { contemplation: 'yes', purification: 'yes', phenomena: 'yes', union: 'yes', fruits: 'lasting', discernment: 'ongoing' };
+      for (const [id, value] of Object.entries(reports)) document.querySelector('[data-mystical-question="' + id + '"][value="' + value + '"]').click();
+    })()`);
+    assert.equal(await evaluate(`window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({}).stage`), 4);
+    assert.equal(await evaluate(`document.querySelectorAll('#mystical-summary dd').length`), 6);
+    for (const width of [1440, 390]) {
+      await cdp('Emulation.setDeviceMetricsOverride', { width, height: 1100, deviceScaleFactor: 1, mobile: width < 600 });
+      await evaluate(`document.querySelector('#mystical-section').scrollIntoView({ block: 'start' })`);
+      await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
+      const geometry = await evaluate(`({ width: innerWidth, scrollWidth: document.documentElement.scrollWidth, emptyLabels: [...document.querySelectorAll('#mystical-fields label')].filter(label => !label.textContent.trim()).length })`);
+      assert.ok(geometry.scrollWidth <= width + 1, JSON.stringify({ language, width, geometry }));
+      assert.equal(geometry.emptyLabels, 0);
+      const screenshot = await cdp('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
+      const file = path.join(screenshotDirectory, `${language}-${width}-mystical.png`);
+      fs.writeFileSync(file, Buffer.from(screenshot.data, 'base64'));
+      console.log(`Screenshot: ${file}`);
+    }
+    await evaluate(`document.querySelector('#mystical-toggle').click()`);
+    assert.equal(await evaluate(`document.querySelector('#mystical-fields').hidden`), true);
+    assert.equal(await evaluate(`document.querySelectorAll('#mystical-summary dd').length`), 6);
   }
+
+  const savedBeforeReload = await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v4'))`);
+  await cdp('Page.reload', { ignoreCache: true });
+  for (let attempt = 0; attempt < 100; attempt += 1) {
+    if (await evaluate('Boolean(window.__reflectionTools?.has("calculate_spiritual_reflection_result"))')) break;
+    await pause(100);
+  }
+  const savedAfterReload = await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v4'))`);
+  assert.deepEqual(savedAfterReload.answers, savedBeforeReload.answers);
+  assert.deepEqual(savedAfterReload.mysticalAnswers, savedBeforeReload.mysticalAnswers);
+  assert.equal(await evaluate(`document.querySelectorAll('#mystical-summary dd').length`), 6);
+  assert.equal(await evaluate(`document.querySelector('#mystical-fields').hidden`), true);
+  await evaluate(`window.__strongAnswers = JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v4')).answers`);
   await cdp('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1100, deviceScaleFactor: 1, mobile: false });
   const review = await evaluate(`(() => {
     const select = document.querySelector('#language-select'); select.value = 'hr'; select.dispatchEvent(new Event('change', { bubbles: true }));
@@ -163,8 +214,19 @@ async function main() {
   assert.ok(print.height > 100 && print.text > 40);
   assert.ok(print.items > 0);
   assert.equal(print.visibleItems, print.items, JSON.stringify(print));
+  const mysticalPrint = await evaluate(`({
+    section: getComputedStyle(document.querySelector('#mystical-section')).display,
+    fields: getComputedStyle(document.querySelector('#mystical-fields')).display,
+    answers: [...document.querySelectorAll('#mystical-summary dd')].filter(item => item.getBoundingClientRect().height > 0).length
+  })`);
+  assert.notEqual(mysticalPrint.section, 'none');
+  assert.equal(mysticalPrint.fields, 'none');
+  assert.equal(mysticalPrint.answers, 6);
+  await evaluate(`document.querySelector('#mystical-clear').click()`);
+  assert.equal(await evaluate(`getComputedStyle(document.querySelector('#mystical-section')).display`), 'none');
+  assert.equal(await evaluate(`window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({}).stage`), 3);
   assert.deepEqual(exceptions, []);
-  console.log('PASS: real Chrome renders null and I–IV in both languages, narrow/desktop without overflow, criteria visible in print, no uncaught exceptions.');
+  console.log('PASS: real Chrome renders null and I–IV, optional mystical radios and keyboard navigation in both languages; desktop/mobile without overflow, refresh preserves reports, print summaries visible, scoring unchanged, no uncaught exceptions.');
 }
 
 main().catch((error) => { console.error(error); process.exitCode = 1; }).finally(async () => {

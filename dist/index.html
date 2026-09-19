@@ -19,6 +19,9 @@
     <script src="./locales/hr.js" defer></script>
     <script src="./questions/en.js" defer></script>
     <script src="./questions/hr.js" defer></script>
+    <script src="./questions/mystical-en.js" defer></script>
+    <script src="./questions/mystical-hr.js" defer></script>
+    <script src="./mystical-config.js" defer></script>
     <script src="./assessment-config.js" defer></script>
     <script src="./assessment-engine.js" defer></script>
     <script src="./app.js" defer></script>
@@ -232,6 +235,26 @@
             <p id="answered-summary" class="answered-summary"></p>
             <p id="criteria-summary" class="confidence-summary"></p>
           </aside>
+
+          <section id="mystical-section" class="mystical-card" aria-labelledby="mystical-heading">
+            <p id="mystical-kicker" class="eyebrow"></p>
+            <h2 id="mystical-heading"></h2>
+            <p id="mystical-intro" class="mystical-intro"></p>
+            <p id="mystical-timeframe" class="mystical-guidance"></p>
+            <div class="mystical-actions">
+              <button id="mystical-toggle" class="secondary-button" type="button" aria-expanded="false" aria-controls="mystical-fields"></button>
+              <button id="mystical-clear" class="text-button" type="button" disabled></button>
+            </div>
+            <p id="mystical-privacy" class="mystical-guidance"></p>
+            <p id="mystical-progress" class="mystical-progress"></p>
+            <div id="mystical-fields" hidden></div>
+            <p id="mystical-status" class="sr-only" role="status" aria-live="polite"></p>
+            <div class="mystical-summary-card">
+              <h3 id="mystical-summary-title"></h3>
+              <div id="mystical-summary"></div>
+              <p id="mystical-summary-note" class="mystical-guidance"></p>
+            </div>
+          </section>
 
           <section class="criteria-card" aria-labelledby="criteria-heading">
             <p class="eyebrow" data-i18n="criteriaEyebrow">Every requirement matters</p>

@@ -10,6 +10,8 @@
 
   const translations = window.spiritualLocales;
   const questionCopies = window.spiritualQuestions;
+  const mysticalConfig = window.spiritualMysticalReflection;
+  const mysticalCopies = window.spiritualMysticalContent;
 
 
   const elements = {
@@ -44,6 +46,8 @@
     language: restoredState?.language ?? detectLanguage(),
     currentIndex: restoredState?.currentIndex ?? 0,
     answers: restoredState?.answers ?? {},
+    mysticalAnswers: restoredState?.mysticalAnswers ?? {},
+    mysticalOpen: restoredState?.mysticalOpen ?? false,
     view: restoredState?.view ?? "intro"
   };
 
@@ -86,7 +90,15 @@
         ? saved.view
         : "intro";
 
-      return { language, currentIndex, answers, view };
+      const mysticalAnswers = {};
+      if (saved.mysticalVersion === mysticalConfig.version) {
+        mysticalConfig.questions.forEach((question) => {
+          const answer = saved.mysticalAnswers?.[question.id];
+          if (question.options.includes(answer)) mysticalAnswers[question.id] = answer;
+        });
+      }
+      const mysticalOpen = saved.mysticalVersion === mysticalConfig.version && saved.mysticalOpen === true;
+      return { language, currentIndex, answers, view, mysticalAnswers, mysticalOpen };
     } catch {
       return null;
     }
@@ -99,6 +111,9 @@
         language: state.language,
         currentIndex: state.currentIndex,
         answers: state.answers,
+        mysticalVersion: mysticalConfig.version,
+        mysticalAnswers: state.mysticalAnswers,
+        mysticalOpen: state.mysticalOpen,
         view: state.view
       }));
     } catch {
@@ -256,6 +271,58 @@
     return {met:checks.filter(c=>c.status==="met").length,notMet:checks.filter(c=>c.status==="notMet").length,unknown:checks.filter(c=>c.status==="unknown").length,notTriggered:checks.filter(c=>c.status==="notTriggered").length,total:checks.length};
   }
 
+  function renderMysticalSummary() {
+    const copy = mysticalCopies[state.language];
+    const entries = copy.questions.filter(question => Object.hasOwn(state.mysticalAnswers, question.id));
+    document.querySelector("#mystical-progress").textContent = format(copy.progress, {
+      answered: entries.length, total: mysticalConfig.questions.length
+    });
+    document.querySelector("#mystical-clear").disabled = entries.length === 0;
+    document.querySelector("#mystical-section").setAttribute("data-has-answers", String(entries.length > 0));
+    // Repeat only the person's chosen descriptions. No spiritual interpretation
+    // is inferred, and none of this state is passed to calculateResult().
+    document.querySelector("#mystical-summary").innerHTML = entries.length
+      ? `<dl>${entries.map(question => {
+        const option = question.options.find(item => item.value === state.mysticalAnswers[question.id]);
+        return `<div><dt>${escapeHtml(question.title)}</dt><dd>${escapeHtml(option.label)}</dd></div>`;
+      }).join("")}</dl>`
+      : `<p>${escapeHtml(copy.summaryEmpty)}</p>`;
+  }
+
+  function renderMystical() {
+    const copy = mysticalCopies[state.language];
+    const labels = {
+      "mystical-kicker": copy.kicker, "mystical-heading": copy.title,
+      "mystical-intro": copy.intro, "mystical-timeframe": copy.timeframe,
+      "mystical-privacy": copy.privacy, "mystical-clear": copy.clearButton,
+      "mystical-summary-title": copy.summaryTitle, "mystical-summary-note": copy.summaryNote
+    };
+    Object.entries(labels).forEach(([id, text]) => { document.querySelector(`#${id}`).textContent = text; });
+    const toggle = document.querySelector("#mystical-toggle");
+    toggle.textContent = state.mysticalOpen ? copy.hideButton : copy.startButton;
+    toggle.setAttribute("aria-expanded", String(state.mysticalOpen));
+    const fields = document.querySelector("#mystical-fields");
+    fields.hidden = !state.mysticalOpen;
+    fields.innerHTML = copy.questions.map((question, index) => `
+      <fieldset class="mystical-question" aria-describedby="mystical-${question.id}-clarification">
+        <legend>${index + 1}. ${escapeHtml(question.title)}</legend>
+        <div class="question-example">
+          <p class="question-example-label">${escapeHtml(translations[state.language].exampleLabel)}</p>
+          <p class="mystical-story">${escapeHtml(question.example)}</p>
+        </div>
+        <p id="mystical-${question.id}-clarification" class="question-clarification">${escapeHtml(question.clarification)}</p>
+        <div class="answer-options">${question.options.map(option => `
+          <label class="answer-option">
+            <input type="radio" name="mystical-${question.id}" data-mystical-question="${question.id}" value="${option.value}" ${state.mysticalAnswers[question.id] === option.value ? "checked" : ""} />
+            <span class="answer-content">${escapeHtml(option.label)}</span>
+          </label>`).join("")}
+        </div>
+        <p class="mystical-source"><strong>${escapeHtml(copy.sourceLabel)}</strong> ${escapeHtml(question.sourceNote)}</p>
+      </fieldset>`).join("");
+    document.querySelector("#mystical-status").textContent = "";
+    renderMysticalSummary();
+  }
+
   function describeCounts(checks,copy) {
     return format(copy.criteriaCounts,countChecks(checks));
   }
@@ -317,6 +384,7 @@
     document.querySelector("#criteria-summary").textContent=copy.criteriaSummary;
     document.querySelector("#criteria-stage-select").innerHTML=copy.stages.slice(0,highestAssessedStage).map((item,index)=>`<option value="${index + 1}" ${index + 1===result.targetStage ? "selected" : ""}>${toRoman(index + 1)}. ${escapeHtml(item.name)}</option>`).join("");
     renderCriteria(result,result.targetStage);
+    renderMystical();
   }
 
   function renderAscent(result, copy) {
@@ -404,6 +472,9 @@
 
   function clearAndRetake() {
     state.answers = {};
+    state.mysticalAnswers = {};
+    state.mysticalOpen = false;
+    renderMystical();
     state.currentIndex = 0;
     showView("question");
     renderQuestion();
@@ -613,6 +684,28 @@
     openQuestionnaire();
   });
   elements.printButton.addEventListener("click", () => window.print());
+  document.querySelector("#mystical-toggle").addEventListener("click", () => {
+    state.mysticalOpen = !state.mysticalOpen;
+    renderMystical();
+    persistState();
+  });
+  document.querySelector("#mystical-clear").addEventListener("click", () => {
+    state.mysticalAnswers = {};
+    renderMystical();
+    persistState();
+    document.querySelector("#mystical-toggle").focus();
+  });
+  document.querySelector("#mystical-fields").addEventListener("change", (event) => {
+    const input = event.target;
+    if (!(input instanceof HTMLInputElement)) return;
+    const question = mysticalConfig.questions.find(item => item.id === input.dataset.mysticalQuestion);
+    if (!question || !question.options.includes(input.value)) return;
+    state.mysticalAnswers[question.id] = input.value;
+    persistState();
+    // Do not replace the radio inputs here: preserve focus and arrow-key use.
+    renderMysticalSummary();
+    document.querySelector("#mystical-status").textContent = mysticalCopies[state.language].answerSaved;
+  });
   elements.retakeButton.addEventListener("click", clearAndRetake);
   elements.optionsRoot.addEventListener("change", (event) => {
     if (!(event.target instanceof HTMLInputElement)) return;

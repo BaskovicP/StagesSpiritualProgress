@@ -15,6 +15,8 @@ Izvor: `stages-of-spiritual-progress.md`. Pitanja i priče autorske su prilagodb
 
 Pravila nasljeđivanja i tumačenje izraza poput „redovito” ili „stalno” autorske su odluke aplikacije, ne algoritam koji je izvor propisao. Vidi `ASSESSMENT-NOTES.md` za granice primjene.
 
+Uz rezultat je dostupan i zaseban neobvezan dodatak sa šest izravnih pitanja o mističnim iskustvima. On se ne boduje i ne mijenja nijedan praktični prag. Njegove veze s izvorom i dopunska pitanja uz VII. opisani su u [MYSTICAL-REFLECTION-NOTES.md](MYSTICAL-REFLECTION-NOTES.md).
+
 ## Sva pitanja
 
 ### 1. Kako postupam sa situacijama za koje iz iskustva znam da me vode prema smrtnom grijehu?

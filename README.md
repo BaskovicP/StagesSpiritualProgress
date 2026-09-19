@@ -69,11 +69,13 @@ Translations, stage descriptions, interface labels, accessibility text, and ques
 
 - `dist/locales/en.js` and `hr.js` contain interface copy and source descriptions;
 - `dist/questions/en.js` and `hr.js` contain questions, answer descriptions, stories, clarifications and criterion explanations;
+- `dist/questions/mystical-en.js` and `mystical-hr.js` contain the separate optional mystical-experience module and its UI copy;
+- `dist/mystical-config.js` contains its stable IDs and allowed values, with no scoring rules;
 - `dist/assessment-config.js` contains versioned IDs, source references and accepted, exempt or unknown options for each threshold;
 - `dist/assessment-engine.js` is the pure all-required-criteria evaluator;
 - `dist/app.js` contains rendering, navigation, temporary session handling and browser-tool integration.
 
-To add a language, copy both its locale and question-bank files, register the language on `window.spiritualLocales` and `window.spiritualQuestions`, load both before `app.js`, and add the language to the selector in `dist/index.html`. Question IDs, order, option indices and expectation keys must stay aligned with `questionBlueprints`.
+To add a language, copy its locale, question-bank and mystical-module files, register the language on `window.spiritualLocales`, `window.spiritualQuestions` and `window.spiritualMysticalContent`, load them before `app.js`, and add the language to the selector in `dist/index.html`. Core question IDs, order, option indices and expectation keys must stay aligned with `questionBlueprints`; optional IDs and values must match `spiritualMysticalReflection.questions`.
 
 ## Questionnaire model
 
@@ -96,6 +98,16 @@ No average, fractional stage, confidence percentage or bootstrap interval is cal
 See [`ASSESSMENT-NOTES.md`](./ASSESSMENT-NOTES.md) for the design rationale, interpretation limits, and the validation work required before making psychometric claims.
 
 ## Source descriptions on the result page
+
+### Optional mystical-experience questions
+
+An always-visible card on the result page offers six optional questions about contemplative prayer, inner purification, unusual phenomena, a reported sense of union with God, lasting everyday changes, and spiritual direction. Opening the card is optional, regardless of the practical result. Each question has a story, clarification, neutral answer choices and a source note. These are self-reports for discernment, not tests of supernatural authenticity or evidence assigning VI or VII. The supplied source only names VII; the union question is explicitly supplemental, not an invented VII criterion.
+
+The module is not restricted to eight weeks, is not required to obtain a result, and cannot raise or lower that result. The summary repeats only selected answers. It can be printed with the result, even when the form is closed. No blank optional form is printed. Optional answers remain separate from core answers in the same tab's temporary `sessionStorage`; there is a separate clear button, and restarting clears both. Version 1 of this module does not invalidate existing version 4 core progress. Changing the module version drops only its optional answers.
+
+See [the optional-module source notes](MYSTICAL-REFLECTION-NOTES.md) for the theological scope and source distinctions.
+
+### Stage descriptions
 
 Each supported practical pattern includes a separate, always-visible plain-language description from the original markdown. If none is supported, I is shown explicitly as a reference for comparison, not an assigned result. Descriptions of V–VII can be read in a separate expandable section. The bilingual paragraphs are kept in `stages[].sourceDescription`; they are also included in printed results and the WebMCP response.
 
