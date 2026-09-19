@@ -63,7 +63,14 @@ Then open `http://localhost:4173`.
 
 The app automatically chooses Croatian for browsers whose preferred language begins with `hr`; otherwise it uses English. The visitor may switch languages without reloading, and the choice is not stored.
 
-Translations, stage descriptions, and question text are kept in the `translations` object in `dist/app.js`. A new language can be added by copying one complete language object and adding the corresponding option to the language selector in `dist/index.html`.
+Translations, stage descriptions, interface labels, accessibility text, and question text are kept outside the application logic:
+
+- `dist/locales/en.js` contains the complete English copy;
+- `dist/locales/hr.js` contains the complete Croatian copy;
+- `dist/assessment-config.js` contains language-independent question IDs, dimensions, and scoring direction;
+- `dist/app.js` contains rendering, navigation, scoring, and stability calculations only.
+
+To add a language, copy one locale file, register its language code on `window.spiritualLocales`, load it before `app.js`, and add the language to the selector in `dist/index.html`. The question order must stay aligned with `questionBlueprints` in `dist/assessment-config.js`.
 
 ## Questionnaire model
 
