@@ -15,6 +15,18 @@ Answers and results exist only in JavaScript memory for the currently open tab.
 
 ## Cloudflare Pages deployment
 
+### Cloudflare Workers with Git integration
+
+The included `wrangler.jsonc` deploys the static `dist` directory through Cloudflare Workers Static Assets. Use these build settings:
+
+- Production branch: `main`
+- Build command: leave blank
+- Deploy command: `npx wrangler deploy`
+- Non-production branch deploy command: `npx wrangler versions upload`
+- Root directory: `/`
+
+The Worker name is `stagesspiritualprogress` and must match the project name in Cloudflare.
+
 ### Recommended: Git integration
 
 1. Push this directory to a GitHub or GitLab repository.
