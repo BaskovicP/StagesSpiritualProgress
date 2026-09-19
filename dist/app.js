@@ -30,7 +30,7 @@
 
   const translations = {
     en: {
-      metaTitle: "Viae — Spiritual Progress Reflection",
+      metaTitle: "Spiritual Progress Reflection",
       privacyPill: "No data collected",
       languageLabel: "Language",
       eyebrow: "A private reflection",
@@ -53,6 +53,7 @@
       preferNot: "I prefer not to answer this question.",
       needMore: "Please answer at least 7 questions to receive a meaningful estimate. This question was previously skipped.",
       footerNote: "For personal reflection; not a substitute for spiritual direction or confession.",
+      footerIdentity: "Stages of Spiritual Progress",
       resultEyebrow: "Your closest pattern",
       ascentTitle: "Your place on the path",
       ascentPosition: "Approximate position: {score} of 6, closest to Stage {stage}.",
@@ -272,7 +273,7 @@
       ]
     },
     hr: {
-      metaTitle: "Viae — Promišljanje o duhovnom napretku",
+      metaTitle: "Promišljanje o duhovnom napretku",
       privacyPill: "Bez prikupljanja podataka",
       languageLabel: "Jezik",
       eyebrow: "Privatno promišljanje",
@@ -295,6 +296,7 @@
       preferNot: "Ne želim odgovoriti na ovo pitanje.",
       needMore: "Odgovori na najmanje 7 pitanja kako bi procjena bila smislena. Ovo je pitanje prethodno preskočeno.",
       footerNote: "Za osobno promišljanje; ne zamjenjuje duhovno vodstvo ni ispovijed.",
+      footerIdentity: "Stupnjevi duhovnog napretka",
       resultEyebrow: "Tvoj najbliži obrazac",
       ascentTitle: "Tvoje mjesto na putu",
       ascentPosition: "Približan položaj: {score} od 6, najbliže {stage}. stupnju.",
@@ -525,6 +527,7 @@
     previousButton: document.querySelector("#previous-button"),
     nextButton: document.querySelector("#next-button"),
     nextButtonLabel: document.querySelector("#next-button-label"),
+    questionProgress: document.querySelector("#question-progress"),
     stagePath: document.querySelector("#stage-path"),
     optionsRoot: document.querySelector("#answer-options"),
     assessmentMessage: document.querySelector("#assessment-message"),
@@ -558,6 +561,7 @@
     document.title = copy.metaTitle;
     elements.languageSelect.value = state.language;
     elements.languageSelect.setAttribute("aria-label", copy.languageLabel);
+    elements.questionProgress.setAttribute("aria-label", copy.yourProgress);
 
     document.querySelectorAll("[data-i18n]").forEach((element) => {
       const value = copy[element.dataset.i18n];
@@ -597,7 +601,8 @@
     document.querySelector("#progress-domain").textContent = copy.domains[blueprint.domain];
     document.querySelector("#question-kicker").textContent = question.kicker;
     document.querySelector("#question-title").textContent = question.title;
-    document.querySelector("#progress-fill").style.width = `${((state.currentIndex + 1) / questionBlueprints.length) * 100}%`;
+    elements.questionProgress.value = state.currentIndex + 1;
+    elements.questionProgress.max = questionBlueprints.length;
     elements.previousButton.disabled = state.currentIndex === 0;
     elements.nextButton.disabled = selected === undefined;
     elements.nextButtonLabel.textContent = isLast ? copy.seeResult : copy.next;
@@ -701,7 +706,13 @@
                 <span>${escapeHtml(copy.domains[domain])}</span>
                 <span class="domain-unanswered">${escapeHtml(copy.notAnswered)}</span>
               </div>
-              <div class="domain-track"><span style="width: 0%"></span></div>
+              <progress
+                class="domain-track"
+                value="0"
+                max="6"
+                aria-label="${escapeHtml(copy.domains[domain])}"
+                aria-valuetext="${escapeHtml(copy.notAnswered)}"
+              ></progress>
             </div>
           `;
         }
@@ -713,9 +724,13 @@
               <span>${escapeHtml(copy.domains[domain])}</span>
               <span class="domain-stage">${toRoman(stageNumber)} · ${escapeHtml(stageName)}</span>
             </div>
-            <div class="domain-track" role="meter" aria-valuemin="1" aria-valuemax="6" aria-valuenow="${score.toFixed(1)}">
-              <span style="width: ${(score / 6) * 100}%"></span>
-            </div>
+            <progress
+              class="domain-track"
+              value="${score.toFixed(1)}"
+              max="6"
+              aria-label="${escapeHtml(copy.domains[domain])}"
+              aria-valuetext="${toRoman(stageNumber)} · ${escapeHtml(stageName)}"
+            ></progress>
           </div>
         `;
       })
@@ -766,7 +781,7 @@
         if (stageNumber === result.stage) classes.push("is-closest");
         if (stageNumber >= result.lower && stageNumber <= result.upper) classes.push("is-in-range");
         return `
-          <li class="${classes.join(" ")}" style="top: ${(point.y / 560) * 100}%">
+          <li class="${classes.join(" ")} ascent-stage-${stageNumber}">
             <strong><span>${toRoman(stageNumber)}</span>${escapeHtml(item.name)}</strong>
             <small>${escapeHtml(copy.families[item.family])}</small>
           </li>

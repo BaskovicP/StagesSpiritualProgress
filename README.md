@@ -1,6 +1,6 @@
-# Viae — Spiritual Progress Reflection
+# Spiritual Progress Reflection
 
-A private, bilingual (English/Croatian) browser questionnaire based on the six described stages of spiritual progress from *Apostoli Viae — Unum est Necessarium*.
+A private, independent, bilingual (English/Croatian) browser questionnaire for reflecting on six described stages of spiritual progress. It is not an official publication or assessment of any organization.
 
 ## Privacy
 
@@ -43,7 +43,7 @@ The Worker name is `stagesspiritualprogress` and must match the project name in 
 
 ### Fastest: direct upload
 
-Upload `viae-questionnaire-cloudflare.zip` through **Workers & Pages → Create application → Get started → Drag and drop your files**. The ZIP already contains `index.html` and every required asset at its root.
+Upload `spiritual-progress-questionnaire-cloudflare.zip` through **Workers & Pages → Create application → Get started → Drag and drop your files**. The ZIP already contains `index.html` and every required asset at its root.
 
 Cloudflare does not let an existing Direct Upload project switch to Git integration later. Use the Git option above if you want every future code change to deploy automatically.
 
