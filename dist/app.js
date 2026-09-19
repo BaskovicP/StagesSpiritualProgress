@@ -4,14 +4,12 @@
   const assessment = window.spiritualAssessment;
   const domainOrder = assessment.domainOrder;
   const questionBlueprints = assessment.questionBlueprints;
-  const minimumAnswers = 21;
-  const minimumItemsPerDomain = 2;
-  const lowestAssessedStage = 1;
-  const highestAssessedStage = 6;
+  const highestAssessedStage = assessment.highestAssessedStage;
   const storageVersion = assessment.questionnaireVersion;
   const storageKey = `spiritual-progress-reflection:v${storageVersion}`;
 
   const translations = window.spiritualLocales;
+  const questionCopies = window.spiritualQuestions;
 
 
   const elements = {
@@ -49,7 +47,7 @@
     view: restoredState?.view ?? "intro"
   };
 
-  if (state.view === "result" && !hasMinimumCoverage(getAnsweredEntries())) {
+  if (state.view === "result" && !isComplete()) {
     state.view = "question";
   }
 
@@ -73,7 +71,7 @@
       const answers = {};
       questionBlueprints.forEach((question) => {
         const answer = saved.answers?.[question.id];
-        if (answer === "skip" || (Number.isInteger(answer) && answer >= 0 && answer < 5)) {
+        if (answer === "skip" || (Number.isInteger(answer) && answer >= 0 && answer < question.optionCount)) {
           answers[question.id] = answer;
         }
       });
@@ -125,6 +123,7 @@
     });
 
     renderStagePath();
+    renderSourceGuide();
     updateStartLabel();
     if (state.view === "question") renderQuestion();
     if (state.view === "result") renderResult();
@@ -149,7 +148,7 @@
   function renderQuestion() {
     const copy = translations[state.language];
     const blueprint = questionBlueprints[state.currentIndex];
-    const question = copy.questions[state.currentIndex];
+    const question = questionCopies[state.language][state.currentIndex];
     const selected = state.answers[blueprint.id];
     const isLast = state.currentIndex === questionBlueprints.length - 1;
 
@@ -229,104 +228,95 @@
       return;
     }
 
-    const answered = getAnsweredEntries();
-    if (!hasMinimumCoverage(answered)) {
-      const counts = countAnsweredByDomain(answered);
-      const firstSkipped = questionBlueprints.findIndex((question) =>
-        state.answers[question.id] === "skip" && counts[question.domain] < minimumItemsPerDomain
-      );
-      const anySkipped = questionBlueprints.findIndex((question) => state.answers[question.id] === "skip");
-      state.currentIndex = firstSkipped >= 0 ? firstSkipped : (anySkipped >= 0 ? anySkipped : 0);
+    if (!isComplete()) {
+      state.currentIndex = questionBlueprints.findIndex((question) => state.answers[question.id] === undefined);
       renderQuestion();
-      persistState();
       elements.assessmentMessage.textContent = translations[state.language].needMore;
       elements.assessmentMessage.hidden = false;
       return;
     }
-
     showView("result");
     renderResult();
     requestAnimationFrame(() => document.querySelector("#result-heading").focus());
   }
 
-  function renderResult() {
+  function sourceParagraphs(stage, copy) {
+    return stage.sourceDescription.map(({domain,text}) => `<p><strong>${escapeHtml(copy.domains[domain])}:</strong> ${escapeHtml(text)}</p>`).join("");
+  }
+
+  function renderSourceGuide() {
     const copy = translations[state.language];
-    const result = calculateResult();
-    const stage = copy.stages[result.stage - 1];
+    document.querySelector("#advanced-source-guide").innerHTML = copy.stages.slice(4).map((stage,index) => `
+      <section><h3>${toRoman(index + 5)}. ${escapeHtml(stage.name)}</h3>
+      ${stage.sourceDescription.length ? sourceParagraphs(stage,copy) : `<p>${escapeHtml(stage.summary)}</p>`}
+      </section>`).join("");
+  }
 
-    renderAscent(result, copy);
+  function countChecks(checks) {
+    return {met:checks.filter(c=>c.status==="met").length,notMet:checks.filter(c=>c.status==="notMet").length,unknown:checks.filter(c=>c.status==="unknown").length,notTriggered:checks.filter(c=>c.status==="notTriggered").length,total:checks.length};
+  }
 
-    document.querySelector("#result-number").textContent = toRoman(result.stage);
-    document.querySelector("#result-family").textContent = copy.families[stage.family];
-    document.querySelector("#result-heading").textContent = stage.name;
-    document.querySelector("#result-summary").textContent = copy.resultSummary;
-    document.querySelector("#source-description-heading").textContent = `${toRoman(result.stage)}. ${stage.name}`;
-    document.querySelector("#source-description-body").innerHTML = stage.sourceDescription
-      .map(({ domain, text }) => `
-        <p><strong>${escapeHtml(copy.domains[domain])}:</strong> ${escapeHtml(text)}</p>
-      `)
-      .join("");
-    document.querySelector("#source-description-reference").textContent = format(copy.sourceDescriptionReference, {
-      stage: toRoman(result.stage)
-    });
-    document.querySelector("#confidence-badge").textContent = `${result.stabilityPercent}% · ${copy.confidence[result.confidence]}`;
+  function describeCounts(checks,copy) {
+    return format(copy.criteriaCounts,countChecks(checks));
+  }
 
-    const rangeText = result.lower === result.upper
-      ? format(copy.rangeSingle, { stage: toRoman(result.stage) })
-      : format(copy.rangeMultiple, { lower: toRoman(result.lower), upper: toRoman(result.upper) });
-    document.querySelector("#result-range").textContent = rangeText;
+  function renderCriteria(result,stageNumber) {
+    const copy=translations[state.language];
+    const checks=result.stageChecks[stageNumber - 1].checks;
+    document.querySelector("#criteria-heading").textContent=format(copy.criteriaTitle,{stage:toRoman(stageNumber)});
+    document.querySelector("#criteria-checks").innerHTML=domainOrder.map(domain=>{
+      const domainChecks=checks.filter(check=>check.domain===domain);
+      if(!domainChecks.length)return "";
+      const needsReview=domainChecks.some(check=>["notMet","unknown"].includes(check.status));
+      return `<details class="criterion-group" ${needsReview ? "open" : ""}>
+        <summary>${escapeHtml(copy.domains[domain])}<span>${escapeHtml(describeCounts(domainChecks,copy))}</span></summary>
+        <ul>${domainChecks.map(check=>{
+          const index=questionBlueprints.findIndex(question=>question.id===check.id);
+          const question=questionCopies[state.language][index];
+          const selected=Number.isInteger(check.selected) ? question.options[check.selected] || copy.notAnswered : copy.preferNot;
+          return `<li class="criterion-item">
+            <span class="criterion-status criterion-status-${check.status}">${escapeHtml(copy.criterionStatuses[check.status])}</span>
+            <h4>${escapeHtml(question.expectations[check.ruleStage])}</h4>
+            <p>${escapeHtml(copy.yourAnswer)} ${escapeHtml(selected)}</p>
+            ${check.status==="unknown" ? `<p>${escapeHtml(copy.criterionUnknownNote)}</p>` : ""}
+            ${check.status==="notTriggered" ? `<p>${escapeHtml(copy.criterionExemptNote)}</p>` : ""}
+            <p class="criterion-source">${escapeHtml(copy.criterionSource)} ${escapeHtml(questionBlueprints[index].sources.join("; "))}</p>
+            <button type="button" class="text-button" data-review-question="${index}">${escapeHtml(copy.reviewThisAnswer)}</button>
+          </li>`;
+        }).join("")}</ul></details>`;
+    }).join("");
+  }
 
-    document.querySelector("#domain-profile").innerHTML = domainOrder
-      .map((domain) => {
-        const score = result.domainScores[domain];
-        if (score === null) {
-          return `
-            <div class="domain-row">
-              <div class="domain-row-head">
-                <span>${escapeHtml(copy.domains[domain])}</span>
-                <span class="domain-unanswered">${escapeHtml(copy.notAnswered)}</span>
-              </div>
-              <progress
-                class="domain-track"
-                value="0"
-                max="${highestAssessedStage}"
-                aria-label="${escapeHtml(copy.domains[domain])}"
-                aria-valuetext="${escapeHtml(copy.notAnswered)}"
-              ></progress>
-            </div>
-          `;
-        }
-        const stageNumber = clamp(Math.round(score), lowestAssessedStage, highestAssessedStage);
-        const stageName = copy.stages[stageNumber - 1].name;
-        return `
-          <div class="domain-row">
-            <div class="domain-row-head">
-              <span>${escapeHtml(copy.domains[domain])}</span>
-              <span class="domain-stage">${toRoman(stageNumber)} · ${escapeHtml(stageName)}</span>
-            </div>
-            <progress
-              class="domain-track"
-              value="${score.toFixed(1)}"
-              max="${highestAssessedStage}"
-              aria-label="${escapeHtml(copy.domains[domain])}"
-              aria-valuetext="${toRoman(stageNumber)} · ${escapeHtml(stageName)}"
-            ></progress>
-          </div>
-        `;
-      })
-      .join("");
-
-    document.querySelector("#answered-summary").textContent = format(copy.answeredSummary, {
-      answered: result.answeredCount,
-      total: questionBlueprints.length,
-      domains: result.domainCount
-    });
-    document.querySelector("#confidence-summary").textContent = format(copy.stabilitySummary, {
-      percent: result.stabilityPercent,
-      stage: toRoman(result.stage),
-      lower: toRoman(result.lower),
-      upper: toRoman(result.upper)
-    });
+  function renderResult() {
+    const copy=translations[state.language];
+    const result=calculateResult();
+    const stage=result.stage ? copy.stages[result.stage - 1] : null;
+    const targetChecks=result.stageChecks[result.targetStage - 1].checks;
+    renderAscent(result,copy);
+    document.querySelector("#result-number").textContent=result.stage ? toRoman(result.stage) : "—";
+    document.querySelector("#result-family").textContent=stage ? copy.families[stage.family] : copy.mixedFamily;
+    document.querySelector("#result-heading").textContent=stage ? stage.name : copy.mixedTitle;
+    document.querySelector("#result-summary").textContent=stage ? copy.resultSummary : copy.mixedSummary;
+    const describedStage=result.stage || result.targetStage;
+    const description=copy.stages[describedStage - 1];
+    document.querySelector("#source-description-heading").textContent=`${toRoman(describedStage)}. ${description.name}`;
+    document.querySelector("#source-description-intro").textContent=stage ? copy.sourceDescriptionIntro : copy.sourceDescriptionFallback;
+    document.querySelector("#source-description-body").innerHTML=sourceParagraphs(description,copy);
+    document.querySelector("#source-description-reference").textContent=format(copy.sourceDescriptionReference,{stage:toRoman(describedStage)});
+    document.querySelector("#criteria-badge").textContent=copy.ruleBased;
+    document.querySelector("#result-range").textContent=result.stage===highestAssessedStage
+      ? copy.upperLimitNote : format(copy.nextThreshold,{stage:toRoman(result.targetStage)});
+    document.querySelector("#profile-title").textContent=format(copy.criteriaTitle,{stage:toRoman(result.targetStage)});
+    document.querySelector("#domain-profile").innerHTML=domainOrder.map(domain=>{
+      const checks=targetChecks.filter(check=>check.domain===domain);
+      if(!checks.length)return "";
+      return `<div class="domain-row"><div class="domain-row-head"><strong>${escapeHtml(copy.domains[domain])}</strong></div>
+      <p class="domain-criteria-counts">${escapeHtml(describeCounts(checks,copy))}</p></div>`;
+    }).join("");
+    document.querySelector("#answered-summary").textContent=format(copy.answeredSummary,{answered:result.answeredCount,total:questionBlueprints.length,skipped:result.skippedCount});
+    document.querySelector("#criteria-summary").textContent=copy.criteriaSummary;
+    document.querySelector("#criteria-stage-select").innerHTML=copy.stages.slice(0,highestAssessedStage).map((item,index)=>`<option value="${index + 1}" ${index + 1===result.targetStage ? "selected" : ""}>${toRoman(index + 1)}. ${escapeHtml(item.name)}</option>`).join("");
+    renderCriteria(result,result.targetStage);
   }
 
   function renderAscent(result, copy) {
@@ -339,26 +329,14 @@
       { x: 46, y: 110 },
       { x: 54, y: 26 }
     ];
-    const score = clamp(result.overallScore, lowestAssessedStage, highestAssessedStage);
-    const lowerIndex = Math.min(Math.floor(score) - lowestAssessedStage, highestAssessedStage - 1);
-    const fraction = score >= highestAssessedStage ? 0 : score - Math.floor(score);
-    const start = stagePoints[lowerIndex];
-    const end = stagePoints[Math.min(lowerIndex + 1, highestAssessedStage - 1)];
-    const markerX = start.x + (end.x - start.x) * fraction;
-    const markerY = start.y + (end.y - start.y) * fraction;
-
-    positionAscentMarker(
-      document.querySelector("#result-ascent-marker"),
-      markerX,
-      markerY
-    );
-
-    const ascent = document.querySelector("#result-ascent");
-    ascent.setAttribute("aria-valuenow", score.toFixed(1));
-    ascent.setAttribute("aria-valuetext", format(copy.ascentPosition, {
-      score: score.toFixed(1),
-      stage: toRoman(result.stage)
-    }));
+    const marker = document.querySelector("#result-ascent-marker");
+    marker.setAttribute("visibility", result.stage ? "visible" : "hidden");
+    if (result.stage) {
+      const point = stagePoints[result.stage - 1];
+      positionAscentMarker(marker, point.x, point.y);
+    }
+    document.querySelector("#result-ascent").setAttribute("aria-label", result.stage
+      ? format(copy.ascentPosition, { stage: toRoman(result.stage) }) : copy.mixedTitle);
 
     document.querySelector("#result-ascent-labels").innerHTML = stagePoints
       .map((point, index) => {
@@ -366,13 +344,12 @@
         const item = copy.stages[index];
         const classes = ["ascent-stage"];
         if (stageNumber === result.stage) classes.push("is-closest");
-        if (stageNumber >= result.lower && stageNumber <= result.upper) classes.push("is-in-range");
+
         if (item.assessmentNote) classes.push("is-unassessed");
         return `
           <li class="${classes.join(" ")} ascent-stage-${stageNumber}">
             <strong><span>${toRoman(stageNumber)}</span>${escapeHtml(item.name)}</strong>
             <small>${escapeHtml(copy.families[item.family])}</small>
-            ${item.assessmentNote ? `<em>${escapeHtml(item.assessmentNote)}</em>` : ""}
           </li>
         `;
       })
@@ -407,129 +384,22 @@
   }
 
   function calculateResult() {
-    const answered = getAnsweredEntries();
-    const grouped = Object.fromEntries(domainOrder.map((domain) => [domain, []]));
-    answered.forEach(({ blueprint, score }) => grouped[blueprint.domain].push(score));
-
-    const domainScores = Object.fromEntries(domainOrder.map((domain) => {
-      const values = grouped[domain];
-      return [domain, values.length ? average(values) : null];
-    }));
-
-    const representedScores = Object.values(domainScores).filter((score) => score !== null);
-    const overallScore = clamp(average(representedScores), lowestAssessedStage, highestAssessedStage);
-    const stage = clamp(Math.round(overallScore), lowestAssessedStage, highestAssessedStage);
-    const stability = estimatePatternStability(grouped, stage);
-    const lower = Math.min(
-      stage,
-      clamp(Math.round(stability.lowerScore), lowestAssessedStage, highestAssessedStage)
-    );
-    const upper = Math.max(
-      stage,
-      clamp(Math.round(stability.upperScore), lowestAssessedStage, highestAssessedStage)
-    );
-    const domainCount = representedScores.length;
-    const counts = countAnsweredByDomain(answered);
-    const minimumDomainItems = Math.min(...Object.values(counts));
-    const intervalWidth = stability.upperScore - stability.lowerScore;
-    let confidence = "low";
-    if (answered.length >= 26 && minimumDomainItems >= 3 && stability.support >= 0.8 && intervalWidth <= 1) {
-      confidence = "high";
-    } else if (answered.length >= minimumAnswers && minimumDomainItems >= minimumItemsPerDomain && stability.support >= 0.6 && intervalWidth <= 1.8) {
-      confidence = "moderate";
-    }
-
-    return {
-      stage,
-      overallScore,
-      lower,
-      upper,
-      confidence,
-      stabilityPercent: Math.round(stability.support * 100),
-      domainScores,
-      domainCount,
-      answeredCount: answered.length
-    };
+    return window.spiritualAssessmentEngine.evaluate(assessment,state.answers);
   }
 
   function getAnsweredEntries() {
-    const scale = [1, 2.25, 3.5, 4.75, 6];
-    return questionBlueprints.flatMap((blueprint) => {
-      const selected = state.answers[blueprint.id];
-      if (selected === undefined || selected === "skip") return [];
-      const directScore = scale[selected];
-      const score = blueprint.reverse
-        ? highestAssessedStage + lowestAssessedStage - directScore
-        : directScore;
-      return [{ blueprint, score }];
+    return questionBlueprints.filter(question=>Number.isInteger(state.answers[question.id]));
+  }
+
+  function getQuestionOptions(copy,index) {
+    return questionCopies[state.language][index].options;
+  }
+
+  function isComplete() {
+    return questionBlueprints.every(question=>{
+      const value=state.answers[question.id];
+      return value==="skip" || (Number.isInteger(value) && value>=0 && value<question.optionCount);
     });
-  }
-
-  function getQuestionOptions(copy, index) {
-    return copy.questions[index].options || copy.frequencyOptions;
-  }
-
-  function countAnsweredByDomain(answered) {
-    const counts = Object.fromEntries(domainOrder.map((domain) => [domain, 0]));
-    answered.forEach(({ blueprint }) => { counts[blueprint.domain] += 1; });
-    return counts;
-  }
-
-  function hasMinimumCoverage(answered) {
-    const counts = countAnsweredByDomain(answered);
-    return answered.length >= minimumAnswers
-      && domainOrder.every((domain) => counts[domain] >= minimumItemsPerDomain);
-  }
-
-  function estimatePatternStability(grouped, stage) {
-    const signature = questionBlueprints
-      .map((question) => `${question.id}:${state.answers[question.id] ?? "x"}`)
-      .join("|");
-    const random = seededRandom(signature);
-    const sampleScores = [];
-    let stageMatches = 0;
-
-    for (let iteration = 0; iteration < 1000; iteration += 1) {
-      const sampledDomains = domainOrder.flatMap((domain) => {
-        const values = grouped[domain];
-        if (!values.length) return [];
-        const resampled = Array.from(
-          { length: values.length },
-          () => values[Math.floor(random() * values.length)]
-        );
-        return [average(resampled)];
-      });
-      const sampleScore = clamp(
-        average(sampledDomains),
-        lowestAssessedStage,
-        highestAssessedStage
-      );
-      sampleScores.push(sampleScore);
-      if (
-        clamp(Math.round(sampleScore), lowestAssessedStage, highestAssessedStage) === stage
-      ) stageMatches += 1;
-    }
-
-    return {
-      support: stageMatches / sampleScores.length,
-      lowerScore: percentile(sampleScores, 0.025),
-      upperScore: percentile(sampleScores, 0.975)
-    };
-  }
-
-  function seededRandom(text) {
-    let seed = 2166136261;
-    for (let index = 0; index < text.length; index += 1) {
-      seed ^= text.charCodeAt(index);
-      seed = Math.imul(seed, 16777619);
-    }
-    return () => {
-      seed += 0x6d2b79f5;
-      let value = seed;
-      value = Math.imul(value ^ (value >>> 15), value | 1);
-      value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
-      return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
-    };
   }
 
   function clearAndRetake() {
@@ -548,26 +418,6 @@
     const span = elements.startButton.querySelector("span");
     if (span) span.textContent = label;
     elements.restartButton.hidden = !hasProgress;
-  }
-
-  function average(values) {
-    if (!values.length) return 0;
-    return values.reduce((sum, value) => sum + value, 0) / values.length;
-  }
-
-  function percentile(values, ratio) {
-    if (!values.length) return 1;
-    const sorted = [...values].sort((a, b) => a - b);
-    const position = (sorted.length - 1) * ratio;
-    const lower = Math.floor(position);
-    const upper = Math.ceil(position);
-    if (lower === upper) return sorted[lower];
-    return sorted[lower] + (sorted[upper] - sorted[lower]) * (position - lower);
-  }
-
-  function standardDeviation(values) {
-    const mean = average(values);
-    return Math.sqrt(average(values.map((value) => (value - mean) ** 2)));
   }
 
   function clamp(value, minimum, maximum) {
@@ -626,9 +476,9 @@
           questions: questionBlueprints.map((question, index) => ({
             id: question.id,
             domain: copy.domains[question.domain],
-            prompt: copy.questions[index].title,
-            example: copy.questions[index].example,
-            clarification: copy.questions[index].clarification || null,
+            prompt: questionCopies[state.language][index].title,
+            example: questionCopies[state.language][index].example,
+            clarification: questionCopies[state.language][index].clarification || null,
             domainHelp: copy.domainHelp[question.domain],
             responseInstructions: copy.chooseClosest,
             skipLabel: copy.preferNot,
@@ -702,8 +552,7 @@
       inputSchema: { type: "object", properties: {}, additionalProperties: false },
       annotations: { readOnlyHint: false, untrustedContentHint: false },
       execute() {
-        const answered = getAnsweredEntries();
-        if (!hasMinimumCoverage(answered)) {
+        if (!isComplete()) {
           throw new Error(toolCopy.coverageRequired);
         }
         const result = calculateResult();
@@ -712,21 +561,21 @@
         renderResult();
         return {
           stage: result.stage,
-          stageName: copy.stages[result.stage - 1].name,
+          stageName: result.stage ? copy.stages[result.stage - 1].name : null,
+          interpretation: result.stage ? copy.resultSummary : copy.mixedSummary,
+          targetStage: result.targetStage,
+          stageChecks: result.stageChecks,
           sourceDescription: {
+            describedStage: result.stage || result.targetStage,
             note: copy.sourceDescriptionIntro,
-            areas: copy.stages[result.stage - 1].sourceDescription.map(({ domain, text }) => ({
+            areas: copy.stages[(result.stage || result.targetStage) - 1].sourceDescription.map(({ domain, text }) => ({
               domain, label: copy.domains[domain], text
             })),
-            reference: format(copy.sourceDescriptionReference, { stage: toRoman(result.stage) }),
-            caution: copy.sourceDescriptionCaution,
-            interpretation: copy.resultSummary
+            caution: copy.sourceDescriptionCaution
           },
-          approximateScore: Number(result.overallScore.toFixed(1)),
-          range: { lower: result.lower, upper: result.upper },
-          patternStabilityPercent: result.stabilityPercent,
           answered: result.answeredCount,
-          representedDomains: result.domainCount
+          skipped: result.skippedCount,
+          limitation: copy.upperLimitNote
         };
       }
     });
@@ -749,6 +598,18 @@
   elements.nextButton.addEventListener("click", moveNext);
   elements.reviewButton.addEventListener("click", () => {
     state.currentIndex = 0;
+    openQuestionnaire();
+  });
+  document.querySelector("#criteria-stage-select").addEventListener("change", (event) => {
+    const selectedStage = Number(event.target.value);
+    if (Number.isInteger(selectedStage) && selectedStage >= 1 && selectedStage <= highestAssessedStage) {
+      renderCriteria(calculateResult(), selectedStage);
+    }
+  });
+  document.querySelector("#criteria-checks").addEventListener("click", (event) => {
+    const button = event.target.closest("[data-review-question]");
+    if (!button) return;
+    state.currentIndex = Number(button.dataset.reviewQuestion);
     openQuestionnaire();
   });
   elements.printButton.addEventListener("click", () => window.print());

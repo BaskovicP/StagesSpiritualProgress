@@ -46,7 +46,7 @@ function boot(language = 'hr', storage = new Map()) {
     requestAnimationFrame(fn) { fn(0); return 1; },
     cancelAnimationFrame() {}
   });
-  for (const file of ['locales/en.js', 'locales/hr.js', 'assessment-config.js', 'app.js']) {
+  for (const file of ['locales/en.js', 'locales/hr.js', 'questions/en.js', 'questions/hr.js', 'assessment-config.js', 'assessment-engine.js', 'app.js']) {
     vm.runInContext(fs.readFileSync(path.join(root, 'dist', file), 'utf8'), context, { filename: file });
   }
   return {
@@ -55,156 +55,199 @@ function boot(language = 'hr', storage = new Map()) {
   };
 }
 
-test('all revised questions and stories render in both languages, including conditional guidance', () => {
-  for (const lang of ['hr', 'en']) {
-    const app = boot(lang);
-    const questions = app.call('get_spiritual_reflection_questions').questions;
-    assert.equal(questions.length, 28);
-    assert.equal(new Set(questions.map((q) => q.id)).size, 28);
-    assert.equal(app.window.spiritualLocales[lang].stages.length, 7);
-    assert.match(app.element('#stage-path').innerHTML, /VII\./);
-    for (const [index, q] of questions.entries()) {
-      app.call('set_spiritual_reflection_answers', { answers: [{ questionId: q.id, optionIndex: 2 }] });
-      assert.equal(app.element('#question-title').textContent, q.prompt);
-      assert.equal(app.element('#question-example-text').textContent, q.example);
-      assert.equal(app.element('#question-context-text').textContent, q.domainHelp);
-      assert.equal(app.element('#question-clarification').hidden, !q.clarification);
-      assert.equal(app.element('#question-clarification').textContent, q.clarification || '');
-      assert.ok(q.example.length > 0 && q.domainHelp.length > 0);
-      assert.ok(app.window.spiritualAssessment.questionBlueprints[index].sources.length > 0);
-    }
+function strongAnswers(app) {
+  const answers={};
+  for(const q of app.window.spiritualAssessment.questionBlueprints) {
+    const rule=q.requirements[Math.max(...Object.keys(q.requirements).map(Number))];
+    answers[q.id]=rule.accepted[0];
   }
-});
+  for(const q of app.window.spiritualAssessment.questionBlueprints) {
+    const condition=q.exemptWhen;
+    if(condition?.bidirectional && condition.accepted.includes(answers[condition.questionId]))answers[q.id]=condition.optionIndex;
+  }
+  return answers;
+}
 
-test('no post-sin event can be skipped without lowering that area; insufficient coverage stays unavailable', () => {
-  const app = boot();
-  const items = app.window.spiritualAssessment.questionBlueprints;
-  app.call('set_spiritual_reflection_answers', {
-    answers: items.map((q) => ({ questionId: q.id, optionIndex: q.reverse ? 0 : 4 }))
-  });
-  const complete = app.call('calculate_spiritual_reflection_result');
-  assert.equal(complete.approximateScore, 6);
-  assert.equal(complete.stage, 6);
-  app.call('set_spiritual_reflection_answers', { answers: [
-    { questionId: 'mortal-repentance-reparation', skip: true },
-    { questionId: 'mortal-weak-resistance', skip: true }
-  ] });
-  const partial = app.call('calculate_spiritual_reflection_result');
-  assert.equal(partial.answered, 26);
-  assert.equal(partial.approximateScore, 6);
-  assert.equal(partial.stage, 6);
-  assert.match(app.element('#result-ascent-labels').innerHTML, /VII/);
-  app.call('set_spiritual_reflection_answers', { answers: [{ questionId: 'mortal-avoid-occasions', skip: true }] });
-  assert.throws(() => app.call('calculate_spiritual_reflection_result'));
-  app.call('set_spiritual_reflection_answers', {
-    answers: items.map((q) => ({ questionId: q.id, optionIndex: q.reverse ? 4 : 0 }))
-  });
-  assert.equal(app.call('calculate_spiritual_reflection_result').approximateScore, 1);
-});
+function setAnswers(app,answers) {
+  app.call('set_spiritual_reflection_answers',{answers:Object.entries(answers).map(([questionId,value])=>value==='skip'?{questionId,skip:true}:{questionId,optionIndex:value})});
+}
 
-test('current progress survives refresh and language changes; prior wording is not silently restored', () => {
-  const storage = new Map([['spiritual-progress-reflection:v2', JSON.stringify({
-    version: 2, language: 'en', currentIndex: 20, view: 'question',
-    answers: { 'serious-concrete-response': 4 }
-  })]]);
-  const fresh = boot('hr', storage);
-  assert.equal(fresh.element('#intro-view').hidden, false);
-  const key = 'spiritual-progress-reflection:v3';
-  assert.deepEqual(JSON.parse(storage.get(key)).answers, {});
-  fresh.call('set_spiritual_reflection_answers', { answers: [
-    { questionId: 'prayer-planned-meditation', optionIndex: 3 },
-    { questionId: 'mortal-repentance-reparation', skip: true }
-  ] });
-  fresh.element('#language-select').listeners.change({ target: { value: 'en' } });
-  const reloaded = boot('hr', storage);
-  const saved = JSON.parse(storage.get(key));
-  assert.equal(saved.language, 'en');
-  assert.equal(saved.answers['prayer-planned-meditation'], 3);
-  assert.equal(saved.answers['mortal-repentance-reparation'], 'skip');
-  assert.equal(reloaded.element('#question-title').textContent,
-    reloaded.window.spiritualLocales.en.questions[20].title);
-  reloaded.element('#retake-button').listeners.click();
-  assert.deepEqual(JSON.parse(storage.get(key)).answers, {});
-});
-
-// Exact area order in the supplied markdown, not a seven-area template applied
-// to every stage. In particular, V/VI do not invent confession/examen criteria.
-const sourceDomains = [
-  ['seriousSin', 'venialSin', 'suffering', 'prayer', 'examen', 'sacraments'],
-  ['seriousSin', 'venialSin', 'suffering', 'prayer', 'examen', 'sacraments'],
-  ['seriousSin', 'venialSin', 'imperfections', 'suffering', 'prayer', 'examen', 'sacraments'],
-  ['venialSin', 'imperfections', 'prayer', 'examen', 'suffering', 'sacraments'],
-  ['imperfections', 'suffering', 'prayer'],
-  ['imperfections', 'suffering', 'prayer']
-];
-
-function answerAtStage(app, stage) {
-  const categories = [[0, 0, 0, 0], [1, 1, 1, 1], [1, 1, 2, 2], [2, 2, 2, 2], [3, 3, 3, 3], [4, 4, 4, 4]][stage - 1];
-  const counts = {};
-  app.call('set_spiritual_reflection_answers', {
-    answers: app.window.spiritualAssessment.questionBlueprints.map((q) => {
-      const index = counts[q.domain] || 0;
-      counts[q.domain] = index + 1;
-      const category = categories[index];
-      return { questionId: q.id, optionIndex: q.reverse ? 4 - category : category };
-    })
-  });
+function resultFor(app,answers) {
+  setAnswers(app,answers);
   return app.call('calculate_spiritual_reflection_result');
 }
 
-function escapeHtml(text) {
-  return text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+function testBank() {
+  for(const lang of ['hr','en']) {
+    const app=boot(lang);
+    const copy=app.window.spiritualLocales[lang];
+    const questions=app.call('get_spiritual_reflection_questions').questions;
+    const bank=app.window.spiritualQuestions[lang];
+    const config=app.window.spiritualAssessment;
+    assert.equal(config.questionnaireVersion,4);
+    assert.equal(config.highestAssessedStage,4);
+    assert.equal(questions.length,28);
+    assert.equal(new Set(questions.map(q=>q.id)).size,28);
+    assert.equal(copy.stages.length,7);
+    assert.match(app.element('#stage-path').innerHTML,/VII\./);
+    assert.ok(app.element('#advanced-source-guide').innerHTML.includes(copy.stages[5].name));
+    for(const [i,q] of questions.entries()) {
+      const blueprint=config.questionBlueprints[i];
+      assert.equal(bank[i].id,blueprint.id);
+      assert.equal(q.options.length,blueprint.optionCount);
+      assert.deepEqual(Object.keys(bank[i].expectations),Object.keys(blueprint.requirements));
+      assert.ok(blueprint.sources.length>0);
+      app.call('set_spiritual_reflection_answers',{answers:[{questionId:q.id,optionIndex:0}]});
+      assert.equal(app.element('#question-title').textContent,q.prompt);
+      assert.equal(app.element('#question-example-text').textContent,q.example);
+      assert.equal(app.element('#question-clarification').textContent,q.clarification);
+      assert.equal(app.element('#question-context-text').textContent,q.domainHelp);
+      assert.ok(q.example.length>20 && q.clarification.length>20);
+      assert.throws(()=>app.call('set_spiritual_reflection_answers',{answers:[{questionId:q.id,optionIndex:blueprint.optionCount}]}));
+    }
+    for(const [,key] of html.matchAll(/data-i18n="([^"]+)"/g))assert.equal(typeof copy[key],'string',`${lang}.${key}`);
+  }
 }
 
-test('all six result descriptions follow their source areas in both languages; VII has no invented description', () => {
-  for (const lang of ['hr', 'en']) {
-    const app = boot(lang);
-    const copy = app.window.spiritualLocales[lang];
-    for (let stage = 1; stage <= 6; stage += 1) {
-      const result = answerAtStage(app, stage);
-      assert.equal(result.stage, stage);
-      const expected = copy.stages[stage - 1];
-      assert.deepEqual(Array.from(expected.sourceDescription, (area) => area.domain), sourceDomains[stage - 1]);
-      assert.equal(result.sourceDescription.areas.length, sourceDomains[stage - 1].length);
-      assert.equal(result.sourceDescription.note, copy.sourceDescriptionIntro);
-      assert.equal(result.sourceDescription.caution, copy.sourceDescriptionCaution);
-      assert.equal(result.sourceDescription.interpretation, copy.resultSummary);
-      assert.ok(app.element('#source-description-heading').textContent.endsWith(expected.name));
-      assert.equal(app.element('#result-summary').textContent, copy.resultSummary);
-      assert.equal(app.element('#source-description-reference').textContent, result.sourceDescription.reference);
-      const body = app.element('#source-description-body').innerHTML;
-      assert.equal((body.match(/<p>/g) || []).length, sourceDomains[stage - 1].length);
-      for (const [i, { domain, text }] of expected.sourceDescription.entries()) {
-        assert.ok(text.length > 20);
-        assert.ok(body.includes(`<strong>${escapeHtml(copy.domains[domain])}:</strong> ${escapeHtml(text)}`));
-        assert.equal(result.sourceDescription.areas[i].text, text);
-        assert.equal(result.sourceDescription.areas[i].label, copy.domains[domain]);
-      }
+function testPatterns() {
+  for(const lang of ['hr','en']) {
+    const app=boot(lang);
+    const strong=strongAnswers(app);
+    const mutations=[[null,{'prayer-vocal-v4':0}],[1,{'prayer-vocal-v4':1}],[2,{'examen-frequency-v4':1}],[3,{'examen-frequency-v4':2}],[4,{}]];
+    for(const [stage,change] of mutations) {
+      const result=resultFor(app,{...strong,...change});
+      assert.equal(result.stage,stage);
+      assert.equal(app.element('#result-view').hidden,false);
+      assert.equal(app.element('#result-number').textContent,stage?['I','II','III','IV'][stage-1]:'—');
+      assert.equal(app.element('#result-heading').textContent,stage?app.window.spiritualLocales[lang].stages[stage-1].name:app.window.spiritualLocales[lang].mixedTitle);
+      assert.equal(app.element('#result-ascent-marker').attributes.visibility,stage?'visible':'hidden');
+      assert.ok(app.element('#criteria-checks').innerHTML.length>100);
+      for(const key of ['approximateScore','patternStabilityPercent','range','confidence'])assert.equal(result[key],undefined);
+      assert.ok(result.sourceDescription.areas.length>0);
     }
-    assert.equal(copy.stages[6].sourceDescription.length, 0);
-    assert.ok(copy.stages[6].assessmentNote);
-    assert.equal(app.window.spiritualAssessment.questionnaireVersion, 3);
-    for (const [, key] of html.matchAll(/data-i18n="([^"]+)"/g)) {
-      assert.equal(typeof copy[key], 'string', `${lang}.${key}`);
+    const middle=Object.fromEntries(app.window.spiritualAssessment.questionBlueprints.map(q=>[q.id,Math.floor((q.optionCount-1)/2)]));
+    assert.notEqual(resultFor(app,middle).stage,4,'Middle answers cannot automatically become IV');
+    const allSkipped=Object.fromEntries(app.window.spiritualAssessment.questionBlueprints.map(q=>[q.id,'skip']));
+    const unknown=resultFor(app,allSkipped);
+    assert.equal(unknown.stage,null);
+    assert.equal(unknown.skipped,28);
+    assert.ok(unknown.stageChecks[0].checks.every(c=>c.status==='unknown'));
+  }
+}
+
+function testEveryGate() {
+  const app=boot();
+  const strong=strongAnswers(app);
+  assert.equal(resultFor(app,strong).stage,4);
+  for(const q of app.window.spiritualAssessment.questionBlueprints) {
+    const latest=Math.max(...Object.keys(q.requirements).map(Number));
+    const rule=q.requirements[latest];
+    const failedOption=Array.from({length:q.optionCount},(_,i)=>i).find(i=>!rule.accepted.includes(i) && !(rule.exempt||[]).includes(i) && !(q.unknownOptions||[]).includes(i));
+    assert.notEqual(failedOption,undefined,`${q.id} has a contradictory choice`);
+    assert.notEqual(resultFor(app,{...strong,[q.id]:failedOption}).stage,4,`${q.id} cannot be compensated`);
+    const skipped=resultFor(app,{...strong,[q.id]:'skip'});
+    assert.notEqual(skipped.stage,4,`${q.id} skip cannot pass`);
+    assert.equal(skipped.stageChecks[3].checks.find(c=>c.id===q.id).status,'unknown');
+  }
+}
+
+function testExactThresholds() {
+  const app=boot();
+  const strong=strongAnswers(app);
+  for(const [id,answer] of [['venial-occurrence-v4',2],['examen-frequency-v4',2],['sacraments-confession-schedule-v4',3],['prayer-vocal-v4',2]]) {
+    const result=resultFor(app,{...strong,[id]:answer});
+    assert.equal(result.stage,3,id);
+    assert.equal(result.targetStage,4);
+    const check=result.stageChecks[3].checks.find(c=>c.id===id);
+    assert.equal(check.status,'notMet');
+    assert.ok(app.element('#criteria-checks').innerHTML.includes('Odgovor ne podupire uvjet'));
+    const index=app.window.spiritualAssessment.questionBlueprints.findIndex(q=>q.id===id);
+    const expectation = app.window.spiritualQuestions.hr[index].expectations[4]
+      .replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+      .replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+    assert.ok(app.element('#criteria-checks').innerHTML.includes(expectation));
+  }
+  assert.equal(resultFor(app,{...strong,'examen-frequency-v4':1}).stage,2);
+  const habitual = resultFor(app,{...strong,'venial-occurrence-v4':0});
+  assert.equal(habitual.stage,2, 'Habitual venial falls are not promoted merely because consent is not deliberate');
+  assert.match(app.window.spiritualQuestions.hr.find(q => q.id === 'venial-occurrence-v4').options[3], /bez ustaljene navike/);
+  assert.equal(resultFor(app,{...strong,'sacraments-confession-schedule-v4':2}).stage,2);
+}
+
+function testCircumstances() {
+  const app=boot();
+  const strong=strongAnswers(app);
+  const none=resultFor(app,{...strong,'venial-occurrence-v4':4,'venial-regret-v4':3,'venial-reparation-v4':3});
+  assert.equal(none.stage,4);
+  assert.equal(none.stageChecks[3].checks.find(c=>c.id==='venial-reparation-v4').status,'notTriggered');
+  const contradictory=resultFor(app,{...strong,'mortal-fall-v4':3,'mortal-response-v4':2});
+  assert.equal(contradictory.stage,null);
+  assert.equal(contradictory.stageChecks[0].checks.find(c=>c.id==='mortal-response-v4').reason,'contradictoryAnswer');
+  const noWeekday=resultFor(app,{...strong,'sacraments-daily-mass-v4':3});
+  assert.equal(noWeekday.stage,4);
+  assert.equal(noWeekday.stageChecks[3].checks.find(c=>c.id==='sacraments-daily-mass-v4').status,'notTriggered');
+  const noConfession=resultFor(app,{...strong,'sacraments-confession-schedule-v4':5});
+  assert.equal(noConfession.stage,null);
+  assert.equal(noConfession.stageChecks[0].checks.find(c=>c.id==='sacraments-confession-schedule-v4').status,'unknown');
+  const noDifficulty=resultFor(app,{...strong,'suffering-endure-v4':3,'suffering-peace-v4':3,'suffering-meaning-joy-v4':3});
+  assert.equal(noDifficulty.stage,1);
+  assert.equal(noDifficulty.stageChecks[1].checks.find(c=>c.id==='suffering-endure-v4').status,'unknown');
+}
+
+function testPersistence() {
+  const storage=new Map([['spiritual-progress-reflection:v3',JSON.stringify({version:3,language:'en',view:'result',answers:{'examen-daily':4}})]]);
+  const app=boot('hr',storage);
+  const key='spiritual-progress-reflection:v4';
+  assert.equal(app.element('#intro-view').hidden,false);
+  assert.deepEqual(JSON.parse(storage.get(key)).answers,{});
+  const before=resultFor(app,{...strongAnswers(app),'examen-frequency-v4':2});
+  const saved=JSON.parse(storage.get(key)).answers;
+  app.element('#language-select').listeners.change({target:{value:'en'}});
+  assert.ok(app.element('#criteria-checks').innerHTML.includes('Answer does not support it'));
+  assert.ok(!app.element('#criteria-checks').innerHTML.includes('Odgovor ne podupire'));
+  const reloaded=boot('hr',storage);
+  assert.equal(reloaded.element('#result-view').hidden,false);
+  assert.equal(reloaded.call('calculate_spiritual_reflection_result').stage,before.stage);
+  assert.deepEqual(JSON.parse(storage.get(key)).answers,saved);
+  reloaded.element('#criteria-stage-select').listeners.change({target:{value:'2'}});
+  assert.equal(reloaded.element('#criteria-heading').textContent,'Requirements for Stage II');
+  const index=reloaded.window.spiritualAssessment.questionBlueprints.findIndex(q=>q.id==='examen-frequency-v4');
+  reloaded.element('#criteria-checks').listeners.click({target:{closest(){return{dataset:{reviewQuestion:String(index)}};}}});
+  assert.equal(reloaded.element('#question-view').hidden,false);
+  assert.equal(reloaded.element('#question-title').textContent,reloaded.window.spiritualQuestions.en[index].title);
+  reloaded.element('#retake-button').listeners.click();
+  assert.deepEqual(JSON.parse(storage.get(key)).answers,{});
+}
+
+test("both languages have aligned explicit question options, stories and requirements", testBank);
+test("null and I–IV patterns render without numerical scoring or invented V–VII results", testPatterns);
+test("each real-bank required condition fails closed on a contrary or skipped answer", testEveryGate);
+test("rare deliberate venial sin, daily examen, quarterly confession or merely regular prayer cannot pass IV", testExactThresholds);
+test("actual-event exemptions, contradictions, inaccessible sacraments and no suffering evidence are distinct", testCircumstances);
+test("v4 answers survive refresh, translation, criterion review and restart; v3 is not reused", testPersistence);
+
+test('the maintained source map matches every current Croatian question, story, option and expectation', () => {
+  const app = boot('hr');
+  const review = fs.readFileSync(path.join(root, 'QUESTIONNAIRE-SOURCE-MAP.hr.md'), 'utf8');
+  const sourceFile = path.resolve(root, '../stages-of-spiritual-progress.md');
+  const validReferences = new Set();
+  if (fs.existsSync(sourceFile)) {
+    let section;
+    for (const line of fs.readFileSync(sourceFile, 'utf8').split('\n')) {
+      const heading = line.match(/^## ([IVX]+)\. /);
+      if (heading) section = heading[1];
+      const topic = line.match(/^- \*\*([^:]+):\*\*/);
+      if (section && topic) validReferences.add(`${section}. ${topic[1]}`);
     }
   }
-});
-
-test('a result description changes language and survives refresh without changing existing answers or score', () => {
-  const app = boot('hr');
-  const before = answerAtStage(app, 5);
-  const savedAnswers = JSON.parse(app.storage.get('spiritual-progress-reflection:v3')).answers;
-  app.element('#language-select').listeners.change({ target: { value: 'en' } });
-  assert.equal(app.element('#source-description-heading').textContent, 'V. Relative Perfection');
-  assert.ok(app.element('#source-description-body').innerHTML.includes('Imperfections'));
-  assert.ok(!app.element('#source-description-body').innerHTML.includes('Nesavršenosti'));
-  const reloaded = boot('hr', app.storage);
-  assert.equal(reloaded.element('#result-view').hidden, false);
-  assert.equal(reloaded.element('#source-description-heading').textContent, 'V. Relative Perfection');
-  const after = reloaded.call('calculate_spiritual_reflection_result');
-  assert.equal(after.stage, before.stage);
-  assert.equal(after.approximateScore, before.approximateScore);
-  assert.equal(after.patternStabilityPercent, before.patternStabilityPercent);
-  assert.deepEqual(JSON.parse(app.storage.get('spiritual-progress-reflection:v3')).answers, savedAnswers);
+  for (const [index, question] of app.window.spiritualQuestions.hr.entries()) {
+    for (const text of [question.title, question.example, question.clarification,
+      ...question.options, ...Object.values(question.expectations)]) {
+      assert.ok(review.includes(text), question.id);
+    }
+    for (const reference of app.window.spiritualAssessment.questionBlueprints[index].sources) {
+      assert.ok(review.includes(reference));
+      if (validReferences.size) assert.ok(validReferences.has(reference), `Original markdown section: ${reference}`);
+    }
+  }
 });

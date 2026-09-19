@@ -1,136 +1,92 @@
-# Assessment design notes
+# Assessment design notes — version 4
 
-## Status and intended use
+## What changed and why
 
-This is an independent reflection aid, not a validated psychological test, diagnostic instrument, or substitute for spiritual direction. Its output should be interpreted as a structured summary of a person's self-reported pattern during the previous eight weeks.
+The previous model mapped five generic answers onto 1, 2.25, 3.5, 4.75 and 6 and averaged across areas. Selecting the middle answer throughout therefore produced 3.5, rounded up to IV. Strong prayer answers could also offset deliberate venial sin or an absent examination of conscience. That arithmetic did not enforce the source's descriptions.
 
-The source diagram names seven stages. The supplied pages describe Stages I–VI in detail but provide only the name **VII. Complete Sanctity**. The interface therefore shows all seven stages so the source structure is complete, while the questionnaire estimates only Stages I–VI. Assigning Stage VII would require criteria not present in the supplied source and would be especially inappropriate to infer from an unvalidated self-report questionnaire.
+Version 4 replaces this with explicit, non-compensating checks. It is an independent reflection aid, not a validated test, spiritual diagnosis or declaration of sanctity. A count of supported conditions is not a confidence percentage.
 
-## Why 28 questions
+## Source versus application decisions
 
-The development form uses 28 items: four differently angled items in each of seven domains. This is a practical compromise between respondent burden and the need to observe some within-domain consistency. The former 14-item form had only two items per domain, which was too little for a meaningful consistency check.
+The supplied markdown names seven stages and describes I–VI. It does not contain a questionnaire, a numerical scale, a cumulative decision algorithm or empirically calibrated thresholds.
 
-There is no universal question count that guarantees 95% confidence. Precision depends on item discrimination, threshold locations, dimensionality, respondent population, translations, and the decision boundary being used. Research instruments using calibrated item-response models commonly stop after a target standard error is reached, rather than after a fixed number of items. PROMIS computerized adaptive tests, for example, often use a minimum of four and a maximum of twelve items for one calibrated domain—not seven independent domains.
+The application makes these conservative design decisions explicit:
 
-For this uncalibrated seven-domain prototype:
+- It compares only practical expectations associated with I–IV. V and VI include infused prayer and contemplation; ordinary self-reported habits cannot establish those graces. VII has no supplied description.
+- Higher candidates retain the positive foundations of lower candidates. Lower-stage deficiencies (weak resistance, superficial sorrow, intermittent examen) are not prerequisites that must be preserved.
+- In particular, III's mortal-sin minimum is retained at IV, whose source section has no separate mortal-sin paragraph.
+- II's quarterly-confession minimum is retained when III adds an established regular schedule.
+- Source terms such as regular, vigilant, often, fervent and constant are operationalized using explicit answer descriptions. They are not validated cutoffs. Daily vocal prayer, where used for constant practice, is an application interpretation rather than a numerical frequency printed in IV's prayer paragraph.
+- Most items concern the previous eight weeks. Confession instead concerns an established practice over recent months: an eight-week event count cannot establish or refute a quarterly schedule.
+- Absence of a recognized fully knowing and freely chosen grave act is the conservative practical III check. The source's rare surprise/doubt case is not automatically adjudicated by the app; uncertainty remains unknown.
 
-- **28 items** is the recommended fixed development form.
-- At least **21 answered items and two per domain** are required to display a result.
-- A future calibrated adaptive version could begin with 21–28 core items and add one targeted item in uncertain domains.
-- Claiming 95% classification accuracy would require empirical calibration and cross-validation; adding questions alone cannot establish it.
+Even complete support for IV practical requirements does not confirm the full spiritual stage. The app does not test prayer of Quiet, infused contemplation, passive purification, or the authenticity of mystical phenomena. Optional source descriptors (simplicity may emerge, purification often occurs, extraordinary phenomena sometimes occur) are not universal requirements.
 
-## Item-writing approach
+## Decision rule
 
-Version 3 was rebuilt from the supplied markdown, with section references on every item in `dist/assessment-config.js`. [The complete Croatian question–story–source review](QUESTIONNAIRE-SOURCE-MAP.hr.md) records all 28 mappings and their limits. The stories are fictional illustrations written for the app, not excerpts from the source.
+For a question q and a candidate threshold k in I–IV, take the most recent configured requirement for q at or below k. A question not yet required at k is not evaluated for that candidate.
 
-- Questions refer to concrete behavior during the **past eight weeks** instead of asking for a global self-rating.
-- Domains are interleaved so respondents do not see a ladder of increasingly “holy” descriptions.
-- Four angles are sampled in each domain.
-- Half of the items are reverse-keyed to reduce simple agreement or repeated-click response patterns.
-- The same five frequency choices are used throughout to lower cognitive burden.
-- Wording avoids naming stages or displaying item scores.
-- Each statement asks about one recognizable response or practice rather than requiring the visitor to interpret an abstract spiritual term.
-- Each short story illustrates the behavior in its statement. Its character demonstrates that behavior; respondents report how often it describes their own life. The moral direction of an item cannot be made invisible by using a story, and these examples have not been empirically tested for response bias.
-- Items about Mass, confession, helping others, and accepting difficulty explicitly account for availability, health, caregiving, justice, and other real duties.
+Each required check returns one of four states:
 
-Reverse wording can itself create method effects, so the balance should be tested through cognitive interviews and factor analysis rather than assumed to work.
+- Supported: the selected answer is explicitly included among the accepted descriptions.
+- Unsupported: the selected answer is assessable but does not meet that requirement.
+- Unknown: skipped, unanswered, uncertain, invalid, or inconsistent with a linked answer.
+- Inapplicable: an explicitly permitted conditional circumstance is established. This is not positive evidence of growth.
 
-An unavailable or inapplicable situation may be skipped using the existing unscored skip response. In particular, no mortal sin during the reference period is not evidence of a failure to repent afterward. The repentance item says to skip in that case; the deliberate-act item says to select never when the act did not occur. If fewer than two items in a domain are assessable, the app cannot produce a complete estimate and should not invite invented answers.
+A candidate is supported only when every required check is supported or explicitly inapplicable AND all earlier candidates are supported. There is no compensation, sum, mean, rounding, nearest-stage distance, resampling or probability.
 
-The source's explicit mortal-sin descriptions end at III, and its venial-sin, examen and sacramental descriptions end at IV. The 1–6 numerical mapping is an app-authored heuristic, not the source's scoring system. These items do not identify infused contemplation, passive purification, extraordinary phenomena, or sanctity. They also do not separately measure every source detail, such as examen twice daily or exact confession intervals.
+The result is the highest consecutively supported practical threshold, or no supported pattern when the baseline cannot be established. It never defaults to I merely because II fails. Source I itself assumes some prayer, regular Mass and confession, with regret and adequate confession after an actual mortal fall.
 
-## Theological framing of the examples
+The results screen first reviews the next unsupported candidate (or IV if all practical candidates pass). A selector lets the reader inspect all four sets of requirements. Each entry displays the expectation, their actual answer, its status, source sections and a way to revisit that question. Counts describe checks only, not spiritual percentages.
 
-Every item includes a short everyday example. Examples clarify the situation being asked about but do not affect scoring and must not be treated as a preferred answer.
+## Key practical expectations
 
-Their Carmelite framing follows several distinctions central to St. John of the Cross:
+| Area | II | III (in addition to retained foundations) | IV (in addition to retained foundations) |
+| --- | --- | --- | --- |
+| Mortal sin | Habitual avoidance of known near occasions, faithful resistance, repentance and reparative penance after an actual fall | No recognized fully deliberate mortal act; uncertainty is not a pass | Retain III's practical minimum as an application inference |
+| Venial sin | Some genuine effort to resist and some sorrow | Not habitual; deliberate consent at most rare; vigilance and serious repentance | No recognized deliberate consent; serious, reasonable reparation |
+| Imperfections | No separate advanced requirement | Do not import IV's demands into III | Vigilance, sustained virtue practice for love of God, frequent prudent renunciation, prompt regret after yielding |
+| Suffering | Endures unavoidable difficulty | Acceptance with relative peace amid struggle | Acceptance with understanding of benefit, some joy and peace |
+| Prayer | Regular vocal prayer | Stable planned meditation and fidelity during dryness; personal loving response | Constant practice, gladly prolonged when duties permit; no demand for manufactured feelings or mystical experiences |
+| Examen | Actually practised, at least intermittently | At least daily, concrete and consistent, with a particular focus against a fault | At least twice daily; particular focus on growth in a virtue |
+| Sacraments | Weekly Mass when able; confession at least quarterly | Daily Mass when genuinely possible; regular confession schedule | Fervent participation, at least monthly confession, actual devotional confession for growth |
 
-- detachment means freedom from disordered dependence, not rejecting created things merely because they are created;
-- fidelity during spiritual dryness means remaining available to God without requiring sensible comfort;
-- deliberate effort can remove obstacles and dispose a person to grace, but transforming purification and union are God's work;
-- accepting an unavoidable cross in charity never means seeking harm, remaining in abuse, refusing necessary care, or neglecting duties of justice.
+The original detailed descriptions remain visible separately, including the source's weaknesses at lower stages. The criterion matrix does not replace those descriptions.
 
-This framing is consistent with Benedict XVI's summary of St. John's teaching on purification, theological faith, freedom from disordered attachment, and cooperation with divine action, as well as St. John's treatment of aridity in *The Dark Night*.
+## Exact distinctions that prevent an easy IV
 
-## Current scoring
+- Rare deliberate venial sin is not the same answer as no deliberate venial sin.
+- One daily examen is not two separate daily examens; most days is not every day.
+- An established quarterly confession schedule is not an established monthly one.
+- Good intentions about devotional confession are not the same as actual practice.
+- Kindness or a single inconvenience does not substitute for acceptance of actual difficulty with meaning, peace and some joy.
+- A general intention to improve does not substitute for repeated virtue practice, prudent renunciation and prompt return after a recognized imperfection.
+- An average response category has no stage value at all.
 
-The result page separately presents a plain-language paraphrase of the assigned stage's source section. Its domain paragraphs preserve the source's coverage (I: 6, II: 6, III: 7, IV: 6, V: 3, VI: 3), rather than filling gaps with assumptions. Exact practice frequencies are retained where given, such as quarterly confession at II and twice-daily examen and monthly confession at IV. The source's more forceful ascetical wording is paraphrased as self-renunciation, surrender, and self-forgetfulness, with a separate reading note against harmful interpretations.
+The 28 questions are distributed according to these needs rather than forced into four equal items per area. The current complete question, story, option and criterion mapping is in QUESTIONNAIRE-SOURCE-MAP.hr.md.
 
-These descriptions do not add evidence, criteria, or points to the calculation. In particular, mention of infused prayer, passive purification, or extraordinary phenomena is attributed to the text, not inferred about the respondent. The general result introduction replaces earlier personalized summaries that could imply those unmeasured experiences had been established. The questionnaire and saved-answer version remain unchanged.
+## Conditional, inaccessible and uncertain situations
 
-Let the selected response category be \(x \in \{0,1,2,3,4\}\), from **never or almost never** through **almost always**.
+Repentance after a mortal fall is inapplicable only when the linked occurrence answer supports no such fall. Venial repentance and reparation use the same relationship, distinguishing no recognized venial sin from no deliberate consent. Both directions are checked: claiming an actual response after a fall while also saying no fall occurred is unresolved, not a pass.
 
-For a direct-keyed item, its score is:
+Other links are one-way prerequisites, not equivalent events. No experienced temptation may excuse an actual-resistance check when no deliberate fall is reported. No experienced dryness can excuse the dryness-response check only where established meditation is reported. No fall does not imply no temptation; regular meditation does not imply no dryness.
 
-\[
-s = 1 + 1.25x
-\]
+No realistic opportunity for weekday Mass is an explicit exception to the source's if-able clause. Unavailable confession or no assessable weekly-Mass practice remains unknown rather than wilful failure or positive evidence of advanced practice. No actual difficulty provides no evidence of how a person accepts suffering, so it is unknown rather than an automatic pass. Exemptions are always identified separately.
 
-This produces the five scores **1, 2.25, 3.5, 4.75, and 6**. For a reverse-keyed item:
+Illness, emotional pain, unwanted impulses, necessary care, leaving abuse, rest and unavoidable duties are not labelled sins or evidence of poor faith. Stories and clarifications distinguish a chosen response from involuntary feelings. No one should invent a sin, unsafe sacrifice or answer to obtain a result. Uncertainty may be brought to an appropriate confessor or spiritual director; the app does not resolve moral culpability.
 
-\[
-s_{reverse} = 7 - s
-\]
+## Architecture, privacy and migration
 
-Consequently, a higher item score always points in the direction of a higher stage, regardless of how the statement is worded.
+- Locale files contain UI language and source descriptions.
+- The two question-bank files contain questions, stories, clarifications, options and plain-language expectations.
+- The configuration contains stable question IDs, source references and accepted/exempt/unknown answer indices.
+- The pure engine evaluates configured criteria; the application renders results and handles navigation.
+- Version 4 has new question IDs and session version. Version 3 answers are never reinterpreted as answers to the new questions.
+- Current progress and language survive refresh in the same tab through sessionStorage. There is no server, analytics, remote calculation or transmission of answers.
+- Static Cloudflare packaging includes all runtime files. No clinical or psychometric validation claim is made.
 
-For each domain \(d\), the answered item scores in that domain are averaged:
+## Verification and remaining limits
 
-\[
-D_d = \frac{1}{n_d}\sum_{i=1}^{n_d}s_{di}
-\]
+Automated tests exercise each gate independently, unknown and invalid answers, conditional consistency, exact IV requirements, both languages, result text, source coverage, session restoration and migration. They test implementation behavior, not theological or psychometric validity.
 
-The overall score is the unweighted mean of the seven domain means:
-
-\[
-S = \frac{1}{7}\sum_{d=1}^{7}D_d
-\]
-
-This gives every domain equal influence even when some domains have four answered items and others have only two or three. A result is shown only after at least 21 items have been answered and every domain has at least two answers.
-
-The displayed stage is the nearest whole number:
-
-\[
-\text{stage} = \operatorname{clamp}(\operatorname{round}(S), 1, 6)
-\]
-
-Thus, for example, an overall score from 2.50 through 3.49 is displayed as Stage III. Exact half-points round upward.
-
-### Pattern stability and interval
-
-The displayed **pattern stability** is calculated locally:
-
-1. Within each domain, draw \(n_d\) answered item scores **with replacement** from that domain's answered scores.
-2. Recalculate all seven domain means and their equally weighted overall score.
-3. Repeat this process 1,000 times.
-4. **Pattern stability** is the proportion of those 1,000 overall scores that round to the originally selected stage.
-5. The internal 95% interval uses the 2.5th and 97.5th percentiles of the 1,000 overall scores. Its endpoints are converted to stages for display, while ensuring the selected stage remains inside the shown range.
-
-The qualitative badge is assigned using deliberately conservative development thresholds:
-
-- **High stability:** at least 26 answered items, at least three answers per domain, at least 80% same-stage resamples, and a raw 95% interval no wider than 1.0 score point.
-- **Moderate stability:** at least 21 answered items, at least two answers per domain, at least 60% same-stage resamples, and a raw 95% interval no wider than 1.8 score points.
-- **Low stability:** anything else.
-
-These thresholds are design heuristics, not empirically calibrated cutoffs. The calculation is an internal sensitivity analysis. It does not include test–retest error, social-desirability bias, construct validity, translation effects, or errors caused by the stage framework itself. It must not be labeled “95% accurate,” and the stability percentage must not be interpreted as the probability that the person is truly in that stage.
-
-## Work required for a validated instrument
-
-1. Define the intended interpretation and target population precisely.
-2. Have qualified spiritual directors and measurement specialists review construct coverage.
-3. Conduct cognitive interviews separately in English and Croatian.
-4. Pilot the full item bank in a representative sample with informed consent.
-5. Test the seven-domain structure, local dependence, response-category functioning, and reliability.
-6. Fit and cross-validate an ordinal model such as a multidimensional graded-response model.
-7. Examine differential item functioning across language and relevant demographic groups.
-8. Estimate standard errors around every stage threshold and publish decision-consistency results.
-9. Revise or remove weak items before fixing a final form or adaptive stopping rule.
-
-## Methodological references
-
-- [Standards for Educational and Psychological Testing](https://www.testingstandards.net/)
-- [PROMIS Instrument Development and Validation Scientific Standards](https://www.healthmeasures.net/images/PROMIS/PROMISStandards_Vers2.0_Final.pdf)
-- [Initial PROMIS item-bank development and graded-response calibration](https://pmc.ncbi.nlm.nih.gov/articles/PMC2965562/)
-- [COSMIN content-validity methodology](https://pmc.ncbi.nlm.nih.gov/articles/PMC5891557/)
-- [Benedict XVI: General Audience on Saint John of the Cross](https://www.vatican.va/content/benedict-xvi/en/audiences/2011/documents/hf_ben-xvi_aud_20110216.html)
-- [St. John of the Cross: *The Dark Night*](https://www.carmelitemonks.org/Vocation/DarkNight-StJohnoftheCross.pdf)
+Qualified source review, cognitive interviews in both languages, evidence about interpretation and response bias, and empirical validation would still be needed before any accuracy claim. Neither a longer questionnaire nor stricter thresholds alone supplies that evidence.

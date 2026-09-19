@@ -1,6 +1,6 @@
 # Spiritual Progress Reflection
 
-A private, independent, bilingual (English/Croatian) browser questionnaire for reflecting on the seven named stages of spiritual progress. The supplied source describes Stages I–VI but only names Stage VII, so the application shows all seven while estimating only the six described stages. It is not an official publication or assessment of any organization.
+A private, independent, bilingual (English/Croatian) browser questionnaire for reflecting on the seven named stages of spiritual progress. Version 4 checks explicit practical expectations associated with I–IV, without averaging or assigning mystical states. V–VI remain educational descriptions and VII is named only in the source. It is not an official publication or assessment of any organization.
 
 ## Privacy
 
@@ -67,16 +67,17 @@ The app chooses the first supported language in the browser's language preferenc
 
 Translations, stage descriptions, interface labels, accessibility text, and question text are kept outside the application logic:
 
-- `dist/locales/en.js` contains the complete English copy;
-- `dist/locales/hr.js` contains the complete Croatian copy;
-- `dist/assessment-config.js` contains the questionnaire version, language-independent question IDs, dimensions, scoring direction, and source-section references;
-- `dist/app.js` contains rendering, navigation, scoring, and stability calculations only.
+- `dist/locales/en.js` and `hr.js` contain interface copy and source descriptions;
+- `dist/questions/en.js` and `hr.js` contain questions, answer descriptions, stories, clarifications and criterion explanations;
+- `dist/assessment-config.js` contains versioned IDs, source references and accepted, exempt or unknown options for each threshold;
+- `dist/assessment-engine.js` is the pure all-required-criteria evaluator;
+- `dist/app.js` contains rendering, navigation, temporary session handling and browser-tool integration.
 
-To add a language, copy one locale file, register its language code on `window.spiritualLocales`, load it before `app.js`, and add the language to the selector in `dist/index.html`. The question order must stay aligned with `questionBlueprints` in `dist/assessment-config.js`.
+To add a language, copy both its locale and question-bank files, register the language on `window.spiritualLocales` and `window.spiritualQuestions`, load both before `app.js`, and add the language to the selector in `dist/index.html`. Question IDs, order, option indices and expectation keys must stay aligned with `questionBlueprints`.
 
 ## Questionnaire model
 
-The questionnaire contains 28 questions across seven equally weighted dimensions, with four questions per dimension. The items are interleaved, use a common five-point frequency scale, and balance direct and reverse-keyed wording:
+The questionnaire contains 28 concrete questions across seven areas. Each has its own answer descriptions rather than a generic frequency scale:
 
 1. serious sin;
 2. venial sin;
@@ -86,16 +87,20 @@ The questionnaire contains 28 questions across seven equally weighted dimensions
 6. examen;
 7. sacraments.
 
-Every question includes an always-visible short fictional story in both languages. It illustrates the behavior being asked about; the visitor rates their own experience. Explanations of the terms are available below it, with the distinctions between mortal and venial sin expanded by default. An unscored skip response covers uncertainty, an event that did not occur, and choosing not to answer.
+Every question includes an always-visible short fictional story and clarification in both languages. Answer about actual practice during the past eight weeks, except where a question explicitly asks about an established schedule (quarterly confession cannot be judged from an eight-week event count). Skipping is always possible; unknown evidence cannot support a required criterion.
 
-See [the complete question–story–source review](QUESTIONNAIRE-SOURCE-MAP.hr.md) for all 28 Croatian pairs, their precise markdown sections, and the limits of their coverage. Version 3 uses new item identifiers and a new session version, so answers to earlier wording are not silently reused.
+See [the complete question–story–source review](QUESTIONNAIRE-SOURCE-MAP.hr.md) for the current Croatian items, answer descriptions, criteria and exact source sections. Version 4 uses new item identifiers and a new session version, so earlier answers are not silently reused.
 
-It reports the closest overall stage within the described I–VI scale, an approximate range, a per-dimension profile, and an internal pattern-stability estimate based on 1,000 deterministic item-resampling runs performed in the browser. Stage VII (Complete Sanctity / Potpuna svetost) remains visible as the final stage named in the source diagram, but it is not assigned because the supplied pages provide no description or scoring criteria. The stability percentage describes how consistently the same answers support the same nearest stage; it is not a validated accuracy or diagnostic-confidence claim.
+No average, fractional stage, confidence percentage or bootstrap interval is calculated. The result reports the highest consecutive set of practical requirements supported, or no sufficiently supported pattern. Each condition is supported, unsupported, unknown or explicitly inapplicable. Strong answers elsewhere cannot compensate for a failed condition. The result includes a selectable I–IV criterion review with the exact expectation, chosen answer and a link back to that question. Even fully supported IV practical criteria do not establish every spiritual characteristic or mystical experience of that stage. V–VII are not automatically assigned.
 
 See [`ASSESSMENT-NOTES.md`](./ASSESSMENT-NOTES.md) for the design rationale, interpretation limits, and the validation work required before making psychometric claims.
 
 ## Source descriptions on the result page
 
-Each estimated stage includes a separate, always-visible plain-language description from the original markdown, with a paragraph for every area actually covered in that stage's section. The bilingual descriptions are kept in each locale's `stages[].sourceDescription`, separate from rendering and scoring. The same content is included in printed results and the WebMCP result response.
+Each supported practical pattern includes a separate, always-visible plain-language description from the original markdown. If none is supported, I is shown explicitly as a reference for comparison, not an assigned result. Descriptions of V–VII can be read in a separate expandable section. The bilingual paragraphs are kept in `stages[].sourceDescription`; they are also included in printed results and the WebMCP response.
 
-Stages I and II have six source areas, III has seven, IV has six, and V and VI have only imperfections, suffering, and prayer. Missing areas are not invented or copied from a different stage. VII has no supplied description and remains unassessed. The result distinguishes the approximate answer-based estimate from the source's description; it does not claim the questionnaire confirms mystical graces. This display-only addition does not change scores, question IDs, or saved version-3 answers.
+Source descriptions preserve their original coverage: I and II have six areas, III seven, IV six, and V and VI only imperfections, suffering and prayer. The application's cumulative positive requirements are documented separately as an implementation interpretation, not a scoring system supplied by the source.
+
+## Verification
+
+Run `node --test tests/*.test.cjs`. Tests cover individual gate failures, unknown/conditional answers, source and translation alignment, exact IV requirements, result explanations, language changes, session restoration and version migration. No real user answers are used.
