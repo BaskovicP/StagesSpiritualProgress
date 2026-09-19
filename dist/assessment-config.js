@@ -1,6 +1,7 @@
 (() => {
   "use strict";
 
+  const questionnaireVersion = 3;
   const domainOrder = [
     "seriousSin",
     "venialSin",
@@ -11,37 +12,37 @@
     "sacraments"
   ];
 
+  // Section names in stages-of-spiritual-progress.md; these are not score thresholds.
   const questionBlueprints = [
-    { id: "prayer-kept-time", domain: "prayer", reverse: false },
-    { id: "suffering-regain-peace", domain: "suffering", reverse: false },
-    { id: "venial-postpone-small", domain: "venialSin", reverse: true },
-    { id: "sacraments-weekly-priority", domain: "sacraments", reverse: false },
-    { id: "imperfections-explain-away", domain: "imperfections", reverse: true },
-    { id: "examen-regular-pause", domain: "examen", reverse: false },
-    { id: "serious-change-situation", domain: "seriousSin", reverse: false },
-    { id: "prayer-dryness", domain: "prayer", reverse: true },
-    { id: "suffering-inner-argument", domain: "suffering", reverse: true },
-    { id: "venial-notice-small", domain: "venialSin", reverse: false },
-    { id: "sacraments-confession-rhythm", domain: "sacraments", reverse: false },
-    { id: "imperfections-work-on-habit", domain: "imperfections", reverse: false },
-    { id: "examen-only-after-failure", domain: "examen", reverse: true },
-    { id: "serious-stay-near-trigger", domain: "seriousSin", reverse: true },
-    { id: "prayer-through-day", domain: "prayer", reverse: false },
-    { id: "suffering-offer-for-others", domain: "suffering", reverse: false },
-    { id: "venial-specific-repair", domain: "venialSin", reverse: false },
-    { id: "sacraments-dismiss-opportunity", domain: "sacraments", reverse: true },
-    { id: "imperfections-practice-virtue", domain: "imperfections", reverse: false },
-    { id: "examen-next-intention", domain: "examen", reverse: false },
-    { id: "serious-concrete-response", domain: "seriousSin", reverse: false },
-    { id: "prayer-list-of-needs", domain: "prayer", reverse: true },
-    { id: "suffering-avoid-sacrifice", domain: "suffering", reverse: true },
-    { id: "venial-isolated-events", domain: "venialSin", reverse: true },
-    { id: "sacraments-no-follow-through", domain: "sacraments", reverse: true },
-    { id: "imperfections-notice-afterward", domain: "imperfections", reverse: true },
-    { id: "examen-no-pattern", domain: "examen", reverse: true },
-    { id: "serious-return-to-setup", domain: "seriousSin", reverse: true }
+    { id: "prayer-planned-meditation", domain: "prayer", reverse: false, sources: ["II. Prayer","III. Prayer"] },
+    { id: "suffering-endure-peace", domain: "suffering", reverse: false, sources: ["III. Suffering","IV. Suffering"] },
+    { id: "venial-dismiss", domain: "venialSin", reverse: true, sources: ["I. Venial Sin"] },
+    { id: "sacraments-sunday-mass", domain: "sacraments", reverse: false, sources: ["II. Sacraments","III. Sacraments","IV. Sacraments"] },
+    { id: "imperfections-excuse-attachment", domain: "imperfections", reverse: true, sources: ["III. Imperfections"] },
+    { id: "examen-daily", domain: "examen", reverse: false, sources: ["I. Examen","II. Examen","III. Examen"] },
+    { id: "mortal-avoid-occasions", domain: "seriousSin", reverse: false, sources: ["I. Mortal Sin","II. Mortal Sin"] },
+    { id: "prayer-abandon-dryness", domain: "prayer", reverse: true, sources: ["II. Prayer","III. Prayer"] },
+    { id: "suffering-complaining", domain: "suffering", reverse: true, sources: ["II. Suffering"] },
+    { id: "venial-resist", domain: "venialSin", reverse: false, sources: ["III. Venial Sin","IV. Venial Sin"] },
+    { id: "sacraments-regular-confession", domain: "sacraments", reverse: false, sources: ["II. Sacraments","III. Sacraments","IV. Sacraments"] },
+    { id: "imperfections-renounce", domain: "imperfections", reverse: false, sources: ["III. Imperfections","IV. Imperfections","V. Prayer"] },
+    { id: "examen-sporadic", domain: "examen", reverse: true, sources: ["I. Examen","II. Examen","III. Examen"] },
+    { id: "mortal-weak-resistance", domain: "seriousSin", reverse: true, sources: ["I. Mortal Sin","II. Mortal Sin"] },
+    { id: "prayer-during-work", domain: "prayer", reverse: false, sources: ["V. Prayer"] },
+    { id: "suffering-for-others", domain: "suffering", reverse: false, sources: ["V. Suffering","VI. Suffering"] },
+    { id: "venial-reparation", domain: "venialSin", reverse: false, sources: ["III. Venial Sin","IV. Venial Sin"] },
+    { id: "sacraments-weekday-dismissal", domain: "sacraments", reverse: true, sources: ["III. Sacraments","IV. Sacraments"] },
+    { id: "imperfections-practice-virtue", domain: "imperfections", reverse: false, sources: ["IV. Imperfections"] },
+    { id: "examen-particular-focus", domain: "examen", reverse: false, sources: ["III. Venial Sin","IV. Imperfections"] },
+    { id: "mortal-repentance-reparation", domain: "seriousSin", reverse: false, sources: ["I. Mortal Sin","II. Mortal Sin","III. Mortal Sin"] },
+    { id: "prayer-temporal-needs", domain: "prayer", reverse: true, sources: ["I. Prayer"] },
+    { id: "suffering-avoidance", domain: "suffering", reverse: true, sources: ["I. Suffering","III. Suffering"] },
+    { id: "venial-deliberate-consent", domain: "venialSin", reverse: true, sources: ["II. Venial Sin","III. Venial Sin","IV. Venial Sin"] },
+    { id: "sacraments-dismiss-devotional-confession", domain: "sacraments", reverse: true, sources: ["III. Sacraments","IV. Sacraments"] },
+    { id: "imperfections-continue-attachment", domain: "imperfections", reverse: true, sources: ["III. Imperfections","IV. Imperfections","V. Imperfections","VI. Imperfections"] },
+    { id: "examen-without-method", domain: "examen", reverse: true, sources: ["II. Venial Sin"] },
+    { id: "mortal-deliberate-fall", domain: "seriousSin", reverse: true, sources: ["I. Mortal Sin","II. Mortal Sin","III. Mortal Sin"] }
   ];
 
-  window.spiritualAssessment = Object.freeze({ domainOrder, questionBlueprints });
+  window.spiritualAssessment = Object.freeze({ questionnaireVersion, domainOrder, questionBlueprints });
 })();
-

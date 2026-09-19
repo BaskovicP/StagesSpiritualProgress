@@ -63,13 +63,13 @@ Then open `http://localhost:4173`.
 
 ## Languages
 
-The app automatically chooses Croatian for browsers whose preferred language begins with `hr`; otherwise it uses English. The visitor may switch languages without reloading, and the choice is not stored.
+The app chooses the first supported language in the browser's language preferences, falling back to English. The visitor may switch languages without reloading; the choice is kept only in the current tab's session storage.
 
 Translations, stage descriptions, interface labels, accessibility text, and question text are kept outside the application logic:
 
 - `dist/locales/en.js` contains the complete English copy;
 - `dist/locales/hr.js` contains the complete Croatian copy;
-- `dist/assessment-config.js` contains language-independent question IDs, dimensions, and scoring direction;
+- `dist/assessment-config.js` contains the questionnaire version, language-independent question IDs, dimensions, scoring direction, and source-section references;
 - `dist/app.js` contains rendering, navigation, scoring, and stability calculations only.
 
 To add a language, copy one locale file, register its language code on `window.spiritualLocales`, load it before `app.js`, and add the language to the selector in `dist/index.html`. The question order must stay aligned with `questionBlueprints` in `dist/assessment-config.js`.
@@ -86,7 +86,9 @@ The questionnaire contains 28 questions across seven equally weighted dimensions
 6. examen;
 7. sacraments.
 
-Every question includes an always-visible everyday example in both languages. The examples clarify the intended situation but do not contribute to scoring or indicate a preferred response.
+Every question includes an always-visible short fictional story in both languages. It illustrates the behavior being asked about; the visitor rates their own experience. Explanations of the terms are available below it, with the distinctions between mortal and venial sin expanded by default. An unscored skip response covers uncertainty, an event that did not occur, and choosing not to answer.
+
+See [the complete question–story–source review](QUESTIONNAIRE-SOURCE-MAP.hr.md) for all 28 Croatian pairs, their precise markdown sections, and the limits of their coverage. Version 3 uses new item identifiers and a new session version, so answers to earlier wording are not silently reused.
 
 It reports the closest overall stage within the described I–VI scale, an approximate range, a per-dimension profile, and an internal pattern-stability estimate based on 1,000 deterministic item-resampling runs performed in the browser. Stage VII (Complete Sanctity / Potpuna svetost) remains visible as the final stage named in the source diagram, but it is not assigned because the supplied pages provide no description or scoring criteria. The stability percentage describes how consistently the same answers support the same nearest stage; it is not a validated accuracy or diagnostic-confidence claim.
 

@@ -21,6 +21,8 @@ For this uncalibrated seven-domain prototype:
 
 ## Item-writing approach
 
+Version 3 was rebuilt from the supplied markdown, with section references on every item in `dist/assessment-config.js`. [The complete Croatian question–story–source review](QUESTIONNAIRE-SOURCE-MAP.hr.md) records all 28 mappings and their limits. The stories are fictional illustrations written for the app, not excerpts from the source.
+
 - Questions refer to concrete behavior during the **past eight weeks** instead of asking for a global self-rating.
 - Domains are interleaved so respondents do not see a ladder of increasingly “holy” descriptions.
 - Four angles are sampled in each domain.
@@ -28,10 +30,14 @@ For this uncalibrated seven-domain prototype:
 - The same five frequency choices are used throughout to lower cognitive burden.
 - Wording avoids naming stages or displaying item scores.
 - Each statement asks about one recognizable response or practice rather than requiring the visitor to interpret an abstract spiritual term.
-- Each example mirrors the behavior in its statement and adds needed boundaries without signaling a preferred response.
+- Each short story illustrates the behavior in its statement. Its character demonstrates that behavior; respondents report how often it describes their own life. The moral direction of an item cannot be made invisible by using a story, and these examples have not been empirically tested for response bias.
 - Items about Mass, confession, helping others, and accepting difficulty explicitly account for availability, health, caregiving, justice, and other real duties.
 
 Reverse wording can itself create method effects, so the balance should be tested through cognitive interviews and factor analysis rather than assumed to work.
+
+An unavailable or inapplicable situation may be skipped using the existing unscored skip response. In particular, no mortal sin during the reference period is not evidence of a failure to repent afterward. The repentance item says to skip in that case; the deliberate-act item says to select never when the act did not occur. If fewer than two items in a domain are assessable, the app cannot produce a complete estimate and should not invite invented answers.
+
+The source's explicit mortal-sin descriptions end at III, and its venial-sin, examen and sacramental descriptions end at IV. The 1–6 numerical mapping is an app-authored heuristic, not the source's scoring system. These items do not identify infused contemplation, passive purification, extraordinary phenomena, or sanctity. They also do not separately measure every source detail, such as examen twice daily or exact confession intervals.
 
 ## Theological framing of the examples
 

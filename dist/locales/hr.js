@@ -26,12 +26,12 @@
   "pathAssessmentNote": "VII. stupanj naveden je u izvornom dijagramu, ali priložene stranice ne donose kriterije za njega. Prikazan je kao obzor puta i ovaj ga upitnik ne dodjeljuje.",
   "backToIntro": "Natrag",
   "yourProgress": "Tvoj napredak",
-  "chooseClosest": "Koliko je često tijekom proteklih osam tjedana ovo bilo istinito? Odaberi ono što je bilo uobičajeno, a ne ono što si želio učiniti. Primjer samo pojašnjava situaciju; ne sugerira odgovor.",
+  "chooseClosest": "Misli na proteklih osam tjedana. Koliko je često tvrdnja opisivala tvoje ponašanje? Priča je izmišljeni primjer: odgovori za sebe. Ako se traži tvoja reakcija na situaciju koje nije bilo, preskoči.",
   "previous": "Prethodno",
   "next": "Dalje",
   "seeResult": "Prikaži rezultat",
-  "preferNot": "Ne želim odgovoriti na ovo pitanje.",
-  "needMore": "Za korisnu procjenu odgovori na najmanje 21 pitanje i najmanje 2 pitanja iz svakog područja. Ovo je pitanje prethodno preskočeno.",
+  "preferNot": "Ne mogu procijeniti / preskačem",
+  "needMore": "Za procjenu trebaju barem 21 odgovor i po dva iz svakog područja. Ovo je preskočena tvrdnja. Odgovori samo ako je možeš procijeniti; inače procjena zasad nije dostupna.",
   "footerNote": "Za osobno promišljanje; ne zamjenjuje duhovno vodstvo ni ispovijed.",
   "footerIdentity": "Stupnjevi duhovnog napretka",
   "resultEyebrow": "Tvoj najbliži obrazac",
@@ -46,7 +46,7 @@
   "printResult": "Ispiši rezultat",
   "retake": "Izbriši i ponovi",
   "methodTitle": "Kako se izračunava procjena",
-  "methodBody": "Izvorni dijagram navodi sedam stupnjeva, ali priložene stranice opisuju samo stupnjeve I–VI. Zato upitnik prikazuje svih sedam, ali procjenjuje samo šest opisanih stupnjeva; VII. stupanj ne dodjeljuje. Odgovori se ravnomjerno preslikavaju na ljestvicu od šest točaka: 1, 2,25, 3,5, 4,75 ili 6. Obrnuto bodovane tvrdnje dobivaju suprotnu vrijednost. Bodovi tvrdnji prosječno se izračunavaju unutar svakog od sedam područja, a zatim se tih sedam prosjeka jednako ponderirano prosječno izračuna. Najbliži cijeli broj postaje prikazani stupanj. Stabilnost obrasca postotak je od 1.000 ponovnih uzorkovanja unutar područja koja daju isti stupanj; raspon obuhvaća srednjih 95% ponovno uzorkovanih ukupnih rezultata. To mjeri osjetljivost ovog obrasca odgovora, a ne potvrđenu dijagnostičku točnost.",
+  "methodBody": "Pitanja su prilagođena opisima iz izvornog teksta. Brojčana ljestvica autorska je približna metoda, nije preuzeta iz izvora. Izvorni dijagram navodi sedam stupnjeva, ali priložene stranice opisuju samo stupnjeve I–VI. Zato upitnik prikazuje svih sedam, ali procjenjuje samo šest opisanih stupnjeva; VII. stupanj ne dodjeljuje. Odgovori se ravnomjerno preslikavaju na raspon od 1 do 6 kroz pet vrijednosti: 1, 2,25, 3,5, 4,75 ili 6. Obrnuto bodovane tvrdnje dobivaju suprotnu vrijednost. Bodovi tvrdnji prosječno se izračunavaju unutar svakog od sedam područja, a zatim se tih sedam prosjeka jednako ponderirano prosječno izračuna. Najbliži cijeli broj postaje prikazani stupanj. Stabilnost obrasca postotak je od 1.000 ponovnih uzorkovanja unutar područja koja daju isti stupanj; raspon obuhvaća srednjih 95% ponovno uzorkovanih ukupnih rezultata. To mjeri osjetljivost ovog obrasca odgovora, a ne potvrđenu dijagnostičku točnost.",
   "methodPrivacy": "Odgovori, napredak, rezultat i jezik čuvaju se samo u privremenoj memoriji ove kartice kako bi preživjeli osvježavanje stranice. Nikada se ne šalju i brišu se zatvaranjem kartice. Ne upotrebljavaju se kolačići, analitika ni identifikatori.",
   "notAnswered": "Bez odgovora",
   "answeredSummary": "Odgovoreno na {answered} od {total} pitanja · zastupljeno {domains} od 7 područja",
@@ -63,13 +63,13 @@
     "unitive": "Put sjedinjenja"
   },
   "domains": {
-    "seriousSin": "Ozbiljne odluke",
-    "venialSin": "Svakodnevni propusti",
-    "imperfections": "Navezanosti i navike",
-    "suffering": "Trpljenje",
+    "seriousSin": "Smrtni grijeh",
+    "venialSin": "Laki grijeh",
+    "imperfections": "Nesavršenosti",
+    "suffering": "Patnja",
     "prayer": "Molitva",
-    "examen": "Promišljanje",
-    "sacraments": "Sakramentalni život"
+    "examen": "Ispit savjesti",
+    "sacraments": "Sakramenti"
   },
   "stages": [
     {
@@ -111,151 +111,153 @@
   ],
   "questions": [
     {
-      "kicker": "Molitva · vjernost vremenu",
-      "title": "Započinjem planirano vrijeme molitve čak i kada mi je dan ispunjen obvezama.",
-      "example": "Dolazi uobičajeno vrijeme molitve, a poruke ili kućanski poslovi još čekaju; pitanje je započinješ li kako si planirao ili nastavljaš odgađati."
+      "kicker": "Molitva · razmatranje",
+      "title": "Odvajam planirano vrijeme za razmatranje u molitvi.",
+      "example": "Ana navečer pročita nekoliko redaka Evanđelja. Ostane uz jednu Isusovu riječ i razgovara s njim o svojem danu."
     },
     {
-      "kicker": "Poteškoće · prihvaćanje",
-      "title": "Nakon uobičajenog razočaranja vratim se onomu što treba učiniti umjesto da ostanem zaokupljen negodovanjem.",
-      "example": "Plan je otkazan i ne može se vratiti. Nakon što priznaš da ti je teško, počneš dobro koristiti preostalo vrijeme umjesto da stalno ponavljaš kako se to nije smjelo dogoditi."
+      "kicker": "Patnja · mir",
+      "title": "U teškoći koju zasad ne mogu ukloniti uspijevam sačuvati nešto unutarnjeg mira.",
+      "example": "Ivan čeka nalaz koji još ne može dobiti. Zabrinut je, ali u molitvi nalazi malo mira dok čeka."
     },
     {
-      "kicker": "Manji propusti · odgovor",
-      "title": "Kada znam da je neki manji postupak bio pogrešan, zanemarim ga jer mi se čini nevažnim.",
-      "example": "Izrekneš neljubaznu šalu, primijetiš da je nekoga povrijedila i zaključiš da je to premalo da bi se time bavio."
+      "kicker": "Laki grijeh · odnos prema njemu",
+      "title": "Laki grijeh zanemarim jer mislim: „Nije to ništa važno.”",
+      "example": "Petar namjerno odgovori malo zajedljivo. Poslije si kaže: „Ma to je sitnica”, i prijeđe preko toga."
     },
     {
-      "kicker": "Euharistija · nedjelja",
-      "title": "Kada planiram vikend, ostavim prostor za nedjeljnu misu, osim ako me spriječi ozbiljan razlog.",
-      "example": "Prije nego što potvrdiš putovanje ili događaj, provjeriš gdje i kada možeš na nedjeljnu misu; bolest ili neizbježna dužnost drugačija su situacija."
+      "kicker": "Sakramenti · nedjeljna misa",
+      "title": "Sudjelujem na nedjeljnoj misi kada me ne sprječava ozbiljan razlog.",
+      "example": "Marija u nedjelju putuje pa potraži misu u mjestu u koje dolazi. Kad je bolesna, to je drugačija situacija."
     },
     {
-      "kicker": "Navike · opravdavanje",
-      "title": "Ponavljajuću slabost opravdavam riječima: „To je jednostavno moj karakter.”",
-      "example": "Isti nestrpljiv ton ponavlja se kod kuće, a ti ga smatraš nepromjenjivim dijelom temperamenta umjesto nečim na čemu možeš raditi."
+      "kicker": "Nesavršenosti · opravdavanje",
+      "title": "Opravdavam naviku za koju vidim da me previše veže uz vlastitu udobnost.",
+      "example": "Luka voli da sve bude po njegovu rasporedu. Vidi da se teško prilagođava drugima, ali kaže: „Takav sam.”"
     },
     {
-      "kicker": "Pregled dana · redovitost",
-      "title": "Odvajam određeni trenutak za pregled svojega dana pred Bogom.",
-      "example": "U odabrano vrijeme nakratko se prisjetiš nečega na čemu si zahvalan, jedne dobre reakcije i jednog mjesta na kojem ti je potrebno milosrđe."
+      "kicker": "Ispit savjesti · svaki dan",
+      "title": "Barem jednom dnevno pred Bogom pregledam svoje postupke.",
+      "example": "Prije spavanja Ana se prisjeti dana. Zahvali za dobro i prizna Bogu gdje je pogriješila."
     },
     {
-      "kicker": "Ozbiljne odluke · prevencija",
-      "title": "Kada me neka okolnost opetovano vodi prema nečemu ozbiljno pogrešnom, učinim konkretnu promjenu kako bih smanjio rizik.",
-      "example": "Određena aplikacija, razgovor ili okruženje prethodili su već nekoliko postupaka koje smatraš ozbiljno pogrešnima; konkretna promjena može se odnositi na pristup, vrijeme ili društvo."
+      "kicker": "Smrtni grijeh · izbjegavanje prigode",
+      "title": "Izbjegavam situacije za koje znam da me lako vode u smrtni grijeh.",
+      "example": "Marko zna da ga određeni susreti vode prema bračnoj nevjeri. Zato se više ne dogovara za takve susrete."
     },
     {
-      "kicker": "Molitva · suhoća",
-      "title": "Kada mi molitva djeluje suho ili prazno, skratim je ili je preskočim.",
-      "example": "U molitvi nema utjehe ni uvida i čini se da se ništa ne događa; prekineš je ranije ponajprije zbog toga."
+      "kicker": "Molitva · bez utjehe",
+      "title": "Prekidam molitvu prije planiranog kraja zato što u njoj ne osjećam utjehu.",
+      "example": "Ivana je odvojila vrijeme za molitvu. Budući da ništa posebno ne osjeća, zaključi da nema smisla nastaviti i ode gledati televiziju."
     },
     {
-      "kicker": "Poteškoće · unutarnji otpor",
-      "title": "Nakon što učinim ono što razumno mogu, i dalje razmišljam samo o tome koliko je poteškoća nepravedna ili neprihvatljiva.",
-      "example": "Nakon kritike, kašnjenja ili razočaranja učiniš ono što se može promijeniti, ali isti unutarnji prosvjed još dugo zaokuplja tvoju pozornost."
+      "kicker": "Patnja · prigovaranje",
+      "title": "Dok podnosim teškoću koju ne mogu izbjeći, prigovaram zbog nje.",
+      "example": "Autobus kasni i Petar mora čekati. Više puta ponavlja: „Zašto se baš meni ovo događa?”"
     },
     {
-      "kicker": "Manji propusti · pozornost",
-      "title": "Tijekom dana primjećujem male postupke nestrpljivosti, neiskrenosti ili sebičnosti umjesto da ih previdim.",
-      "example": "Prepoznaš malo pretjerivanje, omalovažavajući odgovor ili izbor vlastite udobnosti na tuđi račun."
+      "kicker": "Laki grijeh · otpor",
+      "title": "Kada primijetim da ću svjesno učiniti laki grijeh, pokušam se zaustaviti.",
+      "example": "Ana želi ubaciti malu zajedljivu primjedbu. Prije nego što je izgovori, prepozna što radi i odustane."
     },
     {
-      "kicker": "Ispovijed · ritam",
-      "title": "Kada mi je ispovijed razumno dostupna, planiram joj pristupiti u približno redovitim razmacima umjesto da čekam krizu.",
-      "example": "Primjerice, odlučiš ići otprilike jednom mjesečno i ostaviš za to vrijeme čak i kada se nije dogodio težak grijeh."
+      "kicker": "Sakramenti · redovita ispovijed",
+      "title": "Držim se redovitog ritma ispovijedi kada mi je ona dostupna.",
+      "example": "Ivan ima običaj redovito ići na ispovijed. Kad se približi vrijeme, provjeri raspored i ode, umjesto da to stalno odgađa."
     },
     {
-      "kicker": "Navike · sloboda",
-      "title": "Svjesno ograničavam naviku koja sama po sebi nije pogrešna kada mi odvlači pozornost od Boga ili drugih.",
-      "example": "Provjeravanje mobitela, traženje pohvale ili inzistiranje da sve bude po tvojem počinje smanjivati tvoju pozornost prema molitvi ili osobi kraj tebe."
+      "kicker": "Nesavršenosti · odricanje",
+      "title": "Vježbam se odreći nečega dopuštenog kada vidim da sam se previše vezao uz to.",
+      "example": "Petar primijeti da stalno provjerava sportske rezultate. Odluči dio večeri provesti bez mobitela kako bi bio prisutniji obitelji."
     },
     {
-      "kicker": "Pregled dana · samo nakon pada",
-      "title": "Svoje nakane preispitujem tek nakon što nešto očito pođe loše.",
-      "example": "Preispituješ se nakon svađe, ali ne i tijekom običnih dana kada nije bilo vidljivog sukoba."
+      "kicker": "Ispit savjesti · preskakanje",
+      "title": "Dan mi prođe bez ispita savjesti.",
+      "example": "Luka navečer legne, a da se nije pred Bogom osvrnuo na svoj dan. Idućih se večeri dogodi isto."
     },
     {
-      "kicker": "Ozbiljne odluke · rizik",
-      "title": "Ostajem u okolnosti koja me već više puta dovela blizu teškoga grijeha jer vjerujem da ću se ovaj put zaustaviti.",
-      "example": "Zadržavaš neograničen pristup štetnom sadržaju ili nastavljaš predvidljiv kasnonoćni razgovor, vjerujući da će ovaj put završiti drukčije."
+      "kicker": "Smrtni grijeh · otpor napasti",
+      "title": "Pred napasti za smrtni grijeh brzo odustanem od otpora.",
+      "example": "Ivanu ponude sudjelovanje u ozbiljnoj prijevari. Zna da je to teško pogrešno, ali čim vidi moguću zaradu prestane se opirati."
     },
     {
-      "kicker": "Molitva · sabranost",
-      "title": "Tijekom svakodnevnih poslova nakratko usmjerim pozornost na Boga.",
-      "example": "Tijekom putovanja, kuhanja ili odgovaranja na poruke učiniš kratki čin zahvalnosti, pouzdanja ili svijesti o Božjoj prisutnosti."
+      "kicker": "Molitva · usred dana",
+      "title": "Tijekom svakodnevnih poslova vraćam se Bogu kratkom molitvom.",
+      "example": "Dok pere posuđe, Marija se sjeti bolesne prijateljice. Tiho kaže: „Gospodine, budi uz nju”, i nastavi raditi."
     },
     {
-      "kicker": "Poteškoće · prikazanje",
-      "title": "Kada se neka uobičajena poteškoća ne može izbjeći, svjesno je prikazujem Bogu za dobro druge osobe.",
-      "example": "Dok podnosiš bolest, kašnjenje ili nužnu dužnost — ne zlostavljanje ni štetu koja se može spriječiti — imenuješ osobu i tu kušnju za nju povjeravaš Bogu."
+      "kicker": "Patnja · za drugoga",
+      "title": "Rado prihvatim napor ili neugodnost kako bih olakšao drugoj osobi.",
+      "example": "Ana može provesti večer sa starijom susjedom pa pristane. Razgovor je umori, ali drago joj je što susjeda više nije sama."
     },
     {
-      "kicker": "Manji propusti · naknada",
-      "title": "Nakon svjesnog manjeg propusta učinim konkretnu naknadu kada je to moguće.",
-      "example": "Nakon grubih riječi ispričaš se ili popraviš konkretnu štetu umjesto da ostaneš samo na privatnom žaljenju."
+      "kicker": "Laki grijeh · popravljanje",
+      "title": "Nakon lakoga grijeha pokušam popraviti ono što sam učinio.",
+      "example": "Luka se malo narugao bratu. Kasnije mu priđe i kaže: „Oprosti, nije bilo u redu da ti se rugam.”"
     },
     {
-      "kicker": "Euharistija · misa radnim danom",
-      "title": "Kada se misa radnim danom može uklopiti bez zanemarivanja mojih dužnosti, odbacim je ne razmotrivši malu promjenu plana.",
-      "example": "Misa u blizini uklopila bi se kad bi pomaknuo nebitnu obvezu ili razonodu, ali je automatski isključiš. Posao, skrb za druge, zdravlje i potreban odmor ne smatraju se odbijanjem."
+      "kicker": "Sakramenti · misa tijekom tjedna",
+      "title": "Kad mogu na misu radnim danom, odbacim tu priliku jer bih radije ostao u svojoj udobnosti.",
+      "example": "Petar ima slobodno jutro, a misa je blizu. Nema obveze ni potrebe za odmorom, ali odustane jer mu je draže nastaviti gledati seriju."
     },
     {
-      "kicker": "Krepost · konkretna vježba",
-      "title": "Odaberem jednu konkretnu krepost koju ću vježbati protiv ponavljajuće slabosti.",
-      "example": "Ako se nestrpljivost stalno vraća, odabereš jedan dnevni čin — primjerice zastati prije odgovora — kako bi vježbao blagost."
+      "kicker": "Nesavršenosti · vježbanje kreposti",
+      "title": "Na jednoj svojoj slabosti radim tako da vježbam suprotnu krepost.",
+      "example": "Marija voli imati zadnju riječ. U nevažnoj raspravi vježba poniznost tako da ne dodaje još jednu primjedbu samo da bi njezina bila zadnja."
     },
     {
-      "kicker": "Pregled dana · sljedeći korak",
-      "title": "Pregled dana vodi me do jedne konkretne odluke za sljedeći dan.",
-      "example": "Nakon što primijetiš da požuruješ člana obitelji, odlučiš kada i kako ćeš ga sutra strpljivije saslušati."
+      "kicker": "Ispit savjesti · određena slabost",
+      "title": "U ispitu savjesti posebno pratim jednu slabost na kojoj radim.",
+      "example": "Ivan radi na strpljivosti. Navečer se prisjeti baš trenutaka kada je druge požurivao i kada ih je mirno saslušao."
     },
     {
-      "kicker": "Ozbiljne odluke · odgovor",
-      "title": "Nakon odluke za koju vjerujem da je bila ozbiljno pogrešna, poduzmem barem jedan konkretan korak kako se ne bi ponovila.",
-      "example": "Dogovoriš ispovijed, ukloniš pristup prigodi, potražiš pomoć pouzdane osobe ili popraviš štetu umjesto da se osloniš samo na žaljenje."
+      "kicker": "Smrtni grijeh · nakon pada",
+      "title": "Kad prepoznam da sam počinio smrtni grijeh, kajanje me potakne na pokoru ili popravljanje štete.",
+      "example": "Marko se kaje zbog ozbiljne prijevare koju je svjesno učinio i ispovjedi je. Zatim počne vraćati novac koji je uzeo.",
+      "clarification": "Ako tijekom proteklih osam tjedana nije bilo takvog pada, preskoči ovu tvrdnju. Odgovor „nikada” ovdje bi značio da nakon pada ne poduzimaš opisani korak."
     },
     {
-      "kicker": "Molitva · pozornost",
-      "title": "Moja se molitva uglavnom svodi na molbe da Bog riješi neposredne probleme, uz malo vremena za tihu pozornost prema njemu.",
-      "example": "Molitva postane popis molbi i završi čim je popis gotov, bez vremena da jednostavno ostaneš pred Bogom."
+      "kicker": "Molitva · za što molim",
+      "title": "Moja se molitva svodi na molbe da se riješe moji svakodnevni problemi.",
+      "example": "Luka moli za posao, zdravlje i račune. Tu njegova molitva završi; rijetko zahvali Bogu ili ga pita kako danas može živjeti bliže njemu."
     },
     {
-      "kicker": "Ljubav · žrtva",
-      "title": "Kada nekome mogu pomoći bez zanemarivanja stvarne dužnosti, to izbjegnem ponajprije zato što bi mi bilo nezgodno.",
-      "example": "Nekome treba malo vremena ili praktične pomoći koju razumno možeš pružiti, ali odbiješ uglavnom zato što bi to poremetilo tvoju udobnost."
+      "kicker": "Patnja · izbjegavanje",
+      "title": "Odustanem od svoje dužnosti samo zato što mi je teško ili neugodno.",
+      "example": "Ivan je dogovorio da će odvesti oca na pregled i može to učiniti. Ipak otkaže jer mu se ne da čekati s njim."
     },
     {
-      "kicker": "Manji propusti · obrazac",
-      "title": "Kada se isti manji propust ponavlja, svaki put ga promatram kao nepovezan događaj.",
-      "example": "Ista neljubazna šala ili mala laž ponovi se nekoliko puta, ali se ne pitaš koja želja ili okolnost nastavlja hraniti taj propust."
+      "kicker": "Laki grijeh · svjestan pristanak",
+      "title": "Učinim laki grijeh iako u tom trenutku znam da griješim.",
+      "example": "Petar želi malo bocnuti prijatelja. Zna da bi mogao prešutjeti zajedljivu primjedbu, ali je svejedno izgovori."
     },
     {
-      "kicker": "Ispovijed · sljedeći korak",
-      "title": "Kada ispovjedim ponavljajući propust, obično odem bez odluke o praktičnom sljedećem koraku.",
-      "example": "Ispovjediš isti propust, ali poslije ne odlučiš ispričati se, izbjegavati određenu prigodu ili vježbati konkretnu krepost."
+      "kicker": "Sakramenti · ispovijed i rast",
+      "title": "Odgađam ispovijed jer mislim da bez smrtnog grijeha nema smisla ići.",
+      "example": "Marija vidi da stalno popušta u malim stvarima. Ipak odbaci misao na ispovijed: „Nisam učinila ništa teško, pa mi to ne treba.”"
     },
     {
-      "kicker": "Nakane · svijest",
-      "title": "Kada želja za pohvalom ili nadzorom utječe na moje ponašanje, obično je primijetim tek poslije.",
-      "example": "Tek nakon što nešto kažeš prepoznaš da je želja da ostaviš dobar dojam utjecala na tvoje riječi."
+      "kicker": "Nesavršenosti · nakon što primijetim",
+      "title": "Nastavim hraniti svoju želju za pohvalom i nakon što primijetim da me vodi.",
+      "example": "Ana primijeti da priča o svojem uspjehu samo da bi je drugi hvalili. Ipak nastavi dodavati pojedinosti kako bi čula još pohvala."
     },
     {
-      "kicker": "Pregled dana · obrasci",
-      "title": "Kada pregledavam svoje dane, svaki propust promatram zasebno umjesto da tražim okolnosti koje se ponavljaju.",
-      "example": "Više večeri pokazuje da umor i neplanirano vrijeme pred ekranom prethode zanemarenoj molitvi, ali svaki dan promatraš zasebno i ne povezuješ ih."
+      "kicker": "Ispit savjesti · način",
+      "title": "Ispit savjesti obavim površno, bez prisjećanja na konkretne postupke.",
+      "example": "Petar započne ispit savjesti, ali ostane na općem dojmu: „Dan je bio tako-tako.” Ne prisjeti se konkretno što je govorio i radio."
     },
     {
-      "kicker": "Ozbiljne odluke · zaštita",
-      "title": "Kada početno žaljenje oslabi, bez zaštite se vratim okolnosti povezanoj s ozbiljno pogrešnom odlukom.",
-      "example": "Ako je ozbiljno pogrešna odluka bila povezana s aplikacijom, obrascem odnosa ili okruženjem, nastaviš s istim pristupom i navikom ne promijenivši ništa."
+      "kicker": "Smrtni grijeh · svjestan čin",
+      "title": "Slobodno učinim nešto za što potpuno jasno znam da je težak grijeh.",
+      "example": "Luka zna da bi lažnim svjedočenjem teško naštetio nedužnoj osobi. Ipak slobodno odluči lagati kako bi zaštitio sebe.",
+      "clarification": "Ovdje se pita je li se sam čin dogodio. Ako nije, odaberi „Nikada ili gotovo nikada”. Sama napast ili neželjena misao nije takav čin."
     }
   ],
   "stabilitySummary": "Unutarnja stabilnost obrasca: {percent}% ponovnih uzorkovanja vratilo je {stage}. stupanj; raspon od 95% odgovora proteže se od {lower}. do {upper}. stupnja.",
   "frequencyOptions": [
     "Nikada ili gotovo nikada",
     "Rijetko",
-    "Otprilike polovicu vremena",
+    "Otprilike u polovici slučajeva",
     "Često",
     "Gotovo uvijek"
   ],
@@ -271,6 +273,16 @@
     "invalidOption": "Neispravan optionIndex za {id}",
     "coverageRequired": "Potrebno je odgovoriti na najmanje 21 pitanje i najmanje dva pitanja iz svakog područja."
   },
-  "exampleLabel": "Primjer iz svakodnevice"
+  "exampleLabel": "Kratka priča za pojašnjenje",
+  "domainHelp": {
+    "seriousSin": "Smrtni grijeh uključuje tešku stvar, punu spoznaju da je riječ o teškom grijehu i slobodan pristanak. Sama napast ili neželjena misao nije takav pristanak. Ako nisi siguran kako procijeniti svoju situaciju, možeš preskočiti.",
+    "venialSin": "Laki grijeh može biti prijestup u manjoj stvari ili u teškoj stvari bez pune spoznaje ili potpunog pristanka. Priče ovdje prikazuju male povrede ljubavi; težina stvarnog postupka ovisi o okolnostima.",
+    "imperfections": "Ovdje gledamo navezanosti i slabosti koje same po sebi ne moraju biti grijeh. Važno je što učiniš kad ih prepoznaš; prvi neželjeni poriv nije isto što i svjestan pristanak.",
+    "suffering": "Misli na teškoće koje možeš podnositi uz potrebnu pomoć i brigu o sebi. Tuga i bol same po sebi ne znače manjak vjere. Liječenje, traženje pomoći i zaštita od zlostavljanja ne računaju se kao izbjegavanje križa.",
+    "prayer": "Razmatranje znači zadržati se pred Bogom nad Evanđeljem, duhovnim štivom ili temom vjere. I izgovorene molitve i molbe imaju svoje mjesto. Nedostatak ugodnih osjećaja u molitvi naziva se suhoćom.",
+    "examen": "Ispit savjesti (eksamen) kratak je pregled dana pred Bogom: zahvalnost, pogled na svoje postupke i molba za oproštenje i pomoć. Posebni ispit savjesti usredotočen je na jednu slabost ili krepost.",
+    "sacraments": "Uzmi u obzir dostupnost mise i ispovijedi te zdravlje, posao, skrb za druge i potreban odmor. Misa radnim danom i ispovijed lakih grijeha ovdje su prakse za rast, a ne nove obveze."
+  },
+  "contextLabel": "Pojašnjenje pojmova"
 });
 })();

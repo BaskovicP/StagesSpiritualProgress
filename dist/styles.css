@@ -600,7 +600,7 @@ h1 {
 .question-example-label {
   margin: 0 0 5px;
   color: var(--gold-bright);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 750;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -609,7 +609,33 @@ h1 {
 #question-example-text {
   margin: 0;
   color: var(--paper-muted);
-  font-size: 0.94rem;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.question-context {
+  margin-top: 16px;
+  color: var(--paper-muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.question-context summary {
+  color: var(--gold-bright);
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.question-context p {
+  margin: 8px 0 0;
+}
+
+.question-clarification {
+  margin: 16px 0 0;
+  padding-left: 14px;
+  border-left: 2px solid var(--gold);
+  color: var(--paper-muted);
+  font-size: 1rem;
   line-height: 1.55;
 }
 

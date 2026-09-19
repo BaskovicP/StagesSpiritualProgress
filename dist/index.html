@@ -116,7 +116,7 @@
               <p class="eyebrow" data-i18n="yourProgress">Your progress</p>
               <p><span id="question-number">1</span> / <span id="question-total">1</span></p>
             </div>
-            <progress id="question-progress" class="progress-track" value="1" max="14"></progress>
+            <progress id="question-progress" class="progress-track" value="1" max="28"></progress>
             <p class="progress-domain" id="progress-domain"></p>
           </aside>
 
@@ -125,10 +125,15 @@
             <h2 id="question-title" tabindex="-1"></h2>
             <aside class="question-example" aria-labelledby="question-example-label">
               <p id="question-example-label" class="question-example-label" data-i18n="exampleLabel">
-                Everyday example
+                A short story to explain
               </p>
               <p id="question-example-text"></p>
             </aside>
+            <details id="question-context" class="question-context">
+              <summary data-i18n="contextLabel">Understanding the terms</summary>
+              <p id="question-context-text"></p>
+            </details>
+            <p id="question-clarification" class="question-clarification" hidden></p>
             <p class="question-help" data-i18n="chooseClosest">Choose the description that comes closest to your usual experience.</p>
             <div id="answer-options" class="answer-options"></div>
             <p id="assessment-message" class="assessment-message" role="status" hidden></p>

@@ -8,8 +8,8 @@
   const minimumItemsPerDomain = 2;
   const lowestAssessedStage = 1;
   const highestAssessedStage = 6;
-  const storageVersion = 2;
-  const storageKey = "spiritual-progress-reflection:v2";
+  const storageVersion = assessment.questionnaireVersion;
+  const storageKey = `spiritual-progress-reflection:v${storageVersion}`;
 
   const translations = window.spiritualLocales;
 
@@ -32,6 +32,9 @@
     stagePath: document.querySelector("#stage-path"),
     optionsRoot: document.querySelector("#answer-options"),
     questionExampleText: document.querySelector("#question-example-text"),
+    questionClarification: document.querySelector("#question-clarification"),
+    questionContext: document.querySelector("#question-context"),
+    questionContextText: document.querySelector("#question-context-text"),
     assessmentMessage: document.querySelector("#assessment-message"),
     reviewButton: document.querySelector("#review-button"),
     printButton: document.querySelector("#print-button"),
@@ -156,6 +159,10 @@
     document.querySelector("#question-kicker").textContent = question.kicker;
     document.querySelector("#question-title").textContent = question.title;
     elements.questionExampleText.textContent = question.example;
+    elements.questionClarification.textContent = question.clarification || "";
+    elements.questionClarification.hidden = !question.clarification;
+    elements.questionContextText.textContent = copy.domainHelp[blueprint.domain];
+    elements.questionContext.open = ["seriousSin", "venialSin"].includes(blueprint.domain);
     elements.questionProgress.value = state.currentIndex + 1;
     elements.questionProgress.max = questionBlueprints.length;
     elements.previousButton.disabled = state.currentIndex === 0;
@@ -612,6 +619,10 @@
             domain: copy.domains[question.domain],
             prompt: copy.questions[index].title,
             example: copy.questions[index].example,
+            clarification: copy.questions[index].clarification || null,
+            domainHelp: copy.domainHelp[question.domain],
+            responseInstructions: copy.chooseClosest,
+            skipLabel: copy.preferNot,
             options: getQuestionOptions(copy, index).map((label, optionIndex) => ({ optionIndex, label }))
           }))
         };

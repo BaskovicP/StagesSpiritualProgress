@@ -26,12 +26,12 @@
   "pathAssessmentNote": "Stage VII appears in the source diagram, but the supplied pages give no criteria for it. It is shown as the horizon of the path and is not assigned by this questionnaire.",
   "backToIntro": "Back",
   "yourProgress": "Your progress",
-  "chooseClosest": "Over the past eight weeks, how often has this been true? Choose what was usual, not what you hoped to do. The example clarifies the situation; it is not a suggested answer.",
+  "chooseClosest": "Think about the past eight weeks. How often did the statement describe your behavior? The story is a fictional illustration: answer about yourself. If it asks how you responded to a situation that did not occur, skip.",
   "previous": "Previous",
   "next": "Next",
   "seeResult": "See result",
-  "preferNot": "I prefer not to answer this question.",
-  "needMore": "For a useful estimate, answer at least 21 questions and at least 2 in every area. This item was previously skipped.",
+  "preferNot": "I cannot assess this / I choose to skip",
+  "needMore": "An estimate needs at least 21 answers and two in each area. This statement was skipped. Answer only if you can assess it; otherwise an estimate is not available yet.",
   "footerNote": "For personal reflection; not a substitute for spiritual direction or confession.",
   "footerIdentity": "Stages of Spiritual Progress",
   "resultEyebrow": "Your closest pattern",
@@ -46,7 +46,7 @@
   "printResult": "Print result",
   "retake": "Clear & retake",
   "methodTitle": "How this estimate is calculated",
-  "methodBody": "The source diagram names seven stages, but the supplied pages describe only Stages I–VI. For that reason, the questionnaire displays all seven while estimating only the six described stages; it does not assign Stage VII. Responses are mapped evenly onto a six-point continuum: 1, 2.25, 3.5, 4.75, or 6. Reverse-keyed items use the opposite score. Item scores are averaged within each of the seven areas, and those seven area means are then averaged with equal weight. The nearest whole number becomes the displayed stage. Pattern stability is the percentage of 1,000 browser-only within-area resamples that return that same stage; the range contains the middle 95% of resampled overall scores. It measures sensitivity to this answer pattern, not validated diagnostic accuracy.",
+  "methodBody": "The questions are adapted from the source descriptions. The numerical scale is a provisional method devised for this app, not a scoring system supplied by the source. The source diagram names seven stages, but the supplied pages describe only Stages I–VI. For that reason, the questionnaire displays all seven while estimating only the six described stages; it does not assign Stage VII. Responses are mapped evenly onto the range from 1 to 6 using five values: 1, 2.25, 3.5, 4.75, or 6. Reverse-keyed items use the opposite score. Item scores are averaged within each of the seven areas, and those seven area means are then averaged with equal weight. The nearest whole number becomes the displayed stage. Pattern stability is the percentage of 1,000 browser-only within-area resamples that return that same stage; the range contains the middle 95% of resampled overall scores. It measures sensitivity to this answer pattern, not validated diagnostic accuracy.",
   "methodPrivacy": "Answers, progress, result, and language are kept only in this tab’s temporary session storage so they survive a refresh. They are never transmitted and are cleared when the tab is closed. No cookies, analytics, or identifiers are used.",
   "notAnswered": "Not answered",
   "answeredSummary": "{answered} of {total} questions answered · {domains} of 7 dimensions represented",
@@ -63,13 +63,13 @@
     "unitive": "Unitive way"
   },
   "domains": {
-    "seriousSin": "Serious choices",
-    "venialSin": "Everyday faults",
-    "imperfections": "Attachments & habits",
+    "seriousSin": "Mortal sin",
+    "venialSin": "Venial sin",
+    "imperfections": "Imperfections",
     "suffering": "Suffering",
     "prayer": "Prayer",
-    "examen": "Reflection",
-    "sacraments": "Sacramental life"
+    "examen": "Examination of conscience",
+    "sacraments": "Sacraments"
   },
   "stages": [
     {
@@ -111,144 +111,146 @@
   ],
   "questions": [
     {
-      "kicker": "Prayer · keeping a time",
-      "title": "I begin my planned prayer time even when the day is busy.",
-      "example": "Your usual prayer time arrives while messages or chores are unfinished; the question is whether you begin as planned or keep postponing it."
+      "kicker": "Prayer · meditation",
+      "title": "I set aside planned time for prayerful meditation.",
+      "example": "In the evening, Ana reads a few lines from the Gospel. She stays with one saying of Jesus and speaks to him about her day."
     },
     {
-      "kicker": "Difficulty · acceptance",
-      "title": "After an ordinary disappointment, I return to what needs to be done instead of remaining caught in protest.",
-      "example": "A plan is cancelled and cannot be restored. After acknowledging the disappointment, you begin using the remaining time well rather than repeatedly thinking that it should not have happened."
+      "kicker": "Suffering · peace",
+      "title": "In a difficulty I cannot yet resolve, I manage to keep some inner peace.",
+      "example": "Ivan is waiting for a medical result that is not ready yet. He is worried, but finds a little peace in prayer while he waits."
     },
     {
-      "kicker": "Small faults · response",
-      "title": "When I know that a small action was wrong, I dismiss it because it seems unimportant.",
-      "example": "You make an unkind joke, see that it hurt someone, and decide it is too small to address."
+      "kicker": "Venial sin · taking it seriously",
+      "title": "I brush aside a venial sin because I think, “It is nothing important.”",
+      "example": "Petar deliberately makes a mildly unkind reply. Later he tells himself, “It was only a small thing,” and dismisses it."
     },
     {
-      "kicker": "Eucharist · Sunday",
-      "title": "When making weekend plans, I make room for Sunday Mass unless a serious reason prevents me.",
-      "example": "Before confirming a trip or event, you check when and where Sunday Mass is available; illness or an unavoidable duty is a different situation."
+      "kicker": "Sacraments · Sunday Mass",
+      "title": "I attend Sunday Mass when no serious reason prevents me.",
+      "example": "Marija is travelling on Sunday, so she finds a Mass at her destination. Being ill would be a different situation."
     },
     {
-      "kicker": "Habits · excuses",
-      "title": "I excuse a recurring weakness by telling myself, “That is just my personality.”",
-      "example": "The same impatient tone returns at home, and you treat it as fixed temperament rather than something that can change."
+      "kicker": "Imperfections · making excuses",
+      "title": "I make excuses for a habit that I can see ties me too closely to my own comfort.",
+      "example": "Luka likes everything to follow his schedule. He sees that he struggles to adapt to others, but says, “That is just how I am.”"
     },
     {
-      "kicker": "Daily review · regularity",
-      "title": "I set aside a specific moment to review my day before God.",
-      "example": "At a chosen time, you briefly recall something you are grateful for, one way you responded well, and one place where you need mercy."
+      "kicker": "Examen · each day",
+      "title": "At least once a day, I review my actions before God.",
+      "example": "Before bed, Ana looks back over her day. She gives thanks for the good and acknowledges to God where she went wrong."
     },
     {
-      "kicker": "Serious choices · prevention",
-      "title": "When a situation repeatedly leads me toward something seriously wrong, I make a concrete change to reduce the risk.",
-      "example": "A certain app, conversation, or setting has preceded several choices you believe were seriously wrong; a concrete change could involve access, timing, or company."
+      "kicker": "Mortal sin · avoiding occasions",
+      "title": "I avoid situations that I know readily lead me toward mortal sin.",
+      "example": "Marko knows that certain meetings draw him toward being unfaithful to his spouse. He stops arranging those meetings."
     },
     {
-      "kicker": "Prayer · dryness",
-      "title": "When prayer feels dry or empty, I cut it short or skip it.",
-      "example": "No comfort or insight comes during prayer and nothing seems to happen; you end early mainly for that reason."
+      "kicker": "Prayer · without comfort",
+      "title": "I end prayer before the planned time is over because I feel no comfort in it.",
+      "example": "Ivana has set aside time to pray. Because she feels nothing special, she decides there is no point continuing and goes to watch television."
     },
     {
-      "kicker": "Difficulty · inner resistance",
-      "title": "After doing what I reasonably can about a difficulty, I stay mentally stuck on how unfair or unacceptable it is.",
-      "example": "You address what can be changed after criticism, delay, or disappointment, but the same inner protest continues to occupy your attention for a long time."
+      "kicker": "Suffering · complaining",
+      "title": "While enduring a difficulty I cannot avoid, I complain about it.",
+      "example": "The bus is late and Petar has to wait. He repeatedly says, “Why does this always happen to me?”"
     },
     {
-      "kicker": "Small faults · awareness",
-      "title": "During the day, I notice small acts of impatience, dishonesty, or selfishness instead of overlooking them.",
-      "example": "You recognize a slight exaggeration, a dismissive reply, or choosing convenience at someone else’s expense."
+      "kicker": "Venial sin · resistance",
+      "title": "When I notice that I am about to commit a venial sin deliberately, I try to stop.",
+      "example": "Ana wants to make a small spiteful comment. Before saying it, she recognizes what she is doing and holds back."
     },
     {
-      "kicker": "Confession · rhythm",
-      "title": "When confession is reasonably available, I plan to go at an approximate interval instead of waiting for a crisis.",
-      "example": "For example, you decide to go about once a month and make room for it even when no grave sin has occurred."
+      "kicker": "Sacraments · regular confession",
+      "title": "I keep a regular rhythm of confession when it is available to me.",
+      "example": "Ivan has a habit of going to confession regularly. When the time comes, he checks the schedule and goes instead of repeatedly putting it off."
     },
     {
-      "kicker": "Habits · freedom",
-      "title": "I deliberately limit a habit that is not wrong in itself when it takes attention from God or other people.",
-      "example": "Phone checking, seeking praise, or insisting on having plans your way begins to reduce your attention to prayer or to someone present."
+      "kicker": "Imperfections · letting go",
+      "title": "I practice giving up something permitted when I see that I have become too attached to it.",
+      "example": "Petar notices that he keeps checking sports scores. He puts his phone away for part of the evening so he can be more present to his family."
     },
     {
-      "kicker": "Daily review · only after failure",
-      "title": "I examine my motives only after something has obviously gone wrong.",
-      "example": "You examine yourself after an argument, but not on ordinary days when no visible conflict occurs."
+      "kicker": "Examen · missed days",
+      "title": "A day goes by without my making an examination of conscience.",
+      "example": "Luka goes to bed without looking back over his day before God. The same thing happens on the following evenings."
     },
     {
-      "kicker": "Serious choices · risk",
-      "title": "I remain in a situation that has repeatedly brought me close to serious sin because I assume I will control myself this time.",
-      "example": "You keep unrestricted access to harmful content or continue a predictable late-night exchange, trusting the next outcome will be different."
+      "kicker": "Mortal sin · resisting temptation",
+      "title": "When tempted toward mortal sin, I quickly give up resisting.",
+      "example": "Ivan is offered a part in a serious fraud. He knows it is gravely wrong, but stops resisting as soon as he sees the possible profit."
     },
     {
-      "kicker": "Prayer · recollection",
-      "title": "During ordinary tasks, I briefly turn my attention to God.",
-      "example": "While commuting, cooking, or answering messages, you make a short act of gratitude, trust, or awareness of God’s presence."
+      "kicker": "Prayer · during the day",
+      "title": "During everyday work, I return to God in a brief prayer.",
+      "example": "While washing dishes, Marija remembers a sick friend. She quietly says, “Lord, be with her,” and carries on working."
     },
     {
-      "kicker": "Difficulty · offering",
-      "title": "When an ordinary difficulty cannot be avoided, I consciously offer it to God for another person’s good.",
-      "example": "While enduring illness, delay, or necessary duty—not abuse or preventable harm—you name a person and entrust the trial to God for them."
+      "kicker": "Suffering · for another person",
+      "title": "I willingly accept effort or inconvenience to ease another person's burden.",
+      "example": "Ana is free to spend an evening with her elderly neighbour and agrees to stay. The conversation tires her, but she is glad her neighbour is no longer alone."
     },
     {
-      "kicker": "Small faults · repair",
-      "title": "After a deliberate small fault, I make a concrete repair when possible.",
-      "example": "After speaking harshly, you apologize or correct the practical harm instead of stopping at private regret."
+      "kicker": "Venial sin · making amends",
+      "title": "After a venial sin, I try to put right what I have done.",
+      "example": "Luka has made a small mocking remark to his brother. Later he goes to him and says, “I am sorry. It was wrong to make fun of you.”"
     },
     {
-      "kicker": "Eucharist · weekday opportunity",
-      "title": "When weekday Mass can fit without neglecting my duties, I rule it out without considering a small change of plan.",
-      "example": "A nearby Mass would fit if a nonessential errand or leisure plan were moved, but you dismiss it automatically. Work, caregiving, health, and necessary rest do not count as refusal."
+      "kicker": "Sacraments · weekday Mass",
+      "title": "When I can attend weekday Mass, I dismiss the opportunity because I would rather stay comfortable.",
+      "example": "Petar has a free morning and Mass is nearby. He has no duty or need for rest, but decides to keep watching a series instead."
     },
     {
-      "kicker": "Virtue · concrete practice",
-      "title": "I choose one specific virtue to practice against a recurring weakness.",
-      "example": "If impatience keeps returning, you choose one daily act—such as pausing before replying—to practice gentleness."
+      "kicker": "Imperfections · practicing a virtue",
+      "title": "I work on one weakness by practicing the opposite virtue.",
+      "example": "Marija likes to have the last word. In a minor disagreement, she practices humility by holding back an extra remark that would only give her the final say."
     },
     {
-      "kicker": "Daily review · next step",
-      "title": "My review of the day leads to one specific intention for the next day.",
-      "example": "After noticing that you rushed a family member, you decide when and how you will listen more patiently tomorrow."
+      "kicker": "Examen · a particular weakness",
+      "title": "In my examination of conscience, I pay special attention to one weakness I am working on.",
+      "example": "Ivan is working on patience. In the evening he recalls the moments when he rushed others and when he listened calmly."
     },
     {
-      "kicker": "Serious choices · response",
-      "title": "After a choice I believe was seriously wrong, I take at least one concrete step to prevent a repeat.",
-      "example": "You arrange confession, remove access to the occasion, seek support from a trusted person, or repair harm instead of relying only on regret."
+      "kicker": "Mortal sin · after a fall",
+      "title": "When I recognize that I have committed mortal sin, repentance moves me to penance or repairing the harm.",
+      "example": "Marko repents of a serious fraud he knowingly committed and confesses it. He then begins returning the money he took.",
+      "clarification": "If no such fall occurred in the past eight weeks, skip this statement. Here, “never” would mean that you do not take the described step after a fall."
     },
     {
-      "kicker": "Prayer · attention",
-      "title": "My prayer is mostly asking God to solve immediate problems, with little time for quiet attention to him.",
-      "example": "Prayer becomes a list of requests and ends when the list is finished, without time simply to remain before God."
+      "kicker": "Prayer · what I pray for",
+      "title": "My prayer is limited to asking for my everyday problems to be solved.",
+      "example": "Luka prays about work, health and bills. His prayer ends there; he rarely thanks God or asks how to live closer to him today."
     },
     {
-      "kicker": "Charity · sacrifice",
-      "title": "When I can help someone without neglecting a real duty, I avoid doing so mainly because it would inconvenience me.",
-      "example": "Someone needs a little time or practical help that you can reasonably give, but you decline chiefly because it would interrupt your comfort."
+      "kicker": "Suffering · avoidance",
+      "title": "I give up a duty simply because it is difficult or uncomfortable.",
+      "example": "Ivan has agreed to take his father to an appointment and is able to do so. He cancels because he does not want to sit and wait with him."
     },
     {
-      "kicker": "Small faults · pattern",
-      "title": "When the same small fault recurs, I treat each occurrence as unrelated.",
-      "example": "The same unkind joke or small lie appears several times, but you do not ask what desire or situation keeps feeding it."
+      "kicker": "Venial sin · deliberate consent",
+      "title": "I commit a venial sin even though I know at that moment that it is wrong.",
+      "example": "Petar wants to take a small jab at a friend. He knows he could leave the spiteful comment unsaid, but says it anyway."
     },
     {
-      "kicker": "Confession · next step",
-      "title": "When I confess a recurring fault, I usually leave without deciding what practical step I will take next.",
-      "example": "You confess the same fault but do not decide to apologize, avoid a particular occasion, or practice a specific virtue afterward."
+      "kicker": "Sacraments · confession and growth",
+      "title": "I put off confession because I think there is no point going without a mortal sin to confess.",
+      "example": "Marija sees that she keeps giving in over small things. Yet she dismisses confession: “I have not done anything grave, so I do not need it.”"
     },
     {
-      "kicker": "Motives · awareness",
-      "title": "When a wish for praise or control influences my behavior, I usually notice it only afterward.",
-      "example": "Only after speaking do you recognize that wanting to impress others influenced what you said."
+      "kicker": "Imperfections · after noticing",
+      "title": "I keep feeding my desire for praise after noticing that it is driving me.",
+      "example": "Ana notices that she is talking about her success just to be praised. She keeps adding details so she can hear more compliments."
     },
     {
-      "kicker": "Daily review · patterns",
-      "title": "In reviewing my days, I treat each failure separately instead of looking for recurring circumstances.",
-      "example": "Several evenings show that fatigue and unplanned screen time come before neglected prayer, but you review each evening without connecting them."
+      "kicker": "Examen · how I review",
+      "title": "I make a superficial examination of conscience without recalling specific actions.",
+      "example": "Petar begins his examination of conscience but stays with a general impression: “The day was so-so.” He does not recall what he actually said or did."
     },
     {
-      "kicker": "Serious choices · safeguards",
-      "title": "Once my initial regret fades, I return without safeguards to the situation linked to a seriously wrong choice.",
-      "example": "If a seriously wrong choice was connected with an app, relationship pattern, or setting, you resume the same access and routine without changing anything."
+      "kicker": "Mortal sin · a deliberate act",
+      "title": "I freely do something that I fully understand to be a grave sin.",
+      "example": "Luka knows that giving false testimony would seriously harm an innocent person. He freely chooses to lie to protect himself.",
+      "clarification": "This asks whether the act itself occurred. If it did not, choose “Never or almost never”. A temptation or unwanted thought alone is not such an act."
     }
   ],
   "stabilitySummary": "Internal pattern stability: {percent}% of resamples returned Stage {stage}; the 95% response interval spans Stages {lower}–{upper}.",
@@ -271,6 +273,16 @@
     "invalidOption": "Invalid optionIndex for {id}",
     "coverageRequired": "At least 21 answered questions and two answers in every area are required."
   },
-  "exampleLabel": "Everyday example"
+  "exampleLabel": "A short story to explain",
+  "domainHelp": {
+    "seriousSin": "Mortal sin involves grave matter, full knowledge that it is gravely sinful, and free consent. A temptation or unwanted thought alone is not such consent. If you are unsure how to assess your situation, you may skip.",
+    "venialSin": "Venial sin can involve a less serious matter, or a grave matter without full knowledge or complete consent. These stories illustrate small failures in charity; the gravity of a real act depends on its circumstances.",
+    "imperfections": "These questions concern attachments and weaknesses that need not be sins in themselves. What matters is your response once you recognize them; an unwanted first impulse is different from deliberate consent.",
+    "suffering": "Think of difficulties you can endure with appropriate help and care for yourself. Sadness and pain alone do not mean a lack of faith. Treatment, asking for help and protection from abuse do not count as avoiding the cross.",
+    "prayer": "Meditation means staying before God with a Gospel passage, spiritual reading or a subject of faith. Spoken prayers and petitions also have their place. A lack of comforting feelings in prayer is often called dryness.",
+    "examen": "An examination of conscience (examen) is a brief review of the day before God: giving thanks, considering your actions and asking for forgiveness and help. A particular examen focuses on one weakness or virtue.",
+    "sacraments": "Allow for access to Mass and confession, health, work, caregiving and necessary rest. Weekday Mass and confession of venial sins are practices for growth here, not additional obligations."
+  },
+  "contextLabel": "Understanding the terms"
 });
 })();
