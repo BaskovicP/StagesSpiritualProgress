@@ -86,6 +86,8 @@ The questionnaire contains 28 questions across seven equally weighted dimensions
 6. examen;
 7. sacraments.
 
+Every question includes an always-visible everyday example in both languages. The examples clarify the intended situation but do not contribute to scoring or indicate a preferred response.
+
 It reports the closest overall stage, an approximate range, a per-dimension profile, and an internal pattern-stability estimate based on 1,000 deterministic item-resampling runs performed in the browser. This percentage describes how consistently the same answers support the same nearest stage; it is not a validated accuracy or diagnostic-confidence claim.
 
 See [`ASSESSMENT-NOTES.md`](./ASSESSMENT-NOTES.md) for the design rationale, interpretation limits, and the validation work required before making psychometric claims.

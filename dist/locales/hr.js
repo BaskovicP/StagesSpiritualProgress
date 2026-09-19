@@ -25,7 +25,7 @@
   "pathTitle": "Put, a ne rang-lista",
   "backToIntro": "Natrag",
   "yourProgress": "Tvoj napredak",
-  "chooseClosest": "Koliko je često tijekom proteklih osam tjedana ovo bilo istinito? Odaberi ono što je bilo uobičajeno, a ne ono što si želio učiniti.",
+  "chooseClosest": "Koliko je često tijekom proteklih osam tjedana ovo bilo istinito? Odaberi ono što je bilo uobičajeno, a ne ono što si želio učiniti. Primjer samo pojašnjava situaciju; ne sugerira odgovor.",
   "previous": "Prethodno",
   "next": "Dalje",
   "seeResult": "Prikaži rezultat",
@@ -105,115 +105,143 @@
   "questions": [
     {
       "kicker": "Uobičajen tjedan",
-      "title": "Držim se planiranog vremena za molitvu čak i tijekom zaposlenog dana."
+      "title": "Držim se planiranog vremena za molitvu čak i tijekom zaposlenog dana.",
+      "example": "Sastanak se oduži, a u vrijeme uobičajene večernje molitve još čekaju nedovršene poruke ili poslovi."
     },
     {
       "kicker": "Kada se planovi promijene",
-      "title": "Kada se planovi poremete, ponovno pronalazim unutarnji mir i prije nego što se okolnosti promijene."
+      "title": "Kada se planovi poremete, ponovno pronalazim unutarnji mir i prije nego što se okolnosti promijene.",
+      "example": "Otkazan dogovor ili neočekivano kašnjenje promijeni tijek dana, a okolnost se ne može odmah popraviti."
     },
     {
       "kicker": "Male odluke",
-      "title": "Kada se neki propust čini malenim, odgađam suočavanje s njim."
+      "title": "Kada se neki propust čini malenim, odgađam suočavanje s njim.",
+      "example": "Primijetiš oštru primjedbu ili malu neiskrenu izliku, ali si kažeš da ćeš se time pozabaviti poslije."
     },
     {
       "kicker": "Tjedni prioriteti",
-      "title": "Uobičajene tjedne obveze organiziram oko nedjeljne mise."
+      "title": "Uobičajene tjedne obveze organiziram oko nedjeljne mise.",
+      "example": "Vikend-putovanje, sportski događaj ili obiteljski posjet preklapa se s uobičajenim vremenom mise i traži planiranje unaprijed."
     },
     {
       "kicker": "Ponavljajuće navike",
-      "title": "Ponavljajuću slabost opravdavam riječima: ‘Takav sam.’"
+      "title": "Ponavljajuću slabost opravdavam riječima: ‘Takav sam.’",
+      "example": "Nestrpljivost se ponavlja kod kuće, a ti je opisuješ jednostavno kao dio svojega temperamenta."
     },
     {
       "kicker": "Pogled unatrag",
-      "title": "U redovito vrijeme zastanem kako bih pred Bogom pregledao protekli dan."
+      "title": "U redovito vrijeme zastanem kako bih pred Bogom pregledao protekli dan.",
+      "example": "U redovito vrijeme navečer nakratko pred Boga stavljaš zahvalnost, odluke i propuste proteklog dana."
     },
     {
       "kicker": "Poznate situacije",
-      "title": "Kada prepoznam situaciju koja opetovano slabi moje odluke, promijenim je ili je napustim."
+      "title": "Kada prepoznam situaciju koja opetovano slabi moje odluke, promijenim je ili je napustim.",
+      "example": "Određeni razgovori, aplikacije, mjesta ili navike već su te više puta oslabili pred ozbiljnom odlukom."
     },
     {
       "kicker": "Kada je molitva suha",
-      "title": "Kada je molitva suha ili bez osjećaja nagrade, skratim je ili je preskočim."
+      "title": "Kada je molitva suha ili bez osjećaja nagrade, skratim je ili je preskočim.",
+      "example": "U molitvi nema osjetne utjehe, uvida ni osjećaja, a planirano vrijeme djeluje prazno."
     },
     {
       "kicker": "Pod pritiskom",
-      "title": "Tijekom poteškoće velik dio svoje energije trošim na unutarnje opiranje onomu što se dogodilo."
+      "title": "Tijekom poteškoće velik dio svoje energije trošim na unutarnje opiranje onomu što se dogodilo.",
+      "example": "Nakon kritike, bolesti, kašnjenja ili razočaranja unutarnji govor uporno ponavlja da se to nije smjelo dogoditi."
     },
     {
       "kicker": "Svakodnevna pozornost",
-      "title": "Primjećujem male odluke zbog kojih postajem manje strpljiv, iskren ili velikodušan."
+      "title": "Primjećujem male odluke zbog kojih postajem manje strpljiv, iskren ili velikodušan.",
+      "example": "Primijetiš trenutak u kojem pretjeruješ, oštro odgovaraš ili biraš udobnost umjesto malog čina ljubavi."
     },
     {
       "kicker": "Postojan ritam",
-      "title": "Ispovijedi pristupam prema planiranom ritmu, a ne samo nakon krize."
+      "title": "Ispovijedi pristupam prema planiranom ritmu, a ne samo nakon krize.",
+      "example": "Odabereš redovito vrijeme za ispovijed čak i kada se nije dogodio neki dramatičan pad."
     },
     {
       "kicker": "Sloboda za ljubav",
-      "title": "Radim na navici koja možda nije grijeh, ali me čini manje slobodnim za ljubav."
+      "title": "Radim na navici koja možda nije grijeh, ali me čini manje slobodnim za ljubav.",
+      "example": "Provjeravanje mobitela, traženje pohvale, nadziranje pojedinosti ili izbjegavanje neugodnosti čini te manje raspoloživim za ljubav prema Bogu ili drugoj osobi."
     },
     {
       "kicker": "Nakon teškog dana",
-      "title": "Svoje ponašanje preispitujem uglavnom tek nakon što nešto pođe loše."
+      "title": "Svoje ponašanje preispitujem uglavnom tek nakon što nešto pođe loše.",
+      "example": "Svoje nakane promatraš uglavnom tek nakon svađe, zanemarene dužnosti ili drugog vidljivog propusta."
     },
     {
       "kicker": "Prije odluke",
-      "title": "Ostajem blizu poznatog okidača i uzdam se da ću se u trenutku dobro snaći."
+      "title": "Ostajem blizu poznatog okidača i uzdam se da ću se u trenutku dobro snaći.",
+      "example": "Nastavljaš kasnonoćni razgovor, zadržavaš lak pristup štetnom sadržaju ili ostaješ u okolnostima koje su već više puta prethodile ozbiljnom padu."
     },
     {
       "kicker": "Uobičajen rad",
-      "title": "Molitva mi se prirodno vraća u misli tijekom svakodnevnog rada."
+      "title": "Molitva mi se prirodno vraća u misli tijekom svakodnevnog rada.",
+      "example": "Tijekom putovanja, kuhanja ili odgovaranja na poruke tvoja se pozornost tiho vraća Božjoj prisutnosti."
     },
     {
       "kicker": "Davanje smisla",
-      "title": "Neizbježnoj poteškoći mogu dati smisao prikazujući je za drugu osobu."
+      "title": "Neizbježnoj poteškoći mogu dati smisao prikazujući je za drugu osobu.",
+      "example": "Uobičajena neizbježna bolest, kašnjenje ili nužna dužnost — ne zlostavljanje ni šteta koja se može spriječiti — ne mogu se ukloniti, pa ih svjesno prikazuješ Bogu za određenu osobu."
     },
     {
       "kicker": "Ispravljanje",
-      "title": "Nakon svjesnog manjeg propusta učinim konkretan čin naknade."
+      "title": "Nakon svjesnog manjeg propusta učinim konkretan čin naknade.",
+      "example": "Nakon nestrpljivih riječi ispričaš se, popraviš praktičnu štetu ili učiniš suprotan čin dobrote."
     },
     {
       "kicker": "Stvarna prilika",
-      "title": "Kada je misa radnim danom razumno moguća, ali traži promjenu plana, odbacim tu priliku bez razmatranja."
+      "title": "Kada je misa radnim danom razumno moguća, ali traži promjenu plana, odbacim tu priliku bez razmatranja.",
+      "example": "Misa radnim danom dostupna je u blizini, ali bi odlazak zahtijevao premještanje nebitne obveze ili plana za razonodu."
     },
     {
       "kicker": "Konkretna vježba",
-      "title": "Odaberem jednu konkretnu krepost koju ću vježbati protiv ponavljajuće slabosti."
+      "title": "Odaberem jednu konkretnu krepost koju ću vježbati protiv ponavljajuće slabosti.",
+      "example": "Protiv ponavljajuće nestrpljivosti svaki dan svjesno vježbaš jedan konkretan čin blagosti."
     },
     {
       "kicker": "Sljedeći dan",
-      "title": "Pregled dana vodi me prema jednoj konkretnoj odluci za sljedeći dan."
+      "title": "Pregled dana vodi me prema jednoj konkretnoj odluci za sljedeći dan.",
+      "example": "Nakon što primijetiš brzoplet govor, odlučiš da ćeš sutra zastati prije nego što odgovoriš jednoj zahtjevnoj osobi."
     },
     {
       "kicker": "Nakon ozbiljnog pada",
-      "title": "Nakon ozbiljnog pada ubrzo poduzmem konkretan korak — ispovijed, naknadu ili promjenu okolnosti."
+      "title": "Nakon ozbiljnog pada ubrzo poduzmem konkretan korak — ispovijed, naknadu ili promjenu okolnosti.",
+      "example": "Nakon teškog grijeha dogovoriš ispovijed, ukloniš pristup prigodi ili popraviš štetu umjesto da se osloniš samo na žaljenje."
     },
     {
       "kicker": "Pozornost u molitvi",
-      "title": "Moja je molitva uglavnom popis neposrednih potreba, s malo vremena jednostavno usmjerenog na Boga."
+      "title": "Moja je molitva uglavnom popis neposrednih potreba, s malo vremena jednostavno usmjerenog na Boga.",
+      "example": "Veći dio molitve sastoji se od traženja rješenja, uz malo tišine u kojoj jednostavno ostaješ s ljubavlju usmjeren na Boga."
     },
     {
       "kicker": "Za drugu osobu",
-      "title": "Izbjegavam razumnu žrtvu za drugu osobu kada narušava moju udobnost."
+      "title": "Izbjegavam razumnu žrtvu za drugu osobu kada narušava moju udobnost.",
+      "example": "Mogao bi nekome darovati vrijeme, pozornost ili malu uslugu, ali to izbjegavaš ponajprije zato što remeti tvoju udobnost."
     },
     {
       "kicker": "Prepoznavanje obrasca",
-      "title": "Ponavljajuće male propuste tretiram kao nepovezane događaje umjesto da tražim obrazac."
+      "title": "Ponavljajuće male propuste tretiram kao nepovezane događaje umjesto da tražim obrazac.",
+      "example": "Nestrpljivost se ponavlja, ali svaki događaj promatraš izdvojeno, ne pitajući se što ga hrani."
     },
     {
       "kicker": "Nakon ispovijedi",
-      "title": "Nakon ispovijedi obično ne odredim konkretnu naknadu ili sljedeći korak."
+      "title": "Nakon ispovijedi obično ne odredim konkretnu naknadu ili sljedeći korak.",
+      "example": "Ispovjediš ponavljajući propust, ali odeš bez odluke komu ćeš se ispričati, koju ćeš prigodu izbjegavati ili koju ćeš krepost vježbati."
     },
     {
       "kicker": "Prvi poticaj",
-      "title": "Sebičan poticaj primijetim tek nakon što je već oblikovao moje postupke."
+      "title": "Sebičan poticaj primijetim tek nakon što je već oblikovao moje postupke.",
+      "example": "Želju za pohvalom prepoznaš tek nakon što je već oblikovala ono što si rekao ili odabrao."
     },
     {
       "kicker": "Kroz nekoliko dana",
-      "title": "Svaki propust promatram izdvojeno umjesto da kroz više dana tražim obrazac koji se ponavlja."
+      "title": "Svaki propust promatram izdvojeno umjesto da kroz više dana tražim obrazac koji se ponavlja.",
+      "example": "Više večeri pokazuje isti obrazac žurbe iza zanemarene molitve ili pozornosti prema obitelji, ali te događaje ne povezuješ."
     },
     {
       "kicker": "Kada žaljenje oslabi",
-      "title": "Kada žaljenje oslabi, sklon sam vratiti se istoj situaciji ili okolnostima kao prije."
+      "title": "Kada žaljenje oslabi, sklon sam vratiti se istoj situaciji ili okolnostima kao prije.",
+      "example": "Nakon teškog pada povezanog s određenom aplikacijom, obrascem odnosa ili okruženjem vraćaš se istomu bez promjene čim nelagoda oslabi."
     }
   ],
   "stabilitySummary": "Unutarnja stabilnost obrasca: {percent}% ponovnih uzorkovanja vratilo je {stage}. stupanj; raspon od 95% odgovora proteže se od {lower}. do {upper}. stupnja.",
@@ -235,6 +263,7 @@
     "unknownQuestion": "Nepoznat questionId: {id}",
     "invalidOption": "Neispravan optionIndex za {id}",
     "coverageRequired": "Potrebno je odgovoriti na najmanje 21 pitanje i najmanje dva pitanja iz svakog područja."
-  }
+  },
+  "exampleLabel": "Primjer iz svakodnevice"
 });
 })();

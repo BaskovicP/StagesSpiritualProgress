@@ -564,6 +564,40 @@ h1 {
   line-height: 1.08;
 }
 
+.question-example {
+  position: relative;
+  margin: 22px 0 0;
+  padding: 16px 18px 16px 20px;
+  border: 1px solid rgba(223, 163, 45, 0.22);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(223, 163, 45, 0.1), rgba(141, 52, 72, 0.06));
+  overflow: hidden;
+}
+
+.question-example::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(var(--gold-bright), var(--copper));
+  content: "";
+}
+
+.question-example-label {
+  margin: 0 0 5px;
+  color: var(--gold-bright);
+  font-size: 0.75rem;
+  font-weight: 750;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+#question-example-text {
+  margin: 0;
+  color: var(--paper-muted);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
 .question-help {
   margin: 16px 0 28px;
   color: var(--muted);

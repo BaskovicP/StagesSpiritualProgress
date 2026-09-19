@@ -25,7 +25,7 @@
   "pathTitle": "A path, not a rank",
   "backToIntro": "Back",
   "yourProgress": "Your progress",
-  "chooseClosest": "Over the past eight weeks, how often has this been true? Choose what was usual, not what you hoped to do.",
+  "chooseClosest": "Over the past eight weeks, how often has this been true? Choose what was usual, not what you hoped to do. The example clarifies the situation; it is not a suggested answer.",
   "previous": "Previous",
   "next": "Next",
   "seeResult": "See result",
@@ -105,115 +105,143 @@
   "questions": [
     {
       "kicker": "A usual week",
-      "title": "I keep a prayer time I had planned, even on a busy day."
+      "title": "I keep a prayer time I had planned, even on a busy day.",
+      "example": "A late meeting runs over, and your usual evening prayer time arrives while unfinished messages or tasks are still waiting."
     },
     {
       "kicker": "When plans change",
-      "title": "When plans are disrupted, I regain inner peace without first needing the situation to change."
+      "title": "When plans are disrupted, I regain inner peace without first needing the situation to change.",
+      "example": "A cancelled appointment or unexpected delay changes the day, and the situation cannot be corrected immediately."
     },
     {
       "kicker": "Small choices",
-      "title": "When a fault seems small, I put off dealing with it."
+      "title": "When a fault seems small, I put off dealing with it.",
+      "example": "You notice a sharp remark or a small dishonest excuse but tell yourself that you will deal with it later."
     },
     {
       "kicker": "Weekly priorities",
-      "title": "I organize ordinary weekly commitments around Sunday Mass."
+      "title": "I organize ordinary weekly commitments around Sunday Mass.",
+      "example": "A weekend trip, sports event, or family visit overlaps with the usual Mass time and requires advance planning."
     },
     {
       "kicker": "Recurring habits",
-      "title": "I explain away a recurring weakness because it is ‘just how I am.’"
+      "title": "I explain away a recurring weakness because it is ‘just how I am.’",
+      "example": "Impatience repeatedly appears at home, and you describe it as simply part of your temperament."
     },
     {
       "kicker": "Looking back",
-      "title": "I pause at a regular time to review the day before God."
+      "title": "I pause at a regular time to review the day before God.",
+      "example": "At a regular time in the evening, you briefly place the day’s gratitude, choices, and failures before God."
     },
     {
       "kicker": "Known situations",
-      "title": "When I recognize a situation that repeatedly weakens my choices, I change or leave that situation."
+      "title": "When I recognize a situation that repeatedly weakens my choices, I change or leave that situation.",
+      "example": "Certain conversations, apps, places, or routines have repeatedly weakened you before a grave choice."
     },
     {
       "kicker": "When prayer is dry",
-      "title": "When prayer feels dry or unrewarding, I shorten it or skip it."
+      "title": "When prayer feels dry or unrewarding, I shorten it or skip it.",
+      "example": "You feel no comfort, insight, or emotion in prayer, and the planned time seems empty."
     },
     {
       "kicker": "Under pressure",
-      "title": "During a difficulty, I spend much of my energy mentally arguing with what has happened."
+      "title": "During a difficulty, I spend much of my energy mentally arguing with what has happened.",
+      "example": "After criticism, illness, delay, or disappointment, an inner dialogue keeps insisting that this should not be happening."
     },
     {
       "kicker": "Everyday attention",
-      "title": "I notice small choices that make me less patient, honest, or generous."
+      "title": "I notice small choices that make me less patient, honest, or generous.",
+      "example": "You notice the moment you exaggerate, answer sharply, or choose convenience over a small act of charity."
     },
     {
       "kicker": "A steady rhythm",
-      "title": "I approach confession on a planned rhythm, not only after a crisis."
+      "title": "I approach confession on a planned rhythm, not only after a crisis.",
+      "example": "You choose a recurring time for confession even when no dramatic fall has occurred."
     },
     {
       "kicker": "Freedom to love",
-      "title": "I work on a habit that is not necessarily sinful but makes me less free to love."
+      "title": "I work on a habit that is not necessarily sinful but makes me less free to love.",
+      "example": "Checking your phone, seeking praise, controlling details, or avoiding inconvenience makes you less available to love God or another person."
     },
     {
       "kicker": "After a difficult day",
-      "title": "I examine my conduct mainly after something has gone badly."
+      "title": "I examine my conduct mainly after something has gone badly.",
+      "example": "You look back on your motives mainly after an argument, neglected duty, or another visible failure."
     },
     {
       "kicker": "Before a choice",
-      "title": "I stay near a known trigger and trust myself to handle it in the moment."
+      "title": "I stay near a known trigger and trust myself to handle it in the moment.",
+      "example": "You continue a late-night conversation, keep easy access to harmful content, or remain in a setting that has repeatedly preceded a grave fall."
     },
     {
       "kicker": "Ordinary work",
-      "title": "Prayer returns naturally to mind during ordinary work."
+      "title": "Prayer returns naturally to mind during ordinary work.",
+      "example": "While commuting, cooking, or answering messages, your attention quietly returns to God’s presence."
     },
     {
       "kicker": "Giving meaning",
-      "title": "I can give an unavoidable difficulty meaning by offering it for someone else."
+      "title": "I can give an unavoidable difficulty meaning by offering it for someone else.",
+      "example": "An ordinary unavoidable illness, delay, or necessary duty—not abuse or preventable harm—cannot be removed, and you intentionally entrust it to God for a particular person."
     },
     {
       "kicker": "Making amends",
-      "title": "After a small deliberate fault, I make a specific act of repair."
+      "title": "After a small deliberate fault, I make a specific act of repair.",
+      "example": "After speaking impatiently, you apologize, repair the practical harm, or make a contrary act of kindness."
     },
     {
       "kicker": "A real opportunity",
-      "title": "When weekday Mass is reasonably possible but requires rearranging a plan, I dismiss the opportunity without considering it."
+      "title": "When weekday Mass is reasonably possible but requires rearranging a plan, I dismiss the opportunity without considering it.",
+      "example": "A weekday Mass is available nearby, but attending would require moving a nonessential errand or leisure plan."
     },
     {
       "kicker": "A concrete practice",
-      "title": "I choose one concrete virtue to practice against a recurring weakness."
+      "title": "I choose one concrete virtue to practice against a recurring weakness.",
+      "example": "Against recurring impatience, you deliberately practice one concrete act of gentleness each day."
     },
     {
       "kicker": "The next day",
-      "title": "My review of the day leads to one concrete intention for the next day."
+      "title": "My review of the day leads to one concrete intention for the next day.",
+      "example": "After noticing hurried speech, you decide that tomorrow you will pause before answering one difficult person."
     },
     {
       "kicker": "After a serious failure",
-      "title": "After a serious failure, I take a concrete step soon afterward—confession, reparation, or a change in circumstances."
+      "title": "After a serious failure, I take a concrete step soon afterward—confession, reparation, or a change in circumstances.",
+      "example": "After a grave sin, you arrange confession, remove access to the occasion, or repair harm rather than relying on regret alone."
     },
     {
       "kicker": "Attention in prayer",
-      "title": "My prayer is mainly a list of immediate needs, with little time simply attentive to God."
+      "title": "My prayer is mainly a list of immediate needs, with little time simply attentive to God.",
+      "example": "Most of your prayer is asking for solutions, with little silence for simply remaining lovingly attentive to God."
     },
     {
       "kicker": "For another person",
-      "title": "I avoid reasonable sacrifices for another person when they disturb my comfort."
+      "title": "I avoid reasonable sacrifices for another person when they disturb my comfort.",
+      "example": "You could give someone time, attention, or a modest convenience but avoid it mainly because it interrupts your comfort."
     },
     {
       "kicker": "Recognizing a pattern",
-      "title": "I treat recurring small faults as unrelated incidents rather than looking for a pattern."
+      "title": "I treat recurring small faults as unrelated incidents rather than looking for a pattern.",
+      "example": "Impatience appears repeatedly, but each episode is treated as a one-off without asking what feeds it."
     },
     {
       "kicker": "After confession",
-      "title": "After confession, I usually leave my concrete repair or next step undefined."
+      "title": "After confession, I usually leave my concrete repair or next step undefined.",
+      "example": "You confess a repeated fault but leave without deciding whom to apologize to, what occasion to avoid, or what virtue to practice."
     },
     {
       "kicker": "The first impulse",
-      "title": "I notice a self-centered impulse only after it has already shaped my actions."
+      "title": "I notice a self-centered impulse only after it has already shaped my actions.",
+      "example": "You recognize a wish to be praised only after it has already shaped what you said or chose."
     },
     {
       "kicker": "Across several days",
-      "title": "I treat each fault as isolated rather than looking for a recurring pattern across days."
+      "title": "I treat each fault as isolated rather than looking for a recurring pattern across days.",
+      "example": "Several evenings show the same rushed pattern behind neglected prayer or family attention, but you do not connect the incidents."
     },
     {
       "kicker": "After regret fades",
-      "title": "Once regret fades, I tend to return to the same situation or setup as before."
+      "title": "Once regret fades, I tend to return to the same situation or setup as before.",
+      "example": "After a grave fall linked to a particular app, relationship pattern, or setting, you return to it unchanged once the discomfort passes."
     }
   ],
   "stabilitySummary": "Internal pattern stability: {percent}% of resamples returned Stage {stage}; the 95% response interval spans Stages {lower}–{upper}.",
@@ -235,6 +263,7 @@
     "unknownQuestion": "Unknown questionId: {id}",
     "invalidOption": "Invalid optionIndex for {id}",
     "coverageRequired": "At least 21 answered questions and two answers in every area are required."
-  }
+  },
+  "exampleLabel": "Everyday example"
 });
 })();

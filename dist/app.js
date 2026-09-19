@@ -29,6 +29,7 @@
     questionProgress: document.querySelector("#question-progress"),
     stagePath: document.querySelector("#stage-path"),
     optionsRoot: document.querySelector("#answer-options"),
+    questionExampleText: document.querySelector("#question-example-text"),
     assessmentMessage: document.querySelector("#assessment-message"),
     reviewButton: document.querySelector("#review-button"),
     printButton: document.querySelector("#print-button"),
@@ -151,6 +152,7 @@
     document.querySelector("#progress-domain").textContent = copy.domains[blueprint.domain];
     document.querySelector("#question-kicker").textContent = question.kicker;
     document.querySelector("#question-title").textContent = question.title;
+    elements.questionExampleText.textContent = question.example;
     elements.questionProgress.value = state.currentIndex + 1;
     elements.questionProgress.max = questionBlueprints.length;
     elements.previousButton.disabled = state.currentIndex === 0;
@@ -589,6 +591,7 @@
             id: question.id,
             domain: copy.domains[question.domain],
             prompt: copy.questions[index].title,
+            example: copy.questions[index].example,
             options: getQuestionOptions(copy, index).map((label, optionIndex) => ({ optionIndex, label }))
           }))
         };

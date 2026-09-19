@@ -28,6 +28,19 @@ For this uncalibrated seven-domain prototype:
 
 Reverse wording can itself create method effects, so the balance should be tested through cognitive interviews and factor analysis rather than assumed to work.
 
+## Theological framing of the examples
+
+Every item includes a short everyday example. Examples clarify the situation being asked about but do not affect scoring and must not be treated as a preferred answer.
+
+Their Carmelite framing follows several distinctions central to St. John of the Cross:
+
+- detachment means freedom from disordered dependence, not rejecting created things merely because they are created;
+- fidelity during spiritual dryness means remaining available to God without requiring sensible comfort;
+- deliberate effort can remove obstacles and dispose a person to grace, but transforming purification and union are God's work;
+- accepting an unavoidable cross in charity never means seeking harm, remaining in abuse, refusing necessary care, or neglecting duties of justice.
+
+This framing is consistent with Benedict XVI's summary of St. John's teaching on purification, theological faith, freedom from disordered attachment, and cooperation with divine action, as well as St. John's treatment of aridity in *The Dark Night*.
+
 ## Current scoring
 
 Let the selected response category be \(x \in \{0,1,2,3,4\}\), from **never or almost never** through **almost always**.
@@ -104,3 +117,5 @@ These thresholds are design heuristics, not empirically calibrated cutoffs. The 
 - [PROMIS Instrument Development and Validation Scientific Standards](https://www.healthmeasures.net/images/PROMIS/PROMISStandards_Vers2.0_Final.pdf)
 - [Initial PROMIS item-bank development and graded-response calibration](https://pmc.ncbi.nlm.nih.gov/articles/PMC2965562/)
 - [COSMIN content-validity methodology](https://pmc.ncbi.nlm.nih.gov/articles/PMC5891557/)
+- [Benedict XVI: General Audience on Saint John of the Cross](https://www.vatican.va/content/benedict-xvi/en/audiences/2011/documents/hf_ben-xvi_aud_20110216.html)
+- [St. John of the Cross: *The Dark Night*](https://www.carmelitemonks.org/Vocation/DarkNight-StJohnoftheCross.pdf)
