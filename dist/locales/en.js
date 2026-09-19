@@ -114,9 +114,9 @@
       "example": "A cancelled appointment or unexpected delay changes the day, and the situation cannot be corrected immediately."
     },
     {
-      "kicker": "Small choices",
-      "title": "When a fault seems small, I put off dealing with it.",
-      "example": "You notice a sharp remark or a small dishonest excuse but tell yourself that you will deal with it later."
+      "kicker": "Smaller faults",
+      "title": "When I notice a small but deliberate fault, I tend to dismiss it instead of acknowledging it and trying to correct it.",
+      "example": "You answer someone harshly. You know it was wrong, but you neither apologize nor consider how to respond differently next time because the fault seems unimportant."
     },
     {
       "kicker": "Weekly priorities",

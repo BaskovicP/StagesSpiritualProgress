@@ -114,9 +114,9 @@
       "example": "Otkazan dogovor ili neočekivano kašnjenje promijeni tijek dana, a okolnost se ne može odmah popraviti."
     },
     {
-      "kicker": "Male odluke",
-      "title": "Kada se neki propust čini malenim, odgađam suočavanje s njim.",
-      "example": "Primijetiš oštru primjedbu ili malu neiskrenu izliku, ali si kažeš da ćeš se time pozabaviti poslije."
+      "kicker": "Manji propusti",
+      "title": "Kada primijetim manji, ali svjestan propust, obično ga zanemarim umjesto da ga priznam i pokušam ispraviti.",
+      "example": "Nekome odgovoriš grubo. Svjestan si da si pogriješio, ali se ne ispričaš niti razmisliš kako sljedeći put postupiti drukčije jer ti se propust čini nevažnim."
     },
     {
       "kicker": "Tjedni prioriteti",
