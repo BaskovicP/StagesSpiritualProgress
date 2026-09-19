@@ -1,0 +1,68 @@
+# Viae — Spiritual Progress Reflection
+
+A private, bilingual (English/Croatian) browser questionnaire based on the six described stages of spiritual progress from *Apostoli Viae — Unum est Necessarium*.
+
+## Privacy
+
+The application is completely static. It does not use:
+
+- a backend or database;
+- cookies, local storage, or session storage;
+- analytics, trackers, accounts, or identifiers;
+- network requests after the page assets load.
+
+Answers and results exist only in JavaScript memory for the currently open tab.
+
+## Cloudflare Pages deployment
+
+### Recommended: Git integration
+
+1. Push this directory to a GitHub or GitLab repository.
+2. In Cloudflare, open **Workers & Pages**.
+3. Choose **Create application → Pages → Connect to Git**.
+4. Select the repository and use:
+
+   - Production branch: `main`
+   - Framework preset: `None`
+   - Build command: leave blank
+   - Build output directory: `dist`
+
+5. Select **Save and Deploy**.
+
+### Fastest: direct upload
+
+Upload `viae-questionnaire-cloudflare.zip` through **Workers & Pages → Create application → Get started → Drag and drop your files**. The ZIP already contains `index.html` and every required asset at its root.
+
+Cloudflare does not let an existing Direct Upload project switch to Git integration later. Use the Git option above if you want every future code change to deploy automatically.
+
+The included `dist/_headers` file adds restrictive security and privacy headers on Cloudflare Pages.
+
+## Local preview
+
+Serve the `dist` directory with any static file server. For example:
+
+```sh
+python3 -m http.server 4173 --directory dist
+```
+
+Then open `http://localhost:4173`.
+
+## Languages
+
+The app automatically chooses Croatian for browsers whose preferred language begins with `hr`; otherwise it uses English. The visitor may switch languages without reloading, and the choice is not stored.
+
+Translations, stage descriptions, and question text are kept in the `translations` object in `dist/app.js`. A new language can be added by copying one complete language object and adding the corresponding option to the language selector in `dist/index.html`.
+
+## Questionnaire model
+
+The questionnaire contains 14 questions across seven equally weighted dimensions:
+
+1. serious sin;
+2. venial sin;
+3. imperfections;
+4. suffering;
+5. prayer;
+6. examen;
+7. sacraments.
+
+It reports the closest overall stage, an approximate range, and a per-dimension profile. The result is explicitly presented as a reflection aid rather than a spiritual judgment or substitute for spiritual direction or confession.
