@@ -107,6 +107,49 @@
     };
   }
 
+  // Describe each area independently using the already evaluated checks. This
+  // never feeds back into the overall conjunction. Absent lower-stage rules
+  // are unassessed, not failed or automatically fulfilled. Exemptions alone
+  // cannot establish a domain level, and identical rule sets yield a range.
+  function describeDomains(assessment, questions, stageChecks) {
+    const domains = new Set([...questions.values()].map(question => question.domain));
+    const order = [...new Set([...(assessment.domainOrder || []), ...domains])];
+    const signature = checks => JSON.stringify(checks.map(check => {
+      const rule = questions.get(check.id).requirements[check.ruleStage];
+      return [check.id, [...rule.accepted].sort(), [...(rule.exempt || [])].sort()];
+    }).sort((a, b) => a[0].localeCompare(b[0])));
+    return order.filter(domain => domains.has(domain)).map(domain => {
+      let foundationStatus = "supported";
+      const stages = stageChecks.map(candidate => {
+        const checks = candidate.checks.filter(check => check.domain === domain);
+        const summary = summarizeChecks(checks);
+        if (!checks.length) return { stage: candidate.stage, checks, ...summary, status: "notAssessed" };
+        foundationStatus = summary.status === "notSupported" || foundationStatus === "notSupported" ? "notSupported"
+          : summary.status === "incomplete" || foundationStatus === "incomplete" ? "incomplete" : "supported";
+        const status = foundationStatus === "supported" && summary.metCount === 0 ? "notTriggered" : foundationStatus;
+        return { stage: candidate.stage, checks, ...summary, status };
+      });
+      const assessed = stages.filter(candidate => candidate.checks.length > 0);
+      const supported = assessed.filter(candidate => candidate.status === "supported");
+      const highest = supported.at(-1);
+      let stageFrom = highest?.stage ?? null;
+      if (highest) {
+        const highestSignature = signature(highest.checks);
+        while (stageFrom > 1) {
+          const previous = stages[stageFrom - 2];
+          if (previous.status !== "supported" || signature(previous.checks) !== highestSignature) break;
+          stageFrom -= 1;
+        }
+      }
+      const target = assessed.find(candidate => ["notSupported", "incomplete"].includes(candidate.status)) || assessed.at(-1);
+      return {
+        domain, stageFrom, stageTo: highest?.stage ?? null,
+        firstAssessedStage: assessed[0]?.stage ?? null,
+        targetStage: target?.stage ?? null, targetChecks: target?.checks ?? [], stages
+      };
+    });
+  }
+
   // This is a conjunction of explicitly configured practical requirements, not
   // an average, probability, spiritual diagnosis or test of mystical graces.
   // Higher candidates inherit each item's most recent positive minimum. They
@@ -163,6 +206,7 @@
       targetStage: target.stage,
       stageChecks,
       domainChecks,
+      domainProfiles: describeDomains(assessment, questions, stageChecks),
       targetChecks: target.checks,
       totals: summarizeChecks(target.checks),
       totalCount: questions.size,

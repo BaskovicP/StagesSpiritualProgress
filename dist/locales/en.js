@@ -303,6 +303,17 @@
       "notTriggered": "The stated circumstances make this requirement inapplicable. It is neither a failed check nor evidence of progress."
     }
   },
+  "domainProfileIntro": "Each area is compared separately with practical requirements for I–IV. Prayer and examination of conscience, for example, may support different thresholds. The overall result is not their average: all required conditions must still hold. This does not assign spiritual stages.",
+  "domainLevels": {
+    "title": "Which stage does each area resemble?",
+    "label": "Supported practical pattern",
+    "range": "{from}–{to} — shared requirements",
+    "scope": "All checked requirements in this area up to this threshold are supported, allowing stated exceptions. Other areas are considered separately.",
+    "sameCriteria": "The existing questions for this area do not distinguish these two thresholds. A range is shown instead of an unsupported, more precise level.",
+    "notEstablished": "Level not established",
+    "noMatch": "Checks for this area begin at threshold {stage}. The answers do not yet support a complete assessed threshold or there is insufficient evidence. A lower stage is not assigned automatically.",
+    "checking": "Requirements shown below: threshold {stage}"
+  },
   "criterionStatuses": {
     "met": "Answer supports the requirement",
     "notMet": "Answer does not support it",

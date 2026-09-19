@@ -41,6 +41,14 @@ The results screen first reviews the next unsupported candidate (or IV if all pr
 
 ## Key practical expectations
 
+### Independent domain profiles
+
+The results also describe each of the seven areas separately. For each I–IV threshold the engine reuses the existing evaluated checks for that domain, including conditional checks against the full set of answers. Every earlier configured threshold for that domain must hold; another area's strong answers cannot compensate. No-domain-rule rows are explicitly unassessed, not evidence of that stage. Permitted exemptions may satisfy conditions but at least one positively supported condition is needed to label a domain level.
+
+The highest supported domain threshold is presented as a practical pattern, never a spiritual verdict. Adjacent thresholds with identical item IDs and accepted/exempt option sets are reported as a range. Currently mortal-sin III and IV cannot be distinguished. If the earliest configured domain threshold is not supported, no lower level is inferred; imperfections have checks only at IV, for example. The card reviews its own first unresolved threshold (or IV when all configured checks pass), independent of the overall result's next threshold. None of these profiles is averaged or used to modify the overall conjunction. The original questions and criteria are unchanged.
+
+### Source-based criteria
+
 | Area | II | III (in addition to retained foundations) | IV (in addition to retained foundations) |
 | --- | --- | --- | --- |
 | Mortal sin | Habitual avoidance of known near occasions, faithful resistance, repentance and reparative penance after an actual fall | No recognized fully deliberate mortal act; uncertainty is not a pass | Retain III's practical minimum as an application inference |

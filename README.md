@@ -88,6 +88,10 @@ After all 28 questions have an answer or explicit skip, **View results** appears
 
 Result overview cards show only nonzero condition counts with four distinct icons and text labels: supported, unsupported, unclear, and inapplicable. A legend explains these meanings; each area links to its exact expanded requirements. Exemptions are not counted as supported, and the UI introduces no score or percentage. The calculation rules are unchanged.
 
+Every card now also reports that area's independently supported practical threshold (I–IV). All seven areas are shown even if the overall result is incomplete. The card's counts and detail link refer to its own next unsupported threshold, or IV when no higher practical threshold is assessed. These domain profiles never feed back into the overall result. Identical requirement sets produce a range (mortal sin currently III–IV); absent lower-stage criteria and insufficient evidence are disclosed rather than assigned an invented lower stage. Exemptions alone do not establish a domain level. Questions, options, core rules and session version remain unchanged.
+
+The [seven-area gradation proposal](GRADATION-PROPOSAL.hr.md) distinguishes the source descriptions, what current questions can detect, and a possible future descriptive grading approach. That proposal is not a new scoring algorithm.
+
 ### Core questions
 
 The questionnaire contains 28 concrete questions across seven areas. Each has its own answer descriptions rather than a generic frequency scale:

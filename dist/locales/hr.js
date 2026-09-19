@@ -303,6 +303,17 @@
       "notTriggered": "Zbog navedenih okolnosti ovaj uvjet nije primjenjiv. To nije neuspjela provjera, ali ni dokaz napretka."
     }
   },
+  "domainProfileIntro": "Svako područje uspoređuje se zasebno s praktičnim uvjetima I–IV. Zato npr. molitva i ispit savjesti mogu odgovarati različitim pragovima. Ukupni rezultat nije njihov prosjek: i dalje traži sve potrebne uvjete. Ovo nije dodjela duhovnih stupnjeva.",
+  "domainLevels": {
+    "title": "Kojem stupnju odgovara pojedino područje?",
+    "label": "Poduprti praktični obrazac",
+    "range": "{from}–{to}. — zajednički uvjeti",
+    "scope": "Svi provjereni uvjeti ovog područja do navedenog praga poduprti su, uz dopuštene iznimke. Ostala područja procjenjuju se zasebno.",
+    "sameCriteria": "Postojeća pitanja za ovo područje ne razlikuju ova dva praga. Zato se prikazuje raspon, a ne precizniji stupanj bez podloge.",
+    "notEstablished": "Stupanj nije razlučen",
+    "noMatch": "Provjera ovog područja počinje na pragu {stage}. Odgovori zasad ne podupiru cijeli provjereni prag ili nema dovoljno podataka. Niži se stupanj ne dodjeljuje automatski.",
+    "checking": "Uvjeti koji su prikazani ispod: {stage}. prag"
+  },
   "criterionStatuses": {
     "met": "Odgovor podupire uvjet",
     "notMet": "Odgovor ne podupire uvjet",

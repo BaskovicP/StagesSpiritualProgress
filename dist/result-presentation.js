@@ -30,14 +30,32 @@
     ).join("")}</span>`;
   }
 
-  function renderDomain(domain, checks, copy) {
+  function renderDomain(domain, checks, copy, profile = null) {
     if (!checks.length) return "";
     const counts = countChecks(checks);
     const summary = counts.notTriggered === counts.total
       ? copy.criteriaVisual.noneApplicable
       : format(copy.criteriaVisual.supportedCount, counts);
+    const roman = number => ["I", "II", "III", "IV"][number - 1];
+    let level = "";
+    if (profile) {
+      const hasStage = profile.stageTo !== null;
+      const isRange = hasStage && profile.stageFrom !== profile.stageTo;
+      const title = hasStage
+        ? isRange ? format(copy.domainLevels.range, {from:roman(profile.stageFrom),to:roman(profile.stageTo)})
+          : `${roman(profile.stageTo)}. ${copy.stages[profile.stageTo - 1].name}`
+        : copy.domainLevels.notEstablished;
+      const note = isRange ? copy.domainLevels.sameCriteria : hasStage ? ""
+        : format(copy.domainLevels.noMatch, {stage:roman(profile.firstAssessedStage)});
+      level = `<div class="domain-level" data-domain-level="${hasStage ? `${profile.stageFrom}-${profile.stageTo}` : "unresolved"}">
+        <p class="domain-level-label">${escapeHtml(copy.domainLevels.label)}</p>
+        <p class="domain-level-title">${escapeHtml(title)}</p>
+        ${note ? `<p class="domain-level-note">${escapeHtml(note)}</p>` : ""}
+      </div><p class="domain-target-label">${escapeHtml(format(copy.domainLevels.checking, {stage:roman(profile.targetStage)}))}</p>`;
+    }
     return `<div class="domain-row criteria-visual-domain">
       <div class="domain-row-head"><strong>${escapeHtml(copy.domains[domain])}</strong></div>
+      ${level}
       <p class="domain-supported-count">${escapeHtml(summary)}</p>
       ${renderCounts(checks, copy)}
       <button class="domain-review-button" type="button" data-review-domain="${escapeHtml(domain)}" aria-label="${escapeHtml(`${copy.criteriaVisual.reviewDomain}: ${copy.domains[domain]}`)}">${escapeHtml(copy.criteriaVisual.reviewDomain)}<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14m-5-5 5 5-5 5"/></svg></button>

@@ -403,7 +403,6 @@
     const copy=translations[state.language];
     const result=calculateResult();
     const stage=result.stage ? copy.stages[result.stage - 1] : null;
-    const targetChecks=result.stageChecks[result.targetStage - 1].checks;
     renderAscent(result,copy);
     document.querySelector("#result-number").textContent=result.stage ? toRoman(result.stage) : "—";
     document.querySelector("#result-family").textContent=stage ? copy.families[stage.family] : copy.mixedFamily;
@@ -418,12 +417,10 @@
     document.querySelector("#criteria-badge").textContent=copy.ruleBased;
     document.querySelector("#result-range").textContent=result.stage===highestAssessedStage
       ? copy.upperLimitNote : format(copy.nextThreshold,{stage:toRoman(result.targetStage)});
-    document.querySelector("#profile-title").textContent=format(copy.criteriaTitle,{stage:toRoman(result.targetStage)});
-    document.querySelector("#domain-profile").innerHTML=domainOrder.map(domain=>{
-      const checks=targetChecks.filter(check=>check.domain===domain);
-      if(!checks.length)return "";
-      return resultPresentation.renderDomain(domain, checks, copy);
-    }).join("");
+    document.querySelector("#profile-title").textContent=copy.domainLevels.title;
+    document.querySelector("#domain-profile").innerHTML=result.domainProfiles.map(profile =>
+      resultPresentation.renderDomain(profile.domain, profile.targetChecks, copy, profile)
+    ).join("");
     document.querySelector("#criteria-legend").innerHTML = resultPresentation.renderLegend(copy);
     document.querySelector("#answered-summary").textContent=format(copy.answeredSummary,{answered:result.answeredCount,total:questionBlueprints.length,skipped:result.skippedCount});
     document.querySelector("#criteria-summary").textContent=copy.criteriaSummary;
@@ -681,6 +678,7 @@
           interpretation: result.stage ? copy.resultSummary : copy.mixedSummary,
           targetStage: result.targetStage,
           stageChecks: result.stageChecks,
+          domainProfiles: result.domainProfiles,
           sourceDescription: {
             describedStage: result.stage || result.targetStage,
             note: copy.sourceDescriptionIntro,
@@ -743,8 +741,10 @@
     const button = event.target.closest("[data-review-domain]");
     if (!button || !domainOrder.includes(button.dataset.reviewDomain)) return;
     const result = calculateResult();
-    document.querySelector("#criteria-stage-select").value = String(result.targetStage);
-    renderCriteria(result, result.targetStage);
+    const profile = result.domainProfiles.find(item => item.domain === button.dataset.reviewDomain);
+    if (!profile?.targetStage) return;
+    document.querySelector("#criteria-stage-select").value = String(profile.targetStage);
+    renderCriteria(result, profile.targetStage);
     const group = document.querySelector(`[data-criteria-domain="${button.dataset.reviewDomain}"]`);
     if (!group) return;
     group.open = true;

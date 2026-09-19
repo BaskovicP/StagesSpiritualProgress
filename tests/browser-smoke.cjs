@@ -156,6 +156,30 @@ async function main() {
       assert.equal(result.visible, true);
       assert.ok(result.heading.length > 0);
       assert.ok(result.criteria.length > 40);
+      if (stage === 2) {
+        const independentProfiles = await evaluate(`(() => {
+          const saved = sessionStorage.getItem('spiritual-progress-reflection:v4');
+          const cards = document.querySelectorAll('#domain-profile [data-domain-level]');
+          const prayerButton = document.querySelector('[data-review-domain="prayer"]');
+          const examenButton = document.querySelector('[data-review-domain="examen"]');
+          const prayer = prayerButton.closest('.domain-row').querySelector('[data-domain-level]');
+          const examen = examenButton.closest('.domain-row').querySelector('[data-domain-level]');
+          prayerButton.click();
+          const prayerTarget = document.querySelector('#criteria-stage-select').value;
+          const prayerOpen = document.querySelector('[data-criteria-domain="prayer"]').open;
+          examenButton.click();
+          const examenTarget = document.querySelector('#criteria-stage-select').value;
+          const examenOpen = document.querySelector('[data-criteria-domain="examen"]').open;
+          const api = window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({});
+          return { count: cards.length, prayer: prayer.dataset.domainLevel, examen: examen.dataset.domainLevel,
+            named: prayer.textContent.includes(window.spiritualLocales['${language}'].stages[3].name),
+            prayerTarget, examenTarget, prayerOpen, examenOpen, overall: api.stage, apiCount: api.domainProfiles.length,
+            unchanged: saved === sessionStorage.getItem('spiritual-progress-reflection:v4') };
+        })()`);
+        assert.deepEqual(independentProfiles, { count: 7, prayer: '4-4', examen: '2-2', named: true,
+          prayerTarget: '4', examenTarget: '3', prayerOpen: true, examenOpen: true,
+          overall: 2, apiCount: 7, unchanged: true });
+      }
     }
     const returnNavigation = await evaluate(`(() => {
       document.querySelector('#result-home-button').click();
@@ -307,7 +331,7 @@ async function main() {
   assert.equal(await evaluate(`getComputedStyle(document.querySelector('#mystical-section')).display`), 'none');
   assert.equal(await evaluate(`window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({}).stage`), 3);
   assert.deepEqual(exceptions, []);
-  console.log('PASS: seven source dialogs, Escape/focus, home/result navigation, criteria icons/detail links, bilingual results and mystical radios; desktop/mobile without overflow, refresh/print, unchanged scoring, no uncaught exceptions.');
+  console.log('PASS: seven source dialogs, Escape/focus, home/result navigation, independent domain levels and their own detail targets, criteria icons, bilingual results and mystical radios; desktop/mobile without overflow, refresh/print, unchanged scoring, no uncaught exceptions.');
 }
 
 main().catch((error) => { console.error(error); process.exitCode = 1; }).finally(async () => {
