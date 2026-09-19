@@ -1177,6 +1177,43 @@ h1 {
   line-height: 1.55;
 }
 
+.source-description-card {
+  grid-column: 1 / -1;
+  min-width: 0;
+  padding: clamp(24px, 4vw, 44px);
+  border: 1px solid rgba(223, 163, 45, 0.25);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, rgba(223, 163, 45, 0.06), transparent 65%), var(--ink-soft);
+}
+
+.source-description-card h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.source-description-intro,
+.source-description-body,
+.source-description-reference,
+.source-description-caution {
+  max-width: 82ch;
+  color: var(--paper-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.source-description-intro { margin: 18px 0 26px; }
+.source-description-body p { margin: 0 0 20px; }
+.source-description-body strong { color: var(--gold-bright); }
+.source-description-reference { margin: 28px 0 0; font-size: 0.85rem; }
+.source-description-caution {
+  margin: 16px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
 .result-actions {
   grid-column: 1 / -1;
   display: flex;
@@ -1260,6 +1297,7 @@ h1 {
   .progress-domain { grid-column: 1 / -1; margin: -8px 0 0; }
   .result-layout { grid-template-columns: 1fr; }
   .result-actions,
+  .source-description-card,
   .method-note { grid-column: 1; }
 }
 
@@ -1304,6 +1342,16 @@ h1 {
   .result-layout { display: grid !important; grid-template-columns: 1fr; }
   .result-card,
   .profile-card { color: #14202a; border: 1px solid #d7d7d7; background: #fff; box-shadow: none; break-inside: avoid; }
+  .source-description-card { grid-column: 1; color: #14202a; border: 1px solid #d7d7d7; background: #fff; }
+  .source-description-card h2,
+  .source-description-body strong,
+  .source-description-card .eyebrow { color: #14202a; }
+  .source-description-intro,
+  .source-description-body,
+  .source-description-reference,
+  .source-description-caution { color: #4d5961; }
+  .source-description-card h2 { break-after: avoid; }
+  .source-description-body p { break-inside: avoid; }
   .result-card::after { display: none; }
   .result-card h2,
   .domain-stage { color: #14202a; }

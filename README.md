@@ -93,3 +93,9 @@ See [the complete question–story–source review](QUESTIONNAIRE-SOURCE-MAP.hr.
 It reports the closest overall stage within the described I–VI scale, an approximate range, a per-dimension profile, and an internal pattern-stability estimate based on 1,000 deterministic item-resampling runs performed in the browser. Stage VII (Complete Sanctity / Potpuna svetost) remains visible as the final stage named in the source diagram, but it is not assigned because the supplied pages provide no description or scoring criteria. The stability percentage describes how consistently the same answers support the same nearest stage; it is not a validated accuracy or diagnostic-confidence claim.
 
 See [`ASSESSMENT-NOTES.md`](./ASSESSMENT-NOTES.md) for the design rationale, interpretation limits, and the validation work required before making psychometric claims.
+
+## Source descriptions on the result page
+
+Each estimated stage includes a separate, always-visible plain-language description from the original markdown, with a paragraph for every area actually covered in that stage's section. The bilingual descriptions are kept in each locale's `stages[].sourceDescription`, separate from rendering and scoring. The same content is included in printed results and the WebMCP result response.
+
+Stages I and II have six source areas, III has seven, IV has six, and V and VI have only imperfections, suffering, and prayer. Missing areas are not invented or copied from a different stage. VII has no supplied description and remains unassessed. The result distinguishes the approximate answer-based estimate from the source's description; it does not claim the questionnaire confirms mystical graces. This display-only addition does not change scores, question IDs, or saved version-3 answers.

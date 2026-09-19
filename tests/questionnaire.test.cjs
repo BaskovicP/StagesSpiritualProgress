@@ -126,3 +126,85 @@ test('current progress survives refresh and language changes; prior wording is n
   reloaded.element('#retake-button').listeners.click();
   assert.deepEqual(JSON.parse(storage.get(key)).answers, {});
 });
+
+// Exact area order in the supplied markdown, not a seven-area template applied
+// to every stage. In particular, V/VI do not invent confession/examen criteria.
+const sourceDomains = [
+  ['seriousSin', 'venialSin', 'suffering', 'prayer', 'examen', 'sacraments'],
+  ['seriousSin', 'venialSin', 'suffering', 'prayer', 'examen', 'sacraments'],
+  ['seriousSin', 'venialSin', 'imperfections', 'suffering', 'prayer', 'examen', 'sacraments'],
+  ['venialSin', 'imperfections', 'prayer', 'examen', 'suffering', 'sacraments'],
+  ['imperfections', 'suffering', 'prayer'],
+  ['imperfections', 'suffering', 'prayer']
+];
+
+function answerAtStage(app, stage) {
+  const categories = [[0, 0, 0, 0], [1, 1, 1, 1], [1, 1, 2, 2], [2, 2, 2, 2], [3, 3, 3, 3], [4, 4, 4, 4]][stage - 1];
+  const counts = {};
+  app.call('set_spiritual_reflection_answers', {
+    answers: app.window.spiritualAssessment.questionBlueprints.map((q) => {
+      const index = counts[q.domain] || 0;
+      counts[q.domain] = index + 1;
+      const category = categories[index];
+      return { questionId: q.id, optionIndex: q.reverse ? 4 - category : category };
+    })
+  });
+  return app.call('calculate_spiritual_reflection_result');
+}
+
+function escapeHtml(text) {
+  return text.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;').replaceAll("'", '&#039;');
+}
+
+test('all six result descriptions follow their source areas in both languages; VII has no invented description', () => {
+  for (const lang of ['hr', 'en']) {
+    const app = boot(lang);
+    const copy = app.window.spiritualLocales[lang];
+    for (let stage = 1; stage <= 6; stage += 1) {
+      const result = answerAtStage(app, stage);
+      assert.equal(result.stage, stage);
+      const expected = copy.stages[stage - 1];
+      assert.deepEqual(Array.from(expected.sourceDescription, (area) => area.domain), sourceDomains[stage - 1]);
+      assert.equal(result.sourceDescription.areas.length, sourceDomains[stage - 1].length);
+      assert.equal(result.sourceDescription.note, copy.sourceDescriptionIntro);
+      assert.equal(result.sourceDescription.caution, copy.sourceDescriptionCaution);
+      assert.equal(result.sourceDescription.interpretation, copy.resultSummary);
+      assert.ok(app.element('#source-description-heading').textContent.endsWith(expected.name));
+      assert.equal(app.element('#result-summary').textContent, copy.resultSummary);
+      assert.equal(app.element('#source-description-reference').textContent, result.sourceDescription.reference);
+      const body = app.element('#source-description-body').innerHTML;
+      assert.equal((body.match(/<p>/g) || []).length, sourceDomains[stage - 1].length);
+      for (const [i, { domain, text }] of expected.sourceDescription.entries()) {
+        assert.ok(text.length > 20);
+        assert.ok(body.includes(`<strong>${escapeHtml(copy.domains[domain])}:</strong> ${escapeHtml(text)}`));
+        assert.equal(result.sourceDescription.areas[i].text, text);
+        assert.equal(result.sourceDescription.areas[i].label, copy.domains[domain]);
+      }
+    }
+    assert.equal(copy.stages[6].sourceDescription.length, 0);
+    assert.ok(copy.stages[6].assessmentNote);
+    assert.equal(app.window.spiritualAssessment.questionnaireVersion, 3);
+    for (const [, key] of html.matchAll(/data-i18n="([^"]+)"/g)) {
+      assert.equal(typeof copy[key], 'string', `${lang}.${key}`);
+    }
+  }
+});
+
+test('a result description changes language and survives refresh without changing existing answers or score', () => {
+  const app = boot('hr');
+  const before = answerAtStage(app, 5);
+  const savedAnswers = JSON.parse(app.storage.get('spiritual-progress-reflection:v3')).answers;
+  app.element('#language-select').listeners.change({ target: { value: 'en' } });
+  assert.equal(app.element('#source-description-heading').textContent, 'V. Relative Perfection');
+  assert.ok(app.element('#source-description-body').innerHTML.includes('Imperfections'));
+  assert.ok(!app.element('#source-description-body').innerHTML.includes('Nesavršenosti'));
+  const reloaded = boot('hr', app.storage);
+  assert.equal(reloaded.element('#result-view').hidden, false);
+  assert.equal(reloaded.element('#source-description-heading').textContent, 'V. Relative Perfection');
+  const after = reloaded.call('calculate_spiritual_reflection_result');
+  assert.equal(after.stage, before.stage);
+  assert.equal(after.approximateScore, before.approximateScore);
+  assert.equal(after.patternStabilityPercent, before.patternStabilityPercent);
+  assert.deepEqual(JSON.parse(app.storage.get('spiritual-progress-reflection:v3')).answers, savedAnswers);
+});

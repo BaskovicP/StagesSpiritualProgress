@@ -259,7 +259,16 @@
     document.querySelector("#result-number").textContent = toRoman(result.stage);
     document.querySelector("#result-family").textContent = copy.families[stage.family];
     document.querySelector("#result-heading").textContent = stage.name;
-    document.querySelector("#result-summary").textContent = stage.summary;
+    document.querySelector("#result-summary").textContent = copy.resultSummary;
+    document.querySelector("#source-description-heading").textContent = `${toRoman(result.stage)}. ${stage.name}`;
+    document.querySelector("#source-description-body").innerHTML = stage.sourceDescription
+      .map(({ domain, text }) => `
+        <p><strong>${escapeHtml(copy.domains[domain])}:</strong> ${escapeHtml(text)}</p>
+      `)
+      .join("");
+    document.querySelector("#source-description-reference").textContent = format(copy.sourceDescriptionReference, {
+      stage: toRoman(result.stage)
+    });
     document.querySelector("#confidence-badge").textContent = `${result.stabilityPercent}% · ${copy.confidence[result.confidence]}`;
 
     const rangeText = result.lower === result.upper
@@ -704,6 +713,15 @@
         return {
           stage: result.stage,
           stageName: copy.stages[result.stage - 1].name,
+          sourceDescription: {
+            note: copy.sourceDescriptionIntro,
+            areas: copy.stages[result.stage - 1].sourceDescription.map(({ domain, text }) => ({
+              domain, label: copy.domains[domain], text
+            })),
+            reference: format(copy.sourceDescriptionReference, { stage: toRoman(result.stage) }),
+            caution: copy.sourceDescriptionCaution,
+            interpretation: copy.resultSummary
+          },
           approximateScore: Number(result.overallScore.toFixed(1)),
           range: { lower: result.lower, upper: result.upper },
           patternStabilityPercent: result.stabilityPercent,

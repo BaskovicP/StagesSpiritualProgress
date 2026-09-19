@@ -54,6 +54,10 @@ This framing is consistent with Benedict XVI's summary of St. John's teaching on
 
 ## Current scoring
 
+The result page separately presents a plain-language paraphrase of the assigned stage's source section. Its domain paragraphs preserve the source's coverage (I: 6, II: 6, III: 7, IV: 6, V: 3, VI: 3), rather than filling gaps with assumptions. Exact practice frequencies are retained where given, such as quarterly confession at II and twice-daily examen and monthly confession at IV. The source's more forceful ascetical wording is paraphrased as self-renunciation, surrender, and self-forgetfulness, with a separate reading note against harmful interpretations.
+
+These descriptions do not add evidence, criteria, or points to the calculation. In particular, mention of infused prayer, passive purification, or extraordinary phenomena is attributed to the text, not inferred about the respondent. The general result introduction replaces earlier personalized summaries that could imply those unmeasured experiences had been established. The questionnaire and saved-answer version remain unchanged.
+
 Let the selected response category be \(x \in \{0,1,2,3,4\}\), from **never or almost never** through **almost always**.
 
 For a direct-keyed item, its score is:

@@ -40,6 +40,11 @@
   "calculatedLocally": "Calculated on this device",
   "resultRangeLabel": "Your likely range",
   "resultCaution": "Treat this as a prompt for prayerful reflection, not as a spiritual verdict.",
+  "resultSummary": "Under the approximate calculation, your answers fall closest to this stage. Read its source description below and compare it with your experience. The result does not confirm that you have every characteristic or grace described.",
+  "sourceDescriptionEyebrow": "Description from the source",
+  "sourceDescriptionIntro": "What characterizes this stage according to the source? This is a plain-language description, not a new set of requirements or an additional score. Only the areas discussed in the source for this stage are included.",
+  "sourceDescriptionReference": "Paraphrased from Stages of Spiritual Progress, section {stage}.",
+  "sourceDescriptionCaution": "Reading note: accepting suffering and practising self-denial are not invitations to self-harm, remain in abuse, or neglect health and duties. The questionnaire cannot establish infused prayer, passive purification, or extraordinary mystical phenomena.",
   "profileEyebrow": "Seven dimensions",
   "profileTitle": "Your reflection profile",
   "reviewAnswers": "Review answers",
@@ -75,37 +80,75 @@
     {
       "name": "Mediocre Piety",
       "family": "purgative",
-      "summary": "Your answers resemble a beginning marked by sincere desire but inconsistent practice. The central invitation is to establish a steady rhythm, take avoidable occasions seriously, and begin again without discouragement."
+      "sourceDescription": [
+        { "domain": "seriousSin", "text": "Resistance to mortal sin is still weak, and near occasions of sin are rarely avoided. Yet a fall is seriously regretted and followed by an adequate confession." },
+        { "domain": "venialSin", "text": "Venial sin is treated as unimportant, and is sometimes even welcomed or desired. Little or nothing is done to prevent it, recognize its less obvious forms, or uproot it." },
+        { "domain": "suffering", "text": "Suffering is avoided. When it comes, it completely disrupts inner peace." },
+        { "domain": "prayer", "text": "Prayer is valued but is not yet habitual. It may sometimes be good and attentive, but fervor is short-lived. It is usually vocal prayer with intermittent attention or petitions focused on everyday needs and desires." },
+        { "domain": "examen", "text": "The examination of conscience is not practised." },
+        { "domain": "sacraments", "text": "Mass is attended regularly and confession is sought more frequently. This section does not give an exact interval between confessions." }
+      ]
     },
     {
       "name": "Intermittent Piety",
       "family": "purgative",
-      "summary": "Your answers suggest real resistance to serious sin and a growing spiritual routine, though fidelity may still weaken with dryness, distraction, or pressure. Consistency is likely the next fruitful step."
+      "sourceDescription": [
+        { "domain": "seriousSin", "text": "Mortal sin is faithfully resisted, and its near occasions are habitually avoided. Recognizing a sin leads to deep regret and penance to make reparation for what was done." },
+        { "domain": "venialSin", "text": "Venial sin is sometimes deliberate. The effort to resist it remains weak and sorrow is superficial. Conscience is examined, but without a clear method, preparation, or coherence." },
+        { "domain": "suffering", "text": "Difficulties are tolerated, but with complaints and little inner peace." },
+        { "domain": "prayer", "text": "Vocal prayer is regular, but commitment to meditation with a set time, place, and material is not yet firm. It is often abandoned as soon as dryness or other business arises." },
+        { "domain": "examen", "text": "The examination of conscience is practised intermittently rather than consistently." },
+        { "domain": "sacraments", "text": "Mass is attended weekly and confession is sought at least once every three months." }
+      ]
     },
     {
       "name": "Sustained Piety",
       "family": "purgative",
-      "summary": "Your answers point toward a stable pattern of prayer, vigilance, examen, and sacramental life. Consolation and dryness may alternate, while imperfections and suffering still require patient, deliberate work."
+      "sourceDescription": [
+        { "domain": "seriousSin", "text": "The source describes no mortal sin, or at most an extremely rare fall in a sudden situation, often with doubt about whether it was mortal. A fall is followed by deep remorse and a desire for penance." },
+        { "domain": "venialSin", "text": "Venial sin is no longer habitual and is rarely deliberate. It is vigilantly resisted and deeply regretted, though little reparation follows. A consistent particular examen focuses on a specific weakness, chiefly to avoid venial sin." },
+        { "domain": "imperfections", "text": "Imperfections are still readily excused or left unexamined to avoid having to fight them. There is a desire to renounce them, but little actual effort." },
+        { "domain": "suffering", "text": "Suffering is accepted and endured with relative peace, although the inner struggle remains." },
+        { "domain": "prayer", "text": "There is consistent fidelity to a set time and approach to prayer. Vocal prayer accompanies meditation that often becomes a loving conversation with God. Prayer of simplicity may emerge. Consolation and dryness alternate, with dryness still hard to endure; the source also places contemplative aridity here or at the next stage." },
+        { "domain": "examen", "text": "The examination of conscience is practised at least once a day, often more than once." },
+        { "domain": "sacraments", "text": "Mass is attended weekly and, when possible, daily. Confession follows a regular schedule." }
+      ]
     },
     {
       "name": "Fervor",
       "family": "illuminative",
-      "summary": "Your answers resemble a life increasingly shaped by willing prayer, serious reparation, courageous work on imperfections, and a clearer understanding of suffering’s spiritual benefit."
+      "sourceDescription": [
+        { "domain": "venialSin", "text": "Venial sin is not deliberate. It may occur by surprise or with incomplete awareness, but is deeply regretted and followed by serious efforts at reparation." },
+        { "domain": "imperfections", "text": "Imperfections are fought courageously and diligently out of a desire to please God more. Any yielding is immediately regretted. Acts of renunciation are frequent, and a particular examen aims at growth in a specific virtue." },
+        { "domain": "prayer", "text": "Vocal and mental prayer are practised consistently and gladly extended. Prayer often becomes a loving conversation with God; the source also mentions prayer of simplicity or prayer of Quiet. Strong consolations alternate with severe trials." },
+        { "domain": "examen", "text": "The examination of conscience is practised at least twice daily." },
+        { "domain": "suffering", "text": "Suffering is accepted with a clearer understanding of its spiritual benefit, with peace and some joy." },
+        { "domain": "sacraments", "text": "Participation in weekly Mass is fervent, and daily Mass is attended when possible. Confession is sought at least monthly. Imperfections are also brought to devotional confession to seek the grace to overcome them." }
+      ]
     },
     {
       "name": "Relative Perfection",
       "family": "illuminative",
-      "summary": "Your answers suggest a habitual life of prayer, careful love in confronting imperfections, and greater peace in sacrifice. Desire for detachment, the Eucharist, and divine love becomes more pervasive."
+      "sourceDescription": [
+        { "domain": "imperfections", "text": "Imperfections are guarded against energetically, with care and love. They occur only with partial awareness, rather than with fully conscious consent." },
+        { "domain": "suffering", "text": "Suffering is accepted joyfully and peacefully. At times, a sacrifice or difficulty is willingly undertaken for the good of others." },
+        { "domain": "prayer", "text": "Prayer becomes a habitual way of life, even during everyday work. There is a strong desire for self-renunciation, complete surrender to God, detachment, and divine love, together with a longing for the Eucharist and Heaven. The source mentions different degrees of infused prayer, received as God's gift, and often passive purification: God's purifying work in the soul." }
+      ]
     },
     {
       "name": "Heroic Perfection",
       "family": "unitive",
-      "summary": "Your answers resemble the source’s highest described pattern: deep self-forgetfulness, generous acceptance of suffering for others, and contemplative prayer shaped by profound purification."
+      "sourceDescription": [
+        { "domain": "imperfections", "text": "Imperfections remain only as an initial, spontaneous impulse, without deliberate consent to it." },
+        { "domain": "suffering", "text": "Suffering is joyfully accepted, and sacrifice is willingly undertaken for the good of others." },
+        { "domain": "prayer", "text": "The source describes supernatural graces of contemplation, sometimes accompanied by extraordinary phenomena, and profound passive purifications. In strong ascetical language, it speaks of disregard for self to the point of complete self-forgetfulness and a preference for suffering over joys. This is the text's description, not confirmation of these experiences in the person completing the questionnaire." }
+      ]
     },
     {
       "name": "Complete Sanctity",
       "family": "unitive",
       "assessmentNote": "Shown, not assessed",
+      "sourceDescription": [],
       "summary": "The source diagram names this final stage but the supplied pages provide no description or assessment criteria. It is therefore shown on the path but is not assigned as a questionnaire result."
     }
   ],

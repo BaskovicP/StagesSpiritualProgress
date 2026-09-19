@@ -40,6 +40,11 @@
   "calculatedLocally": "Izračunato na ovom uređaju",
   "resultRangeLabel": "Tvoj vjerojatni raspon",
   "resultCaution": "Prihvati ovo kao poticaj za molitveno promišljanje, a ne kao duhovnu presudu.",
+  "resultSummary": "Prema približnom izračunu, tvoji su odgovori najbliži ovom stupnju. U nastavku pročitaj što izvor opisuje za njega i usporedi to sa svojim iskustvom. Rezultat ne potvrđuje da imaš sve opisane osobine ili milosti.",
+  "sourceDescriptionEyebrow": "Opis iz izvornog teksta",
+  "sourceDescriptionIntro": "Što je prema izvoru obilježje ovog stupnja? Slijedi pojednostavljen opis, a ne novi skup zahtjeva ili dodatno bodovanje. Navedena su samo područja koja izvor obrađuje za ovaj stupanj.",
+  "sourceDescriptionReference": "Prepričano prema tekstu Stages of Spiritual Progress, odjeljak {stage}.",
+  "sourceDescriptionCaution": "Napomena za čitanje: prihvaćanje patnje i odricanje nisu poziv na samoozljeđivanje, ostajanje u zlostavljanju ili zanemarivanje zdravlja i dužnosti. Upitnik ne može utvrditi ulivenu molitvu, pasivno čišćenje ni izvanredne mistične pojave.",
   "profileEyebrow": "Sedam područja",
   "profileTitle": "Tvoj profil promišljanja",
   "reviewAnswers": "Pregledaj odgovore",
@@ -75,37 +80,75 @@
     {
       "name": "Osrednja pobožnost",
       "family": "purgative",
-      "summary": "Tvoji odgovori nalikuju početku obilježenom iskrenom željom, ali još nedosljednom praksom. Središnji je poziv uspostaviti postojan ritam, ozbiljno shvatiti izbježive prigode i bez obeshrabrenja uvijek ponovno započinjati."
+      "sourceDescription": [
+        { "domain": "seriousSin", "text": "Otpor smrtnom grijehu još je slab i bliske se prigode za grijeh rijetko izbjegavaju. Ipak, nakon pada postoji ozbiljno kajanje i grijeh se valjano ispovijeda." },
+        { "domain": "venialSin", "text": "Laki grijeh smatra se nevažnim, a ponekad ga se čak prihvaća ili želi. Malo se ili nimalo radi na tome da ga se spriječi, prepozna u manje očitim oblicima i iskorijeni." },
+        { "domain": "suffering", "text": "Patnja se izbjegava. Kada dođe, potpuno narušava unutarnji mir." },
+        { "domain": "prayer", "text": "Molitva se cijeni, ali još nije navika. Ponekad je dobra i sabrana, no žar brzo prolazi. Najčešće je riječ o usmenoj molitvi s povremenom pažnjom ili o molbama za svakodnevne potrebe i želje." },
+        { "domain": "examen", "text": "Ispit savjesti ne prakticira se." },
+        { "domain": "sacraments", "text": "Na misu se ide redovito, a ispovijedi se pristupa češće. U ovom odjeljku izvor ne navodi točan razmak između ispovijedi." }
+      ]
     },
     {
       "name": "Povremena pobožnost",
       "family": "purgative",
-      "summary": "Tvoji odgovori upućuju na stvaran otpor teškom grijehu i rastući duhovni ritam, premda vjernost još može oslabjeti zbog suhoće, rastresenosti ili pritiska. Dosljednost je vjerojatno sljedeći plodan korak."
+      "sourceDescription": [
+        { "domain": "seriousSin", "text": "Smrtnom grijehu pruža se vjeran otpor, a njegove se bliske prigode uglavnom izbjegavaju. Kada se prepozna počinjeni grijeh, slijede duboko kajanje i pokora radi zadovoljštine, odnosno popravljanja učinjenoga." },
+        { "domain": "venialSin", "text": "Laki grijeh ponekad se čini namjerno. Borba protiv njega još je slaba, a kajanje površno. Savjest se ispituje, ali bez jasnog načina, pripreme i povezanosti." },
+        { "domain": "suffering", "text": "Teškoće se podnose, ali uz prigovaranje i malo unutarnjeg mira." },
+        { "domain": "prayer", "text": "Usmena molitva je redovita, ali još nema čvrste vjernosti razmatranju s određenim vremenom, mjestom i sadržajem. Od njega se često odustane čim nastupi suhoća ili se pojave poslovi." },
+        { "domain": "examen", "text": "Ispit savjesti obavlja se povremeno, ne postojano." },
+        { "domain": "sacraments", "text": "Na misu se ide svaki tjedan, a na ispovijed barem jednom u tri mjeseca." }
+      ]
     },
     {
       "name": "Postojana pobožnost",
       "family": "purgative",
-      "summary": "Tvoji odgovori upućuju na postojan obrazac molitve, budnosti, ispita savjesti i sakramentalnog života. Utjeha i suhoća mogu se izmjenjivati, dok nesavršenosti i trpljenje još traže strpljiv i odlučan rad."
+      "sourceDescription": [
+        { "domain": "seriousSin", "text": "Izvor opisuje odsutnost smrtnog grijeha ili krajnje rijedak pad u iznenadnoj situaciji, pri čemu je često upitno jesu li ispunjeni uvjeti za smrtni grijeh. Nakon pada slijede snažno kajanje i želja za pokorom." },
+        { "domain": "venialSin", "text": "Laki grijeh više nije navika i rijetko je namjeran. Postoji budnost i borba protiv njega te snažno kajanje, ali još malo konkretne zadovoljštine. Posebnim ispitom savjesti prati se određena slabost, ponajprije radi izbjegavanja lakoga grijeha." },
+        { "domain": "imperfections", "text": "Nesavršenosti se još lako opravdavaju ili ih se izbjegava pobliže pogledati kako se protiv njih ne bi trebalo boriti. Postoji želja za odricanjem, ali malo stvarnog truda." },
+        { "domain": "suffering", "text": "Patnja se prihvaća i podnosi s razmjernim mirom, iako unutarnja borba još traje." },
+        { "domain": "prayer", "text": "Postoji postojana vjernost određenom vremenu i načinu molitve. Uz usmenu molitvu prakticira se razmatranje koje često postaje razgovor srca s Bogom. Može se pojaviti molitva jednostavnosti. Utjeha i suhoća izmjenjuju se, a suhoća se još teško podnosi; izvor ovdje ili na sljedećem stupnju spominje i kontemplativnu suhoću." },
+        { "domain": "examen", "text": "Ispit savjesti obavlja se barem jednom dnevno, a često i više puta." },
+        { "domain": "sacraments", "text": "Na misu se ide svaki tjedan, a ako je moguće i svakodnevno. Ispovijed ima redovit raspored." }
+      ]
     },
     {
       "name": "Žar",
       "family": "illuminative",
-      "summary": "Tvoji odgovori nalikuju životu koji sve više oblikuju dragovoljna molitva, ozbiljna naknada, hrabar rad na nesavršenostima i jasnije razumijevanje duhovne koristi trpljenja."
+      "sourceDescription": [
+        { "domain": "venialSin", "text": "Laki grijeh nije namjeran. Može se dogoditi iznenada ili uz nepotpunu pažnju, ali se duboko žali i ozbiljno nastoji popraviti učinjeno." },
+        { "domain": "imperfections", "text": "Protiv nesavršenosti bori se hrabro i ustrajno iz želje da se više ugodi Bogu. Ako se ipak popusti, to se odmah požali. Odricanje je često, a poseban ispit savjesti usmjeren je na rast u određenoj kreposti." },
+        { "domain": "prayer", "text": "Usmena i unutarnja molitva redovito se prakticiraju i rado produžuju. Molitva često postaje razgovor srca s Bogom; izvor spominje i molitvu jednostavnosti ili molitvu smirenosti. Snažne utjehe izmjenjuju se s teškim kušnjama." },
+        { "domain": "examen", "text": "Ispit savjesti obavlja se barem dvaput dnevno." },
+        { "domain": "suffering", "text": "Patnja se prihvaća s jasnijim razumijevanjem duhovne koristi, s mirom i određenom radošću." },
+        { "domain": "sacraments", "text": "Na tjednoj misi sudjeluje se gorljivo, a na dnevnoj ako je moguće. Ispovijeda se barem jednom mjesečno. I nesavršenosti iznose se u pobožnoj ispovijedi radi milosti potrebne za njihovo nadvladavanje." }
+      ]
     },
     {
       "name": "Relativna savršenost",
       "family": "illuminative",
-      "summary": "Tvoji odgovori upućuju na trajan život molitve, brižnu ljubav u suočavanju s nesavršenostima i veći mir u žrtvi. Želja za nenavezanošću, Euharistijom i božanskom ljubavlju postaje sve prožimajuća."
+      "sourceDescription": [
+        { "domain": "imperfections", "text": "Na nesavršenosti se budno pazi te se protiv njih bori odlučno, brižno i s ljubavlju. One se događaju samo uz djelomičnu svjesnost, a ne kao potpuno svjestan pristanak." },
+        { "domain": "suffering", "text": "Patnja se prihvaća radosno i s mirom. Ponekad se dragovoljno preuzima žrtva ili teškoća radi dobra drugih." },
+        { "domain": "prayer", "text": "Molitva prožima svakodnevni život, čak i za vrijeme poslova. Postoji snažna želja za odricanjem od sebe, potpunim predanjem Bogu, nenavezanošću i božanskom ljubavlju te čežnja za Euharistijom i nebom. Izvor spominje različite stupnjeve ulivene molitve, koja se prima kao Božji dar, te često pasivno čišćenje, odnosno čišćenje koje Bog izvodi u duši." }
+      ]
     },
     {
       "name": "Herojska savršenost",
       "family": "unitive",
-      "summary": "Tvoji odgovori nalikuju najvišem opisanom obrascu izvora: dubokom samozaboravu, velikodušnom prihvaćanju trpljenja za druge i kontemplativnoj molitvi oblikovanoj dubokim čišćenjem."
+      "sourceDescription": [
+        { "domain": "imperfections", "text": "Od nesavršenosti ostaje samo prvi, spontani poticaj; ne slijedi namjerno pristajanje uz njega." },
+        { "domain": "suffering", "text": "Patnja se radosno prihvaća, a žrtva dragovoljno preuzima radi dobra drugih." },
+        { "domain": "prayer", "text": "Izvor opisuje nadnaravne milosti kontemplacije, ponekad praćene izvanrednim pojavama, te duboka pasivna čišćenja. Snažnim asketskim jezikom govori o zanemarivanju vlastitog ja sve do potpunog samozaborava i o tome da se trpljenju daje prednost pred radostima. To je opis iz teksta, a ne potvrda takvih iskustava kod osobe koja ispunjava upitnik." }
+      ]
     },
     {
       "name": "Potpuna svetost",
       "family": "unitive",
       "assessmentNote": "Prikazano, ne procjenjuje se",
+      "sourceDescription": [],
       "summary": "Izvorni dijagram navodi ovaj završni stupanj, ali priložene stranice ne donose njegov opis ni kriterije za procjenu. Zato je prikazan na putu, ali se ne dodjeljuje kao rezultat upitnika."
     }
   ],
