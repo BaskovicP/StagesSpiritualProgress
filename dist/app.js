@@ -6,6 +6,8 @@
   const questionBlueprints = assessment.questionBlueprints;
   const minimumAnswers = 21;
   const minimumItemsPerDomain = 2;
+  const lowestAssessedStage = 1;
+  const highestAssessedStage = 6;
   const storageVersion = 2;
   const storageKey = "spiritual-progress-reflection:v2";
 
@@ -129,11 +131,12 @@
     const copy = translations[state.language];
     elements.stagePath.innerHTML = copy.stages
       .map((stage, index) => `
-        <li>
+        <li class="${stage.assessmentNote ? "is-unassessed" : ""}">
           <span class="stage-dot" aria-hidden="true"></span>
           <span class="stage-copy">
             <strong>${toRoman(index + 1)}. ${escapeHtml(stage.name)}</strong>
             <span>${escapeHtml(copy.families[stage.family])}</span>
+            ${stage.assessmentNote ? `<small>${escapeHtml(stage.assessmentNote)}</small>` : ""}
           </span>
         </li>
       `)
@@ -270,14 +273,14 @@
               <progress
                 class="domain-track"
                 value="0"
-                max="6"
+                max="${highestAssessedStage}"
                 aria-label="${escapeHtml(copy.domains[domain])}"
                 aria-valuetext="${escapeHtml(copy.notAnswered)}"
               ></progress>
             </div>
           `;
         }
-        const stageNumber = clamp(Math.round(score), 1, 6);
+        const stageNumber = clamp(Math.round(score), lowestAssessedStage, highestAssessedStage);
         const stageName = copy.stages[stageNumber - 1].name;
         return `
           <div class="domain-row">
@@ -288,7 +291,7 @@
             <progress
               class="domain-track"
               value="${score.toFixed(1)}"
-              max="6"
+              max="${highestAssessedStage}"
               aria-label="${escapeHtml(copy.domains[domain])}"
               aria-valuetext="${toRoman(stageNumber)} · ${escapeHtml(stageName)}"
             ></progress>
@@ -312,18 +315,19 @@
 
   function renderAscent(result, copy) {
     const stagePoints = [
-      { x: 30, y: 510 },
-      { x: 38, y: 418 },
-      { x: 42, y: 326 },
-      { x: 52, y: 234 },
-      { x: 48, y: 142 },
-      { x: 46, y: 50 }
+      { x: 30, y: 530 },
+      { x: 38, y: 446 },
+      { x: 42, y: 362 },
+      { x: 52, y: 278 },
+      { x: 48, y: 194 },
+      { x: 46, y: 110 },
+      { x: 54, y: 26 }
     ];
-    const score = clamp(result.overallScore, 1, 6);
-    const lowerIndex = Math.min(Math.floor(score) - 1, stagePoints.length - 2);
-    const fraction = score >= 6 ? 1 : score - Math.floor(score);
+    const score = clamp(result.overallScore, lowestAssessedStage, highestAssessedStage);
+    const lowerIndex = Math.min(Math.floor(score) - lowestAssessedStage, highestAssessedStage - 1);
+    const fraction = score >= highestAssessedStage ? 0 : score - Math.floor(score);
     const start = stagePoints[lowerIndex];
-    const end = stagePoints[Math.min(lowerIndex + 1, stagePoints.length - 1)];
+    const end = stagePoints[Math.min(lowerIndex + 1, highestAssessedStage - 1)];
     const markerX = start.x + (end.x - start.x) * fraction;
     const markerY = start.y + (end.y - start.y) * fraction;
 
@@ -347,10 +351,12 @@
         const classes = ["ascent-stage"];
         if (stageNumber === result.stage) classes.push("is-closest");
         if (stageNumber >= result.lower && stageNumber <= result.upper) classes.push("is-in-range");
+        if (item.assessmentNote) classes.push("is-unassessed");
         return `
           <li class="${classes.join(" ")} ascent-stage-${stageNumber}">
             <strong><span>${toRoman(stageNumber)}</span>${escapeHtml(item.name)}</strong>
             <small>${escapeHtml(copy.families[item.family])}</small>
+            ${item.assessmentNote ? `<em>${escapeHtml(item.assessmentNote)}</em>` : ""}
           </li>
         `;
       })
@@ -359,7 +365,7 @@
 
   function positionAscentMarker(marker, targetX, targetY) {
     const startX = Number(marker.dataset.x ?? 30);
-    const startY = Number(marker.dataset.y ?? 510);
+    const startY = Number(marker.dataset.y ?? 530);
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     cancelAnimationFrame(ascentAnimationFrame);
@@ -395,11 +401,17 @@
     }));
 
     const representedScores = Object.values(domainScores).filter((score) => score !== null);
-    const overallScore = clamp(average(representedScores), 1, 6);
-    const stage = clamp(Math.round(overallScore), 1, 6);
+    const overallScore = clamp(average(representedScores), lowestAssessedStage, highestAssessedStage);
+    const stage = clamp(Math.round(overallScore), lowestAssessedStage, highestAssessedStage);
     const stability = estimatePatternStability(grouped, stage);
-    const lower = Math.min(stage, clamp(Math.round(stability.lowerScore), 1, 6));
-    const upper = Math.max(stage, clamp(Math.round(stability.upperScore), 1, 6));
+    const lower = Math.min(
+      stage,
+      clamp(Math.round(stability.lowerScore), lowestAssessedStage, highestAssessedStage)
+    );
+    const upper = Math.max(
+      stage,
+      clamp(Math.round(stability.upperScore), lowestAssessedStage, highestAssessedStage)
+    );
     const domainCount = representedScores.length;
     const counts = countAnsweredByDomain(answered);
     const minimumDomainItems = Math.min(...Object.values(counts));
@@ -430,7 +442,9 @@
       const selected = state.answers[blueprint.id];
       if (selected === undefined || selected === "skip") return [];
       const directScore = scale[selected];
-      const score = blueprint.reverse ? 7 - directScore : directScore;
+      const score = blueprint.reverse
+        ? highestAssessedStage + lowestAssessedStage - directScore
+        : directScore;
       return [{ blueprint, score }];
     });
   }
@@ -469,9 +483,15 @@
         );
         return [average(resampled)];
       });
-      const sampleScore = clamp(average(sampledDomains), 1, 6);
+      const sampleScore = clamp(
+        average(sampledDomains),
+        lowestAssessedStage,
+        highestAssessedStage
+      );
       sampleScores.push(sampleScore);
-      if (clamp(Math.round(sampleScore), 1, 6) === stage) stageMatches += 1;
+      if (
+        clamp(Math.round(sampleScore), lowestAssessedStage, highestAssessedStage) === stage
+      ) stageMatches += 1;
     }
 
     return {
@@ -546,7 +566,7 @@
   }
 
   function toRoman(number) {
-    return ["I", "II", "III", "IV", "V", "VI"][number - 1] || String(number);
+    return ["I", "II", "III", "IV", "V", "VI", "VII"][number - 1] || String(number);
   }
 
   function escapeHtml(value) {

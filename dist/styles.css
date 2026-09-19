@@ -475,6 +475,21 @@ h1 {
   letter-spacing: 0.11em;
 }
 
+.stage-copy small {
+  color: var(--gold-bright);
+  font-size: 0.68rem;
+  font-style: italic;
+}
+
+.path-assessment-note {
+  position: relative;
+  z-index: 1;
+  margin: 20px 0 0 54px;
+  color: var(--muted);
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
 .question-layout {
   display: grid;
   grid-template-columns: 230px minmax(0, 760px);
@@ -847,6 +862,7 @@ h1 {
 .ascent-node-purgative { fill: var(--burgundy); }
 .ascent-node-illuminative { fill: var(--gold); }
 .ascent-node-unitive { fill: var(--paper); }
+.ascent-node-unassessed { opacity: 0.62; }
 
 .ascent-marker-halo {
   fill: rgba(242, 196, 92, 0.16);
@@ -881,12 +897,13 @@ h1 {
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
-.ascent-stage-1 { top: 91.07%; }
-.ascent-stage-2 { top: 74.64%; }
-.ascent-stage-3 { top: 58.21%; }
-.ascent-stage-4 { top: 41.79%; }
-.ascent-stage-5 { top: 25.36%; }
-.ascent-stage-6 { top: 8.93%; }
+.ascent-stage-1 { top: 94.64%; }
+.ascent-stage-2 { top: 79.64%; }
+.ascent-stage-3 { top: 64.64%; }
+.ascent-stage-4 { top: 49.64%; }
+.ascent-stage-5 { top: 34.64%; }
+.ascent-stage-6 { top: 19.64%; }
+.ascent-stage-7 { top: 4.64%; }
 
 .ascent-stage strong {
   display: flex;
@@ -911,6 +928,20 @@ h1 {
   letter-spacing: 0.055em;
   line-height: 1.2;
   text-transform: uppercase;
+}
+
+.ascent-stage em {
+  display: block;
+  margin: 2px 0 0 26px;
+  color: var(--gold-bright);
+  font-size: 0.58rem;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.ascent-stage.is-unassessed strong,
+.ascent-stage.is-unassessed small {
+  opacity: 0.72;
 }
 
 .ascent-stage.is-in-range::before {

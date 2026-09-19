@@ -4,6 +4,8 @@
 
 This is an independent reflection aid, not a validated psychological test, diagnostic instrument, or substitute for spiritual direction. Its output should be interpreted as a structured summary of a person's self-reported pattern during the previous eight weeks.
 
+The source diagram names seven stages. The supplied pages describe Stages I–VI in detail but provide only the name **VII. Complete Sanctity**. The interface therefore shows all seven stages so the source structure is complete, while the questionnaire estimates only Stages I–VI. Assigning Stage VII would require criteria not present in the supplied source and would be especially inappropriate to infer from an unvalidated self-report questionnaire.
+
 ## Why 28 questions
 
 The development form uses 28 items: four differently angled items in each of seven domains. This is a practical compromise between respondent burden and the need to observe some within-domain consistency. The former 14-item form had only two items per domain, which was too little for a meaningful consistency check.

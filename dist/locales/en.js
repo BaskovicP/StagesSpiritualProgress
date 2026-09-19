@@ -21,8 +21,9 @@
   "restart": "Start over",
   "restartConfirm": "Start over and clear all saved answers?",
   "privacyNote": "Your answers stay in this tab and disappear when you close it.",
-  "pathEyebrow": "Six movements",
+  "pathEyebrow": "Seven stages",
   "pathTitle": "A path, not a rank",
+  "pathAssessmentNote": "Stage VII appears in the source diagram, but the supplied pages give no criteria for it. It is shown as the horizon of the path and is not assigned by this questionnaire.",
   "backToIntro": "Back",
   "yourProgress": "Your progress",
   "chooseClosest": "Over the past eight weeks, how often has this been true? Choose what was usual, not what you hoped to do. The example clarifies the situation; it is not a suggested answer.",
@@ -35,7 +36,7 @@
   "footerIdentity": "Stages of Spiritual Progress",
   "resultEyebrow": "Your closest pattern",
   "ascentTitle": "Your place on the path",
-  "ascentPosition": "Approximate position: {score} of 6, closest to Stage {stage}.",
+  "ascentPosition": "Approximate position on the assessed I–VI scale: {score} of 6, closest to Stage {stage}.",
   "calculatedLocally": "Calculated on this device",
   "resultRangeLabel": "Your likely range",
   "resultCaution": "Treat this as a prompt for prayerful reflection, not as a spiritual verdict.",
@@ -45,7 +46,7 @@
   "printResult": "Print result",
   "retake": "Clear & retake",
   "methodTitle": "How this estimate is calculated",
-  "methodBody": "Responses are mapped evenly onto a six-point continuum: 1, 2.25, 3.5, 4.75, or 6. Reverse-keyed items use the opposite score. Item scores are averaged within each of the seven areas, and those seven area means are then averaged with equal weight. The nearest whole number becomes the displayed stage. Pattern stability is the percentage of 1,000 browser-only within-area resamples that return that same stage; the range contains the middle 95% of resampled overall scores. It measures sensitivity to this answer pattern, not validated diagnostic accuracy.",
+  "methodBody": "The source diagram names seven stages, but the supplied pages describe only Stages I–VI. For that reason, the questionnaire displays all seven while estimating only the six described stages; it does not assign Stage VII. Responses are mapped evenly onto a six-point continuum: 1, 2.25, 3.5, 4.75, or 6. Reverse-keyed items use the opposite score. Item scores are averaged within each of the seven areas, and those seven area means are then averaged with equal weight. The nearest whole number becomes the displayed stage. Pattern stability is the percentage of 1,000 browser-only within-area resamples that return that same stage; the range contains the middle 95% of resampled overall scores. It measures sensitivity to this answer pattern, not validated diagnostic accuracy.",
   "methodPrivacy": "Answers, progress, result, and language are kept only in this tab’s temporary session storage so they survive a refresh. They are never transmitted and are cleared when the tab is closed. No cookies, analytics, or identifiers are used.",
   "notAnswered": "Not answered",
   "answeredSummary": "{answered} of {total} questions answered · {domains} of 7 dimensions represented",
@@ -100,6 +101,12 @@
       "name": "Heroic Perfection",
       "family": "unitive",
       "summary": "Your answers resemble the source’s highest described pattern: deep self-forgetfulness, generous acceptance of suffering for others, and contemplative prayer shaped by profound purification."
+    },
+    {
+      "name": "Complete Sanctity",
+      "family": "unitive",
+      "assessmentNote": "Shown, not assessed",
+      "summary": "The source diagram names this final stage but the supplied pages provide no description or assessment criteria. It is therefore shown on the path but is not assigned as a questionnaire result."
     }
   ],
   "questions": [

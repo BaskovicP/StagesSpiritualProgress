@@ -21,8 +21,9 @@
   "restart": "Počni ispočetka",
   "restartConfirm": "Početi ispočetka i izbrisati sve spremljene odgovore?",
   "privacyNote": "Tvoji odgovori ostaju u ovoj kartici i nestaju kada je zatvoriš.",
-  "pathEyebrow": "Šest koraka",
+  "pathEyebrow": "Sedam stupnjeva",
   "pathTitle": "Put, a ne rang-lista",
+  "pathAssessmentNote": "VII. stupanj naveden je u izvornom dijagramu, ali priložene stranice ne donose kriterije za njega. Prikazan je kao obzor puta i ovaj ga upitnik ne dodjeljuje.",
   "backToIntro": "Natrag",
   "yourProgress": "Tvoj napredak",
   "chooseClosest": "Koliko je često tijekom proteklih osam tjedana ovo bilo istinito? Odaberi ono što je bilo uobičajeno, a ne ono što si želio učiniti. Primjer samo pojašnjava situaciju; ne sugerira odgovor.",
@@ -35,7 +36,7 @@
   "footerIdentity": "Stupnjevi duhovnog napretka",
   "resultEyebrow": "Tvoj najbliži obrazac",
   "ascentTitle": "Tvoje mjesto na putu",
-  "ascentPosition": "Približan položaj: {score} od 6, najbliže {stage}. stupnju.",
+  "ascentPosition": "Približan položaj na procijenjenoj ljestvici I–VI: {score} od 6, najbliže {stage}. stupnju.",
   "calculatedLocally": "Izračunato na ovom uređaju",
   "resultRangeLabel": "Tvoj vjerojatni raspon",
   "resultCaution": "Prihvati ovo kao poticaj za molitveno promišljanje, a ne kao duhovnu presudu.",
@@ -45,7 +46,7 @@
   "printResult": "Ispiši rezultat",
   "retake": "Izbriši i ponovi",
   "methodTitle": "Kako se izračunava procjena",
-  "methodBody": "Odgovori se ravnomjerno preslikavaju na ljestvicu od šest točaka: 1, 2,25, 3,5, 4,75 ili 6. Obrnuto bodovane tvrdnje dobivaju suprotnu vrijednost. Bodovi tvrdnji prosječno se izračunavaju unutar svakog od sedam područja, a zatim se tih sedam prosjeka jednako ponderirano prosječno izračuna. Najbliži cijeli broj postaje prikazani stupanj. Stabilnost obrasca postotak je od 1.000 ponovnih uzorkovanja unutar područja koja daju isti stupanj; raspon obuhvaća srednjih 95% ponovno uzorkovanih ukupnih rezultata. To mjeri osjetljivost ovog obrasca odgovora, a ne potvrđenu dijagnostičku točnost.",
+  "methodBody": "Izvorni dijagram navodi sedam stupnjeva, ali priložene stranice opisuju samo stupnjeve I–VI. Zato upitnik prikazuje svih sedam, ali procjenjuje samo šest opisanih stupnjeva; VII. stupanj ne dodjeljuje. Odgovori se ravnomjerno preslikavaju na ljestvicu od šest točaka: 1, 2,25, 3,5, 4,75 ili 6. Obrnuto bodovane tvrdnje dobivaju suprotnu vrijednost. Bodovi tvrdnji prosječno se izračunavaju unutar svakog od sedam područja, a zatim se tih sedam prosjeka jednako ponderirano prosječno izračuna. Najbliži cijeli broj postaje prikazani stupanj. Stabilnost obrasca postotak je od 1.000 ponovnih uzorkovanja unutar područja koja daju isti stupanj; raspon obuhvaća srednjih 95% ponovno uzorkovanih ukupnih rezultata. To mjeri osjetljivost ovog obrasca odgovora, a ne potvrđenu dijagnostičku točnost.",
   "methodPrivacy": "Odgovori, napredak, rezultat i jezik čuvaju se samo u privremenoj memoriji ove kartice kako bi preživjeli osvježavanje stranice. Nikada se ne šalju i brišu se zatvaranjem kartice. Ne upotrebljavaju se kolačići, analitika ni identifikatori.",
   "notAnswered": "Bez odgovora",
   "answeredSummary": "Odgovoreno na {answered} od {total} pitanja · zastupljeno {domains} od 7 područja",
@@ -100,6 +101,12 @@
       "name": "Herojska savršenost",
       "family": "unitive",
       "summary": "Tvoji odgovori nalikuju najvišem opisanom obrascu izvora: dubokom samozaboravu, velikodušnom prihvaćanju trpljenja za druge i kontemplativnoj molitvi oblikovanoj dubokim čišćenjem."
+    },
+    {
+      "name": "Potpuna svetost",
+      "family": "unitive",
+      "assessmentNote": "Prikazano, ne procjenjuje se",
+      "summary": "Izvorni dijagram navodi ovaj završni stupanj, ali priložene stranice ne donose njegov opis ni kriterije za procjenu. Zato je prikazan na putu, ali se ne dodjeljuje kao rezultat upitnika."
     }
   ],
   "questions": [
