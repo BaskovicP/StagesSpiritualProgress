@@ -1,32 +1,11 @@
 (() => {
   "use strict";
 
-  const domainOrder = [
-    "seriousSin",
-    "venialSin",
-    "imperfections",
-    "suffering",
-    "prayer",
-    "examen",
-    "sacraments"
-  ];
-
-  const questionBlueprints = [
-    { id: "serious-resistance", domain: "seriousSin", ranges: [[1, 1], [2, 2], [3, 6]] },
-    { id: "serious-response", domain: "seriousSin", ranges: [[1, 1], [2, 2], [3, 6]] },
-    { id: "venial-intent", domain: "venialSin", ranges: [[1, 1], [2, 2], [3, 3], [4, 6]] },
-    { id: "venial-repair", domain: "venialSin", ranges: [[1, 1], [2, 2], [3, 3], [4, 6]] },
-    { id: "imperfections-attitude", domain: "imperfections", ranges: [[1, 3], [4, 4], [5, 5], [6, 6]] },
-    { id: "imperfections-renunciation", domain: "imperfections", ranges: [[1, 3], [4, 4], [5, 5], [6, 6]] },
-    { id: "suffering-response", domain: "suffering", ranges: [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6]] },
-    { id: "suffering-meaning", domain: "suffering", ranges: [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6]] },
-    { id: "prayer-rhythm", domain: "prayer", ranges: [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6]] },
-    { id: "prayer-depth", domain: "prayer", ranges: [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6]] },
-    { id: "examen-frequency", domain: "examen", ranges: [[1, 1], [2, 2], [3, 3], [4, 6]] },
-    { id: "examen-purpose", domain: "examen", ranges: [[1, 1], [2, 2], [3, 3], [4, 6]] },
-    { id: "mass-rhythm", domain: "sacraments", ranges: [[1, 1], [2, 2], [3, 3], [4, 6]] },
-    { id: "confession-rhythm", domain: "sacraments", ranges: [[1, 1], [2, 2], [3, 3], [4, 6]] }
-  ];
+  const assessment = window.spiritualAssessment;
+  const domainOrder = assessment.domainOrder;
+  const questionBlueprints = assessment.questionBlueprints;
+  const minimumAnswers = 21;
+  const minimumItemsPerDomain = 2;
 
   const translations = {
     en: {
@@ -517,6 +496,10 @@
     }
   };
 
+  Object.entries(assessment.copy).forEach(([language, revisedCopy]) => {
+    Object.assign(translations[language], revisedCopy);
+  });
+
   const elements = {
     languageSelect: document.querySelector("#language-select"),
     introView: document.querySelector("#intro-view"),
@@ -608,7 +591,8 @@
     elements.nextButtonLabel.textContent = isLast ? copy.seeResult : copy.next;
     elements.assessmentMessage.hidden = true;
 
-    const choices = question.options.map((label, index) => ({ label, value: String(index) }));
+    const choices = getQuestionOptions(copy, state.currentIndex)
+      .map((label, index) => ({ label, value: String(index) }));
     choices.push({ label: copy.preferNot, value: "skip" });
     elements.optionsRoot.innerHTML = choices
       .map((choice) => `
@@ -663,10 +647,14 @@
       return;
     }
 
-    const answeredCount = getAnsweredEntries().length;
-    if (answeredCount < 7) {
-      const firstSkipped = questionBlueprints.findIndex((question) => state.answers[question.id] === "skip");
-      state.currentIndex = firstSkipped >= 0 ? firstSkipped : 0;
+    const answered = getAnsweredEntries();
+    if (!hasMinimumCoverage(answered)) {
+      const counts = countAnsweredByDomain(answered);
+      const firstSkipped = questionBlueprints.findIndex((question) =>
+        state.answers[question.id] === "skip" && counts[question.domain] < minimumItemsPerDomain
+      );
+      const anySkipped = questionBlueprints.findIndex((question) => state.answers[question.id] === "skip");
+      state.currentIndex = firstSkipped >= 0 ? firstSkipped : (anySkipped >= 0 ? anySkipped : 0);
       renderQuestion();
       elements.assessmentMessage.textContent = translations[state.language].needMore;
       elements.assessmentMessage.hidden = false;
@@ -689,7 +677,7 @@
     document.querySelector("#result-family").textContent = copy.families[stage.family];
     document.querySelector("#result-heading").textContent = stage.name;
     document.querySelector("#result-summary").textContent = stage.summary;
-    document.querySelector("#confidence-badge").textContent = copy.confidence[result.confidence];
+    document.querySelector("#confidence-badge").textContent = `${result.stabilityPercent}% · ${copy.confidence[result.confidence]}`;
 
     const rangeText = result.lower === result.upper
       ? format(copy.rangeSingle, { stage: toRoman(result.stage) })
@@ -740,6 +728,12 @@
       answered: result.answeredCount,
       total: questionBlueprints.length,
       domains: result.domainCount
+    });
+    document.querySelector("#confidence-summary").textContent = format(copy.stabilitySummary, {
+      percent: result.stabilityPercent,
+      stage: toRoman(result.stage),
+      lower: toRoman(result.lower),
+      upper: toRoman(result.upper)
     });
   }
 
@@ -820,48 +814,29 @@
   function calculateResult() {
     const answered = getAnsweredEntries();
     const grouped = Object.fromEntries(domainOrder.map((domain) => [domain, []]));
-    answered.forEach(({ blueprint, range }) => grouped[blueprint.domain].push(range));
-
-    const candidates = [1, 2, 3, 4, 5, 6].map((stage) => {
-      const representedDomains = domainOrder.filter((domain) => grouped[domain].length > 0);
-      const domainLosses = representedDomains.map((domain) => {
-        const losses = grouped[domain].map(([minimum, maximum]) => {
-          if (stage < minimum) return (minimum - stage) ** 2;
-          if (stage > maximum) return (stage - maximum) ** 2;
-          return 0;
-        });
-        return average(losses);
-      });
-      return { stage, loss: average(domainLosses) };
-    });
-
-    const minimumLoss = Math.min(...candidates.map((candidate) => candidate.loss));
-    const tied = candidates.filter((candidate) => Math.abs(candidate.loss - minimumLoss) < 0.000001);
-    const exactAnchors = answered
-      .map(({ range }) => range)
-      .filter(([minimum, maximum]) => minimum === maximum)
-      .map(([minimum]) => minimum);
-    const anchor = exactAnchors.length ? average(exactAnchors) : 3.5;
-    const stage = tied.sort((a, b) => Math.abs(a.stage - anchor) - Math.abs(b.stage - anchor))[0].stage;
+    answered.forEach(({ blueprint, score }) => grouped[blueprint.domain].push(score));
 
     const domainScores = Object.fromEntries(domainOrder.map((domain) => {
-      const ranges = grouped[domain];
-      if (!ranges.length) return [domain, null];
-      const values = ranges.map(([minimum, maximum]) => minimum === maximum
-        ? minimum
-        : clamp(stage, minimum, maximum));
-      return [domain, average(values)];
+      const values = grouped[domain];
+      return [domain, values.length ? average(values) : null];
     }));
 
     const representedScores = Object.values(domainScores).filter((score) => score !== null);
     const overallScore = clamp(average(representedScores), 1, 6);
-    const lower = Math.min(stage, clamp(Math.round(percentile(representedScores, 0.25)), 1, 6));
-    const upper = Math.max(stage, clamp(Math.round(percentile(representedScores, 0.75)), 1, 6));
-    const spread = standardDeviation(representedScores);
+    const stage = clamp(Math.round(overallScore), 1, 6);
+    const stability = estimatePatternStability(grouped, stage);
+    const lower = Math.min(stage, clamp(Math.round(stability.lowerScore), 1, 6));
+    const upper = Math.max(stage, clamp(Math.round(stability.upperScore), 1, 6));
     const domainCount = representedScores.length;
+    const counts = countAnsweredByDomain(answered);
+    const minimumDomainItems = Math.min(...Object.values(counts));
+    const intervalWidth = stability.upperScore - stability.lowerScore;
     let confidence = "low";
-    if (answered.length >= 12 && domainCount >= 6 && spread <= 1.2) confidence = "high";
-    else if (answered.length >= 9 && domainCount >= 5 && spread <= 1.8) confidence = "moderate";
+    if (answered.length >= 26 && minimumDomainItems >= 3 && stability.support >= 0.8 && intervalWidth <= 1) {
+      confidence = "high";
+    } else if (answered.length >= minimumAnswers && minimumDomainItems >= minimumItemsPerDomain && stability.support >= 0.6 && intervalWidth <= 1.8) {
+      confidence = "moderate";
+    }
 
     return {
       stage,
@@ -869,6 +844,7 @@
       lower,
       upper,
       confidence,
+      stabilityPercent: Math.round(stability.support * 100),
       domainScores,
       domainCount,
       answeredCount: answered.length
@@ -876,11 +852,75 @@
   }
 
   function getAnsweredEntries() {
+    const scale = [1, 2.25, 3.5, 4.75, 6];
     return questionBlueprints.flatMap((blueprint) => {
       const selected = state.answers[blueprint.id];
       if (selected === undefined || selected === "skip") return [];
-      return [{ blueprint, range: blueprint.ranges[selected] }];
+      const directScore = scale[selected];
+      const score = blueprint.reverse ? 7 - directScore : directScore;
+      return [{ blueprint, score }];
     });
+  }
+
+  function getQuestionOptions(copy, index) {
+    return copy.questions[index].options || copy.frequencyOptions;
+  }
+
+  function countAnsweredByDomain(answered) {
+    const counts = Object.fromEntries(domainOrder.map((domain) => [domain, 0]));
+    answered.forEach(({ blueprint }) => { counts[blueprint.domain] += 1; });
+    return counts;
+  }
+
+  function hasMinimumCoverage(answered) {
+    const counts = countAnsweredByDomain(answered);
+    return answered.length >= minimumAnswers
+      && domainOrder.every((domain) => counts[domain] >= minimumItemsPerDomain);
+  }
+
+  function estimatePatternStability(grouped, stage) {
+    const signature = questionBlueprints
+      .map((question) => `${question.id}:${state.answers[question.id] ?? "x"}`)
+      .join("|");
+    const random = seededRandom(signature);
+    const sampleScores = [];
+    let stageMatches = 0;
+
+    for (let iteration = 0; iteration < 1000; iteration += 1) {
+      const sampledDomains = domainOrder.flatMap((domain) => {
+        const values = grouped[domain];
+        if (!values.length) return [];
+        const resampled = Array.from(
+          { length: values.length },
+          () => values[Math.floor(random() * values.length)]
+        );
+        return [average(resampled)];
+      });
+      const sampleScore = clamp(average(sampledDomains), 1, 6);
+      sampleScores.push(sampleScore);
+      if (clamp(Math.round(sampleScore), 1, 6) === stage) stageMatches += 1;
+    }
+
+    return {
+      support: stageMatches / sampleScores.length,
+      lowerScore: percentile(sampleScores, 0.025),
+      upperScore: percentile(sampleScores, 0.975)
+    };
+  }
+
+  function seededRandom(text) {
+    let seed = 2166136261;
+    for (let index = 0; index < text.length; index += 1) {
+      seed ^= text.charCodeAt(index);
+      seed = Math.imul(seed, 16777619);
+    }
+    return () => {
+      seed += 0x6d2b79f5;
+      let value = seed;
+      value = Math.imul(value ^ (value >>> 15), value | 1);
+      value ^= value + Math.imul(value ^ (value >>> 7), value | 61);
+      return ((value ^ (value >>> 14)) >>> 0) / 4294967296;
+    };
   }
 
   function clearAndRetake() {
@@ -975,7 +1015,7 @@
             id: question.id,
             domain: copy.domains[question.domain],
             prompt: copy.questions[index].title,
-            options: copy.questions[index].options.map((label, optionIndex) => ({ optionIndex, label }))
+            options: getQuestionOptions(copy, index).map((label, optionIndex) => ({ optionIndex, label }))
           }))
         };
       }
@@ -1019,7 +1059,8 @@
           if (answer.skip === true) {
             state.answers[blueprint.id] = "skip";
           } else {
-            if (!Number.isInteger(answer.optionIndex) || !blueprint.ranges[answer.optionIndex]) {
+            const optionCount = getQuestionOptions(translations[state.language], index).length;
+            if (!Number.isInteger(answer.optionIndex) || answer.optionIndex < 0 || answer.optionIndex >= optionCount) {
               throw new Error(`Invalid optionIndex for ${answer.questionId}`);
             }
             state.answers[blueprint.id] = answer.optionIndex;
@@ -1040,12 +1081,13 @@
     register({
       name: "calculate_spiritual_reflection_result",
       title: "Calculate reflection result",
-      description: "Calculate and display the result after at least seven reflection questions have been answered.",
+      description: "Calculate and display the result after at least 21 questions have been answered with coverage across all seven areas.",
       inputSchema: { type: "object", properties: {}, additionalProperties: false },
       annotations: { readOnlyHint: false, untrustedContentHint: false },
       execute() {
-        if (getAnsweredEntries().length < 7) {
-          throw new Error("At least seven answered questions are required.");
+        const answered = getAnsweredEntries();
+        if (!hasMinimumCoverage(answered)) {
+          throw new Error("At least 21 answered questions and two answers in every area are required.");
         }
         const result = calculateResult();
         const copy = translations[state.language];
@@ -1056,6 +1098,7 @@
           stageName: copy.stages[result.stage - 1].name,
           approximateScore: Number(result.overallScore.toFixed(1)),
           range: { lower: result.lower, upper: result.upper },
+          patternStabilityPercent: result.stabilityPercent,
           answered: result.answeredCount,
           representedDomains: result.domainCount
         };

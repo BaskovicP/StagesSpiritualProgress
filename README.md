@@ -67,7 +67,7 @@ Translations, stage descriptions, and question text are kept in the `translation
 
 ## Questionnaire model
 
-The questionnaire contains 14 questions across seven equally weighted dimensions:
+The questionnaire contains 28 questions across seven equally weighted dimensions, with four questions per dimension. The items are interleaved, use a common five-point frequency scale, and balance direct and reverse-keyed wording:
 
 1. serious sin;
 2. venial sin;
@@ -77,4 +77,6 @@ The questionnaire contains 14 questions across seven equally weighted dimensions
 6. examen;
 7. sacraments.
 
-It reports the closest overall stage, an approximate range, and a per-dimension profile. The result is explicitly presented as a reflection aid rather than a spiritual judgment or substitute for spiritual direction or confession.
+It reports the closest overall stage, an approximate range, a per-dimension profile, and an internal pattern-stability estimate based on 1,000 deterministic item-resampling runs performed in the browser. This percentage describes how consistently the same answers support the same nearest stage; it is not a validated accuracy or diagnostic-confidence claim.
+
+See [`ASSESSMENT-NOTES.md`](./ASSESSMENT-NOTES.md) for the design rationale, interpretation limits, and the validation work required before making psychometric claims.

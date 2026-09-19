@@ -1072,6 +1072,13 @@ h1 {
   font-size: 0.79rem;
 }
 
+.confidence-summary {
+  margin: 10px 0 0;
+  color: var(--paper-muted);
+  font-size: 0.79rem;
+  line-height: 1.55;
+}
+
 .result-actions {
   grid-column: 1 / -1;
   display: flex;
@@ -1203,6 +1210,7 @@ h1 {
   .result-summary,
   .domain-row-head,
   .answered-summary,
+  .confidence-summary,
   .result-caution { color: #4d5961; }
   .local-result-badge { color: #355e55; }
   .result-ascent { background: #fff; box-shadow: none; }
