@@ -41,7 +41,7 @@ function strongestAnswers() {
 
 test('presentation exports a frozen API and four distinct decorative, inline status icons', () => {
   assert.equal(Object.isFrozen(presentation), true);
-  assert.deepEqual(Object.keys(presentation).sort(), ['renderCounts', 'renderDomain', 'renderLegend', 'statusIcon'].sort());
+  assert.deepEqual(Object.keys(presentation).sort(), ['renderCounts', 'renderDomain', 'renderLegend', 'statusIcon', 'describeStageBlocks', 'renderStageBlocks'].sort());
   const icons = statuses.map((status) => presentation.statusIcon(status));
   assert.equal(new Set(icons).size, 4);
   for (const icon of icons) {

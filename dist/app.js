@@ -34,6 +34,10 @@
     questionClarification: document.querySelector("#question-clarification"),
     questionContext: document.querySelector("#question-context"),
     questionContextText: document.querySelector("#question-context-text"),
+    questionTerminology: document.querySelector("#question-terminology"),
+    questionTermsHeading: document.querySelector("#question-terms-heading"),
+    questionTermsHint: document.querySelector("#question-terms-hint"),
+    questionTermsContent: document.querySelector("#question-terms-content"),
     assessmentMessage: document.querySelector("#assessment-message"),
     reviewButton: document.querySelector("#review-button"),
     printButton: document.querySelector("#print-button"),
@@ -45,12 +49,17 @@
     language: restoredState?.language ?? detectLanguage(),
     currentIndex: restoredState?.currentIndex ?? 0,
     answers: restoredState?.answers ?? {},
-    view: restoredState?.view ?? "intro"
+    view: restoredState?.view ?? "intro",
+    reviewUpdatedQuestions: restoredState?.reviewUpdatedQuestions ?? false
   };
 
   if (state.view === "result" && !isComplete()) {
     state.view = "question";
     state.currentIndex = questionBlueprints.findIndex(question => state.answers[question.id] === undefined);
+  }
+  if (state.reviewUpdatedQuestions) {
+    const firstMissing = questionBlueprints.findIndex(question => state.answers[question.id] === undefined);
+    if (firstMissing >= 0) state.currentIndex = firstMissing;
   }
 
   let ascentAnimationFrame = 0;
@@ -71,8 +80,8 @@
   function readStoredState() {
     try {
       const current = sessionStorage.getItem(storageKey);
-      const saved = JSON.parse(current || sessionStorage.getItem("spiritual-progress-reflection:v4") || "null");
-      if (!saved || ![4, storageVersion].includes(saved.version)) return null;
+      const saved = JSON.parse(current || sessionStorage.getItem("spiritual-progress-reflection:v5") || sessionStorage.getItem("spiritual-progress-reflection:v4") || "null");
+      if (!saved || ![4, 5, storageVersion].includes(saved.version)) return null;
 
       const answers = {};
       questionBlueprints.forEach((question) => {
@@ -92,22 +101,30 @@
         ? saved.view
         : "intro";
 
-      return { language, currentIndex, answers, view };
+      const reviewUpdatedQuestions = Boolean(saved.reviewUpdatedQuestions ||
+        (saved.version !== storageVersion && Object.keys(saved.answers || {}).length));
+      return { language, currentIndex, answers, view, reviewUpdatedQuestions };
     } catch {
       return null;
     }
   }
 
   function persistState() {
+    if (questionBlueprints.filter(question => question.gradation).every(question => state.answers[question.id] !== undefined)) {
+      state.reviewUpdatedQuestions = false;
+    }
+    document.querySelector("#migration-notice").hidden = !state.reviewUpdatedQuestions;
     try {
       sessionStorage.setItem(storageKey, JSON.stringify({
         version: storageVersion,
         language: state.language,
         currentIndex: state.currentIndex,
         answers: state.answers,
-        view: state.view
+        view: state.view,
+        reviewUpdatedQuestions: state.reviewUpdatedQuestions
       }));
-      // Core v4 answers migrate by stable ID; removed experience reports are discarded.
+      // Preserve only unchanged, stable IDs; rewritten questions must be answered again.
+      sessionStorage.removeItem("spiritual-progress-reflection:v5");
       sessionStorage.removeItem("spiritual-progress-reflection:v4");
     } catch {
       // The questionnaire remains usable when browser storage is unavailable.
@@ -233,13 +250,21 @@
     elements.questionClarification.textContent = question.clarification || "";
     elements.questionClarification.hidden = !question.clarification;
     elements.questionContextText.textContent = copy.domainHelp[blueprint.domain];
-    elements.questionContext.open = ["seriousSin", "venialSin"].includes(blueprint.domain);
+    elements.questionContext.open = false;
+    const terminology = window.spiritualTerminology.describe(state.language, blueprint.id);
+    elements.questionTerminology.hidden = !terminology.terms.length;
+    elements.questionTermsHeading.textContent = terminology.labels.title;
+    elements.questionTermsHint.textContent = terminology.terms.length > 1 ? terminology.labels.hint : terminology.labels.singleHint;
+    elements.questionTermsContent.innerHTML = window.spiritualTerminology.render(state.language, blueprint.id);
     elements.questionProgress.value = state.currentIndex + 1;
     elements.questionProgress.max = questionBlueprints.length;
     elements.previousButton.disabled = state.currentIndex === 0;
     elements.nextButton.disabled = selected === undefined;
     elements.nextButtonLabel.textContent = isLast ? copy.seeResult : copy.next;
     elements.assessmentMessage.hidden = true;
+    const gradationHint = document.querySelector("#gradation-question-hint");
+    gradationHint.textContent = copy.gradation.questionHint;
+    gradationHint.hidden = !blueprint.gradation;
 
     const choices = getQuestionOptions(copy, state.currentIndex)
       .map((label, index) => ({ label, value: String(index) }));
@@ -253,7 +278,7 @@
             value="${choice.value}"
             ${String(selected) === choice.value ? "checked" : ""}
           />
-          <span class="answer-content">${escapeHtml(choice.label)}</span>
+          <span class="answer-content"><span class="answer-copy">${question.optionHeadings?.[choice.value] ? `<strong class="answer-heading">${escapeHtml(question.optionHeadings[choice.value])}</strong>` : ""}<span>${escapeHtml(choice.label)}</span></span></span>
         </label>
       `)
       .join("");
@@ -383,10 +408,13 @@
     document.querySelector("#criteria-badge").textContent=copy.ruleBased;
     document.querySelector("#result-range").textContent=result.stage===highestAssessedStage
       ? copy.upperLimitNote : format(copy.nextThreshold,{stage:toRoman(result.targetStage)});
+    const nextStage = window.spiritualNextStage.describe(assessment, result, questionCopies[state.language], copy, state.language);
+    document.querySelector("#next-stage-summary").innerHTML = window.spiritualNextStage.render(nextStage, copy);
     document.querySelector("#profile-title").textContent=copy.domainLevels.title;
     document.querySelector("#domain-profile").innerHTML=result.domainProfiles.map(profile =>
       resultPresentation.renderDomain(profile.domain, profile.targetChecks, copy, profile,
-        window.spiritualGrowthGuidance.describe(profile, questionCopies[state.language], copy, state.language))
+        window.spiritualGrowthGuidance.describe(profile, questionCopies[state.language], copy, state.language),
+        window.spiritualGradation.describe(assessment, state.answers, profile, questionCopies[state.language]))
     ).join("");
     document.querySelector("#criteria-legend").innerHTML = resultPresentation.renderLegend(copy);
     document.querySelector("#answered-summary").textContent=format(copy.answeredSummary,{answered:result.answeredCount,total:questionBlueprints.length,skipped:result.skippedCount});
@@ -482,6 +510,7 @@
 
   function clearAndRetake() {
     state.answers = {};
+    state.reviewUpdatedQuestions = false;
     state.currentIndex = 0;
     showView("question");
     renderQuestion();
@@ -558,6 +587,7 @@
             example: questionCopies[state.language][index].example,
             clarification: questionCopies[state.language][index].clarification || null,
             domainHelp: copy.domainHelp[question.domain],
+            terminology: window.spiritualTerminology.describe(state.language, question.id).terms,
             responseInstructions: copy.chooseClosest,
             skipLabel: copy.preferNot,
             options: getQuestionOptions(copy, index).map((label, optionIndex) => ({ optionIndex, label }))
@@ -735,6 +765,26 @@
     if (!button) return;
     state.currentIndex = Number(button.dataset.reviewQuestion);
     openQuestionnaire();
+  });
+  document.querySelector("#next-stage-summary").addEventListener("click", (event) => {
+    const review = event.target.closest("[data-next-question]");
+    if (review) {
+      const index = Number(review.dataset.nextQuestion);
+      if (!Number.isInteger(index) || index < 0 || index >= questionBlueprints.length) return;
+      state.currentIndex = index;
+      openQuestionnaire();
+      return;
+    }
+    const details = event.target.closest("[data-next-criteria]");
+    if (!details) return;
+    const stageNumber = Number(details.dataset.nextCriteria);
+    if (!Number.isInteger(stageNumber) || stageNumber < 1 || stageNumber > highestAssessedStage) return;
+    document.querySelector("#criteria-stage-select").value = String(stageNumber);
+    renderCriteria(calculateResult(), stageNumber);
+    const heading = document.querySelector("#criteria-heading");
+    heading.setAttribute("tabindex", "-1");
+    heading.scrollIntoView({block:"start",behavior:window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+    heading.focus({preventScroll:true});
   });
   elements.printButton.addEventListener("click", () => window.print());
   elements.retakeButton.addEventListener("click", clearAndRetake);

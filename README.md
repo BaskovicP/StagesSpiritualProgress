@@ -69,15 +69,42 @@ Translations, stage descriptions, interface labels, accessibility text, and ques
 
 - `dist/locales/en.js` and `hr.js` contain interface copy and source descriptions;
 - `dist/questions/en.js` and `hr.js` contain questions, answer descriptions, stories, clarifications and criterion explanations;
+- `dist/terminology/en.js` and `hr.js` contain a bilingual glossary; `dist/terminology.js` owns the explicit per-question associations, bibliography and presentation-only renderer;
 - `dist/growth-guidance.js` contains bilingual practical next steps and selects them from unresolved criteria;
 - `dist/assessment-config.js` contains versioned IDs, source references and accepted, exempt or unknown options for each threshold;
 - `dist/assessment-engine.js` is the pure all-required-criteria evaluator;
 - `dist/result-presentation.js` and `.css` render accessible icon-and-label requirement summaries, with their text in the locale files;
 - `dist/app.js` contains rendering, navigation, temporary session handling and browser-tool integration.
 
-To add a language, provide its locale, question bank and growth guidance, load them before `app.js`, and add it to the language selector. Question IDs, order, option indices and expectation keys must match `questionBlueprints`.
+To add a language, provide its locale, question bank, terminology and growth guidance, load them before `app.js`, and add it to the language selector. Question IDs, order, option indices and expectation keys must match `questionBlueprints`. Glossary term IDs and source associations must also match the existing languages.
+
+## Gradation presentation
+
+`dist/gradation.js` is a presentation-only module: it maps the seven explicit overview choices to source ranges and renders accessible, expandable ladders. `assessment-config.js` owns the source associations and independent requirements; `questions/{hr,en}.js` owns answer headings, stories and wording; `locales/{hr,en}.js` owns interface labels. `result-presentation.css` styles the native radio cards and ladders. No external libraries or services are required.
 
 ## Questionnaire model
+
+### Seven blocks for each area's practical thresholds
+
+Each domain card has seven square blocks below its supported pattern. Gold checkmarks mark only thresholds whose **domain-specific** engine status is `supported`; hollow blocks are not yet supported, `?` means clarification is needed, and a slash marks wholly inapplicable criteria. Grey dashes mean no separate assessment, never a failed requirement. The source ceilings and missing lower rules are preserved (for example, imperfections I–II); VII is always unassessed.
+
+This is an accessible labelled list, not a percentage or a holiness score. `result-presentation.js` reads `domainProfiles[].stages` without changing answers, scoring or storage. Its bilingual labels live under `stageBlocks` in the locale files. Symbols and a visible legend keep the meaning readable without colour, including when printed.
+
+### What is still needed for the next overall stage?
+
+The main result includes an immediate, bilingual next-step overview. It groups every unsupported or unclear condition for the engine's **next overall threshold** by area. Each area shows an exact expectation, the current answer, one existing practical suggestion and a direct question-review button; further unresolved conditions expand in place. A separate disclosure identifies already-supported areas, inapplicable circumstances and areas with no source requirements at that threshold.
+
+`dist/next-stage.js` is presentation-only. It reuses the engine's `targetChecks` and the existing `growth-guidance.js` actions; it does not use each area's independently higher target to block the overall next step. Unknown or contradictory answers receive clarification guidance, not demands for stricter practice. With no supported initial stage the target is I; at VI it displays maintenance and the source limit, never invented VII criteria. Strings live in `locales/{hr,en}.js` under `nextStageSummary`. Answer indices, scoring, questionnaire version and session storage are unchanged.
+
+### Terms beside every question
+
+All 36 questions have curated terminology from a 28-entry bilingual glossary. The main meaning and important distinction are always visible; related terms and original examples use keyboard-accessible native disclosures. Definitions distinguish interior prayer from meditation and reading, proximate from remote occasions of sin, examen from merely recalling the day, temptation from consent, and Mass from Communion. Read the [terminology audit and sources](TERMINOLOGY-NOTES.md).
+
+These explanations do not change the answer options, criteria, version-6 storage or scoring. Definitions are available offline after local assets load. Optional source links open only when clicked, in a separate tab with no referrer or answer data; there is no source fetching or telemetry.
+
+### Supplementary three-ways review
+
+`three-ways.md` supplies context for overlapping spiritual ways, grace and charity, consolation/desolation, ordinary duties, recreation and sacramental practice. All 36 questions were reviewed; 20 have refined titles, stories or clarifications in HR and EN. Options, IDs and scoring remain unchanged, so saved version-6 answers are preserved. Each revised item carries non-scoring `contextSources` references; see [the review audit](THREE-WAYS-REVIEW.md) and [the full question/source map](QUESTIONNAIRE-SOURCE-MAP.hr.md). The introduction and results clarify that the checklist cannot establish a person's actual spiritual way or eligibility for Communion.
 
 ### Exploring stages and returning to results
 
@@ -91,7 +118,7 @@ Every card reports its independently supported practical threshold and its own n
 
 Each area includes tailored next-step suggestions for its unresolved checks. One is immediately visible; additional suggestions expand in place. Unknown evidence receives clarification guidance, never an instruction to increase austerity. At the source ceiling, maintenance advice replaces a fictitious higher threshold. Links return to the exact question, and new results recalculate after edits. All criterion/answer combinations are handled by the same rule-based selector, not an average or a generic stage slogan.
 
-The [seven-area gradation proposal](GRADATION-PROPOSAL.hr.md) distinguishes the source descriptions, what current questions can detect, and a possible future descriptive grading approach. That proposal is not a new scoring algorithm.
+The [seven-area gradation guide](GRADATION-PROPOSAL.hr.md) documents the implemented source ladders. Each area has one overview question with short answer headings and an everyday story. Results distinguish the selected description from the pattern supported by all detailed questions; expanding a ladder row explains it. This visual mapping never supplies points or overrides a failed requirement.
 
 ### Core questions
 
@@ -107,7 +134,7 @@ The questionnaire contains 36 concrete questions across seven areas. Each has it
 
 Every question includes an always-visible short fictional story and clarification in both languages. Answer about actual practice during the past eight weeks, except where a question explicitly asks about an established schedule (quarterly confession cannot be judged from an eight-week event count). Skipping is always possible; unknown evidence cannot support a required criterion.
 
-See [the complete question–story–source review](QUESTIONNAIRE-SOURCE-MAP.hr.md) for the current Croatian items, answer descriptions, criteria and exact source sections. Version 5 preserves all original 28 question IDs, wording and options and adds eight practical items for V–VI. Same-tab v4 answers migrate by stable ID; a former result resumes at the first new unanswered item. Removed experience reports are discarded, the old v4 storage record is removed after a successful v5 write, and restarting cannot resurrect it. Incompatible v3 answers are not reused.
+See [the complete question–story–source review](QUESTIONNAIRE-SOURCE-MAP.hr.md) for the current Croatian items, answer descriptions, criteria and exact source sections. Version 6 replaces seven overview questions, one per area, and retains the other 29 questions. New IDs prevent reuse of old option indices. Same-tab v5 answers preserve those 29 unchanged items; v4 preserves 21. A bilingual update notice asks for the rewritten answers, resuming opens the first unanswered item, and incomplete results cannot be reopened. After a successful v6 save, old v4/v5 records are removed. Refresh preserves progress; restart clears it. Removed experience reports and incompatible v3 answers are not reused.
 
 No average, fractional stage, confidence percentage or bootstrap interval is calculated. The result reports the highest consecutive set of practical requirements supported, or no sufficiently supported pattern. Each condition is supported, unsupported, unknown or explicitly inapplicable. Strong answers elsewhere cannot compensate for a failed condition. The result includes a selectable I–VI criterion review with the exact expectation, chosen answer and a link back to that question. Even fully supported VI practical criteria do not establish the full spiritual stage or any mystical grace. A conspicuous V–VI result notice explains this limitation. VII is never assigned.
 
@@ -125,6 +152,6 @@ Source descriptions preserve their original coverage: I and II have six areas, I
 
 ## Verification
 
-Run `node --test tests/*.test.cjs`. Tests cover individual gate failures, unknown/conditional answers, source and translation alignment, exact IV requirements, result explanations, language changes, session restoration and version migration. They also check stage exploration, recalculation via result shortcuts, removal of experience reports, v4-to-v5 migration, per-criterion next-step coverage, strict V/VI requirements and icon/count presentation. No real user answers are used.
+Run `node --test tests/*.test.cjs`. Tests cover individual gate failures, unknown/conditional answers, source and translation alignment, exact IV requirements, result explanations, language changes, session restoration and version migration. They also check stage exploration, recalculation via result shortcuts, removal of experience reports, v4/v5-to-v6 migration, seven graduated answer patterns and selected-versus-supported result markers, per-criterion next-step coverage, strict V/VI requirements and icon/count presentation. No real user answers are used.
 
 `node tests/browser-smoke.cjs` uses an isolated local Chrome profile to verify desktop/mobile layouts, native dialog Escape and focus behavior, requirement-detail links, radios, refresh and print rendering.

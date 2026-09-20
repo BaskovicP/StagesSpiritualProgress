@@ -6,6 +6,37 @@
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
   }[character]));
   const format = (template, values) => template.replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ""));
+  const stageBlockSymbols = Object.freeze({ supported: "✓", notSupported: "", incomplete: "?", notTriggered: "∕", notAssessed: "—" });
+
+  // Use each domain's evaluated thresholds, not the overall level or a filled
+  // 1..stageTo range: some domains have no lower rules or stop before VI.
+  function describeStageBlocks(profile) {
+    return Array.from({ length: 7 }, (_, index) => {
+      const stage = index + 1;
+      const evaluated = profile.stages.find(item => item.stage === stage);
+      const status = stage === 7 || stage > profile.sourceCeiling || !evaluated
+        ? "notAssessed" : Object.hasOwn(stageBlockSymbols, evaluated.status) ? evaluated.status : "incomplete";
+      return { stage, status };
+    });
+  }
+
+  function renderStageBlocks(profile, copy) {
+    const blocks = describeStageBlocks(profile);
+    const labels = copy.stageBlocks;
+    const roman = ["I", "II", "III", "IV", "V", "VI", "VII"];
+    const square = status => `<span class="stage-block-square stage-block-${status}" aria-hidden="true">${stageBlockSymbols[status]}</span>`;
+    return `<div class="domain-stage-blocks" data-stage-blocks="${escapeHtml(profile.domain)}">
+      <p class="stage-blocks-heading">${escapeHtml(labels.heading)}</p>
+      <ol class="stage-blocks-track" role="list" aria-label="${escapeHtml(`${copy.domains[profile.domain]}: ${labels.heading}`)}">
+        ${blocks.map(({stage, status}) => {
+          const label = format(labels.stageLabel, {stage:roman[stage - 1], name:copy.stages[stage - 1].name, status:labels.statuses[status]});
+          return `<li class="stage-block-item" data-stage="${stage}" data-stage-status="${status}"><span class="sr-only">${escapeHtml(label)}</span>${square(status)}<span class="stage-block-numeral" aria-hidden="true">${roman[stage - 1]}</span></li>`;
+        }).join("")}
+      </ol>
+      <ul class="stage-blocks-legend" role="list" aria-label="${escapeHtml(labels.legend)}">${Object.keys(stageBlockSymbols).filter(status => blocks.some(block => block.status === status)).map(status => `<li>${square(status)}<span>${escapeHtml(labels.statuses[status])}</span></li>`).join("")}</ul>
+      <p class="stage-blocks-note">${escapeHtml(labels.sourceNote)}</p>
+    </div>`;
+  }
 
   function countChecks(checks) {
     const counts = { met: 0, notMet: 0, unknown: 0, notTriggered: 0, total: checks.length };
@@ -47,7 +78,7 @@
     </section>`;
   }
 
-  function renderDomain(domain, checks, copy, profile = null, growth = null) {
+  function renderDomain(domain, checks, copy, profile = null, growth = null, gradation = null) {
     if (!checks.length) return "";
     const counts = countChecks(checks);
     const summary = counts.notTriggered === counts.total
@@ -67,12 +98,15 @@
       level = `<div class="domain-level" data-domain-level="${hasStage ? `${profile.stageFrom}-${profile.stageTo}` : "unresolved"}">
         <p class="domain-level-label">${escapeHtml(copy.domainLevels.label)}</p>
         <p class="domain-level-title">${escapeHtml(title)}</p>
+        ${renderStageBlocks(profile, copy)}
         ${note ? `<p class="domain-level-note">${escapeHtml(note)}</p>` : ""}
-      </div><p class="domain-target-label">${escapeHtml(format(copy.domainLevels.checking, {stage:roman(profile.targetStage)}))}</p>`;
+      </div>`;
     }
     return `<div class="domain-row criteria-visual-domain">
       <div class="domain-row-head"><strong>${escapeHtml(copy.domains[domain])}</strong></div>
       ${level}
+      ${gradation && window.spiritualGradation ? window.spiritualGradation.render(gradation, copy) : ""}
+      ${profile ? `<p class="domain-target-label">${escapeHtml(format(copy.domainLevels.checking, {stage:roman(profile.targetStage)}))}</p>` : ""}
       <p class="domain-supported-count">${escapeHtml(summary)}</p>
       ${renderCounts(checks, copy)}
       ${renderGrowth(growth, copy)}
@@ -88,5 +122,5 @@
     </details>`;
   }
 
-  window.spiritualResultPresentation = Object.freeze({ renderLegend, renderDomain, renderCounts, statusIcon });
+  window.spiritualResultPresentation = Object.freeze({ renderLegend, renderDomain, renderCounts, statusIcon, describeStageBlocks, renderStageBlocks });
 })();

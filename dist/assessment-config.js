@@ -1,11 +1,10 @@
 (() => {
   "use strict";
 
-  // Each required criterion is checked independently; options are not averaged.
-  // Section references identify the supplied markdown, not validated cutoffs.
-  // Later stage rules replace earlier rules for an item; other lower-stage criteria remain required.
+  // Source-linked practical requirements, never averaged.
+  // Gradation links an overview answer to a source description, not an awarded stage.
   window.spiritualAssessment = Object.freeze({
-    "questionnaireVersion": 5,
+    "questionnaireVersion": 6,
     "domainOrder": [
       "seriousSin",
       "venialSin",
@@ -16,7 +15,15 @@
       "sacraments"
     ],
     "highestAssessedStage": 6,
-    "domainStageLimits": {"seriousSin":3,"venialSin":4,"imperfections":6,"suffering":6,"prayer":6,"examen":4,"sacraments":4},
+    "domainStageLimits": {
+      "seriousSin": 3,
+      "venialSin": 4,
+      "imperfections": 6,
+      "suffering": 6,
+      "prayer": 6,
+      "examen": 4,
+      "sacraments": 4
+    },
     "questionBlueprints": [
       {
         "id": "mortal-occasions-v4",
@@ -38,30 +45,54 @@
         "optionCount": 4
       },
       {
-        "id": "mortal-resistance-v4",
+        "id": "mortal-pattern-v6",
         "domain": "seriousSin",
         "sources": [
           "I. Mortal Sin",
-          "II. Mortal Sin"
+          "II. Mortal Sin",
+          "III. Mortal Sin"
         ],
         "requirements": {
+          "1": {
+            "accepted": [
+              0,
+              1,
+              2
+            ]
+          },
           "2": {
             "accepted": [
+              1,
               2
-            ],
-            "exempt": [
-              3
+            ]
+          },
+          "3": {
+            "accepted": [
+              2
             ]
           }
         },
-        "exemptWhen": {
-          "optionIndex": 3,
-          "questionId": "mortal-fall-v4",
-          "accepted": [
-            3
-          ]
-        },
-        "optionCount": 4
+        "unknownOptions": [
+          3
+        ],
+        "optionCount": 4,
+        "gradation": [
+          {
+            "from": 1,
+            "to": 1,
+            "option": 0
+          },
+          {
+            "from": 2,
+            "to": 2,
+            "option": 1
+          },
+          {
+            "from": 3,
+            "to": 3,
+            "option": 2
+          }
+        ]
       },
       {
         "id": "mortal-fall-v4",
@@ -150,39 +181,88 @@
         "optionCount": 6
       },
       {
-      "id": "venial-vigilance-v4",
+        "id": "venial-pattern-v6",
         "domain": "venialSin",
         "sources": [
           "I. Venial Sin",
           "II. Venial Sin",
-          "III. Venial Sin"
+          "III. Venial Sin",
+          "IV. Venial Sin"
         ],
-      "requirements": {
-        "2": {
-          "accepted": [1, 2]
-        },
-        "3": {
+        "requirements": {
+          "1": {
             "accepted": [
-              2
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "2": {
+            "accepted": [
+              1,
+              2,
+              3
+            ]
+          },
+          "3": {
+            "accepted": [
+              2,
+              3
+            ]
+          },
+          "4": {
+            "accepted": [
+              3
             ]
           }
         },
-        "optionCount": 3
+        "unknownOptions": [
+          4
+        ],
+        "optionCount": 5,
+        "gradation": [
+          {
+            "from": 1,
+            "to": 1,
+            "option": 0
+          },
+          {
+            "from": 2,
+            "to": 2,
+            "option": 1
+          },
+          {
+            "from": 3,
+            "to": 3,
+            "option": 2
+          },
+          {
+            "from": 4,
+            "to": 4,
+            "option": 3
+          }
+        ]
       },
       {
-      "id": "venial-regret-v4",
+        "id": "venial-regret-v4",
         "domain": "venialSin",
         "sources": [
           "II. Venial Sin",
           "III. Venial Sin",
           "IV. Venial Sin"
         ],
-      "requirements": {
-        "2": {
-          "accepted": [1, 2],
-          "exempt": [3]
-        },
-        "3": {
+        "requirements": {
+          "2": {
+            "accepted": [
+              1,
+              2
+            ],
+            "exempt": [
+              3
+            ]
+          },
+          "3": {
             "accepted": [
               2
             ],
@@ -229,20 +309,68 @@
         "optionCount": 4
       },
       {
-        "id": "imperfections-watch-v4",
+        "id": "imperfections-pattern-v6",
         "domain": "imperfections",
         "sources": [
           "III. Imperfections",
-          "IV. Imperfections"
+          "IV. Imperfections",
+          "V. Imperfections",
+          "VI. Imperfections"
         ],
         "requirements": {
+          "3": {
+            "accepted": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
           "4": {
             "accepted": [
-              2
+              1,
+              2,
+              3
+            ]
+          },
+          "5": {
+            "accepted": [
+              2,
+              3
+            ]
+          },
+          "6": {
+            "accepted": [
+              3
             ]
           }
         },
-        "optionCount": 3
+        "unknownOptions": [
+          4
+        ],
+        "optionCount": 5,
+        "gradation": [
+          {
+            "from": 3,
+            "to": 3,
+            "option": 0
+          },
+          {
+            "from": 4,
+            "to": 4,
+            "option": 1
+          },
+          {
+            "from": 5,
+            "to": 5,
+            "option": 2
+          },
+          {
+            "from": 6,
+            "to": 6,
+            "option": 3
+          }
+        ]
       },
       {
         "id": "imperfections-virtue-v4",
@@ -316,24 +444,84 @@
         "optionCount": 4
       },
       {
-        "id": "suffering-peace-v4",
+        "id": "suffering-pattern-v6",
         "domain": "suffering",
         "sources": [
           "I. Suffering",
           "II. Suffering",
-          "III. Suffering"
+          "III. Suffering",
+          "IV. Suffering",
+          "V. Suffering",
+          "VI. Suffering"
         ],
         "requirements": {
+          "1": {
+            "accepted": [
+              0,
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "2": {
+            "accepted": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
           "3": {
             "accepted": [
-              2
+              2,
+              3,
+              4
+            ]
+          },
+          "4": {
+            "accepted": [
+              3,
+              4
+            ]
+          },
+          "5": {
+            "accepted": [
+              4
             ]
           }
         },
         "unknownOptions": [
-          3
+          5
         ],
-        "optionCount": 4
+        "optionCount": 6,
+        "gradation": [
+          {
+            "from": 1,
+            "to": 1,
+            "option": 0
+          },
+          {
+            "from": 2,
+            "to": 2,
+            "option": 1
+          },
+          {
+            "from": 3,
+            "to": 3,
+            "option": 2
+          },
+          {
+            "from": 4,
+            "to": 4,
+            "option": 3
+          },
+          {
+            "from": 5,
+            "to": 6,
+            "option": 4
+          }
+        ]
       },
       {
         "id": "suffering-meaning-joy-v4",
@@ -354,32 +542,84 @@
         "optionCount": 4
       },
       {
-      "id": "prayer-vocal-v4",
+        "id": "prayer-pattern-v6",
         "domain": "prayer",
-      "sources": [
-        "I. Prayer",
-        "II. Prayer",
-        "IV. Prayer"
-      ],
+        "sources": [
+          "I. Prayer",
+          "II. Prayer",
+          "III. Prayer",
+          "IV. Prayer",
+          "V. Prayer",
+          "VI. Prayer"
+        ],
         "requirements": {
           "1": {
-          "accepted": [
-            1,
-            2,
-            3
+            "accepted": [
+              1,
+              2,
+              3,
+              4,
+              5
             ]
           },
           "2": {
-          "accepted": [
-            2,
-            3
-          ]
+            "accepted": [
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          "3": {
+            "accepted": [
+              3,
+              4,
+              5
+            ]
+          },
+          "4": {
+            "accepted": [
+              4,
+              5
+            ]
+          },
+          "5": {
+            "accepted": [
+              5
+            ]
+          }
         },
-        "4": {
-          "accepted": [3]
-        }
-      },
-      "optionCount": 4
+        "unknownOptions": [
+          6
+        ],
+        "optionCount": 7,
+        "gradation": [
+          {
+            "from": 1,
+            "to": 1,
+            "option": 1
+          },
+          {
+            "from": 2,
+            "to": 2,
+            "option": 2
+          },
+          {
+            "from": 3,
+            "to": 3,
+            "option": 3
+          },
+          {
+            "from": 4,
+            "to": 4,
+            "option": 4
+          },
+          {
+            "from": 5,
+            "to": 6,
+            "option": 5
+          }
+        ]
       },
       {
         "id": "prayer-meditation-v4",
@@ -439,17 +679,19 @@
         "optionCount": 3
       },
       {
-      "id": "prayer-loving-response-v4",
+        "id": "prayer-loving-response-v4",
         "domain": "prayer",
         "sources": [
           "III. Prayer",
           "IV. Prayer"
         ],
-      "requirements": {
-        "3": {
-          "accepted": [2]
-        },
-        "4": {
+        "requirements": {
+          "3": {
+            "accepted": [
+              2
+            ]
+          },
+          "4": {
             "accepted": [
               2
             ]
@@ -458,15 +700,24 @@
         "optionCount": 3
       },
       {
-        "id": "examen-frequency-v4",
+        "id": "examen-pattern-v6",
         "domain": "examen",
         "sources": [
           "I. Examen",
           "II. Examen",
           "III. Examen",
-          "IV. Examen"
+          "IV. Examen",
+          "IV. Imperfections"
         ],
         "requirements": {
+          "1": {
+            "accepted": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
           "2": {
             "accepted": [
               1,
@@ -486,7 +737,32 @@
             ]
           }
         },
-        "optionCount": 4
+        "unknownOptions": [
+          4
+        ],
+        "optionCount": 5,
+        "gradation": [
+          {
+            "from": 1,
+            "to": 1,
+            "option": 0
+          },
+          {
+            "from": 2,
+            "to": 2,
+            "option": 1
+          },
+          {
+            "from": 3,
+            "to": 3,
+            "option": 2
+          },
+          {
+            "from": 4,
+            "to": 4,
+            "option": 3
+          }
+        ]
       },
       {
         "id": "examen-method-v4",
@@ -633,19 +909,68 @@
         "optionCount": 4
       },
       {
-        "id": "sacraments-fervent-participation-v4",
+        "id": "sacraments-pattern-v6",
         "domain": "sacraments",
         "sources": [
+          "I. Sacraments",
+          "II. Sacraments",
+          "III. Sacraments",
           "IV. Sacraments"
         ],
         "requirements": {
+          "1": {
+            "accepted": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          "2": {
+            "accepted": [
+              2,
+              3,
+              4
+            ]
+          },
+          "3": {
+            "accepted": [
+              3,
+              4
+            ]
+          },
           "4": {
             "accepted": [
-              2
+              4
             ]
           }
         },
-        "optionCount": 3
+        "unknownOptions": [
+          5
+        ],
+        "optionCount": 6,
+        "gradation": [
+          {
+            "from": 1,
+            "to": 1,
+            "option": 1
+          },
+          {
+            "from": 2,
+            "to": 2,
+            "option": 2
+          },
+          {
+            "from": 3,
+            "to": 3,
+            "option": 3
+          },
+          {
+            "from": 4,
+            "to": 4,
+            "option": 4
+          }
+        ]
       },
       {
         "id": "imperfections-consent-v5",

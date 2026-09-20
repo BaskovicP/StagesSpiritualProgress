@@ -7,9 +7,9 @@
   {
     "id": "mortal-occasions-v4",
     "kicker": "Izbjegavanje prilika",
-    "title": "Kako postupam sa situacijama za koje iz iskustva znam da me vode prema smrtnom grijehu?",
+    "title": "Kako postupam s poznatim bliskim prigodama za smrtni grijeh?",
     "example": "Marko zna da se u određenom društvu lako upušta u ozbiljnu prijevaru. Zato unaprijed odlučuje da neće sudjelovati u tim poslovima.",
-    "clarification": "Ne radi se o svakoj neugodi ili napasti, nego o konkretnoj situaciji koja te stvarno dovodi blizu teškoga grijeha. Procijeni svoju uobičajenu praksu tijekom posljednjih osam tjedana.",
+    "clarification": "Misli na konkretnu situaciju u kojoj za tebe postoji ozbiljna opasnost pada, ne na svaku napast ili neugodnu misao. Bliska i daleka prigoda razlikuju se po opasnosti u tvojim okolnostima, ne samo po tome koliko bi brzo došlo do grijeha. Ako situaciju ne možeš razumno izbjeći, uvaži zaštitne korake i potraži savjet. Procijeni svoju praksu posljednjih osam tjedana.",
     "options": [
       "Uglavnom ih ne izbjegavam, iako prepoznajem opasnost.",
       "Ponekad ih izbjegnem, ali se često vraćam bez zaštite.",
@@ -21,27 +21,39 @@
     }
   },
   {
-    "id": "mortal-resistance-v4",
-    "kicker": "Otpor napasti",
-    "title": "Kad prepoznam napast na težak grijeh, kakav je moj otpor?",
-    "example": "Ivanu nude zaradu ako svjesno prevari drugu osobu. Ponuda ga privlači, ali odbija i prekida razgovor, iako zbog toga gubi novac.",
-    "clarification": "Pita se za tvoju slobodnu odluku i otpor, ne za to koliko je napast bila snažna. Sama napast nije grijeh.",
+    "id": "mortal-pattern-v6",
+    "kicker": "Od slabog do postojanog otpora",
+    "title": "Koji opis najbolje odgovara mojoj borbi protiv prepoznatog smrtnog grijeha?",
+    "example": "Marko zna da ga određeni poslovi vode u ozbiljnu prijevaru. Nekad se slabo opire; kasnije odbija takve poslove. S vremenom to postaje postojan izbor i više ne prepoznaje svjestan, slobodan težak pad. Odaberi opis koji sada odgovara tebi, ne Markovu završetku priče.",
+    "clarification": "Misli na posljednjih osam tjedana i svoje slobodne odluke, ne na jačinu napasti. Borba protiv grijeha ostaje prisutna na svim putovima. Za smrtni grijeh trebaju teška stvar, puna spoznaja i slobodan pristanak. Izvor na III. spominje i rijedak, iznenadan događaj čija je težina dvojbena: dvojbu ovdje ne proglašavamo ni padom ni dokazom višeg stupnja. Razjasni je s ispovjednikom.",
+    "optionHeadings": [
+      "Slab otpor",
+      "Postojan otpor",
+      "Postojan otpor, bez prepoznatoga pada",
+      "Nisam siguran"
+    ],
     "options": [
-      "Obično brzo odustanem od otpora.",
-      "Pokušam se oduprijeti, ali moj je otpor često slab.",
-      "Odlučno se opirem i činim ono što je potrebno da ne pristanem.",
-      "U ovom razdoblju nisam prepoznao takvu napast."
+      "Želim izbjeći grijeh, ali moj je otpor slab i rijetko izbjegavam poznate opasne situacije.",
+      "Uobičajeno se odlučno opirem i izbjegavam poznate prilike, ali još je bilo prepoznatih svjesnih i slobodnih teških padova.",
+      "Uobičajeno se odlučno opirem i izbjegavam poznate prilike. U ovom razdoblju ne prepoznajem svjestan i slobodan pristanak na smrtni grijeh.",
+      "Ne mogu procijeniti otpor ili nisam siguran je li neki događaj bio smrtni grijeh."
     ],
     "expectations": {
-      "2": "Odlučno i vjerno se opirati prepoznatoj napasti na težak grijeh."
-    }
+      "1": "Prepoznati kako se stvarno odnosim prema napasti; kajanje i ispovijed provjeravaju se zasebno.",
+      "2": "Postojano se opirati i uobičajeno izbjegavati poznate prilike za smrtni grijeh.",
+      "3": "Uz postojan otpor ne prepoznavati svjestan i slobodan težak pad; dvojbe ostaviti razlučivanju."
+    },
+    "contextSources": [
+      "three-ways.md: The purgative way",
+      "three-ways.md: Directions (1)"
+    ]
   },
   {
     "id": "mortal-fall-v4",
     "kicker": "Svjestan i slobodan čin",
     "title": "Jesam li u posljednjih osam tjedana učinio nešto za što sam tada znao da je težak grijeh i na što sam slobodno pristao?",
     "example": "Luka zna da bi lažno svjedočenje ozbiljno naštetilo nedužnoj osobi. Ipak svjesno i slobodno odluči lagati. Pitanje nije o misli koja mu je došla, nego o djelu na koje je pristao.",
-    "clarification": "Za smrtni grijeh trebaju zajedno biti prisutni teška stvar, puna spoznaja i slobodan pristanak. Ako nisi siguran, nemoj nagađati niti sam sebi donositi presudu; odaberi nesigurnost i razgovaraj s ispovjednikom.",
+    "clarification": "Za smrtni grijeh trebaju zajedno biti prisutni teška stvar, puna spoznaja i slobodan pristanak. Neželjene misli ili napasti, čak i uznemirujuće i ponavljane, nisu isto što i slobodan pristanak. Ako nisi siguran, nemoj nagađati niti sebi donositi presudu; odaberi nesigurnost i razgovaraj s ispovjednikom.",
     "options": [
       "Da, više puta.",
       "Da, jednom.",
@@ -50,7 +62,10 @@
     ],
     "expectations": {
       "3": "Ne prepoznavati svjestan i slobodan pristanak na smrtni grijeh u promatranom razdoblju; nesigurnost traži razlučivanje, ne automatsku višu procjenu."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Desolation"
+    ]
   },
   {
     "id": "mortal-response-v4",
@@ -90,19 +105,30 @@
     }
   },
   {
-    "id": "venial-vigilance-v4",
-    "kicker": "Budnost u malim odlukama",
-    "title": "Kako se odnosim prema lakom grijehu koji mogu prepoznati i izbjeći?",
-    "example": "Ana primijeti da u razgovoru često omalovažava kolegicu. Počne paziti na taj trenutak i zaustavi se prije ružne rečenice, umjesto da kaže: 'To je samo mala stvar.'",
-    "clarification": "Budnost nije stalno pretraživanje sebe u strahu. Pita se za mirno prepoznavanje konkretne pogreške i stvaran trud da je izbjegneš.",
+    "id": "venial-pattern-v6",
+    "kicker": "Kako se borim protiv lakog grijeha",
+    "title": "Kako se obično odnosim prema lakim grijesima koje prepoznajem?",
+    "example": "Ana ima naviku bocnuti kolegicu zajedljivom opaskom. Može reći „nije to ništa”, pokušavati stati ali često popustiti, ili unaprijed paziti na riječi. Ako ipak povrijedi kolegicu, važno je i hoće li iskreno požaliti i pokušati popraviti što je učinila.",
+    "clarification": "Odaberi cijeli opis koji je obično vrijedio tijekom posljednjih osam tjedana. Rijetko namjeran nije isto što i nikada namjeran. Nenamjerna misao nije pristanak, a iskreno kajanje nije mjera jačine osjećaja krivnje.",
+    "optionHeadings": [
+      "Umanjujem važnost",
+      "Borim se slabo",
+      "Budno se borim",
+      "Ne pristajem namjerno i popravljam",
+      "Nisam siguran"
+    ],
     "options": [
-      "Uglavnom ga smatram premalim da bih se njime bavio.",
-      "Želim ga izbjeći, ali moj je trud slab ili povremen.",
-      "Redovito pazim na prepoznate lake grijehe i konkretno se borim protiv njih."
+      "Često kažem sebi da to nije važno i malo činim da se promijenim.",
+      "Znam da to nije dobro i pokušavam se boriti, ali često popuštam; kajanje obično ostaje površno.",
+      "Budno nastojim izbjeći laki grijeh. Nije ustaljena navika, rijetko je namjeran i iskreno se kajem, ali popravak često izostane.",
+      "Ne prepoznajem namjeran pristanak na laki grijeh. Ako se propust dogodi iznenada ili uz nepotpunu svijest, ozbiljno se kajem i razumno popravljam štetu.",
+      "Ne mogu pouzdano odabrati opis."
     ],
     "expectations": {
-      "2": "Stvarno se barem donekle boriti protiv prepoznatoga lakog grijeha, iako je otpor još slab.",
-      "3": "Budno izbjegavati prepoznate lake grijehe i stvarno se boriti protiv njih."
+      "1": "Prepoznati svoj stvarni odnos prema lakom grijehu, uključujući njegovo umanjivanje.",
+      "2": "Barem se pokušavati boriti protiv lakog grijeha, umjesto da ga smatram nevažnim.",
+      "3": "Budno se boriti protiv lakog grijeha koji nije ustaljena navika i rijetko je namjeran, uz iskreno kajanje.",
+      "4": "Ne pristajati namjerno na laki grijeh te nakon stvarnog propusta ozbiljno žaliti i razumno popraviti štetu."
     }
   },
   {
@@ -139,26 +165,42 @@
     }
   },
   {
-    "id": "imperfections-watch-v4",
-    "kicker": "Prepoznati vezanost",
-    "title": "Što činim kad prepoznam nesavršenost koju lako opravdavam?",
-    "example": "Luka primijeti da se uzruja svaki put kad obitelj promijeni njegov plan. Umjesto 'Ja sam jednostavno takav', prizna koliko mu je važno da sve bude po njegovu i počne paziti na tu vezanost.",
-    "clarification": "Nesavršenost ovdje nije svaka osobna mana, bolest ili nenamjeran osjećaj. Primjer je pretjerana vezanost uz vlastitu udobnost, pohvalu ili način rada koja otežava slobodan odgovor ljubavi.",
+    "id": "imperfections-pattern-v6",
+    "kicker": "Od opravdavanja do prvog poriva",
+    "title": "Kad primijetim nesavršenost, koliko joj svjesno dajem prostora?",
+    "example": "Petar želi da svi primijete njegovu pomoć. Može opravdavati tu potrebu za pohvalom, svjesno joj se suprotstaviti ili tek naknadno primijetiti da je djelomično nesvjesno tražio priznanje. Prvi kratki poriv „želim da me pohvale” nije isto što i odluka da ga dalje hrani.",
+    "clarification": "Riječ je o prepoznatoj vezanosti koja umanjuje ljubav, ne o svakom osjećaju ili napasti. Gledaj uobičajen obrazac osam tjedana. Izvor ovdje počinje s III.; nema zasebnih opisa I.–II. Cilj nije biti bez ikakve unutarnje borbe, nego slobodnije ljubiti Boga i druge. Posljednji opis ne dokazuje svetost i ne znači da više nema prostora za rast.",
+    "optionHeadings": [
+      "Opravdavam i malo mijenjam",
+      "Svjesno se borim iz ljubavi",
+      "Propust uz djelomičnu svijest",
+      "Ostaje samo prvi poriv",
+      "Nisam siguran"
+    ],
     "options": [
-      "Radije je ne istražujem ili je uglavnom opravdam.",
-      "Priznam je, ali uglavnom ostane samo na želji za promjenom.",
-      "Budno je prepoznajem, ne opravdavam je i stvarno se protiv nje borim."
+      "Vidim što bih mogao promijeniti, ali često to opravdavam ili odgađam; stvarnog truda je malo.",
+      "Pažljivo se borim iz ljubavi prema Bogu. Ponekad ipak svjesno popustim, ali odmah požalim i vratim se dobru.",
+      "Borim se pažljivo i s ljubavlju. Prepoznati propusti događaju se samo uz djelomičnu svijest, ne uz svjesno prihvaćanje.",
+      "Prepoznajem samo prvi spontani poriv: ne nastavljam ga svjesno hraniti niti mu dajem prostora djelom.",
+      "Ne mogu razlikovati ove opise u svojem iskustvu."
     ],
     "expectations": {
-      "4": "Ne opravdavati prepoznate nesavršenosti, nego bdjeti nad njima i odlučno se protiv njih boriti."
-    }
+      "3": "Prepoznati odnos prema nesavršenostima; izvor ovdje dopušta opravdavanje i malo stvarnog truda.",
+      "4": "Bdjeti i stvarno se boriti protiv nesavršenosti iz ljubavi, uz neposredno kajanje nakon svjesnog popuštanja.",
+      "5": "Uz pažljivu borbu iz ljubavi prepoznavati propuste samo uz djelomičnu svijest, ne svjesni pristanak.",
+      "6": "Prepoznavati samo prvi spontani poriv, bez daljnjeg svjesnog hranjenja ili postupanja po njemu."
+    },
+    "contextSources": [
+      "three-ways.md: The unitive way",
+      "three-ways.md: Directions (1)"
+    ]
   },
   {
     "id": "imperfections-virtue-v4",
     "kicker": "Vježbati krepost",
-    "title": "Pretvaram li borbu protiv nesavršenosti u redovito vježbanje konkretne kreposti radi ljubavi prema Bogu?",
-    "example": "Marija želi prestati inzistirati da uvijek ima zadnju riječ. Iz ljubavi prema Bogu vježba poniznost: sasluša supruga do kraja i prihvati njegov dobar prijedlog, iako nije njezin.",
-    "clarification": "Nije dovoljno samo željeti biti bolja osoba. Misli se na ponavljane, konkretne odluke kojima vježbaš krepost, primjerice strpljivost, poniznost ili velikodušnost. Ne traži se odsutnost svakoga pada.",
+    "title": "Vježbam li redovito neku konkretnu krepost kako bih više ljubio Boga i druge?",
+    "example": "Marija moli Boga za strpljivost. Kad suprug govori, ne prekida ga da bi dokazala da je u pravu, nego ga sasluša do kraja. Tu malu odluku ponavlja i sljedećih dana.",
+    "clarification": "Pita se za stvarnu, ponavljanu praksu, ne samo želju biti bolja osoba. Krepost se vidi u konkretnom činu, primjerice strpljivom slušanju, poštenju ili velikodušnosti. Duhovni rast uključuje Božju milost i naš odgovor: nije natjecanje u samousavršavanju. Ne traži se odsutnost svakoga pada.",
     "options": [
       "Nemam takvu konkretnu praksu.",
       "Povremeno pokušam, ali bez redovitog i ustrajnog truda.",
@@ -166,14 +208,18 @@
     ],
     "expectations": {
       "4": "Hrabro i marljivo vježbati konkretnu krepost radi veće ljubavi prema Bogu."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Division of the states or ways",
+      "three-ways.md: The illuminative way"
+    ]
   },
   {
     "id": "imperfections-renunciation-v4",
     "kicker": "Česta mala odricanja",
     "title": "Koliko je stvarno prisutno dobrovoljno odricanje od onoga uz što sam pretjerano vezan?",
     "example": "Petar ima dovoljno vremena za odmor, ali se teško odvaja od mobitela. Redovito ga odloži da bi mirno razgovarao s obitelji, iako bi radije nastavio gledati sadržaj.",
-    "clarification": "Misli se na česte male čine slobode od vezanosti, ne na štetno uskraćivanje sna, hrane, liječenja ili potrebnog odmora. Samo planiranje odricanja nije isto što i izvršen čin.",
+    "clarification": "Misli se na česte male čine slobode od vezanosti koja smeta ljubavi i dužnostima. Poštena razonoda i uživanje u nečemu dobrom nisu sami po sebi vezanost. Ne uskraćuj san, hranu, liječenje ili potreban odmor. Samo planiranje odricanja nije isto što i izvršen čin.",
     "options": [
       "Uglavnom samo razmišljam o tome, ali se ne odričem.",
       "Učinim poneko odricanje, ali rijetko.",
@@ -181,7 +227,11 @@
     ],
     "expectations": {
       "4": "Često poduzimati konkretne i razborite čine odricanja od prepoznatih vezanosti."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The purgative way",
+      "three-ways.md: The illuminative way"
+    ]
   },
   {
     "id": "imperfections-prompt-regret-v4",
@@ -216,27 +266,46 @@
     }
   },
   {
-    "id": "suffering-peace-v4",
-    "kicker": "Mir usred teškoće",
-    "title": "Dok sam prolazio kroz takvu teškoću, koliko je bilo prihvaćanja i unutarnjeg mira?",
-    "example": "Ana čeka važan medicinski nalaz. Osjeća strah i povremeno zaplače, ali se vraća povjerenju u Boga i mirno čini ono što taj dan može.",
-    "clarification": "Relativan mir ne znači odsutnost tuge, straha ili boli. Pita se postoji li usred borbe stvarno prihvaćanje i povjerenje. Zdravstvene i psihičke poteškoće nisu dokaz manje vjere.",
+    "id": "suffering-pattern-v6",
+    "kicker": "Moj odgovor na stvarnu teškoću",
+    "title": "Što je najbliže mojem uobičajenom odgovoru na teškoću koju nisam mogao izbjeći?",
+    "example": "Mariji se pokvari plan baš kad treba pomoći članu obitelji. Može bježati od obveze, pomoći uz prigovaranje ili prihvatiti trud iako se u sebi bori. S vremenom može u toj pomoći prepoznavati smisao, mir i tihu radost što čini dobro.",
+    "clarification": "Odgovori za stvarne teškoće osam tjedana. Mir i tiha radost mogu postojati uz tugu i uznemirenost; ne traži se ugodan osjećaj ni osmijeh. Sam izostanak utjehe nije dokaz duhovnog nazadovanja. Prihvaćanje ne znači trpjeti zlostavljanje, stvarati patnju ili odbijati pomoć. V.–VI. ovdje dijele sažetak; postojanost služenja provjerava se zasebno.",
+    "optionHeadings": [
+      "Bježim i gubim mir",
+      "Podnosim uz prigovaranje",
+      "Prihvaćam, ali se borim",
+      "Nalazim smisao, mir i nešto radosti",
+      "Prihvaćam s radošću i služim",
+      "Nije bilo prilike / ne znam"
+    ],
     "options": [
-      "Uglavnom sam potpuno gubio mir i opirao se situaciji.",
-      "Podnosio sam je, ali s vrlo malo mira i mnogo prigovaranja.",
-      "Prihvaćao sam je s razmjernim mirom, iako sam se i dalje borio.",
-      "U ovom razdoblju nije bilo takve stvarne teškoće."
+      "Nastojim pobjeći od teškoće, a kad ne mogu, ona mi potpuno poremeti mir.",
+      "Podnesem što moram, ali uglavnom uz prigovaranje i malo mira.",
+      "Prihvaćam teškoću s razmjernim mirom, iako mi je teško i još se u sebi borim.",
+      "Prihvaćam je, prepoznajem moguće dobro te nalazim mir i nešto tihe radosti.",
+      "Uobičajeno je prihvaćam s mirom i tihom radošću te slobodno prihvaćam razuman napor radi dobra drugih.",
+      "Nisam imao usporedivu teškoću ili ne mogu procijeniti."
     ],
     "expectations": {
-      "3": "Prihvaćati i podnositi stvarnu teškoću s relativnim mirom, iako unutarnja borba ostaje."
-    }
+      "1": "Osvrnuti se na stvarnu teškoću; prepoznati i izbjegavanje ili gubitak mira.",
+      "2": "Podnositi stvarnu teškoću, iako još uz prigovaranje i malo mira.",
+      "3": "Prihvaćati teškoću s razmjernim mirom, usprkos unutarnjoj borbi.",
+      "4": "Prihvaćati teškoću uz razumijevanje mogućeg dobra, mir i nešto radosti.",
+      "5": "Uobičajeno prihvaćati postojeću teškoću s mirom i tihom radošću te razuman napor radi drugih."
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way",
+      "three-ways.md: Consolation",
+      "three-ways.md: Desolation"
+    ]
   },
   {
     "id": "suffering-meaning-joy-v4",
     "kicker": "Smisao, mir i nešto radosti",
-    "title": "Je li u stvarnoj teškoći bilo jasnog smisla, mira i barem nešto radosti što i tada mogu ljubiti Boga i druge?",
-    "example": "Marija privremeno brine za bolesnu sestru. Posao je težak i nije joj drago što je sestra bolesna. Ipak vidi vrijednost te brige, prihvaća je s mirom i osjeća tihu radost što može ljubiti na konkretan način.",
-    "clarification": "Ne pita se raduješ li se boli, bolesti ili tuđoj nesreći. Izvor opisuje prihvaćanje teškoće uz jasno razumijevanje dobra koje Bog može iz nje izvesti, nešto radosti i mir — ne samo izdržavanje.",
+    "title": "Jesam li u stvarnoj teškoći prepoznavao dobro te je prihvaćao s mirom i barem tihom radošću što mogu ljubiti?",
+    "example": "Marija brine za bolesnu sestru. Plače i želi da sestra ozdravi. Ipak ne smatra svoju brigu besmislenom: u njoj prepoznaje dobro i tihu radost što sestra nije sama. To ne briše njezinu bol.",
+    "clarification": "Ne pita se raduješ li se boli ili tuđoj nesreći. Izvor govori o prihvaćanju s razumijevanjem dobra, mirom i nešto radosti. Dublje povjerenje može postojati uz bolne osjećaje. Željeti olakšanje i tražiti pomoć nije suprotno prihvaćanju. Ako takav mir ili radost ne prepoznaješ, nemoj ih pretpostaviti.",
     "options": [
       "Uglavnom sam samo želio da teškoća prestane; nisam prepoznavao takav smisao.",
       "Mogao sam vjerovati da dobro postoji, ali prihvaćanje s mirom i radošću nije bilo moja stvarna praksa.",
@@ -245,32 +314,56 @@
     ],
     "expectations": {
       "4": "Stvarnu teškoću prihvaćati s jasnim razumijevanjem mogućega dobra, mirom i barem nešto radosti."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way",
+      "three-ways.md: Consolation",
+      "three-ways.md: Desolation"
+    ]
   },
   {
-    "id": "prayer-vocal-v4",
-    "kicker": "Redovita izgovorena molitva",
-    "title": "Koliko je izgovorena molitva stvarno prisutna u mojem životu?",
-    "example": "Luka navečer izgovori Očenaš ili se svojim riječima obrati Bogu. Ne učini to samo kad nastane problem, nego kao dio svojega redovitog odnosa s Bogom.",
-    "clarification": "Izgovorena ili usmena molitva uključuje poznate molitve i obraćanje Bogu vlastitim riječima; može se moliti tiho. Nije manje vrijedna zato što koristi riječi. Za potrebe ovog upitnika 'stalno prakticiranje' iz izvora provjeravamo kroz postojanu svakodnevnu praksu; izvor ne određuje broj minuta. Ako su bolest ili stvarna nesposobnost onemogućile praksu i zato ne možeš procijeniti ovo razdoblje, preskoči. To ostaje nepoznato, ne računa se kao svjesno zanemarivanje.",
+    "id": "prayer-pattern-v6",
+    "kicker": "Od povremene molitve do života molitve",
+    "title": "Koji opis najbolje odgovara mojoj stvarnoj molitvenoj praksi?",
+    "example": "Ivan se isprva moli samo kad nešto treba. Kasnije uvede redovitu molitvu, zatim vrijeme za Evanđelje i osobni razgovor s Bogom, i kad nema ugodnog osjećaja. Taj odnos postupno nosi i u posao i odnose. Ne trebaš biti na kraju te priče.",
+    "clarification": "Gledaj uobičajenu praksu osam tjedana. Razmatranje uključuje tvoje molitveno promišljanje i odgovor Bogu, a ne samo pročitane stranice. Nutarnja molitva šira je od razmatranja; usmena molitva također može biti duboko osobna. Ugoda ni suhoća same ne određuju stupanj. Uvaži bolest i dužnosti. Provjeravaju se navike i plodovi, ne mistični darovi.",
+    "optionHeadings": [
+      "Još nemam praksu",
+      "Povremena molitva",
+      "Redovita usmena molitva",
+      "Postojano razmatranje",
+      "Ustrajna molitva, rado dulja",
+      "Molitva prožima svakodnevicu",
+      "Nisam siguran"
+    ],
     "options": [
-      "Gotovo je ne molim i nemam stvarnu praksu molitve.",
-      "Molim povremeno i molitva mi ipak nešto znači.",
-      "Izgovorena molitva redovit je dio mojega života, ali ne svakodnevan.",
-      "Izgovorena molitva postojan je dio svakoga mojeg dana."
+      "U ovom razdoblju gotovo uopće nisam molio.",
+      "Molim povremeno, često kad nešto trebam; još nemam ustaljenu praksu.",
+      "Redovito molim riječima, ali razmatranje lako napustim kad nema utjehe ili imam druge poslove.",
+      "Postojano molim riječima i razmatram u određenom vremenu; nastavljam i u suhoći, iako mi je teško.",
+      "Postojano molim riječima i u nutrini, nastavljam u suhoći i rado produljim molitvu kad dužnosti dopuštaju.",
+      "Uz tu postojanu praksu, odnos s Bogom uobičajeno prožima moj rad i odnose te me usmjerava na ljubav i nenavezanost.",
+      "Ne mogu pouzdano odabrati opis."
     ],
     "expectations": {
-      "1": "Molitvu barem donekle cijeniti i stvarno moliti, makar povremeno.",
-      "2": "Redovito prakticirati izgovorenu molitvu.",
-      "4": "Stalno njegovati izgovorenu molitvu; ovaj upitnik to provjerava kao postojanu svakodnevnu praksu."
-    }
+      "1": "Stvarno moliti barem povremeno i pridavati molitvi vrijednost.",
+      "2": "Imati redovitu usmenu molitvu.",
+      "3": "Postojano održavati usmenu molitvu i razmatranje te ustrajati i u suhoći.",
+      "4": "Postojano moliti usmeno i u nutrini te rado produljiti molitvu kada dužnosti dopuštaju.",
+      "5": "Uz postojanu molitvu živjeti odnos s Bogom i usred rada, s praktičnim usmjerenjem na ljubav i nenavezanost."
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way",
+      "three-ways.md: Spiritual states of consolation and desolation",
+      "three-ways.md: Directions (3)"
+    ]
   },
   {
     "id": "prayer-meditation-v4",
     "kicker": "Određeno vrijeme za razmatranje",
-    "title": "Imam li ustaljeno vrijeme i način osobne molitve koji uključuje razmatranje?",
-    "example": "Ana ujutro odvoji vrijeme za molitvu. Pročita evanđeoski odlomak, zastane nad njim i razgovara s Bogom o tome što je razumjela. Drži se tog vremena i kad joj se manje moli.",
-    "clarification": "Razmatranje znači molitveno promisliti o evanđelju, istini vjere ili duhovnom tekstu i odgovoriti Bogu. Ne traži se točno trajanje. Stvarna nužda može promijeniti raspored; obična nezainteresiranost nije isto što i nužda.",
+    "title": "Imam li ustaljeno vrijeme i način osobne molitve koji uključuje moje razmatranje?",
+    "example": "Ana pročita kratko, unaprijed pripremljeno razmatranje o Isusovu praštanju. Ne stane na čitanju: zastane uz jednu misao, prisjeti se svoje svađe i kaže Bogu: „Pomozi mi oprostiti.” Za takvu molitvu redovito odvaja vrijeme.",
+    "clarification": "Tuđi tekst, Evanđelje ili istina vjere mogu biti polazište. Osobno razmatranje znači molitveno promisliti o sadržaju i odgovoriti Bogu, ne samo pročitati ili poslušati tekst. Nutarnja molitva može postati jednostavnija, s manje razmišljanja i riječi; ne moraš forsirati nove misli. Ne traži se točno trajanje ni poseban predmet za svaki stupanj. Stvarna nužda može promijeniti raspored.",
     "options": [
       "Nemam određeno vrijeme ni stvarnu praksu razmatranja.",
       "Ponekad razmatram, ali raspored i način još nisu postojani.",
@@ -278,14 +371,18 @@
     ],
     "expectations": {
       "3": "Biti postojano vjeran određenom vremenu i načinu molitve koji uključuje razmatranje."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way",
+      "three-ways.md: The unitive way"
+    ]
   },
   {
     "id": "prayer-dryness-v4",
     "kicker": "Vjernost bez ugodnog osjećaja",
     "title": "Što radim s dogovorenim vremenom molitve kad nema ugodnog osjećaja ili utjehe?",
-    "example": "Ivan sjedne na molitvu, ali mu je sve suho i misli lutaju. Ne zaključuje da je molitva beskorisna. Mirno se vraća Bogu i ostane do kraja predviđenog vremena.",
-    "clarification": "Suhoća sama po sebi nije dokaz višega stupnja niti se ovdje utvrđuje 'tamna noć'. Pita se samo za vjernost stvarnoj molitvi kad nema ugode. Bolest ili hitna dužnost nisu neuspjeh u molitvi.",
+    "example": "Ivan se u molitvi osjeća prazno i teško sabire misli. Umjesto da to odmah shvati kao Božje odbacivanje, kratko kaže: „Bože, tu sam.” Blago vraća pažnju i ostane u razumno određenom vremenu, iako se osjećaj ne promijeni.",
+    "clarification": "Suhoća se može pojaviti na različitim putovima i iz različitih razloga; sama ne dokazuje napredak, nazadovanje ni „tamnu noć”. Osjećaj da je Bog daleko nije dokaz da te napustio. Pita se samo za tvoju vjernost molitvi bez ugode. Bolest i hitna dužnost nisu neuspjeh; pomoć i olakšanje smiješ tražiti.",
     "options": [
       "Obično skratim ili napustim molitvu upravo zato što nema utjehe.",
       "Ponekad ostanem, ali često zbog suhoće odustanem.",
@@ -294,14 +391,18 @@
     ],
     "expectations": {
       "3": "Ostati vjeran molitvi i kroz stvarnu suhoću, umjesto odustati zbog izostanka utjehe."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Spiritual states of consolation and desolation",
+      "three-ways.md: Desolation"
+    ]
   },
   {
     "id": "prayer-prolong-v4",
     "kicker": "Rado ostati u molitvi",
     "title": "Kad moje obveze stvarno dopuštaju, kako se odnosim prema produljenju molitve?",
-    "example": "Marija je završila svoje obveze i ima još malo slobodnog vremena. Nakon redovite molitve rado ostane još s Bogom, bez požurivanja da što prije završi.",
-    "clarification": "Ne traži se produljivati molitvu na štetu obitelji, rada, sna ili zdravlja. Pita se za stvarnu, ponavljanu spremnost rado ostati u molitvi kada je to razumno moguće, ne samo za lijepu želju.",
+    "example": "Marija ima slobodnu večer i nije iscrpljena. Nakon redovite molitve slobodno odluči ostati još malo s Bogom. Druge večeri treba odmor i mirno završi molitvu; to nije isto što i bježanje od nje.",
+    "clarification": "Pita se za stvarnu, ponavljanu spremnost rado ostati u molitvi kada je to razumno moguće. Više minuta samo po sebi nije više ljubavi. Ne zanemaruj obitelj, posao, san, zdravlje ni potreban odmor; poštena rekreacija nije protivna sabranosti. Jedan put kad je ne produljiš ne opisuje cijelu tvoju praksu.",
     "options": [
       "Uglavnom želim završiti što prije, čak i kad mogu ostati.",
       "Uglavnom ostanem samo u redovitom okviru; produljenje je rijetko.",
@@ -309,14 +410,17 @@
     ],
     "expectations": {
       "4": "Stalno njegovati molitvu i rado je produljivati kad to razumno dopuštaju obveze i zdravlje."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way"
+    ]
   },
   {
     "id": "prayer-loving-response-v4",
     "kicker": "Osobni odgovor Bogu",
     "title": "Prelazi li moje razmatranje često u osoban odgovor ljubavi, povjerenja ili predanja Bogu?",
-    "example": "Ana razmatra kako Isus prašta. Zatim prestane samo razmišljati o tekstu i jednostavno mu kaže: 'Hvala ti. Volim te. Pomozi mi da i ja oprostim.'",
-    "clarification": "To je jednostavan smisao afektivne molitve: volja se osobno obraća Bogu u ljubavi. Ne traže se snažni osjećaji, posebni doživljaji, molitva mira ili sposobnost procjene kontemplativnih milosti.",
+    "example": "Ana razmatra kako Isus prašta. Ne osjeća posebnu toplinu, ali mu iskreno kaže: „Želim ti vjerovati. Pomozi mi oprostiti.” Osobni odgovor postoji i bez ugodnog osjećaja.",
+    "clarification": "Afektivna molitva ovdje znači osoban čin volje: ljubav, povjerenje ili predanje Bogu. Ne znači obvezno emocionalnu toplinu. Pita se za tvoj stvarni odgovor, čak i u suhoći, ne za posebne doživljaje, molitvu mira ili sposobnost prepoznavanja kontemplativnih milosti.",
     "options": [
       "Molitva uglavnom ostaje na riječima ili razmišljanju bez takvoga osobnog odgovora.",
       "Takav osobni odgovor pojavi se ponekad, ali ne često.",
@@ -325,32 +429,44 @@
     "expectations": {
       "3": "Razmatranje često prelazi u osoban odgovor ljubavi, povjerenja ili predanja Bogu; snažni osjećaji nisu uvjet.",
       "4": "Molitva je često osoban odgovor ljubavi Bogu, a ne samo misaono razmatranje; posebni osjećaji nisu uvjet."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Consolation"
+    ]
   },
   {
-    "id": "examen-frequency-v4",
-    "kicker": "Stvarna učestalost ispita savjesti",
-    "title": "Koliko sam stvarno često obavljao ispit savjesti tijekom posljednjih osam tjedana?",
-    "example": "Ivan se navečer kratko osvrne na dan pred Bogom. Ako to radi i u podne i navečer, to su dva odvojena ispita savjesti — ne dva pitanja unutar istoga večernjeg pregleda.",
-    "clarification": "Ispit savjesti je namjeran molitveni osvrt na konkretne odluke, zahvalnost, propuste i sljedeći korak. 'Svaki dan' nije isto što i 'većinu dana'. Ako je praksa prekidana, odaberi opis koji to iskreno pokazuje. Ako su bolest ili stvarna nesposobnost onemogućile praksu i zato ne možeš procijeniti ovo razdoblje, preskoči. To ostaje nepoznato, ne računa se kao svjesno zanemarivanje.",
+    "id": "examen-pattern-v6",
+    "kicker": "Kako pregledavam svoj dan",
+    "title": "Kako uobičajeno prakticiram ispit savjesti (egzamen)?",
+    "example": "Ana navečer zastane pred Bogom: zahvali, sjeti se kako je razgovarala s djetetom i odluči sutra pažljivije slušati. Kasnije uvede i kratak podnevni osvrt na istu krepost. To su dva kratka, konkretna trenutka, ne stalno preispitivanje sebe.",
+    "clarification": "Misli na redovit, molitven pogled na konkretne odluke pred Bogom tijekom posljednjih osam tjedana, ne samo na sjećanje što se taj dan dogodilo ili pripremu za ispovijed. Za posljednji opis potrebni su i dva odvojena dnevna osvrta i rad na određenoj kreposti. To je usporedba s izvorom, ne opća obveza za svakoga.",
+    "optionHeadings": [
+      "Bez prakse",
+      "Povremeno",
+      "Barem jednom dnevno",
+      "Dvaput dnevno i određena krepost",
+      "Nisam siguran"
+    ],
     "options": [
       "Ne prakticiram ispit savjesti.",
-      "Prakticiram ga povremeno ili većinu dana, ali ne svaki dan.",
-      "Prakticiram ga barem jednom svaki dan, ali ne najmanje dvaput svaki dan.",
-      "Prakticiram ga najmanje dvaput svaki dan."
+      "Povremeno pregledam svoje postupke, ali nemam dnevni ritam ni jasan način.",
+      "Barem jednom dnevno konkretno pregledam postupke i pratim poznatu poteškoću, ponajprije da izbjegnem grijeh.",
+      "Barem dvaput dnevno kratko i konkretno pregledam dan te pratim napredak u određenoj kreposti, ne samo izbjegavanje grijeha.",
+      "Ne mogu procijeniti svoju uobičajenu praksu."
     ],
     "expectations": {
-      "2": "Ispit savjesti stvarno prakticirati barem povremeno.",
-      "3": "Prakticirati ispit savjesti najmanje jednom svaki dan.",
-      "4": "Prakticirati ispit savjesti najmanje dvaput svaki dan."
+      "1": "Prepoznati stvarnu praksu ispita savjesti; opis I. uključuje i njezin izostanak.",
+      "2": "Prakticirati ispit savjesti barem povremeno.",
+      "3": "Barem jednom dnevno konkretno ispitati savjest i pratiti poznatu poteškoću.",
+      "4": "Barem dvaput dnevno konkretno ispitati savjest i raditi na određenoj kreposti."
     }
   },
   {
     "id": "examen-method-v4",
     "kicker": "Konkretan i uređen pregled",
     "title": "Kako izgleda moj ispit savjesti kada ga obavljam?",
-    "example": "Petar ne ostane na zaključku 'Dan je bio tako-tako'. Pred Bogom se prisjeti konkretnog razgovora, prepozna kako je postupio i odluči što sutra treba drukčije.",
-    "clarification": "Ne traži se jedna obvezna metoda niti traženje pogreške pod svaku cijenu. Potreban je dovoljno uređen i konkretan pregled da stvarno prepoznaš svoj postupak i odgovor Bogu.",
+    "example": "Petar zahvaljuje Bogu za pomoć tijekom dana. Prisjeti se razgovora u kojem nije slušao prijatelja, iskreno zamoli oproštenje i pomoć te odluči sutra slušati bez prekidanja. Ne završava samo ocjenom je li bio „dobar” ili „loš”.",
+    "clarification": "Ispit savjesti nije samo pitanje „kakav mi je bio dan?”. Pred Bogom gledam konkretne slobodne odluke, zahvaljujem za dobro, kajem se gdje treba i tražim pomoć za sljedeći korak. Ne traži se jedna obvezna metoda ni pogreška pod svaku cijenu. Poniznost nije samoprezir.",
     "options": [
       "Uglavnom ostane na nejasnom dojmu o danu.",
       "Sjetim se ponekog događaja, ali pregled nema postojan način ni jasan zaključak.",
@@ -358,14 +474,18 @@
     ],
     "expectations": {
       "3": "Ispit savjesti provoditi postojano i konkretno, s prepoznatljivim načinom pregleda i odgovora."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The purgative way",
+      "three-ways.md: Directions (1)"
+    ]
   },
   {
     "id": "examen-particular-v4",
     "kicker": "Poseban predmet ispita savjesti",
     "title": "Pratim li u ispitu savjesti jednu konkretnu poteškoću ili krepost kroz više dana?",
     "example": "Marija redovito provjerava svoju strpljivost. Ne pita samo je li danas odbrusila, nego i je li svjesno saslušala druge i vježbala strpljiv odgovor.",
-    "clarification": "Posebni ispit savjesti ima jedan određen predmet. Izvor razlikuje redovito praćenje radi izbjegavanja lakoga grijeha od praćenja radi rasta u konkretnoj kreposti.",
+    "clarification": "Posebni ili partikularni ispit savjesti usredotočen je na jednu konkretnu poteškoću ili krepost, uz molitvu i Božju pomoć. Primjerice, kroz više dana pratim slušam li bez prekidanja. Izvor razlikuje praćenje radi izbjegavanja lakoga grijeha od aktivnog rasta u kreposti; ne traži stalno nadziranje svake misli.",
     "options": [
       "Nemam određen predmet koji redovito pratim.",
       "Ponekad se vratim istoj poteškoći, ali bez postojanog praćenja.",
@@ -399,7 +519,7 @@
     "kicker": "Misa tijekom tjedna",
     "title": "Sudjelujem li na misi i drugim danima kada mi je to stvarno moguće?",
     "example": "Petar ima misu blizu kuće prije posla i može otići bez zanemarivanja sna ili obitelji. Redovito koristi tu mogućnost. Ana takvu mogućnost nema zbog skrbi za dijete; to samo po sebi nije manjak vjernosti.",
-    "clarification": "Izvor kaže 'svakodnevna misa ako je moguće'. Ne broji se samo slobodan termin u kalendaru: uzmi u obzir udaljenost, zdravlje i dužnosti svojega staleža. Nemogućnost nije isto što i odbijanje.",
+    "clarification": "Izvor kaže „svakodnevna misa ako je moguće”. Uvaži udaljenost, zdravlje, odmor i dužnosti; nemogućnost nije odbijanje. Dnevna misa nije rezervirana za određeni duhovni stupanj. Ovo pitanje uspoređuje tvoju praksu s opisom izvora; ne odlučuje trebaš li ili smiješ pristupiti pričesti.",
     "options": [
       "Imam stvarne mogućnosti, ali ih uglavnom ne koristim.",
       "Koristim poneku mogućnost, ali druge često preskočim bez stvarne zapreke.",
@@ -408,7 +528,11 @@
     ],
     "expectations": {
       "3": "Uz nedjeljnu misu sudjelovati i na dnevnoj misi kada to stvarne okolnosti dopuštaju."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Directions (4)",
+      "three-ways.md: The illuminative way"
+    ]
   },
   {
     "id": "sacraments-confession-schedule-v4",
@@ -448,19 +572,37 @@
     }
   },
   {
-    "id": "sacraments-fervent-participation-v4",
-    "kicker": "Kako sudjelujem na misi",
-    "title": "Kakvo je moje uobičajeno unutarnje sudjelovanje na misi?",
-    "example": "Luka dođe na misu umoran i bez posebnog osjećaja. Ipak svjesno sluša, vraća pažnju kada odluta i pridružuje se molitvi i Kristovu prinosu, umjesto da samo čeka kraj.",
-    "clarification": "Žarko sudjelovanje nije emocionalno uzbuđenje niti potpuna odsutnost rastresenosti. Misli se na stvarnu i postojanu namjeru da s vjerom i ljubavlju sudjeluješ, uz vraćanje pažnje koliko možeš.",
+    "id": "sacraments-pattern-v6",
+    "kicker": "Ritam i način sudjelovanja",
+    "title": "Koji opis najbolje odgovara mojoj praksi mise i ispovijedi?",
+    "example": "Luka prvo počinje redovito dolaziti na misu i ispovijed. Zatim čuva nedjeljnu misu i ustali raspored ispovijedi. Kad može, ide i na dnevnu misu. S vremenom pristupa pažljivije i s ljubavlju, a u ispovijedi traži pomoć i za poznate vezanosti.",
+    "clarification": "Za raspored ispovijedi gledaj stvarnu praksu posljednjih mjeseci, ne buduću namjeru. Dnevna misa vrijedi kada je moguća uz zdravlje, odmor i dužnosti. Žar nije jak osjećaj, a nesavršenost nije automatski grijeh. Navedeni rasporedi služe usporedbi s izvornom tablicom, ne određivanju tko smije na pričest niti dokazivanju svetosti.",
+    "optionHeadings": [
+      "Još nema redovitosti",
+      "Redovito pristupam",
+      "Tjedna misa i tromjesečna ispovijed",
+      "Postojan raspored, dnevna misa kad mogu",
+      "Žarko sudjelovanje i mjesečna ispovijed",
+      "Spriječenost / ne znam"
+    ],
     "options": [
-      "Uglavnom sam samo prisutan i ne trudim se unutarnje sudjelovati.",
-      "Ponekad se svjesno uključim, ali često ostanem samo na vanjskoj prisutnosti.",
-      "Postojano nastojim sudjelovati s vjerom, pažnjom i ljubavlju, vraćajući se kada odlutam."
+      "Kad su mi dostupne, misa i ispovijed ipak nemaju redovito mjesto u mojem životu.",
+      "Redovito dolazim na misu i tražim ispovijed, ali još ne živim cijeli sljedeći opis.",
+      "Idem na misu svakog tjedna i ispovijedam se barem jednom u tri mjeseca; još nemam stabilniji raspored.",
+      "Čuvam tjednu misu, idem i na dnevnu kad stvarno mogu te se ispovijedam po postojanu rasporedu.",
+      "Sudjelujem pažljivo i s ljubavlju, čuvam tjednu i moguću dnevnu misu te barem mjesečnu ispovijed. U njoj spominjem i poznate nesavršenosti radi pomoći i rasta.",
+      "Stvarna spriječenost ili nedostupnost ne dopušta mi odabrati opis, ili nisam siguran."
     ],
     "expectations": {
-      "4": "Postojano i žarko sudjelovati na misi s vjerom i ljubavlju, ne samo biti fizički prisutan."
-    }
+      "1": "Redovito pristupati misi i tražiti ispovijed kada su dostupne.",
+      "2": "Sudjelovati na tjednoj misi i ispovijedati se barem tromjesečno.",
+      "3": "Imati postojan raspored ispovijedi, čuvati tjednu misu i dnevnu kad je stvarno moguća.",
+      "4": "Žarko sudjelovati u misi, uz tjednu i moguću dnevnu misu te barem mjesečnu ispovijed koja uključuje nesavršenosti radi rasta."
+    },
+    "contextSources": [
+      "three-ways.md: Directions (4)",
+      "three-ways.md: The illuminative way"
+    ]
   },
   {
     "id": "imperfections-consent-v5",
@@ -499,8 +641,8 @@
     "id": "suffering-joyful-acceptance-v5",
     "kicker": "Ljubav usred stvarne teškoće",
     "title": "U stvarnim teškoćama je li prihvaćanje s mirom i tihom radošću bilo moj uobičajeni odgovor?",
-    "example": "Ivan više tjedana pomaže bolesnom članu obitelji. Umor i tuga su stvarni. Uz njih, uobičajeno prihvaća brigu s mirom i tihom radošću što može ljubiti — ne samo u jednom posebno dobrom trenutku.",
-    "clarification": "Ne pita se sviđa li ti se bol niti traži odsutnost tuge, straha ili potrebe za pomoći. Izvor za V. opisuje radosno prihvaćanje s mirom, a ne samo povremeni trenutak smisla. Ako nema stvarne situacije za usporedbu, to nije dokaz manjka vjere.",
+    "example": "Ivan tjednima pomaže bolesnom članu obitelji. Ponekad plače i moli da teškoća prođe. Ipak se uobičajeno vraća povjerenju i brizi za tu osobu; uz bol prepoznaje i tihu radost u ljubavi. Nije riječ o stalno vedrom raspoloženju.",
+    "clarification": "Izvor za V. opisuje uobičajeno radosno prihvaćanje s mirom, ne samo izdržavanje. Dublji mir nije isto što i ugodni osjećaji: tuga, strah ili duhovna suhoća mogu ostati. Ne glumi radost niti je pretpostavljaj; izostanak prepoznate radosti ne daje upitniku pravo prosuditi tvoju ljubav ili svetost. Pomoć i olakšanje smiješ tražiti.",
     "options": [
       "Teškoću sam podnosio, ali takvo prihvaćanje nije bilo uobičajeno.",
       "Ponekad je bilo mira i tihe radosti, ali ne postojano.",
@@ -509,7 +651,11 @@
     ],
     "expectations": {
       "5": "Stvarnu teškoću uobičajeno prihvaćati radosno i s mirom, ne samo povremeno prepoznati smisao."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Consolation",
+      "three-ways.md: Desolation"
+    ]
   },
   {
     "id": "suffering-service-v5",
@@ -532,8 +678,8 @@
     "id": "prayer-daily-life-v5",
     "kicker": "Molitva izvan vremena molitve",
     "title": "Ostaje li odnos s Bogom prisutan i dok obavljam svakodnevne poslove?",
-    "example": "Petar usred posla na trenutak zahvali Bogu, prije teškog razgovora zamoli pomoć, a odluku nastoji donijeti iz ljubavi. Ne prekida svoje dužnosti da bi cijeli dan izgovarao molitve.",
-    "clarification": "Pita se za uobičajenu molitvenu usmjerenost kroz rad i odnose, ne za stalno svjesno ponavljanje riječi, osobit osjećaj Božje prisutnosti ili mistično iskustvo. Sabrana pažnja na posao ne proturječi molitvenom životu.",
+    "example": "Petar prije posla kratko preda dan Bogu. Zatim pozorno obavi posao, pošteno odgovori kolegi i navečer se opusti s obitelji. Ponekad izričito zahvali Bogu. Ne mora cijelo vrijeme ponavljati molitvu ili provjeravati misli.",
+    "clarification": "Pita se za uobičajenu usmjerenost na Boga i ljubav u radu i odnosima. Sabranost ne znači stalno misliti na vjerske riječi, osjećati Božju prisutnost ili zanemariti posao. Poštena rekreacija i odmor također su spojivi s tim odnosom. Ne procjenjuje se mistično iskustvo.",
     "options": [
       "Molitva uglavnom ostaje ograničena na odvojeno vrijeme za nju.",
       "Ponekad se obratim Bogu i tijekom poslova, ali to još nije navika.",
@@ -541,14 +687,18 @@
     ],
     "expectations": {
       "5": "Njegovati uobičajen život molitve i tijekom vanjskih poslova, bez zanemarivanja dužnosti."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way",
+      "three-ways.md: The unitive way"
+    ]
   },
   {
     "id": "prayer-detachment-v5",
     "kicker": "Sloboda od vlastitih prohtjeva",
     "title": "Kako se želja za ljubavlju prema Bogu vidi u odnosu prema mojim prohtjevima, pohvalama i udobnosti?",
     "example": "Ana želi posljednju riječ u raspravi. Prepozna da to nije potrebno i slobodno prepusti riječ drugome. Drugi put odustane od traženja pohvale. Takve odluke ponavlja iz ljubavi, a ne zato što mrzi sebe.",
-    "clarification": "Nenavezanost nije odbacivanje zdrave radosti, vlastite vrijednosti ili potrebne skrbi o sebi. Pita se za stvarnu, postojanu želju za slobodom od sebičnih vezanosti, vidljivu u konkretnim odlukama.",
+    "clarification": "Nenavezanost znači veću slobodu za ljubav, ne manju vrijednost sebe ili drugih. Poštena radost, prijateljstvo, rekreacija i skrb o sebi nisu prepreke sjedinjenju s Bogom. Pita se za postojanu želju da sebična vezanost ne upravlja odlukama, vidljivu u razboritim postupcima.",
     "options": [
       "Želja postoji uglavnom u mislima; odluke rijetko mijenjam.",
       "Ponekad se odreknem prohtjeva, ali često mu opet podredim ljubav i dužnosti.",
@@ -556,14 +706,18 @@
     ],
     "expectations": {
       "5": "Pokazivati postojanu želju za nenavezanošću, razboritim odricanjem od sebe i ljubavlju prema Bogu."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way",
+      "three-ways.md: The unitive way"
+    ]
   },
   {
     "id": "prayer-desire-v5",
     "kicker": "Čežnja koja usmjerava život",
     "title": "Jesu li čežnja za Euharistijom i za punim zajedništvom s Bogom trajno usmjerenje mojega života?",
-    "example": "Ivan raduje se susretu s Kristom u Euharistiji i priprema se koliko može. Nada u život s Bogom potiče ga da danas strpljivije voli obitelj. Ne želi pobjeći od života ni od obveza.",
-    "clarification": "Ne traži se snažan osjećaj svaki put niti češća pričest nego što je razumno i primjereno. Čežnja za nebom ovdje znači nadu u zajedništvo s Bogom, nikada želju za smrću ili odbacivanje sadašnjega života.",
+    "example": "Ivan se za misu pripremi kratkom molitvom i kada ne osjeća posebno oduševljenje. Nada u zajedništvo s Bogom potiče ga da danas strpljivije voli obitelj. Ne želi pobjeći od života ni od svojih obveza.",
+    "clarification": "Čežnja može biti postojana odluka i usmjerenje i kada ugodni osjećaji izostaju. Ne traži se emocionalno uzbuđenje niti pričest kao dokaz stupnja; ovaj rezultat ne određuje pristup sakramentima. Nada u nebo ovdje nije želja za smrću, nego za zajedništvom s Bogom uz vjerno življenje sadašnjeg života.",
     "options": [
       "To mi zasad nije stvarno usmjerenje života.",
       "Ta se želja javlja povremeno, ali nije postojana.",
@@ -571,14 +725,19 @@
     ],
     "expectations": {
       "5": "Njegovati postojanu čežnju za Euharistijom i punim zajedništvom s Bogom, živeći sadašnje dužnosti."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Consolation",
+      "three-ways.md: The unitive way",
+      "three-ways.md: Directions (4)"
+    ]
   },
   {
     "id": "prayer-self-forgetfulness-v5",
     "kicker": "Ljubav bez traženja priznanja",
     "title": "Kad dobro koje činim ostane neprimijećeno, koliko traženje priznanja upravlja mojim daljnjim izborima?",
     "example": "Marija dugo pomaže, ali zahvalu dobije netko drugi. Može osjetiti prvi ubod razočaranja. Ipak ne okreće pomoć u potragu za priznanjem: nastavlja ljubiti, uz zdrave granice i bez zanemarivanja vlastitih potreba.",
-    "clarification": "Izvorni 'samozaborav' ovdje se provjerava samo kroz praktični plod: slobodu od zaokupljenosti vlastitim ugledom. To nije gubitak dostojanstva, potiskivanje osjećaja ili obveza trpljenja iskorištavanja. Jedan nesebičan postupak nije postojan obrazac i ovaj odgovor ne potvrđuje kontemplaciju.",
+    "clarification": "Izvorni „samozaborav” ovdje se promatra samo kroz praktični plod: ljubav manje ovisnu o priznanju. Nije gubitak dostojanstva, potiskivanje osjećaja ili trpljenje iskorištavanja. Jedan čin nije postojan obrazac. Mjerilo je ljubav: izvanredan doživljaj ne dokazuje zrelost, a njegov izostanak ne znači manjak ljubavi. Ovaj odgovor ne potvrđuje kontemplaciju.",
     "options": [
       "Priznanje snažno određuje koliko ću dalje pomagati.",
       "Vratim se dobru drugoga, ali me želja za priznanjem još često vodi.",
@@ -586,7 +745,12 @@
     ],
     "expectations": {
       "6": "Pokazivati postojanu slobodu od traženja vlastitog priznanja u služenju Bogu i bližnjemu; to je ograničen praktični pokazatelj, ne potvrda mističnoga samozaborava."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The unitive way",
+      "three-ways.md: Directions (1)",
+      "three-ways.md: Directions (3)"
+    ]
   }
 ]);
 })();

@@ -23,7 +23,12 @@
     <script src="./assessment-config.js" defer></script>
     <script src="./growth-guidance.js" defer></script>
     <script src="./assessment-engine.js" defer></script>
+    <script src="./gradation.js" defer></script>
     <script src="./result-presentation.js" defer></script>
+    <script src="./next-stage.js" defer></script>
+    <script src="./terminology/en.js" defer></script>
+    <script src="./terminology/hr.js" defer></script>
+    <script src="./terminology.js" defer></script>
     <script src="./app.js" defer></script>
   </head>
   <body>
@@ -57,6 +62,7 @@
       </header>
 
       <main id="app" class="app-shell">
+        <p id="migration-notice" class="migration-notice" role="status" data-i18n="migrationNotice" hidden></p>
         <section id="intro-view" class="view intro-grid">
           <div class="intro-copy">
             <p class="eyebrow" data-i18n="eyebrow">A private reflection</p>
@@ -92,6 +98,11 @@
               </button>
               <button id="intro-results-button" class="secondary-button" type="button" data-i18n="viewResults" hidden>View results</button>
             </div>
+
+            <details class="question-context three-ways-context">
+              <summary data-i18n="threeWaysTitle">How should I understand the three ways?</summary>
+              <p data-i18n="threeWaysBody"></p>
+            </details>
 
             <p class="privacy-note">
               <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -144,12 +155,18 @@
               </p>
               <p id="question-example-text"></p>
             </aside>
+            <section id="question-terminology" class="question-terminology" aria-labelledby="question-terms-heading">
+              <h3 id="question-terms-heading" class="question-terms-heading"></h3>
+              <p id="question-terms-hint" class="question-terms-hint"></p>
+              <div id="question-terms-content"></div>
+            </section>
             <details id="question-context" class="question-context">
-              <summary data-i18n="contextLabel">Understanding the terms</summary>
+              <summary data-i18n="contextLabel">Important context for this area</summary>
               <p id="question-context-text"></p>
             </details>
             <p id="question-clarification" class="question-clarification" hidden></p>
             <p class="question-help" data-i18n="chooseClosest">Choose the description that comes closest to your usual experience.</p>
+            <p id="gradation-question-hint" class="gradation-question-hint" hidden></p>
             <div id="answer-options" class="answer-options"></div>
             <p id="assessment-message" class="assessment-message" role="status" hidden></p>
             <div class="question-actions">
@@ -237,6 +254,7 @@
                 <p class="result-caution" data-i18n="resultCaution">
                   Treat this as a prompt for prayerful reflection, not as a spiritual verdict.
                 </p>
+                <section id="next-stage-summary" class="next-stage-summary" aria-labelledby="next-stage-heading"></section>
               </div>
             </div>
           </article>
@@ -300,6 +318,7 @@
           <details class="method-note">
             <summary data-i18n="methodTitle">How this estimate is calculated</summary>
             <div>
+              <p data-i18n="threeWaysBody"></p>
               <p data-i18n="methodBody">
                 The source diagram names seven stages, but the supplied pages describe only Stages I–VI. The questionnaire therefore shows all seven while estimating only the six described stages; it does not assign Stage VII.
               </p>

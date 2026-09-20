@@ -1,4 +1,26 @@
-# Assessment design notes — version 5
+# Assessment design notes — version 6
+
+## Next-overall-threshold overview
+
+The result header now exposes every unresolved check at `result.targetStage`, grouped by area. This is the first unsupported overall threshold, not the next independent stage for each domain; therefore a missing IV imperfection condition cannot appear as an obstacle from overall I to II. Existing practical guidance is selected using each check's actual `ruleStage`. No new criterion, score, probability or storage version is introduced.
+
+Unsupported and unknown evidence are visibly distinct. Missing, skipped, contradictory or uncertain answers receive clarification advice, not an automatic demand for stricter practice. Supported areas, wholly inapplicable areas and areas with no requirements at that threshold remain separate. A null result reviews I without assigning it; a supported VI shows the source ceiling without inventing requirements for VII. Higher-stage practical comparisons retain their limitations.
+
+## Contextual review against three-ways.md
+
+The additional supplied text describes overlapping ways whose characteristic emphasis is charity, not rigidly exclusive levels. It says contemplative gifts are not received by every soul advanced in charity, and extraordinary favors can occur in less advanced souls. Dryness and consolation are not rank markers; ordinary duties and healthy recreation remain compatible with recollection. None of these observations supplies new numerical thresholds.
+
+Twenty bilingual questions therefore have clearer examples, titles or explanations about free consent, grace, practical charity, distress, prayerful attention, rest and sacramental practice. Answer choices, IDs, criterion expectations, configuration and version-6 answer compatibility are unchanged. The strict conjunction is still only an author-defined practical comparison, not a verdict that the user occupies a particular spiritual way. The original source descriptions remain separately attributed rather than being silently harmonized. See `THREE-WAYS-REVIEW.md` for the full passage-to-item audit.
+
+## Version 6: seven explicit progressions
+
+The questionnaire still has 36 items. Seven v4 items are replaced by overview items with new `-pattern-v6` IDs, one per area; the other 29 questions and their detailed checks remain unchanged. Each overview offers concrete adjacent descriptions, short choice headings, a fictional everyday example, and an uncertainty option. These deliberately ordered descriptions improve comprehensibility; they do not disguise desirability or establish psychometric validity.
+
+The source progression metadata lives in `assessment-config.js` as `gradation` associations (answer index → source range). Text remains in the question banks and locales. `gradation.js` renders a separate source ladder in each result card: an outline identifies the selected description and a filled marker identifies the highest independently supported practical threshold. A mismatch is explained, not averaged away. Expanded rows reveal the complete answer description. The visualization never feeds into the engine.
+
+Overview requirements add explicit baseline descriptions at I for venial sin, suffering and examen, and at III for imperfections. A low described pattern is not a defect required for admission: accepting an overview baseline also accepts its higher descriptions. No examen can descriptively match I, but does not certify the overall I without prayer, sacramental and other requirements. Missing, skipped and uncertain overview answers remain unknown, not the lowest stage; absence of a real difficulty supplies no evidence, including at I. Imperfections has no invented I–II.
+
+Suffering and prayer overview rows share V–VI. Existing detailed V/VI practical gates still distinguish their limited practical patterns; mystical aspects remain unassessed. Mortal sin stops at III; venial sin, examen and sacraments stop at IV. The seven new overview choices cannot bypass failures in any retained detailed criterion.
 
 ## What changed and why
 
@@ -90,7 +112,7 @@ Illness, emotional pain, unwanted impulses, necessary care, leaving abuse, rest 
 - The configuration contains stable question IDs, source references and accepted/exempt/unknown answer indices.
 - The pure engine evaluates configured criteria; the application renders results and handles navigation.
 - Version 4 has new question IDs and session version. Version 3 answers are never reinterpreted as answers to the new questions.
-- Version 5 retains v4's 28 items unchanged, adds eight IDs ending in `-v5`, migrates only valid stable-ID practical answers and removes the old v4 record after a successful save. The former mystical reports are discarded. Incomplete migrated results resume at the first unanswered question. Version 3 remains incompatible.
+- Version 6 preserves the 29 unchanged v5 items (21 from v4 plus eight advanced v5 items). Seven rewritten questions receive new IDs; their old option indices are never remapped. Same-tab v4/v5 answers migrate only by unchanged valid IDs into the v6 session record. Old v4/v5 records are removed only after a successful save. A bilingual notice explains the missing rewritten answers, and resuming opens the first unanswered item; incomplete results cannot reopen until completion. Refresh preserves this notice and the retained answers; restart clears them. Removed mystical reports and incompatible v3 answers are never reused.
 - Current progress and language survive refresh in the same tab through sessionStorage. There is no server, analytics, remote calculation or transmission of answers.
 - Static Cloudflare packaging includes all runtime files. No clinical or psychometric validation claim is made.
 

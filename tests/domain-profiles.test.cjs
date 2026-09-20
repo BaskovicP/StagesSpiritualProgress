@@ -19,7 +19,7 @@ function strong() {
 const profile = (result, domain) => result.domainProfiles.find(item => item.domain === domain);
 
 test('all seven areas are described independently without changing the overall conjunction', () => {
-  const answers = {...strong(), 'examen-frequency-v4':1};
+  const answers = {...strong(), 'examen-pattern-v6':1};
   const result = evaluate(config,answers);
   assert.equal(result.stage,2);
   assert.equal(result.domainProfiles.length,7);
@@ -30,7 +30,7 @@ test('all seven areas are described independently without changing the overall c
   assert.equal(profile(result,'prayer').stageTo,6);
   assert.equal(profile(result,'prayer').targetStage,6);
   assert.equal(profile(result,'imperfections').stageTo,6);
-  const noOverall = evaluate(config,{...answers,'prayer-vocal-v4':0});
+  const noOverall = evaluate(config,{...answers,'prayer-pattern-v6':0});
   assert.equal(noOverall.stage,null);
   assert.equal(profile(noOverall,'prayer').stageTo,null);
   assert.equal(profile(noOverall,'sacraments').stageTo,4);
@@ -58,15 +58,15 @@ test('source ceilings prevent inherited foundations being mislabelled as higher 
 });
 
 test('missing lower-domain rules are not fabricated and exemptions alone never establish a level', () => {
-  const result = evaluate(config,{...strong(),'imperfections-watch-v4':0,'examen-frequency-v4':0});
+  const result = evaluate(config,{...strong(),'imperfections-pattern-v6':0,'examen-pattern-v6':0});
   const area = profile(result,'imperfections');
-  assert.equal(area.stageFrom,null);
-  assert.equal(area.stageTo,null);
-  assert.equal(area.firstAssessedStage,4);
+  assert.equal(area.stageFrom,3);
+  assert.equal(area.stageTo,3);
+  assert.equal(area.firstAssessedStage,3);
   assert.equal(area.targetStage,4);
-  assert.ok(area.stages.slice(0,3).every(item => item.status === 'notAssessed'));
-  assert.equal(profile(result,'examen').stageTo,null);
-  assert.equal(profile(result,'examen').firstAssessedStage,2);
+  assert.ok(area.stages.slice(0,2).every(item => item.status === 'notAssessed'));
+  assert.equal(profile(result,'examen').stageTo,1);
+  assert.equal(profile(result,'examen').firstAssessedStage,1);
   const exemptOnly = { highestAssessedStage:4, questionBlueprints:[{id:'q',domain:'area',optionCount:2,requirements:{1:{accepted:[0],exempt:[1]}}}] };
   const exempt = evaluate(exemptOnly,{q:1}).domainProfiles[0];
   assert.equal(exempt.stageTo,null);
@@ -81,14 +81,14 @@ test('skipped, uncertain, contradictory and relaxed later rules cannot bypass an
   assert.equal(profile(partial,'examen').targetStage,3);
   const contradiction = evaluate(config,{...strong(),'mortal-response-v4':2});
   assert.equal(profile(contradiction,'seriousSin').stageTo,null);
-  const noDifficulty = evaluate(config,{...strong(),'suffering-endure-v4':3,'suffering-peace-v4':3,'suffering-meaning-joy-v4':3});
+  const noDifficulty = evaluate(config,{...strong(),'suffering-endure-v4':3,'suffering-pattern-v6':5,'suffering-meaning-joy-v4':3});
   assert.equal(profile(noDifficulty,'suffering').stageTo,null);
   const relaxed = { highestAssessedStage:4, questionBlueprints:[{id:'q',domain:'area',optionCount:2,requirements:{1:{accepted:[0]},2:{accepted:[1]}}}] };
   assert.equal(evaluate(relaxed,{q:1}).domainProfiles[0].stageTo,null);
 });
 
 test('domain targets are their own first unresolved threshold and display the correct translated stage name', () => {
-  const result = evaluate(config,{...strong(),'examen-frequency-v4':1});
+  const result = evaluate(config,{...strong(),'examen-pattern-v6':1});
   for (const language of ['hr','en']) {
     const copy = context.window.spiritualLocales[language];
     const before = JSON.stringify(result);

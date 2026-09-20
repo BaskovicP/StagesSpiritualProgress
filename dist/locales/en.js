@@ -49,7 +49,7 @@
   "ascentPosition": "Your answers support the practical requirements associated with Stage {stage}. This does not confirm your spiritual stage.",
   "calculatedLocally": "Calculated on this device",
   "resultRangeLabel": "Limit of this review",
-  "resultCaution": "Treat this as a prompt for prayerful reflection, not as a spiritual verdict.",
+  "resultCaution": "The three ways overlap, and struggle remains on every way. This result compares answers with practical descriptions; it does not establish your relationship with God or determine your actual spiritual way.",
   "resultSummary": "Your answers support all practical requirements this questionnaire associates with the displayed stage, allowing for explicitly identified inapplicable circumstances. This does not confirm the full spiritual stage, sanctity, or mystical graces. This review is stricter than an average, but is not a validated test.",
   "sourceDescriptionEyebrow": "Description from the source",
   "sourceDescriptionIntro": "What characterizes this stage according to the source? This is a plain-language description, not a new set of requirements or an additional score. Only the areas discussed in the source for this stage are included.",
@@ -268,11 +268,11 @@
     "venialSin": "Venial sin can involve a less serious matter, or a grave matter without full knowledge or complete consent. These stories illustrate small failures in charity; the gravity of a real act depends on its circumstances.",
     "imperfections": "These questions concern attachments and weaknesses that need not be sins in themselves. What matters is your response once you recognize them; an unwanted first impulse is different from deliberate consent.",
     "suffering": "Think of difficulties you can endure with appropriate help and care for yourself. Sadness and pain alone do not mean a lack of faith. Treatment, asking for help and protection from abuse do not count as avoiding the cross.",
-    "prayer": "Meditation means staying before God with a Gospel passage, spiritual reading or a subject of faith. Spoken prayers and petitions also have their place. A lack of comforting feelings in prayer is often called dryness.",
+    "prayer": "A spiritual text can prompt meditation, but pages read alone do not establish a personal prayerful response. Interior prayer is not limited to reasoning; it may become simpler. Vocal prayer is not inferior. Dryness alone does not determine progress or regression, and work and healthy recreation are compatible with prayer.",
     "examen": "An examination of conscience (examen) is a brief review of the day before God: giving thanks, considering your actions and asking for forgiveness and help. A particular examen focuses on one weakness or virtue.",
-    "sacraments": "Allow for access to Mass and confession, health, work, caregiving and necessary rest. Weekday Mass and confession of venial sins are practices for growth here, not additional obligations."
+    "sacraments": "Allow for access to Mass and confession, health, work, caregiving and necessary rest. Weekday Mass and confession of venial sins are practices for growth here, not additional obligations. They are not rewards for a particular stage, and this questionnaire does not determine eligibility for Communion."
   },
-  "contextLabel": "Understanding the terms",
+  "contextLabel": "Important context for this area",
   "mixedFamily": "Incomplete or mixed pattern",
   "mixedTitle": "No sufficiently supported pattern",
   "mixedSummary": "Your answers do not yet support all initial requirements for comparison with a stage. Some may be unmet, unknown, or inconsistent with another answer. This is not a judgment about your faith or worth; the review below explains what remains unresolved.",
@@ -313,6 +313,19 @@
     "noMatch": "Checks for this area begin at threshold {stage}. The answers do not yet support a complete assessed threshold or there is insufficient evidence. A lower stage is not assigned automatically.",
     "checking": "Requirements shown below: threshold {stage}"
   },
+  "stageBlocks": {
+    "heading": "Requirements by stage",
+    "stageLabel": "Stage {stage}, {name}: {status}.",
+    "legend": "Block legend",
+    "statuses": {
+      "supported": "Supported",
+      "notSupported": "Not yet supported",
+      "incomplete": "Needs clarification",
+      "notTriggered": "Not applicable",
+      "notAssessed": "Not assessed"
+    },
+    "sourceNote": "Grey blocks have no separate criteria for this area. VII is not assessed."
+  },
   "criterionStatuses": {
     "met": "Answer supports the requirement",
     "notMet": "Answer does not support it",
@@ -330,8 +343,8 @@
   "readStage": "Read description",
   "allStagesButton": "Explore all stages",
   "allStagesTitle": "All seven stages in one place",
-  "advancedPracticalNote": "V and VI here indicate supported practical patterns only. The source also includes infused prayer, contemplation and passive purification—none is tested or confirmed. The result does not claim you have attained relative or heroic perfection.",
-  "growthIntro": "Each area includes a suggested next step based on your answers. Choose one achievable action; these suggestions are not additional criteria, a guarantee of progress or a substitute for spiritual direction.",
+  "advancedPracticalNote": "V and VI here are practical comparisons only. The original chart mentions contemplation and passive purification. The additional text explicitly says the gift of contemplation is not received by everyone advanced in charity, while extraordinary experiences can occur even in beginners. Their absence is not a reason for a lower result. This questionnaire neither assesses them nor confirms attainment of relative or heroic perfection.",
+  "growthIntro": "These suggestions aim at charity and concrete virtues, not a higher number. Choose one achievable step for each area. They are not additional criteria, a guarantee of progress or a substitute for spiritual direction.",
   "growth": {
     "heading": "Next step toward threshold {stage}",
     "maintainTitle": "What to nurture next",
@@ -341,6 +354,49 @@
     "review": "Review your answer",
     "unknownAction": "There is not enough clear information for this criterion. Recall a real situation and reread the question. If there was no opportunity or you remain unsure, leave it unknown; do not assume you need a stricter practice.",
     "scope": "A small practical step—not a promise of a higher stage."
-  }
+  },
+  "nextStageSummary": {
+    "eyebrow": "Areas for your next step",
+    "title": "What is still needed for Stage {stage}?",
+    "intro": "These areas have requirements not yet supported for the next practical threshold. Each shows what is expected and one manageable suggestion to begin with.",
+    "initialTitle": "What still needs attention for Stage I?",
+    "initialIntro": "The initial practical threshold is not yet fully supported. These are specific areas for practice or clarification, not a judgment of your worth or faith.",
+    "count": "Areas needing attention: {count}",
+    "practice": "Area for growth",
+    "clarify": "Needs clarification",
+    "mixed": "Practice and clarification",
+    "expectation": "Expectation for this threshold",
+    "more": "Remaining items in this area ({count})",
+    "answer": "Your current answer",
+    "review": "Review answer",
+    "reviewLabel": "Review your answer to: {question}",
+    "details": "See all requirements for Stage {stage}",
+    "settled": "Other areas for this threshold",
+    "supported": "Requirements already supported",
+    "exempt": "Requirements inapplicable in the reported circumstances",
+    "notAssessed": "No separate requirements at this threshold",
+    "settledNote": "Support may include explicitly inapplicable circumstances; these are not additional evidence of maturity. An area without requirements at this threshold is not declared complete.",
+    "caution": "An unclear or skipped answer needs clarification, not automatically a stricter practice. Suggestions do not guarantee a higher stage; choose a small step suited to your circumstances.",
+    "ceilingTitle": "What to nurture next",
+    "ceilingBody": "Answers support the practical requirements through VI, the highest threshold in this assessment. This does not establish a complete spiritual stage. The source gives no criteria for VII, so we do not invent a checklist for reaching it. Continue nurturing love and faithfulness, and discern further growth with a spiritual director.",
+    "advanced": "For V–VI, only practical requirements are shown here. Meeting them does not establish contemplation, mystical gifts or the full spiritual stage."
+  },
+  "gradation": {
+    "title": "Progression in the source",
+    "selected": "Your selected description",
+    "supported": "Pattern supported by answers",
+    "different": "Your selected description and the checked requirements differ. The displayed pattern uses all questions, not this choice alone.",
+    "unmapped": "This answer has no stage description, or there is not enough information.",
+    "missing": "No description selected; skipping is not the lowest stage.",
+    "limit": "The source gives no separate descriptions above {stage} for this area.",
+    "imperfections": "The source starts here at III; I–II are not invented.",
+    "advanced": "V–VI: only practical descriptions are shown. This questionnaire cannot confirm contemplative gifts or a spiritual stage.",
+    "review": "Change selected description",
+    "questionHint": "These descriptions show different patterns. Choose the whole description that fits your usual practice, not the highest you have occasionally managed.",
+    "detail": "What this description means"
+  },
+  "migrationNotice": "Seven questions have new descriptions. Answers to unchanged questions are preserved; new and rewritten questions need answers before recalculating.",
+  "threeWaysTitle": "How should I understand the three ways?",
+  "threeWaysBody": "The additional text on the three ways emphasizes growth in charity through God's grace and our response. Purification, growth in virtue and union with God overlap: struggle and the possibility of further growth remain on every way. Consolation or dryness alone do not determine a stage. Extraordinary experiences are neither necessary nor sufficient evidence of maturity. The seven descriptions here aid reflection; they do not establish your relationship with God."
 });
 })();

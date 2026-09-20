@@ -1,25 +1,29 @@
-# Pitanja, priče i uvjeti prema izvornom markdownu — verzija 5
+# Pitanja, priče i uvjeti prema izvornom markdownu — verzija 6
 
 Izvor: `stages-of-spiritual-progress.md`. Pitanja i priče autorske su prilagodbe, ne citati. Ovo je kriterijska pomoć za promišljanje, ne potvrda duhovnog stupnja ili psihometrijski validirani test.
 
+Dodatni kontekst: `three-ways.md`. Nakon pregleda svih 36 pitanja dorađeni su naslovi, priče ili pojašnjenja za 20 pitanja. Ponuđeni odgovori, njihovi redni brojevi i uvjeti bodovanja nisu promijenjeni; postojeći odgovori verzije 6 ostaju valjani. Razlike i granice izvora opisane su u `THREE-WAYS-REVIEW.md`.
+
 ## Kako čitati ovu mapu
 
-- Svako pitanje ima konkretne opise odgovora, ne broj bodova na zajedničkoj ljestvici.
-- Viši prag traži sva njegova praktična očekivanja i pozitivne temelje nižih pragova; osobne slabosti opisane na nižim stupnjevima nisu preduvjeti za rast.
-- Ako pitanje ima uvjet za više pragova, koristi se najnoviji uvjet do odabranog praga. Ostali raniji uvjeti i dalje vrijede.
-- Preskakanje, nesigurnost i proturječni odgovori znače nepoznat uvjet. Nepoznat uvjet ne potvrđuje viši prag, ali nije osobni neuspjeh.
-- Izričita neprimjenjivost (npr. nije bilo pada) navodi se odvojeno. Ne donosi bodove niti dokazuje višu zrelost.
-- I–VI mogući su praktični obrasci, ne potvrđeni duhovni stupnjevi. Osam novih pitanja provjerava ograničene praktične opise V–VI, bez pitanja o mističnim iskustvima. VII. se ne procjenjuje.
-- I nije automatski rezultat: ako ni njegovi pozitivni temelji nisu poduprti, prikazuje se nepotpun ili miješan obrazac.
-- Većina pitanja odnosi se na osam tjedana; ustaljena praksa ispovijedi procjenjuje se kroz posljednje mjesece, jer osam tjedana nije dovoljno za tromjesečni raspored.
+Uz svako pitanje sada su povezana konkretna objašnjenja pojmova, s primjerima na hrvatskom i engleskom. Potpuna mapa 36 pitanja prema 28 pojmova i bibliografija nalaze se u `TERMINOLOGY-NOTES.md`. Terminološka dorada šest pitanja ne mijenja odgovore, kriterije ni verziju pohrane.
 
-Pravila nasljeđivanja i tumačenje izraza poput „redovito” ili „stalno” autorske su odluke aplikacije, ne algoritam koji je izvor propisao. Vidi `ASSESSMENT-NOTES.md` za granice primjene.
+- Ukupno je 36 pitanja. Sedam ranijih pitanja zamijenjeno je jasnim preglednim pitanjima, po jednim za svako područje; ostalih 29 ostaje nepromijenjeno.
+- Pregledni odgovori imaju kratke naslove i zasebnu vezu s opisima izvora. Na rezultatu se odvojeno označavaju odabrani opis i praktični prag poduprt svim pitanjima tog područja.
+- Viši prag traži sve njegove praktične uvjete i temelje ranijih pragova. Jedan visoki pregledni odgovor ne zamjenjuje detaljne provjere.
+- Slabosti opisane na nižem stupnju nisu uvjet koji treba zadržati: pregledni uvjet I. za ispit savjesti prihvaća i „nema prakse” i više opisane prakse.
+- Preskakanje, nejasnoća, nedostupnost i proturječje ne dodjeljuju najniži stupanj. Potvrđena neprimjenjivost zasebnog uvjeta nije pozitivan dokaz.
+- Nesavršenosti počinju opisom III. Smrtni grijeh završava na III.; laki grijeh, ispit savjesti i sakramenti na IV. Izvor ne daje nove opise tih područja za više stupnjeve.
+- V.–VI. patnje i molitve imaju zajednički pregledni opis; detaljna pitanja odvojeno provjeravaju ograničene praktične osobine. Kontemplativni darovi ne procjenjuju se. VII. nije rezultat.
+- I. nije automatski ukupni rezultat: pozitivni temelji molitve, sakramenata i odgovora na stvarni teški pad također se provjeravaju.
+- Razdoblje je osam tjedana, osim ustaljene prakse ispovijedi koja zahtijeva pogled na posljednje mjesece.
+- Novi ID-jevi sprječavaju pogrešno prenošenje starog indeksa odgovora u preoblikovano pitanje. Nepromijenjeni odgovori iz verzija 4 i 5 ostaju sačuvani.
 
-Uz svako područje prikazuju se praktični prijedlozi povezani s prvim nepoduprtim uvjetima. To su autorski pastoralni primjeri, ne dodatni kriteriji izvora. Nejasan odgovor dobiva poziv na razjašnjenje, ne strožu praksu.
+Nasljeđivanje uvjeta, pregledna pitanja i pragovi autorske su odluke aplikacije, ne algoritam iz izvora. Praktični savjeti autorske su mogućnosti za rast, ne dodatni bodovi. Vidi `ASSESSMENT-NOTES.md`.
 
 ## Sva pitanja
 
-### 1. Kako postupam sa situacijama za koje iz iskustva znam da me vode prema smrtnom grijehu?
+### 1. Kako postupam s poznatim bliskim prigodama za smrtni grijeh?
 
 **ID:** `mortal-occasions-v4`
 
@@ -29,7 +33,7 @@ Uz svako područje prikazuju se praktični prijedlozi povezani s prvim nepoduprt
 
 **Kratka priča:** Marko zna da se u određenom društvu lako upušta u ozbiljnu prijevaru. Zato unaprijed odlučuje da neće sudjelovati u tim poslovima.
 
-**Pojašnjenje:** Ne radi se o svakoj neugodi ili napasti, nego o konkretnoj situaciji koja te stvarno dovodi blizu teškoga grijeha. Procijeni svoju uobičajenu praksu tijekom posljednjih osam tjedana.
+**Pojašnjenje:** Misli na konkretnu situaciju u kojoj za tebe postoji ozbiljna opasnost pada, ne na svaku napast ili neugodnu misao. Bliska i daleka prigoda razlikuju se po opasnosti u tvojim okolnostima, ne samo po tome koliko bi brzo došlo do grijeha. Ako situaciju ne možeš razumno izbjeći, uvaži zaštitne korake i potraži savjet. Procijeni svoju praksu posljednjih osam tjedana.
 
 **Ponuđeni odgovori:**
 
@@ -46,34 +50,42 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Nepoznato, ne automatski ispunjeno:** odgovori 4.
 
-### 2. Kad prepoznam napast na težak grijeh, kakav je moj otpor?
+### 2. Koji opis najbolje odgovara mojoj borbi protiv prepoznatog smrtnog grijeha?
 
-**ID:** `mortal-resistance-v4`
+**ID:** `mortal-pattern-v6`
 
 **Područje:** Smrtni grijeh
 
-**Izvorni odlomci:** I. Mortal Sin; II. Mortal Sin
+**Izvorni odlomci:** I. Mortal Sin; II. Mortal Sin; III. Mortal Sin
 
-**Kratka priča:** Ivanu nude zaradu ako svjesno prevari drugu osobu. Ponuda ga privlači, ali odbija i prekida razgovor, iako zbog toga gubi novac.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: The purgative way; three-ways.md: Directions (1).
 
-**Pojašnjenje:** Pita se za tvoju slobodnu odluku i otpor, ne za to koliko je napast bila snažna. Sama napast nije grijeh.
+**Kratka priča:** Marko zna da ga određeni poslovi vode u ozbiljnu prijevaru. Nekad se slabo opire; kasnije odbija takve poslove. S vremenom to postaje postojan izbor i više ne prepoznaje svjestan, slobodan težak pad. Odaberi opis koji sada odgovara tebi, ne Markovu završetku priče.
+
+**Pojašnjenje:** Misli na posljednjih osam tjedana i svoje slobodne odluke, ne na jačinu napasti. Borba protiv grijeha ostaje prisutna na svim putovima. Za smrtni grijeh trebaju teška stvar, puna spoznaja i slobodan pristanak. Izvor na III. spominje i rijedak, iznenadan događaj čija je težina dvojbena: dvojbu ovdje ne proglašavamo ni padom ni dokazom višeg stupnja. Razjasni je s ispovjednikom.
 
 **Ponuđeni odgovori:**
 
-1. Obično brzo odustanem od otpora.
-2. Pokušam se oduprijeti, ali moj je otpor često slab.
-3. Odlučno se opirem i činim ono što je potrebno da ne pristanem.
-4. U ovom razdoblju nisam prepoznao takvu napast.
+1. **Slab otpor:** Želim izbjeći grijeh, ali moj je otpor slab i rijetko izbjegavam poznate opasne situacije.
+2. **Postojan otpor:** Uobičajeno se odlučno opirem i izbjegavam poznate prilike, ali još je bilo prepoznatih svjesnih i slobodnih teških padova.
+3. **Postojan otpor, bez prepoznatoga pada:** Uobičajeno se odlučno opirem i izbjegavam poznate prilike. U ovom razdoblju ne prepoznajem svjestan i slobodan pristanak na smrtni grijeh.
+4. **Nisam siguran:** Ne mogu procijeniti otpor ili nisam siguran je li neki događaj bio smrtni grijeh.
 
 Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
+**Opisna gradacija (ne automatska dodjela):**
+
+- Odgovor 1 → I: Slab otpor.
+- Odgovor 2 → II: Postojan otpor.
+- Odgovor 3 → III: Postojan otpor, bez prepoznatoga pada.
+
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
-- **II. prag:** Odlučno i vjerno se opirati prepoznatoj napasti na težak grijeh. Podupiru ga odgovori 3.
-  - Izričito neprimjenjivo: odgovor 4 — U ovom razdoblju nisam prepoznao takvu napast.
+- **I. prag:** Prepoznati kako se stvarno odnosim prema napasti; kajanje i ispovijed provjeravaju se zasebno. Podupiru ga odgovori 1, 2, 3.
+- **II. prag:** Postojano se opirati i uobičajeno izbjegavati poznate prilike za smrtni grijeh. Podupiru ga odgovori 2, 3.
+- **III. prag:** Uz postojan otpor ne prepoznavati svjestan i slobodan težak pad; dvojbe ostaviti razlučivanju. Podupiru ga odgovori 3.
 
-**Povezana provjera:** odgovor 4 može biti neprimjenjiv samo uz pitanje `mortal-fall-v4`, odgovor 4.
-Ovo je jednosmjerna provjera preduvjeta. Iz nje se ne izvodi obrnuti zaključak (npr. izostanak pada ne znači da nije bilo napasti).
+**Nepoznato, ne automatski ispunjeno:** odgovori 4.
 
 ### 3. Jesam li u posljednjih osam tjedana učinio nešto za što sam tada znao da je težak grijeh i na što sam slobodno pristao?
 
@@ -83,9 +95,11 @@ Ovo je jednosmjerna provjera preduvjeta. Iz nje se ne izvodi obrnuti zaključak 
 
 **Izvorni odlomci:** III. Mortal Sin
 
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: Desolation.
+
 **Kratka priča:** Luka zna da bi lažno svjedočenje ozbiljno naštetilo nedužnoj osobi. Ipak svjesno i slobodno odluči lagati. Pitanje nije o misli koja mu je došla, nego o djelu na koje je pristao.
 
-**Pojašnjenje:** Za smrtni grijeh trebaju zajedno biti prisutni teška stvar, puna spoznaja i slobodan pristanak. Ako nisi siguran, nemoj nagađati niti sam sebi donositi presudu; odaberi nesigurnost i razgovaraj s ispovjednikom.
+**Pojašnjenje:** Za smrtni grijeh trebaju zajedno biti prisutni teška stvar, puna spoznaja i slobodan pristanak. Neželjene misli ili napasti, čak i uznemirujuće i ponavljane, nisu isto što i slobodan pristanak. Ako nisi siguran, nemoj nagađati niti sebi donositi presudu; odaberi nesigurnost i razgovaraj s ispovjednikom.
 
 **Ponuđeni odgovori:**
 
@@ -126,15 +140,12 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
-- **I. prag:** Nakon stvarnoga pada ozbiljno se pokajati i iskreno ispovjediti. Podupiru ga odgovori 2, 3.
-  - Izričito neprimjenjivo: odgovor 4 — Nije bilo takvoga pada u ovom razdoblju.
-- **II. prag:** Nakon stvarnoga pada duboko se pokajati te uz ispovijed činiti pokoru i razumno nastojati popraviti štetu. Podupiru ga odgovori 3.
-  - Izričito neprimjenjivo: odgovor 4 — Nije bilo takvoga pada u ovom razdoblju.
+- **I. prag:** Nakon stvarnoga pada ozbiljno se pokajati i iskreno ispovjediti. Podupiru ga odgovori 2, 3. Zasebna moguća neprimjenjivost: 4.
+- **II. prag:** Nakon stvarnoga pada duboko se pokajati te uz ispovijed činiti pokoru i razumno nastojati popraviti štetu. Podupiru ga odgovori 3. Zasebna moguća neprimjenjivost: 4.
 
 **Nepoznato, ne automatski ispunjeno:** odgovori 5.
 
-**Povezana provjera:** odgovor 4 može biti neprimjenjiv samo uz pitanje `mortal-fall-v4`, odgovor 4.
-Provjeravaju se oba smjera: izvještaj o stvarnoj reakciji nakon pada nije usklađen s tvrdnjom da nije bilo pada. Nejasnoća ostaje nepoznata, ne prolazi uvjet.
+**Uvjet neprimjenjivosti:** odgovor 4 traži potvrdu u `mortal-fall-v4` (odgovori 4). Provjerava se i proturječje sa stvarnim događajem.
 
 ### 5. Kako su se laki grijesi pojavljivali u mojem životu tijekom posljednjih osam tjedana?
 
@@ -166,30 +177,43 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Nepoznato, ne automatski ispunjeno:** odgovori 6.
 
-### 6. Kako se odnosim prema lakom grijehu koji mogu prepoznati i izbjeći?
+### 6. Kako se obično odnosim prema lakim grijesima koje prepoznajem?
 
-**ID:** `venial-vigilance-v4`
+**ID:** `venial-pattern-v6`
 
 **Područje:** Laki grijeh
 
-**Izvorni odlomci:** I. Venial Sin; II. Venial Sin; III. Venial Sin
+**Izvorni odlomci:** I. Venial Sin; II. Venial Sin; III. Venial Sin; IV. Venial Sin
 
-**Kratka priča:** Ana primijeti da u razgovoru često omalovažava kolegicu. Počne paziti na taj trenutak i zaustavi se prije ružne rečenice, umjesto da kaže: 'To je samo mala stvar.'
+**Kratka priča:** Ana ima naviku bocnuti kolegicu zajedljivom opaskom. Može reći „nije to ništa”, pokušavati stati ali često popustiti, ili unaprijed paziti na riječi. Ako ipak povrijedi kolegicu, važno je i hoće li iskreno požaliti i pokušati popraviti što je učinila.
 
-**Pojašnjenje:** Budnost nije stalno pretraživanje sebe u strahu. Pita se za mirno prepoznavanje konkretne pogreške i stvaran trud da je izbjegneš.
+**Pojašnjenje:** Odaberi cijeli opis koji je obično vrijedio tijekom posljednjih osam tjedana. Rijetko namjeran nije isto što i nikada namjeran. Nenamjerna misao nije pristanak, a iskreno kajanje nije mjera jačine osjećaja krivnje.
 
 **Ponuđeni odgovori:**
 
-1. Uglavnom ga smatram premalim da bih se njime bavio.
-2. Želim ga izbjeći, ali moj je trud slab ili povremen.
-3. Redovito pazim na prepoznate lake grijehe i konkretno se borim protiv njih.
+1. **Umanjujem važnost:** Često kažem sebi da to nije važno i malo činim da se promijenim.
+2. **Borim se slabo:** Znam da to nije dobro i pokušavam se boriti, ali često popuštam; kajanje obično ostaje površno.
+3. **Budno se borim:** Budno nastojim izbjeći laki grijeh. Nije ustaljena navika, rijetko je namjeran i iskreno se kajem, ali popravak često izostane.
+4. **Ne pristajem namjerno i popravljam:** Ne prepoznajem namjeran pristanak na laki grijeh. Ako se propust dogodi iznenada ili uz nepotpunu svijest, ozbiljno se kajem i razumno popravljam štetu.
+5. **Nisam siguran:** Ne mogu pouzdano odabrati opis.
 
 Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
+**Opisna gradacija (ne automatska dodjela):**
+
+- Odgovor 1 → I: Umanjujem važnost.
+- Odgovor 2 → II: Borim se slabo.
+- Odgovor 3 → III: Budno se borim.
+- Odgovor 4 → IV: Ne pristajem namjerno i popravljam.
+
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
-- **II. prag:** Stvarno se barem donekle boriti protiv prepoznatoga lakog grijeha, iako je otpor još slab. Podupiru ga odgovori 2, 3.
-- **III. prag:** Budno izbjegavati prepoznate lake grijehe i stvarno se boriti protiv njih. Podupiru ga odgovori 3.
+- **I. prag:** Prepoznati svoj stvarni odnos prema lakom grijehu, uključujući njegovo umanjivanje. Podupiru ga odgovori 1, 2, 3, 4.
+- **II. prag:** Barem se pokušavati boriti protiv lakog grijeha, umjesto da ga smatram nevažnim. Podupiru ga odgovori 2, 3, 4.
+- **III. prag:** Budno se boriti protiv lakog grijeha koji nije ustaljena navika i rijetko je namjeran, uz iskreno kajanje. Podupiru ga odgovori 3, 4.
+- **IV. prag:** Ne pristajati namjerno na laki grijeh te nakon stvarnog propusta ozbiljno žaliti i razumno popraviti štetu. Podupiru ga odgovori 4.
+
+**Nepoznato, ne automatski ispunjeno:** odgovori 5.
 
 ### 7. Kad prepoznam da sam učinio laki grijeh, kako se kajem?
 
@@ -214,13 +238,10 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
-- **II. prag:** Imati barem neko žaljenje zbog prepoznatoga lakog grijeha, makar još površno. Podupiru ga odgovori 2, 3.
-  - Izričito neprimjenjivo: odgovor 4 — Nisam prepoznao laki grijeh u ovom razdoblju.
-- **III. prag:** Ozbiljno i iskreno se kajati za prepoznati laki grijeh, a ne samo površno žaliti. Podupiru ga odgovori 3.
-  - Izričito neprimjenjivo: odgovor 4 — Nisam prepoznao laki grijeh u ovom razdoblju.
+- **II. prag:** Imati barem neko žaljenje zbog prepoznatoga lakog grijeha, makar još površno. Podupiru ga odgovori 2, 3. Zasebna moguća neprimjenjivost: 4.
+- **III. prag:** Ozbiljno i iskreno se kajati za prepoznati laki grijeh, a ne samo površno žaliti. Podupiru ga odgovori 3. Zasebna moguća neprimjenjivost: 4.
 
-**Povezana provjera:** odgovor 4 može biti neprimjenjiv samo uz pitanje `venial-occurrence-v4`, odgovor 5.
-Provjeravaju se oba smjera: izvještaj o stvarnoj reakciji nakon pada nije usklađen s tvrdnjom da nije bilo pada. Nejasnoća ostaje nepoznata, ne prolazi uvjet.
+**Uvjet neprimjenjivosti:** odgovor 4 traži potvrdu u `venial-occurrence-v4` (odgovori 5). Provjerava se i proturječje sa stvarnim događajem.
 
 ### 8. Što nakon lakoga grijeha stvarno učinim da popravim ono što mogu?
 
@@ -245,37 +266,51 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
-- **IV. prag:** Uz kajanje ozbiljno činiti razumnu i konkretnu naknadu za prepoznate lake grijehe. Podupiru ga odgovori 3.
-  - Izričito neprimjenjivo: odgovor 4 — Nisam prepoznao laki grijeh u ovom razdoblju.
+- **IV. prag:** Uz kajanje ozbiljno činiti razumnu i konkretnu naknadu za prepoznate lake grijehe. Podupiru ga odgovori 3. Zasebna moguća neprimjenjivost: 4.
 
-**Povezana provjera:** odgovor 4 može biti neprimjenjiv samo uz pitanje `venial-occurrence-v4`, odgovor 5.
-Provjeravaju se oba smjera: izvještaj o stvarnoj reakciji nakon pada nije usklađen s tvrdnjom da nije bilo pada. Nejasnoća ostaje nepoznata, ne prolazi uvjet.
+**Uvjet neprimjenjivosti:** odgovor 4 traži potvrdu u `venial-occurrence-v4` (odgovori 5). Provjerava se i proturječje sa stvarnim događajem.
 
-### 9. Što činim kad prepoznam nesavršenost koju lako opravdavam?
+### 9. Kad primijetim nesavršenost, koliko joj svjesno dajem prostora?
 
-**ID:** `imperfections-watch-v4`
+**ID:** `imperfections-pattern-v6`
 
 **Područje:** Nesavršenosti
 
-**Izvorni odlomci:** III. Imperfections; IV. Imperfections
+**Izvorni odlomci:** III. Imperfections; IV. Imperfections; V. Imperfections; VI. Imperfections
 
-**Kratka priča:** Luka primijeti da se uzruja svaki put kad obitelj promijeni njegov plan. Umjesto 'Ja sam jednostavno takav', prizna koliko mu je važno da sve bude po njegovu i počne paziti na tu vezanost.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: The unitive way; three-ways.md: Directions (1).
 
-**Pojašnjenje:** Nesavršenost ovdje nije svaka osobna mana, bolest ili nenamjeran osjećaj. Primjer je pretjerana vezanost uz vlastitu udobnost, pohvalu ili način rada koja otežava slobodan odgovor ljubavi.
+**Kratka priča:** Petar želi da svi primijete njegovu pomoć. Može opravdavati tu potrebu za pohvalom, svjesno joj se suprotstaviti ili tek naknadno primijetiti da je djelomično nesvjesno tražio priznanje. Prvi kratki poriv „želim da me pohvale” nije isto što i odluka da ga dalje hrani.
+
+**Pojašnjenje:** Riječ je o prepoznatoj vezanosti koja umanjuje ljubav, ne o svakom osjećaju ili napasti. Gledaj uobičajen obrazac osam tjedana. Izvor ovdje počinje s III.; nema zasebnih opisa I.–II. Cilj nije biti bez ikakve unutarnje borbe, nego slobodnije ljubiti Boga i druge. Posljednji opis ne dokazuje svetost i ne znači da više nema prostora za rast.
 
 **Ponuđeni odgovori:**
 
-1. Radije je ne istražujem ili je uglavnom opravdam.
-2. Priznam je, ali uglavnom ostane samo na želji za promjenom.
-3. Budno je prepoznajem, ne opravdavam je i stvarno se protiv nje borim.
+1. **Opravdavam i malo mijenjam:** Vidim što bih mogao promijeniti, ali često to opravdavam ili odgađam; stvarnog truda je malo.
+2. **Svjesno se borim iz ljubavi:** Pažljivo se borim iz ljubavi prema Bogu. Ponekad ipak svjesno popustim, ali odmah požalim i vratim se dobru.
+3. **Propust uz djelomičnu svijest:** Borim se pažljivo i s ljubavlju. Prepoznati propusti događaju se samo uz djelomičnu svijest, ne uz svjesno prihvaćanje.
+4. **Ostaje samo prvi poriv:** Prepoznajem samo prvi spontani poriv: ne nastavljam ga svjesno hraniti niti mu dajem prostora djelom.
+5. **Nisam siguran:** Ne mogu razlikovati ove opise u svojem iskustvu.
 
 Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
+**Opisna gradacija (ne automatska dodjela):**
+
+- Odgovor 1 → III: Opravdavam i malo mijenjam.
+- Odgovor 2 → IV: Svjesno se borim iz ljubavi.
+- Odgovor 3 → V: Propust uz djelomičnu svijest.
+- Odgovor 4 → VI: Ostaje samo prvi poriv.
+
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
-- **IV. prag:** Ne opravdavati prepoznate nesavršenosti, nego bdjeti nad njima i odlučno se protiv njih boriti. Podupiru ga odgovori 3.
+- **III. prag:** Prepoznati odnos prema nesavršenostima; izvor ovdje dopušta opravdavanje i malo stvarnog truda. Podupiru ga odgovori 1, 2, 3, 4.
+- **IV. prag:** Bdjeti i stvarno se boriti protiv nesavršenosti iz ljubavi, uz neposredno kajanje nakon svjesnog popuštanja. Podupiru ga odgovori 2, 3, 4.
+- **V. prag:** Uz pažljivu borbu iz ljubavi prepoznavati propuste samo uz djelomičnu svijest, ne svjesni pristanak. Podupiru ga odgovori 3, 4.
+- **VI. prag:** Prepoznavati samo prvi spontani poriv, bez daljnjeg svjesnog hranjenja ili postupanja po njemu. Podupiru ga odgovori 4.
 
-### 10. Pretvaram li borbu protiv nesavršenosti u redovito vježbanje konkretne kreposti radi ljubavi prema Bogu?
+**Nepoznato, ne automatski ispunjeno:** odgovori 5.
+
+### 10. Vježbam li redovito neku konkretnu krepost kako bih više ljubio Boga i druge?
 
 **ID:** `imperfections-virtue-v4`
 
@@ -283,9 +318,11 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Izvorni odlomci:** III. Imperfections; IV. Imperfections
 
-**Kratka priča:** Marija želi prestati inzistirati da uvijek ima zadnju riječ. Iz ljubavi prema Bogu vježba poniznost: sasluša supruga do kraja i prihvati njegov dobar prijedlog, iako nije njezin.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: Division of the states or ways; three-ways.md: The illuminative way.
 
-**Pojašnjenje:** Nije dovoljno samo željeti biti bolja osoba. Misli se na ponavljane, konkretne odluke kojima vježbaš krepost, primjerice strpljivost, poniznost ili velikodušnost. Ne traži se odsutnost svakoga pada.
+**Kratka priča:** Marija moli Boga za strpljivost. Kad suprug govori, ne prekida ga da bi dokazala da je u pravu, nego ga sasluša do kraja. Tu malu odluku ponavlja i sljedećih dana.
+
+**Pojašnjenje:** Pita se za stvarnu, ponavljanu praksu, ne samo želju biti bolja osoba. Krepost se vidi u konkretnom činu, primjerice strpljivom slušanju, poštenju ili velikodušnosti. Duhovni rast uključuje Božju milost i naš odgovor: nije natjecanje u samousavršavanju. Ne traži se odsutnost svakoga pada.
 
 **Ponuđeni odgovori:**
 
@@ -307,9 +344,11 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Izvorni odlomci:** III. Imperfections; IV. Imperfections
 
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: The purgative way; three-ways.md: The illuminative way.
+
 **Kratka priča:** Petar ima dovoljno vremena za odmor, ali se teško odvaja od mobitela. Redovito ga odloži da bi mirno razgovarao s obitelji, iako bi radije nastavio gledati sadržaj.
 
-**Pojašnjenje:** Misli se na česte male čine slobode od vezanosti, ne na štetno uskraćivanje sna, hrane, liječenja ili potrebnog odmora. Samo planiranje odricanja nije isto što i izvršen čin.
+**Pojašnjenje:** Misli se na česte male čine slobode od vezanosti koja smeta ljubavi i dužnostima. Poštena razonoda i uživanje u nečemu dobrom nisu sami po sebi vezanost. Ne uskraćuj san, hranu, liječenje ili potreban odmor. Samo planiranje odricanja nije isto što i izvršen čin.
 
 **Ponuđeni odgovori:**
 
@@ -346,8 +385,7 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
-- **IV. prag:** Ako se nesavršenost ipak slobodno prihvati, odmah je požaliti kad se prepozna i nastojati se vratiti. Podupiru ga odgovori 3.
-  - Izričito neprimjenjivo: odgovor 4 — Nisam prepoznao takav pristanak u ovom razdoblju.
+- **IV. prag:** Ako se nesavršenost ipak slobodno prihvati, odmah je požaliti kad se prepozna i nastojati se vratiti. Podupiru ga odgovori 3. Zasebna moguća neprimjenjivost: 4.
 
 ### 13. Kako sam odgovarao na stvarne teškoće koje nisam mogao razumno izbjeći?
 
@@ -376,34 +414,50 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Nepoznato, ne automatski ispunjeno:** odgovori 4.
 
-### 14. Dok sam prolazio kroz takvu teškoću, koliko je bilo prihvaćanja i unutarnjeg mira?
+### 14. Što je najbliže mojem uobičajenom odgovoru na teškoću koju nisam mogao izbjeći?
 
-**ID:** `suffering-peace-v4`
+**ID:** `suffering-pattern-v6`
 
 **Područje:** Patnja
 
-**Izvorni odlomci:** I. Suffering; II. Suffering; III. Suffering
+**Izvorni odlomci:** I. Suffering; II. Suffering; III. Suffering; IV. Suffering; V. Suffering; VI. Suffering
 
-**Kratka priča:** Ana čeka važan medicinski nalaz. Osjeća strah i povremeno zaplače, ali se vraća povjerenju u Boga i mirno čini ono što taj dan može.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: The illuminative way; three-ways.md: Consolation; three-ways.md: Desolation.
 
-**Pojašnjenje:** Relativan mir ne znači odsutnost tuge, straha ili boli. Pita se postoji li usred borbe stvarno prihvaćanje i povjerenje. Zdravstvene i psihičke poteškoće nisu dokaz manje vjere.
+**Kratka priča:** Mariji se pokvari plan baš kad treba pomoći članu obitelji. Može bježati od obveze, pomoći uz prigovaranje ili prihvatiti trud iako se u sebi bori. S vremenom može u toj pomoći prepoznavati smisao, mir i tihu radost što čini dobro.
+
+**Pojašnjenje:** Odgovori za stvarne teškoće osam tjedana. Mir i tiha radost mogu postojati uz tugu i uznemirenost; ne traži se ugodan osjećaj ni osmijeh. Sam izostanak utjehe nije dokaz duhovnog nazadovanja. Prihvaćanje ne znači trpjeti zlostavljanje, stvarati patnju ili odbijati pomoć. V.–VI. ovdje dijele sažetak; postojanost služenja provjerava se zasebno.
 
 **Ponuđeni odgovori:**
 
-1. Uglavnom sam potpuno gubio mir i opirao se situaciji.
-2. Podnosio sam je, ali s vrlo malo mira i mnogo prigovaranja.
-3. Prihvaćao sam je s razmjernim mirom, iako sam se i dalje borio.
-4. U ovom razdoblju nije bilo takve stvarne teškoće.
+1. **Bježim i gubim mir:** Nastojim pobjeći od teškoće, a kad ne mogu, ona mi potpuno poremeti mir.
+2. **Podnosim uz prigovaranje:** Podnesem što moram, ali uglavnom uz prigovaranje i malo mira.
+3. **Prihvaćam, ali se borim:** Prihvaćam teškoću s razmjernim mirom, iako mi je teško i još se u sebi borim.
+4. **Nalazim smisao, mir i nešto radosti:** Prihvaćam je, prepoznajem moguće dobro te nalazim mir i nešto tihe radosti.
+5. **Prihvaćam s radošću i služim:** Uobičajeno je prihvaćam s mirom i tihom radošću te slobodno prihvaćam razuman napor radi dobra drugih.
+6. **Nije bilo prilike / ne znam:** Nisam imao usporedivu teškoću ili ne mogu procijeniti.
 
 Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
+**Opisna gradacija (ne automatska dodjela):**
+
+- Odgovor 1 → I: Bježim i gubim mir.
+- Odgovor 2 → II: Podnosim uz prigovaranje.
+- Odgovor 3 → III: Prihvaćam, ali se borim.
+- Odgovor 4 → IV: Nalazim smisao, mir i nešto radosti.
+- Odgovor 5 → V–VI: Prihvaćam s radošću i služim.
+
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
-- **III. prag:** Prihvaćati i podnositi stvarnu teškoću s relativnim mirom, iako unutarnja borba ostaje. Podupiru ga odgovori 3.
+- **I. prag:** Osvrnuti se na stvarnu teškoću; prepoznati i izbjegavanje ili gubitak mira. Podupiru ga odgovori 1, 2, 3, 4, 5.
+- **II. prag:** Podnositi stvarnu teškoću, iako još uz prigovaranje i malo mira. Podupiru ga odgovori 2, 3, 4, 5.
+- **III. prag:** Prihvaćati teškoću s razmjernim mirom, usprkos unutarnjoj borbi. Podupiru ga odgovori 3, 4, 5.
+- **IV. prag:** Prihvaćati teškoću uz razumijevanje mogućeg dobra, mir i nešto radosti. Podupiru ga odgovori 4, 5.
+- **V. prag:** Uobičajeno prihvaćati postojeću teškoću s mirom i tihom radošću te razuman napor radi drugih. Podupiru ga odgovori 5.
 
-**Nepoznato, ne automatski ispunjeno:** odgovori 4.
+**Nepoznato, ne automatski ispunjeno:** odgovori 6.
 
-### 15. Je li u stvarnoj teškoći bilo jasnog smisla, mira i barem nešto radosti što i tada mogu ljubiti Boga i druge?
+### 15. Jesam li u stvarnoj teškoći prepoznavao dobro te je prihvaćao s mirom i barem tihom radošću što mogu ljubiti?
 
 **ID:** `suffering-meaning-joy-v4`
 
@@ -411,9 +465,11 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Izvorni odlomci:** IV. Suffering
 
-**Kratka priča:** Marija privremeno brine za bolesnu sestru. Posao je težak i nije joj drago što je sestra bolesna. Ipak vidi vrijednost te brige, prihvaća je s mirom i osjeća tihu radost što može ljubiti na konkretan način.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: The illuminative way; three-ways.md: Consolation; three-ways.md: Desolation.
 
-**Pojašnjenje:** Ne pita se raduješ li se boli, bolesti ili tuđoj nesreći. Izvor opisuje prihvaćanje teškoće uz jasno razumijevanje dobra koje Bog može iz nje izvesti, nešto radosti i mir — ne samo izdržavanje.
+**Kratka priča:** Marija brine za bolesnu sestru. Plače i želi da sestra ozdravi. Ipak ne smatra svoju brigu besmislenom: u njoj prepoznaje dobro i tihu radost što sestra nije sama. To ne briše njezinu bol.
+
+**Pojašnjenje:** Ne pita se raduješ li se boli ili tuđoj nesreći. Izvor govori o prihvaćanju s razumijevanjem dobra, mirom i nešto radosti. Dublje povjerenje može postojati uz bolne osjećaje. Željeti olakšanje i tražiti pomoć nije suprotno prihvaćanju. Ako takav mir ili radost ne prepoznaješ, nemoj ih pretpostaviti.
 
 **Ponuđeni odgovori:**
 
@@ -430,34 +486,51 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Nepoznato, ne automatski ispunjeno:** odgovori 4.
 
-### 16. Koliko je izgovorena molitva stvarno prisutna u mojem životu?
+### 16. Koji opis najbolje odgovara mojoj stvarnoj molitvenoj praksi?
 
-**ID:** `prayer-vocal-v4`
+**ID:** `prayer-pattern-v6`
 
 **Područje:** Molitva
 
-**Izvorni odlomci:** I. Prayer; II. Prayer; IV. Prayer
+**Izvorni odlomci:** I. Prayer; II. Prayer; III. Prayer; IV. Prayer; V. Prayer; VI. Prayer
 
-**Kratka priča:** Luka navečer izgovori Očenaš ili se svojim riječima obrati Bogu. Ne učini to samo kad nastane problem, nego kao dio svojega redovitog odnosa s Bogom.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: The illuminative way; three-ways.md: Spiritual states of consolation and desolation; three-ways.md: Directions (3).
 
-**Pojašnjenje:** Izgovorena ili usmena molitva uključuje poznate molitve i obraćanje Bogu vlastitim riječima; može se moliti tiho. Nije manje vrijedna zato što koristi riječi. Za potrebe ovog upitnika 'stalno prakticiranje' iz izvora provjeravamo kroz postojanu svakodnevnu praksu; izvor ne određuje broj minuta. Ako su bolest ili stvarna nesposobnost onemogućile praksu i zato ne možeš procijeniti ovo razdoblje, preskoči. To ostaje nepoznato, ne računa se kao svjesno zanemarivanje.
+**Kratka priča:** Ivan se isprva moli samo kad nešto treba. Kasnije uvede redovitu molitvu, zatim vrijeme za Evanđelje i osobni razgovor s Bogom, i kad nema ugodnog osjećaja. Taj odnos postupno nosi i u posao i odnose. Ne trebaš biti na kraju te priče.
+
+**Pojašnjenje:** Gledaj uobičajenu praksu osam tjedana. Razmatranje uključuje tvoje molitveno promišljanje i odgovor Bogu, a ne samo pročitane stranice. Nutarnja molitva šira je od razmatranja; usmena molitva također može biti duboko osobna. Ugoda ni suhoća same ne određuju stupanj. Uvaži bolest i dužnosti. Provjeravaju se navike i plodovi, ne mistični darovi.
 
 **Ponuđeni odgovori:**
 
-1. Gotovo je ne molim i nemam stvarnu praksu molitve.
-2. Molim povremeno i molitva mi ipak nešto znači.
-3. Izgovorena molitva redovit je dio mojega života, ali ne svakodnevan.
-4. Izgovorena molitva postojan je dio svakoga mojeg dana.
+1. **Još nemam praksu:** U ovom razdoblju gotovo uopće nisam molio.
+2. **Povremena molitva:** Molim povremeno, često kad nešto trebam; još nemam ustaljenu praksu.
+3. **Redovita usmena molitva:** Redovito molim riječima, ali razmatranje lako napustim kad nema utjehe ili imam druge poslove.
+4. **Postojano razmatranje:** Postojano molim riječima i razmatram u određenom vremenu; nastavljam i u suhoći, iako mi je teško.
+5. **Ustrajna molitva, rado dulja:** Postojano molim riječima i u nutrini, nastavljam u suhoći i rado produljim molitvu kad dužnosti dopuštaju.
+6. **Molitva prožima svakodnevicu:** Uz tu postojanu praksu, odnos s Bogom uobičajeno prožima moj rad i odnose te me usmjerava na ljubav i nenavezanost.
+7. **Nisam siguran:** Ne mogu pouzdano odabrati opis.
 
 Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
+**Opisna gradacija (ne automatska dodjela):**
+
+- Odgovor 2 → I: Povremena molitva.
+- Odgovor 3 → II: Redovita usmena molitva.
+- Odgovor 4 → III: Postojano razmatranje.
+- Odgovor 5 → IV: Ustrajna molitva, rado dulja.
+- Odgovor 6 → V–VI: Molitva prožima svakodnevicu.
+
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
-- **I. prag:** Molitvu barem donekle cijeniti i stvarno moliti, makar povremeno. Podupiru ga odgovori 2, 3, 4.
-- **II. prag:** Redovito prakticirati izgovorenu molitvu. Podupiru ga odgovori 3, 4.
-- **IV. prag:** Stalno njegovati izgovorenu molitvu; ovaj upitnik to provjerava kao postojanu svakodnevnu praksu. Podupiru ga odgovori 4.
+- **I. prag:** Stvarno moliti barem povremeno i pridavati molitvi vrijednost. Podupiru ga odgovori 2, 3, 4, 5, 6.
+- **II. prag:** Imati redovitu usmenu molitvu. Podupiru ga odgovori 3, 4, 5, 6.
+- **III. prag:** Postojano održavati usmenu molitvu i razmatranje te ustrajati i u suhoći. Podupiru ga odgovori 4, 5, 6.
+- **IV. prag:** Postojano moliti usmeno i u nutrini te rado produljiti molitvu kada dužnosti dopuštaju. Podupiru ga odgovori 5, 6.
+- **V. prag:** Uz postojanu molitvu živjeti odnos s Bogom i usred rada, s praktičnim usmjerenjem na ljubav i nenavezanost. Podupiru ga odgovori 6.
 
-### 17. Imam li ustaljeno vrijeme i način osobne molitve koji uključuje razmatranje?
+**Nepoznato, ne automatski ispunjeno:** odgovori 7.
+
+### 17. Imam li ustaljeno vrijeme i način osobne molitve koji uključuje moje razmatranje?
 
 **ID:** `prayer-meditation-v4`
 
@@ -465,9 +538,11 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Izvorni odlomci:** II. Prayer; III. Prayer
 
-**Kratka priča:** Ana ujutro odvoji vrijeme za molitvu. Pročita evanđeoski odlomak, zastane nad njim i razgovara s Bogom o tome što je razumjela. Drži se tog vremena i kad joj se manje moli.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: The illuminative way; three-ways.md: The unitive way.
 
-**Pojašnjenje:** Razmatranje znači molitveno promisliti o evanđelju, istini vjere ili duhovnom tekstu i odgovoriti Bogu. Ne traži se točno trajanje. Stvarna nužda može promijeniti raspored; obična nezainteresiranost nije isto što i nužda.
+**Kratka priča:** Ana pročita kratko, unaprijed pripremljeno razmatranje o Isusovu praštanju. Ne stane na čitanju: zastane uz jednu misao, prisjeti se svoje svađe i kaže Bogu: „Pomozi mi oprostiti.” Za takvu molitvu redovito odvaja vrijeme.
+
+**Pojašnjenje:** Tuđi tekst, Evanđelje ili istina vjere mogu biti polazište. Osobno razmatranje znači molitveno promisliti o sadržaju i odgovoriti Bogu, ne samo pročitati ili poslušati tekst. Nutarnja molitva može postati jednostavnija, s manje razmišljanja i riječi; ne moraš forsirati nove misli. Ne traži se točno trajanje ni poseban predmet za svaki stupanj. Stvarna nužda može promijeniti raspored.
 
 **Ponuđeni odgovori:**
 
@@ -489,9 +564,11 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Izvorni odlomci:** II. Prayer; III. Prayer
 
-**Kratka priča:** Ivan sjedne na molitvu, ali mu je sve suho i misli lutaju. Ne zaključuje da je molitva beskorisna. Mirno se vraća Bogu i ostane do kraja predviđenog vremena.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: Spiritual states of consolation and desolation; three-ways.md: Desolation.
 
-**Pojašnjenje:** Suhoća sama po sebi nije dokaz višega stupnja niti se ovdje utvrđuje 'tamna noć'. Pita se samo za vjernost stvarnoj molitvi kad nema ugode. Bolest ili hitna dužnost nisu neuspjeh u molitvi.
+**Kratka priča:** Ivan se u molitvi osjeća prazno i teško sabire misli. Umjesto da to odmah shvati kao Božje odbacivanje, kratko kaže: „Bože, tu sam.” Blago vraća pažnju i ostane u razumno određenom vremenu, iako se osjećaj ne promijeni.
+
+**Pojašnjenje:** Suhoća se može pojaviti na različitim putovima i iz različitih razloga; sama ne dokazuje napredak, nazadovanje ni „tamnu noć”. Osjećaj da je Bog daleko nije dokaz da te napustio. Pita se samo za tvoju vjernost molitvi bez ugode. Bolest i hitna dužnost nisu neuspjeh; pomoć i olakšanje smiješ tražiti.
 
 **Ponuđeni odgovori:**
 
@@ -504,11 +581,9 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
-- **III. prag:** Ostati vjeran molitvi i kroz stvarnu suhoću, umjesto odustati zbog izostanka utjehe. Podupiru ga odgovori 3.
-  - Izričito neprimjenjivo: odgovor 4 — Imam ustaljenu molitvu, ali u ovom razdoblju nisam doživio takvu suhoću.
+- **III. prag:** Ostati vjeran molitvi i kroz stvarnu suhoću, umjesto odustati zbog izostanka utjehe. Podupiru ga odgovori 3. Zasebna moguća neprimjenjivost: 4.
 
-**Povezana provjera:** odgovor 4 može biti neprimjenjiv samo uz pitanje `prayer-meditation-v4`, odgovor 3.
-Ovo je jednosmjerna provjera preduvjeta. Iz nje se ne izvodi obrnuti zaključak (npr. izostanak pada ne znači da nije bilo napasti).
+**Uvjet neprimjenjivosti:** odgovor 4 traži potvrdu u `prayer-meditation-v4` (odgovori 3).
 
 ### 19. Kad moje obveze stvarno dopuštaju, kako se odnosim prema produljenju molitve?
 
@@ -518,9 +593,11 @@ Ovo je jednosmjerna provjera preduvjeta. Iz nje se ne izvodi obrnuti zaključak 
 
 **Izvorni odlomci:** IV. Prayer
 
-**Kratka priča:** Marija je završila svoje obveze i ima još malo slobodnog vremena. Nakon redovite molitve rado ostane još s Bogom, bez požurivanja da što prije završi.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: The illuminative way.
 
-**Pojašnjenje:** Ne traži se produljivati molitvu na štetu obitelji, rada, sna ili zdravlja. Pita se za stvarnu, ponavljanu spremnost rado ostati u molitvi kada je to razumno moguće, ne samo za lijepu želju.
+**Kratka priča:** Marija ima slobodnu večer i nije iscrpljena. Nakon redovite molitve slobodno odluči ostati još malo s Bogom. Druge večeri treba odmor i mirno završi molitvu; to nije isto što i bježanje od nje.
+
+**Pojašnjenje:** Pita se za stvarnu, ponavljanu spremnost rado ostati u molitvi kada je to razumno moguće. Više minuta samo po sebi nije više ljubavi. Ne zanemaruj obitelj, posao, san, zdravlje ni potreban odmor; poštena rekreacija nije protivna sabranosti. Jedan put kad je ne produljiš ne opisuje cijelu tvoju praksu.
 
 **Ponuđeni odgovori:**
 
@@ -542,9 +619,11 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Izvorni odlomci:** III. Prayer; IV. Prayer
 
-**Kratka priča:** Ana razmatra kako Isus prašta. Zatim prestane samo razmišljati o tekstu i jednostavno mu kaže: 'Hvala ti. Volim te. Pomozi mi da i ja oprostim.'
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: Consolation.
 
-**Pojašnjenje:** To je jednostavan smisao afektivne molitve: volja se osobno obraća Bogu u ljubavi. Ne traže se snažni osjećaji, posebni doživljaji, molitva mira ili sposobnost procjene kontemplativnih milosti.
+**Kratka priča:** Ana razmatra kako Isus prašta. Ne osjeća posebnu toplinu, ali mu iskreno kaže: „Želim ti vjerovati. Pomozi mi oprostiti.” Osobni odgovor postoji i bez ugodnog osjećaja.
+
+**Pojašnjenje:** Afektivna molitva ovdje znači osoban čin volje: ljubav, povjerenje ili predanje Bogu. Ne znači obvezno emocionalnu toplinu. Pita se za tvoj stvarni odgovor, čak i u suhoći, ne za posebne doživljaje, molitvu mira ili sposobnost prepoznavanja kontemplativnih milosti.
 
 **Ponuđeni odgovori:**
 
@@ -559,32 +638,43 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 - **III. prag:** Razmatranje često prelazi u osoban odgovor ljubavi, povjerenja ili predanja Bogu; snažni osjećaji nisu uvjet. Podupiru ga odgovori 3.
 - **IV. prag:** Molitva je često osoban odgovor ljubavi Bogu, a ne samo misaono razmatranje; posebni osjećaji nisu uvjet. Podupiru ga odgovori 3.
 
-### 21. Koliko sam stvarno često obavljao ispit savjesti tijekom posljednjih osam tjedana?
+### 21. Kako uobičajeno prakticiram ispit savjesti (egzamen)?
 
-**ID:** `examen-frequency-v4`
+**ID:** `examen-pattern-v6`
 
 **Područje:** Ispit savjesti
 
-**Izvorni odlomci:** I. Examen; II. Examen; III. Examen; IV. Examen
+**Izvorni odlomci:** I. Examen; II. Examen; III. Examen; IV. Examen; IV. Imperfections
 
-**Kratka priča:** Ivan se navečer kratko osvrne na dan pred Bogom. Ako to radi i u podne i navečer, to su dva odvojena ispita savjesti — ne dva pitanja unutar istoga večernjeg pregleda.
+**Kratka priča:** Ana navečer zastane pred Bogom: zahvali, sjeti se kako je razgovarala s djetetom i odluči sutra pažljivije slušati. Kasnije uvede i kratak podnevni osvrt na istu krepost. To su dva kratka, konkretna trenutka, ne stalno preispitivanje sebe.
 
-**Pojašnjenje:** Ispit savjesti je namjeran molitveni osvrt na konkretne odluke, zahvalnost, propuste i sljedeći korak. 'Svaki dan' nije isto što i 'većinu dana'. Ako je praksa prekidana, odaberi opis koji to iskreno pokazuje. Ako su bolest ili stvarna nesposobnost onemogućile praksu i zato ne možeš procijeniti ovo razdoblje, preskoči. To ostaje nepoznato, ne računa se kao svjesno zanemarivanje.
+**Pojašnjenje:** Misli na redovit, molitven pogled na konkretne odluke pred Bogom tijekom posljednjih osam tjedana, ne samo na sjećanje što se taj dan dogodilo ili pripremu za ispovijed. Za posljednji opis potrebni su i dva odvojena dnevna osvrta i rad na određenoj kreposti. To je usporedba s izvorom, ne opća obveza za svakoga.
 
 **Ponuđeni odgovori:**
 
-1. Ne prakticiram ispit savjesti.
-2. Prakticiram ga povremeno ili većinu dana, ali ne svaki dan.
-3. Prakticiram ga barem jednom svaki dan, ali ne najmanje dvaput svaki dan.
-4. Prakticiram ga najmanje dvaput svaki dan.
+1. **Bez prakse:** Ne prakticiram ispit savjesti.
+2. **Povremeno:** Povremeno pregledam svoje postupke, ali nemam dnevni ritam ni jasan način.
+3. **Barem jednom dnevno:** Barem jednom dnevno konkretno pregledam postupke i pratim poznatu poteškoću, ponajprije da izbjegnem grijeh.
+4. **Dvaput dnevno i određena krepost:** Barem dvaput dnevno kratko i konkretno pregledam dan te pratim napredak u određenoj kreposti, ne samo izbjegavanje grijeha.
+5. **Nisam siguran:** Ne mogu procijeniti svoju uobičajenu praksu.
 
 Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
+**Opisna gradacija (ne automatska dodjela):**
+
+- Odgovor 1 → I: Bez prakse.
+- Odgovor 2 → II: Povremeno.
+- Odgovor 3 → III: Barem jednom dnevno.
+- Odgovor 4 → IV: Dvaput dnevno i određena krepost.
+
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
-- **II. prag:** Ispit savjesti stvarno prakticirati barem povremeno. Podupiru ga odgovori 2, 3, 4.
-- **III. prag:** Prakticirati ispit savjesti najmanje jednom svaki dan. Podupiru ga odgovori 3, 4.
-- **IV. prag:** Prakticirati ispit savjesti najmanje dvaput svaki dan. Podupiru ga odgovori 4.
+- **I. prag:** Prepoznati stvarnu praksu ispita savjesti; opis I. uključuje i njezin izostanak. Podupiru ga odgovori 1, 2, 3, 4.
+- **II. prag:** Prakticirati ispit savjesti barem povremeno. Podupiru ga odgovori 2, 3, 4.
+- **III. prag:** Barem jednom dnevno konkretno ispitati savjest i pratiti poznatu poteškoću. Podupiru ga odgovori 3, 4.
+- **IV. prag:** Barem dvaput dnevno konkretno ispitati savjest i raditi na određenoj kreposti. Podupiru ga odgovori 4.
+
+**Nepoznato, ne automatski ispunjeno:** odgovori 5.
 
 ### 22. Kako izgleda moj ispit savjesti kada ga obavljam?
 
@@ -594,9 +684,11 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Izvorni odlomci:** II. Venial Sin; III. Venial Sin
 
-**Kratka priča:** Petar ne ostane na zaključku 'Dan je bio tako-tako'. Pred Bogom se prisjeti konkretnog razgovora, prepozna kako je postupio i odluči što sutra treba drukčije.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: The purgative way; three-ways.md: Directions (1).
 
-**Pojašnjenje:** Ne traži se jedna obvezna metoda niti traženje pogreške pod svaku cijenu. Potreban je dovoljno uređen i konkretan pregled da stvarno prepoznaš svoj postupak i odgovor Bogu.
+**Kratka priča:** Petar zahvaljuje Bogu za pomoć tijekom dana. Prisjeti se razgovora u kojem nije slušao prijatelja, iskreno zamoli oproštenje i pomoć te odluči sutra slušati bez prekidanja. Ne završava samo ocjenom je li bio „dobar” ili „loš”.
+
+**Pojašnjenje:** Ispit savjesti nije samo pitanje „kakav mi je bio dan?”. Pred Bogom gledam konkretne slobodne odluke, zahvaljujem za dobro, kajem se gdje treba i tražim pomoć za sljedeći korak. Ne traži se jedna obvezna metoda ni pogreška pod svaku cijenu. Poniznost nije samoprezir.
 
 **Ponuđeni odgovori:**
 
@@ -620,7 +712,7 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Kratka priča:** Marija redovito provjerava svoju strpljivost. Ne pita samo je li danas odbrusila, nego i je li svjesno saslušala druge i vježbala strpljiv odgovor.
 
-**Pojašnjenje:** Posebni ispit savjesti ima jedan određen predmet. Izvor razlikuje redovito praćenje radi izbjegavanja lakoga grijeha od praćenja radi rasta u konkretnoj kreposti.
+**Pojašnjenje:** Posebni ili partikularni ispit savjesti usredotočen je na jednu konkretnu poteškoću ili krepost, uz molitvu i Božju pomoć. Primjerice, kroz više dana pratim slušam li bez prekidanja. Izvor razlikuje praćenje radi izbjegavanja lakoga grijeha od aktivnog rasta u kreposti; ne traži stalno nadziranje svake misli.
 
 **Ponuđeni odgovori:**
 
@@ -672,9 +764,11 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Izvorni odlomci:** III. Sacraments; IV. Sacraments
 
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: Directions (4); three-ways.md: The illuminative way.
+
 **Kratka priča:** Petar ima misu blizu kuće prije posla i može otići bez zanemarivanja sna ili obitelji. Redovito koristi tu mogućnost. Ana takvu mogućnost nema zbog skrbi za dijete; to samo po sebi nije manjak vjernosti.
 
-**Pojašnjenje:** Izvor kaže 'svakodnevna misa ako je moguće'. Ne broji se samo slobodan termin u kalendaru: uzmi u obzir udaljenost, zdravlje i dužnosti svojega staleža. Nemogućnost nije isto što i odbijanje.
+**Pojašnjenje:** Izvor kaže „svakodnevna misa ako je moguće”. Uvaži udaljenost, zdravlje, odmor i dužnosti; nemogućnost nije odbijanje. Dnevna misa nije rezervirana za određeni duhovni stupanj. Ovo pitanje uspoređuje tvoju praksu s opisom izvora; ne odlučuje trebaš li ili smiješ pristupiti pričesti.
 
 **Ponuđeni odgovori:**
 
@@ -687,8 +781,7 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
-- **III. prag:** Uz nedjeljnu misu sudjelovati i na dnevnoj misi kada to stvarne okolnosti dopuštaju. Podupiru ga odgovori 3.
-  - Izričito neprimjenjivo: odgovor 4 — Moje okolnosti u ovom razdoblju nisu dopuštale dnevnu misu.
+- **III. prag:** Uz nedjeljnu misu sudjelovati i na dnevnoj misi kada to stvarne okolnosti dopuštaju. Podupiru ga odgovori 3. Zasebna moguća neprimjenjivost: 4.
 
 ### 26. Koji opis najbolje odgovara mojoj sadašnjoj, ustaljenoj praksi ispovijedi?
 
@@ -749,33 +842,46 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Nepoznato, ne automatski ispunjeno:** odgovori 4.
 
-### 28. Kakvo je moje uobičajeno unutarnje sudjelovanje na misi?
+### 28. Koji opis najbolje odgovara mojoj praksi mise i ispovijedi?
 
-**ID:** `sacraments-fervent-participation-v4`
+**ID:** `sacraments-pattern-v6`
 
 **Područje:** Sakramenti
 
-**Izvorni odlomci:** IV. Sacraments
+**Izvorni odlomci:** I. Sacraments; II. Sacraments; III. Sacraments; IV. Sacraments
 
-**Kratka priča:** Luka dođe na misu umoran i bez posebnog osjećaja. Ipak svjesno sluša, vraća pažnju kada odluta i pridružuje se molitvi i Kristovu prinosu, umjesto da samo čeka kraj.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: Directions (4); three-ways.md: The illuminative way.
 
-**Pojašnjenje:** Žarko sudjelovanje nije emocionalno uzbuđenje niti potpuna odsutnost rastresenosti. Misli se na stvarnu i postojanu namjeru da s vjerom i ljubavlju sudjeluješ, uz vraćanje pažnje koliko možeš.
+**Kratka priča:** Luka prvo počinje redovito dolaziti na misu i ispovijed. Zatim čuva nedjeljnu misu i ustali raspored ispovijedi. Kad može, ide i na dnevnu misu. S vremenom pristupa pažljivije i s ljubavlju, a u ispovijedi traži pomoć i za poznate vezanosti.
+
+**Pojašnjenje:** Za raspored ispovijedi gledaj stvarnu praksu posljednjih mjeseci, ne buduću namjeru. Dnevna misa vrijedi kada je moguća uz zdravlje, odmor i dužnosti. Žar nije jak osjećaj, a nesavršenost nije automatski grijeh. Navedeni rasporedi služe usporedbi s izvornom tablicom, ne određivanju tko smije na pričest niti dokazivanju svetosti.
 
 **Ponuđeni odgovori:**
 
-1. Uglavnom sam samo prisutan i ne trudim se unutarnje sudjelovati.
-2. Ponekad se svjesno uključim, ali često ostanem samo na vanjskoj prisutnosti.
-3. Postojano nastojim sudjelovati s vjerom, pažnjom i ljubavlju, vraćajući se kada odlutam.
+1. **Još nema redovitosti:** Kad su mi dostupne, misa i ispovijed ipak nemaju redovito mjesto u mojem životu.
+2. **Redovito pristupam:** Redovito dolazim na misu i tražim ispovijed, ali još ne živim cijeli sljedeći opis.
+3. **Tjedna misa i tromjesečna ispovijed:** Idem na misu svakog tjedna i ispovijedam se barem jednom u tri mjeseca; još nemam stabilniji raspored.
+4. **Postojan raspored, dnevna misa kad mogu:** Čuvam tjednu misu, idem i na dnevnu kad stvarno mogu te se ispovijedam po postojanu rasporedu.
+5. **Žarko sudjelovanje i mjesečna ispovijed:** Sudjelujem pažljivo i s ljubavlju, čuvam tjednu i moguću dnevnu misu te barem mjesečnu ispovijed. U njoj spominjem i poznate nesavršenosti radi pomoći i rasta.
+6. **Spriječenost / ne znam:** Stvarna spriječenost ili nedostupnost ne dopušta mi odabrati opis, ili nisam siguran.
 
 Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
+**Opisna gradacija (ne automatska dodjela):**
+
+- Odgovor 2 → I: Redovito pristupam.
+- Odgovor 3 → II: Tjedna misa i tromjesečna ispovijed.
+- Odgovor 4 → III: Postojan raspored, dnevna misa kad mogu.
+- Odgovor 5 → IV: Žarko sudjelovanje i mjesečna ispovijed.
+
 **Praktični uvjeti koje ovo pitanje provjerava:**
 
-- **IV. prag:** Postojano i žarko sudjelovati na misi s vjerom i ljubavlju, ne samo biti fizički prisutan. Podupiru ga odgovori 3.
+- **I. prag:** Redovito pristupati misi i tražiti ispovijed kada su dostupne. Podupiru ga odgovori 2, 3, 4, 5.
+- **II. prag:** Sudjelovati na tjednoj misi i ispovijedati se barem tromjesečno. Podupiru ga odgovori 3, 4, 5.
+- **III. prag:** Imati postojan raspored ispovijedi, čuvati tjednu misu i dnevnu kad je stvarno moguća. Podupiru ga odgovori 4, 5.
+- **IV. prag:** Žarko sudjelovati u misi, uz tjednu i moguću dnevnu misu te barem mjesečnu ispovijed koja uključuje nesavršenosti radi rasta. Podupiru ga odgovori 5.
 
-## Dodatni praktični opisi V–VI (bez ispitivanja mističnih iskustava)
-
-V–VI ovdje označavaju samo podudarnost ograničenih praktičnih opisa; mistični dijelovi izvora nisu provjereni. Pozitivni temelji I–IV ostaju nužni. Izvor ne propisuje ovu metodu niti broj pitanja.
+**Nepoznato, ne automatski ispunjeno:** odgovori 6.
 
 ### 29. Kad se javi prepoznata nesavršenost, koliko joj svjesno dopuštam da se nastavi?
 
@@ -838,9 +944,11 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Izvorni odlomci:** V. Suffering; VI. Suffering
 
-**Kratka priča:** Ivan više tjedana pomaže bolesnom članu obitelji. Umor i tuga su stvarni. Uz njih, uobičajeno prihvaća brigu s mirom i tihom radošću što može ljubiti — ne samo u jednom posebno dobrom trenutku.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: Consolation; three-ways.md: Desolation.
 
-**Pojašnjenje:** Ne pita se sviđa li ti se bol niti traži odsutnost tuge, straha ili potrebe za pomoći. Izvor za V. opisuje radosno prihvaćanje s mirom, a ne samo povremeni trenutak smisla. Ako nema stvarne situacije za usporedbu, to nije dokaz manjka vjere.
+**Kratka priča:** Ivan tjednima pomaže bolesnom članu obitelji. Ponekad plače i moli da teškoća prođe. Ipak se uobičajeno vraća povjerenju i brizi za tu osobu; uz bol prepoznaje i tihu radost u ljubavi. Nije riječ o stalno vedrom raspoloženju.
+
+**Pojašnjenje:** Izvor za V. opisuje uobičajeno radosno prihvaćanje s mirom, ne samo izdržavanje. Dublji mir nije isto što i ugodni osjećaji: tuga, strah ili duhovna suhoća mogu ostati. Ne glumi radost niti je pretpostavljaj; izostanak prepoznate radosti ne daje upitniku pravo prosuditi tvoju ljubav ili svetost. Pomoć i olakšanje smiješ tražiti.
 
 **Ponuđeni odgovori:**
 
@@ -893,9 +1001,11 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Izvorni odlomci:** V. Prayer
 
-**Kratka priča:** Petar usred posla na trenutak zahvali Bogu, prije teškog razgovora zamoli pomoć, a odluku nastoji donijeti iz ljubavi. Ne prekida svoje dužnosti da bi cijeli dan izgovarao molitve.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: The illuminative way; three-ways.md: The unitive way.
 
-**Pojašnjenje:** Pita se za uobičajenu molitvenu usmjerenost kroz rad i odnose, ne za stalno svjesno ponavljanje riječi, osobit osjećaj Božje prisutnosti ili mistično iskustvo. Sabrana pažnja na posao ne proturječi molitvenom životu.
+**Kratka priča:** Petar prije posla kratko preda dan Bogu. Zatim pozorno obavi posao, pošteno odgovori kolegi i navečer se opusti s obitelji. Ponekad izričito zahvali Bogu. Ne mora cijelo vrijeme ponavljati molitvu ili provjeravati misli.
+
+**Pojašnjenje:** Pita se za uobičajenu usmjerenost na Boga i ljubav u radu i odnosima. Sabranost ne znači stalno misliti na vjerske riječi, osjećati Božju prisutnost ili zanemariti posao. Poštena rekreacija i odmor također su spojivi s tim odnosom. Ne procjenjuje se mistično iskustvo.
 
 **Ponuđeni odgovori:**
 
@@ -917,9 +1027,11 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Izvorni odlomci:** V. Prayer
 
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: The illuminative way; three-ways.md: The unitive way.
+
 **Kratka priča:** Ana želi posljednju riječ u raspravi. Prepozna da to nije potrebno i slobodno prepusti riječ drugome. Drugi put odustane od traženja pohvale. Takve odluke ponavlja iz ljubavi, a ne zato što mrzi sebe.
 
-**Pojašnjenje:** Nenavezanost nije odbacivanje zdrave radosti, vlastite vrijednosti ili potrebne skrbi o sebi. Pita se za stvarnu, postojanu želju za slobodom od sebičnih vezanosti, vidljivu u konkretnim odlukama.
+**Pojašnjenje:** Nenavezanost znači veću slobodu za ljubav, ne manju vrijednost sebe ili drugih. Poštena radost, prijateljstvo, rekreacija i skrb o sebi nisu prepreke sjedinjenju s Bogom. Pita se za postojanu želju da sebična vezanost ne upravlja odlukama, vidljivu u razboritim postupcima.
 
 **Ponuđeni odgovori:**
 
@@ -941,9 +1053,11 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Izvorni odlomci:** V. Prayer
 
-**Kratka priča:** Ivan raduje se susretu s Kristom u Euharistiji i priprema se koliko može. Nada u život s Bogom potiče ga da danas strpljivije voli obitelj. Ne želi pobjeći od života ni od obveza.
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: Consolation; three-ways.md: The unitive way; three-ways.md: Directions (4).
 
-**Pojašnjenje:** Ne traži se snažan osjećaj svaki put niti češća pričest nego što je razumno i primjereno. Čežnja za nebom ovdje znači nadu u zajedništvo s Bogom, nikada želju za smrću ili odbacivanje sadašnjega života.
+**Kratka priča:** Ivan se za misu pripremi kratkom molitvom i kada ne osjeća posebno oduševljenje. Nada u zajedništvo s Bogom potiče ga da danas strpljivije voli obitelj. Ne želi pobjeći od života ni od svojih obveza.
+
+**Pojašnjenje:** Čežnja može biti postojana odluka i usmjerenje i kada ugodni osjećaji izostaju. Ne traži se emocionalno uzbuđenje niti pričest kao dokaz stupnja; ovaj rezultat ne određuje pristup sakramentima. Nada u nebo ovdje nije želja za smrću, nego za zajedništvom s Bogom uz vjerno življenje sadašnjeg života.
 
 **Ponuđeni odgovori:**
 
@@ -965,9 +1079,11 @@ Uz sve je dostupno: **Ne mogu procijeniti / preskačem**.
 
 **Izvorni odlomci:** VI. Prayer
 
+**Dodatni kontekst (ne novi bodovi):** three-ways.md: The unitive way; three-ways.md: Directions (1); three-ways.md: Directions (3).
+
 **Kratka priča:** Marija dugo pomaže, ali zahvalu dobije netko drugi. Može osjetiti prvi ubod razočaranja. Ipak ne okreće pomoć u potragu za priznanjem: nastavlja ljubiti, uz zdrave granice i bez zanemarivanja vlastitih potreba.
 
-**Pojašnjenje:** Izvorni 'samozaborav' ovdje se provjerava samo kroz praktični plod: slobodu od zaokupljenosti vlastitim ugledom. To nije gubitak dostojanstva, potiskivanje osjećaja ili obveza trpljenja iskorištavanja. Jedan nesebičan postupak nije postojan obrazac i ovaj odgovor ne potvrđuje kontemplaciju.
+**Pojašnjenje:** Izvorni „samozaborav” ovdje se promatra samo kroz praktični plod: ljubav manje ovisnu o priznanju. Nije gubitak dostojanstva, potiskivanje osjećaja ili trpljenje iskorištavanja. Jedan čin nije postojan obrazac. Mjerilo je ljubav: izvanredan doživljaj ne dokazuje zrelost, a njegov izostanak ne znači manjak ljubavi. Ovaj odgovor ne potvrđuje kontemplaciju.
 
 **Ponuđeni odgovori:**
 

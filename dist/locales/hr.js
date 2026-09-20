@@ -49,7 +49,7 @@
   "ascentPosition": "Odgovori podupiru praktične uvjete povezane s {stage}. stupnjem. To nije potvrda duhovnog stupnja.",
   "calculatedLocally": "Izračunato na ovom uređaju",
   "resultRangeLabel": "Granica ove provjere",
-  "resultCaution": "Prihvati ovo kao poticaj za molitveno promišljanje, a ne kao duhovnu presudu.",
+  "resultCaution": "Tri se duhovna puta preklapaju, a borba ostaje prisutna na svakome. Ovaj rezultat uspoređuje odgovore s praktičnim opisima; ne utvrđuje tvoj odnos s Bogom ni put na kojem se stvarno nalaziš.",
   "resultSummary": "Tvoji odgovori podupiru sve praktične uvjete koje ovaj upitnik povezuje s prikazanim stupnjem, uz izričito navedene neprimjenjive okolnosti. To nije potvrda cijelog duhovnog stupnja, svetosti ili mističnih milosti. Provjera je stroža od prosjeka, ali nije validirani test.",
   "sourceDescriptionEyebrow": "Opis iz izvornog teksta",
   "sourceDescriptionIntro": "Što je prema izvoru obilježje ovog stupnja? Slijedi pojednostavljen opis, a ne novi skup zahtjeva ili dodatno bodovanje. Navedena su samo područja koja izvor obrađuje za ovaj stupanj.",
@@ -268,11 +268,11 @@
     "venialSin": "Laki grijeh može biti prijestup u manjoj stvari ili u teškoj stvari bez pune spoznaje ili potpunog pristanka. Priče ovdje prikazuju male povrede ljubavi; težina stvarnog postupka ovisi o okolnostima.",
     "imperfections": "Ovdje gledamo navezanosti i slabosti koje same po sebi ne moraju biti grijeh. Važno je što učiniš kad ih prepoznaš; prvi neželjeni poriv nije isto što i svjestan pristanak.",
     "suffering": "Misli na teškoće koje možeš podnositi uz potrebnu pomoć i brigu o sebi. Tuga i bol same po sebi ne znače manjak vjere. Liječenje, traženje pomoći i zaštita od zlostavljanja ne računaju se kao izbjegavanje križa.",
-    "prayer": "Razmatranje znači zadržati se pred Bogom nad Evanđeljem, duhovnim štivom ili temom vjere. I izgovorene molitve i molbe imaju svoje mjesto. Nedostatak ugodnih osjećaja u molitvi naziva se suhoćom.",
+    "prayer": "Duhovni tekst može biti poticaj razmatranju, ali same pročitane stranice ne pokazuju osobni molitveni odgovor. Nutarnja molitva nije ograničena na razmišljanje; može postati jednostavnija. Usmena molitva nije manje vrijedna. Suhoća sama ne određuje napredak ili nazadovanje, a rad i poštena rekreacija nisu protivni molitvi.",
     "examen": "Ispit savjesti (eksamen) kratak je pregled dana pred Bogom: zahvalnost, pogled na svoje postupke i molba za oproštenje i pomoć. Posebni ispit savjesti usredotočen je na jednu slabost ili krepost.",
-    "sacraments": "Uzmi u obzir dostupnost mise i ispovijedi te zdravlje, posao, skrb za druge i potreban odmor. Misa radnim danom i ispovijed lakih grijeha ovdje su prakse za rast, a ne nove obveze."
+    "sacraments": "Uvaži dostupnost mise i ispovijedi, zdravlje, posao, skrb za druge i potreban odmor. Dnevna misa i ispovijed lakih grijeha ovdje su prakse rasta, ne dodatne obveze. Nisu nagrada za određeni stupanj, a upitnik ne određuje tko smije pristupiti pričesti."
   },
-  "contextLabel": "Pojašnjenje pojmova",
+  "contextLabel": "Važan kontekst za ovo područje",
   "mixedFamily": "Nepotpun ili miješan obrazac",
   "mixedTitle": "Nema dovoljno poduprtog obrasca",
   "mixedSummary": "Odgovori zasad ne podupiru sve početne uvjete za usporedbu s jednim stupnjem. Neki mogu biti neispunjeni, nepoznati ili međusobno neusklađeni. To nije sud o tvojoj vjeri ni vrijednosti; ispod je objašnjeno što je ostalo nejasno.",
@@ -313,6 +313,19 @@
     "noMatch": "Provjera ovog područja počinje na pragu {stage}. Odgovori zasad ne podupiru cijeli provjereni prag ili nema dovoljno podataka. Niži se stupanj ne dodjeljuje automatski.",
     "checking": "Uvjeti koji su prikazani ispod: {stage}. prag"
   },
+  "stageBlocks": {
+    "heading": "Uvjeti po stupnju",
+    "stageLabel": "Stupanj {stage}, {name}: {status}.",
+    "legend": "Značenje kockica",
+    "statuses": {
+      "supported": "Poduprto",
+      "notSupported": "Još nije poduprto",
+      "incomplete": "Za razjasniti",
+      "notTriggered": "Nije primjenjivo",
+      "notAssessed": "Bez procjene"
+    },
+    "sourceNote": "Siva polja nemaju zasebne uvjete za ovo područje. VII. se ne procjenjuje."
+  },
   "criterionStatuses": {
     "met": "Odgovor podupire uvjet",
     "notMet": "Odgovor ne podupire uvjet",
@@ -330,8 +343,8 @@
   "readStage": "Pročitaj opis",
   "allStagesButton": "Istraži sve faze",
   "allStagesTitle": "Svih sedam faza na jednom mjestu",
-  "advancedPracticalNote": "V. i VI. ovdje označavaju samo poduprte praktične obrasce. Izvor uključuje i ulivenu molitvu, kontemplaciju i pasivno čišćenje — to se ne ispituje niti potvrđuje. Rezultat nije tvrdnja da si postigao relativnu ili herojsku savršenost.",
-  "growthIntro": "Uz svako područje nalazi se prijedlog sljedećeg koraka prema tvojem odgovoru. Odaberi jedan ostvariv korak; prijedlozi nisu dodatni uvjeti, jamstvo napretka ni zamjena za duhovno vodstvo.",
+  "advancedPracticalNote": "V. i VI. ovdje su samo praktične usporedbe. Izvorna tablica spominje kontemplaciju i pasivno čišćenje. Dodatni tekst izričito kaže da dar kontemplacije nije dan svima koji su uznapredovali u ljubavi, a izvanredna iskustva mogu se javiti i kod početnika. Njihov izostanak nije razlog za niži rezultat. Upitnik ih ne provjerava niti potvrđuje postignutu relativnu ili herojsku savršenost.",
+  "growthIntro": "Prijedlozi su usmjereni na ljubav i konkretne kreposti, ne na postizanje višeg broja. Za svako područje odaberi jedan ostvariv korak. To nisu dodatni uvjeti, jamstvo napretka ni zamjena za duhovno vodstvo.",
   "growth": {
     "heading": "Sljedeći korak prema {stage}. pragu",
     "maintainTitle": "Što njegovati dalje",
@@ -341,6 +354,49 @@
     "review": "Provjeri svoj odgovor",
     "unknownAction": "Za ovaj uvjet nema dovoljno jasnog podatka. Prisjeti se stvarne situacije i ponovno pročitaj pitanje. Ako nije bilo prilike ili i dalje nisi siguran, ostavi nepoznato; nemoj pretpostaviti da trebaš strožu praksu.",
     "scope": "Malen korak za praksu — ne obećanje višeg stupnja."
-  }
+  },
+  "nextStageSummary": {
+    "eyebrow": "Područja za sljedeći korak",
+    "title": "Što još treba za {stage}. stupanj?",
+    "intro": "Za ovaj sljedeći praktični prag izdvojena su područja čiji uvjeti još nisu poduprti. Ispod je što se očekuje i jedan ostvariv prijedlog za početak.",
+    "initialTitle": "Što još treba razjasniti za I. stupanj?",
+    "initialIntro": "Početni praktični prag još nije u cijelosti poduprt. Ovdje su konkretna područja za rad ili razjašnjenje — ne procjena tvoje vrijednosti ili vjere.",
+    "count": "Područja koja traže pažnju: {count}",
+    "practice": "Prostor za rast",
+    "clarify": "Za razjasniti",
+    "mixed": "Za rad i razjašnjenje",
+    "expectation": "Očekivanje za ovaj prag",
+    "more": "Preostale stavke u ovom području ({count})",
+    "answer": "Tvoj sadašnji odgovor",
+    "review": "Pregledaj odgovor",
+    "reviewLabel": "Pregledaj odgovor na pitanje: {question}",
+    "details": "Pogledaj sve uvjete za {stage}. stupanj",
+    "settled": "Ostala područja za ovaj prag",
+    "supported": "Uvjeti su već poduprti",
+    "exempt": "Uvjeti se ne primjenjuju u prijavljenim okolnostima",
+    "notAssessed": "Na ovom pragu nema zasebnih uvjeta",
+    "settledNote": "Poduprto može uključivati izričito neprimjenjive okolnosti; one nisu dodatni dokaz zrelosti. Područje bez uvjeta na ovom pragu nije proglašeno dovršenim.",
+    "caution": "Nejasan ili preskočen odgovor najprije treba razjasniti, ne automatski pooštriti praksu. Prijedlozi nisu jamstvo višeg stupnja; odaberi malen korak primjeren svojim okolnostima.",
+    "ceilingTitle": "Što njegovati dalje",
+    "ceilingBody": "Odgovori podupiru praktične uvjete do VI., najvišeg praga ove provjere. To nije potvrda cjelovitog duhovnog stupnja. Za VII. izvor ne daje kriterije, pa ne izmišljamo popis uvjeta za prijelaz. Nastavi njegovati ljubav i vjernost te daljnji rast razlučuj s duhovnikom.",
+    "advanced": "Za V.–VI. ovdje se prikazuju samo praktični uvjeti. Njihovo ispunjenje ne dokazuje kontemplaciju, mistične darove ni cijeli duhovni stupanj."
+  },
+  "gradation": {
+    "title": "Gradacija prema izvoru",
+    "selected": "Tvoj odabrani opis",
+    "supported": "Obrazac poduprt odgovorima",
+    "different": "Odabrani opis i provjereni uvjeti ne poklapaju se. Prikazani obrazac temelji se na svim pitanjima, ne samo na ovom odabiru.",
+    "unmapped": "Odabrani odgovor nema opis stupnja ili nema dovoljno podataka.",
+    "missing": "Nema odabranoga opisa; preskakanje nije najniži stupanj.",
+    "limit": "Izvor ne daje zasebne opise iznad {stage}. za ovo područje.",
+    "imperfections": "Izvor ovdje počinje s III.; I.–II. se ne izmišljaju.",
+    "advanced": "V.–VI.: prikazani su samo praktični opisi. Kontemplativne darove i duhovni stupanj upitnik ne može potvrditi.",
+    "review": "Promijeni odabrani opis",
+    "questionHint": "Opisi pokazuju različite obrasce. Odaberi onaj koji kao cjelina odgovara tvojoj uobičajenoj praksi, ne najviši koji ti je ponekad uspio.",
+    "detail": "Što opis znači"
+  },
+  "migrationNotice": "Sedam pitanja ima nove opise. Sačuvani su odgovori na nepromijenjena pitanja; nova i preoblikovana pitanja treba odgovoriti prije ponovnog izračuna.",
+  "threeWaysTitle": "Kako razumjeti tri duhovna puta?",
+  "threeWaysBody": "Dodatni tekst o trima putovima naglašava rast u ljubavi uz Božju milost i naš odgovor. Čišćenje, rast u krepostima i sjedinjenje s Bogom preklapaju se: na svim putovima ostaju borba i mogućnost daljnjeg rasta. Utjeha ili suhoća same ne određuju stupanj. Izvanredna iskustva nisu ni nužan ni dovoljan dokaz zrelosti. Sedam opisa ovdje služi promišljanju, ne određivanju tvojega odnosa s Bogom."
 });
 })();

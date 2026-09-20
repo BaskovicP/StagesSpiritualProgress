@@ -7,9 +7,9 @@
   {
     "id": "mortal-occasions-v4",
     "kicker": "Avoiding occasions",
-    "title": "What do I do about situations that experience tells me lead me toward mortal sin?",
+    "title": "How do I respond to known proximate occasions of mortal sin?",
     "example": "Mark knows that certain business partners draw him into serious fraud. He decides in advance not to take part in those deals.",
-    "clarification": "This means a concrete situation that really brings you close to grave sin, not every discomfort or temptation. Consider your usual practice over the past eight weeks.",
+    "clarification": "Think of a specific situation posing a serious danger of falling for you, not every temptation or disturbing thought. Proximate and remote occasions differ in danger in your circumstances, not simply in how quickly sin might follow. If you cannot reasonably avoid a situation, allow for safeguards and seek advice. Consider your actual practice over the past eight weeks.",
     "options": [
       "I generally do not avoid them, even when I recognize the danger.",
       "I sometimes avoid them, but often return without safeguards.",
@@ -21,27 +21,39 @@
     }
   },
   {
-    "id": "mortal-resistance-v4",
-    "kicker": "Resisting temptation",
-    "title": "When I recognize a temptation to grave sin, how do I resist it?",
-    "example": "John is offered money to knowingly defraud someone. The offer attracts him, but he refuses and ends the conversation, even though he loses the money.",
-    "clarification": "This concerns your free response and resistance, not the strength of the temptation. Temptation itself is not sin.",
+    "id": "mortal-pattern-v6",
+    "kicker": "From weak to steady resistance",
+    "title": "Which description best fits my struggle against recognized mortal sin?",
+    "example": "Mark knows certain business deals lead him into serious fraud. At first he puts up little resistance; later he refuses such deals. In time this becomes steady and he no longer recognizes a deliberate, freely chosen grave fall. Choose what fits you now, not the end of Mark’s story.",
+    "clarification": "Consider the past eight weeks and your free choices, not the intensity of temptation. Resistance to sin remains part of every way. Mortal sin requires grave matter, full knowledge and free consent. At III the original source also mentions a rare, unexpected event whose gravity is doubtful: doubt counts here as neither a confirmed fall nor proof of a higher stage. Discuss it with a confessor.",
+    "optionHeadings": [
+      "Weak resistance",
+      "Steady resistance",
+      "Steady resistance, no recognized fall",
+      "Unsure"
+    ],
     "options": [
-      "I usually give up resisting quickly.",
-      "I try to resist, but my resistance is often weak.",
-      "I resist firmly and take the steps needed not to consent.",
-      "I did not recognize such a temptation during this period."
+      "I want to avoid sin, but my resistance is weak and I rarely avoid known dangerous situations.",
+      "I usually resist firmly and avoid known occasions, but there have still been recognized deliberate and freely chosen grave falls.",
+      "I usually resist firmly and avoid known occasions. In this period I recognize no deliberate, freely chosen consent to mortal sin.",
+      "I cannot assess my resistance, or I am unsure whether an event was mortal sin."
     ],
     "expectations": {
-      "2": "Resist recognized temptations to grave sin firmly and faithfully."
-    }
+      "1": "Recognize my actual response to temptation; repentance and confession are checked separately.",
+      "2": "Resist steadily and habitually avoid known near occasions of mortal sin.",
+      "3": "Alongside steady resistance, recognize no deliberate, freely chosen grave fall; leave doubts to discernment."
+    },
+    "contextSources": [
+      "three-ways.md: The purgative way",
+      "three-ways.md: Directions (1)"
+    ]
   },
   {
     "id": "mortal-fall-v4",
     "kicker": "A knowing and free act",
     "title": "In the past eight weeks, did I do something I then knew was gravely sinful and freely chose to do?",
     "example": "Luke knows that false testimony would seriously harm an innocent person. He nevertheless knowingly and freely chooses to lie. The question concerns the act he consented to, not a thought that occurred to him.",
-    "clarification": "Mortal sin requires grave matter, full knowledge, and deliberate consent together. If you are unsure, do not guess or pronounce judgment on yourself; choose uncertainty and speak with a confessor.",
+    "clarification": "Mortal sin requires grave matter, full knowledge and free consent together. Unwanted thoughts or temptations, even disturbing and recurring ones, are not the same as free consent. If unsure, do not guess or pass judgment on yourself; choose uncertainty and discuss it with a confessor.",
     "options": [
       "Yes, more than once.",
       "Yes, once.",
@@ -50,7 +62,10 @@
     ],
     "expectations": {
       "3": "Recognize no knowing, freely chosen mortal sin in the period considered; uncertainty calls for discernment, not an automatic higher assessment."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Desolation"
+    ]
   },
   {
     "id": "mortal-response-v4",
@@ -90,19 +105,30 @@
     }
   },
   {
-    "id": "venial-vigilance-v4",
-    "kicker": "Watchfulness in small choices",
-    "title": "How do I respond to a venial sin that I can recognize and avoid?",
-    "example": "Anna notices that she often belittles a colleague in conversation. She starts watching for that moment and stops before making the unkind remark, instead of saying, 'It is only a small thing.'",
-    "clarification": "Watchfulness does not mean constantly searching yourself in fear. This asks about calmly recognizing a concrete wrong and actually trying to avoid it.",
+    "id": "venial-pattern-v6",
+    "kicker": "How I struggle against venial sin",
+    "title": "How do I usually respond to venial sins that I recognize?",
+    "example": "Anna tends to make cutting remarks to a colleague. She might say “it is nothing,” try to stop but often give in, or watch her words beforehand. If she does hurt her colleague, it also matters whether she sincerely regrets it and tries to repair the harm.",
+    "clarification": "Choose the whole description that usually fitted the past eight weeks. Rarely deliberate is not the same as never deliberate. An unwanted thought is not consent, and sincere repentance is not measured by the intensity of guilt.",
+    "optionHeadings": [
+      "I dismiss it",
+      "I struggle weakly",
+      "I struggle vigilantly",
+      "No deliberate consent; repair",
+      "Unsure"
+    ],
     "options": [
-      "I generally consider it too small to bother with.",
-      "I want to avoid it, but my effort is weak or occasional.",
-      "I regularly watch for recognized venial sins and take practical steps against them."
+      "I often tell myself it does not matter and do little to change.",
+      "I know it is wrong and try to struggle, but often give in; regret usually remains superficial.",
+      "I vigilantly try to avoid venial sin. It is not habitual, is rarely deliberate, and I sincerely repent, but often do little to repair the harm.",
+      "I recognize no deliberate consent to venial sin. If a fault happens unexpectedly or with incomplete awareness, I seriously repent and reasonably repair the harm.",
+      "I cannot reliably choose a description."
     ],
     "expectations": {
-      "2": "Make at least some actual effort against recognized venial sin, even if resistance is still weak.",
-      "3": "Be watchful in avoiding recognized venial sins and genuinely struggle against them."
+      "1": "Recognize my actual attitude to venial sin, including any tendency to dismiss it.",
+      "2": "At least attempt to struggle against venial sin rather than treating it as unimportant.",
+      "3": "Struggle vigilantly against non-habitual, rarely deliberate venial sin, with sincere repentance.",
+      "4": "Give no deliberate consent to venial sin and, after an actual fault, seriously repent and reasonably repair the harm."
     }
   },
   {
@@ -139,26 +165,42 @@
     }
   },
   {
-    "id": "imperfections-watch-v4",
-    "kicker": "Recognizing attachment",
-    "title": "What do I do when I recognize an imperfection that I easily excuse?",
-    "example": "Luke notices that he becomes upset whenever his family changes his plan. Instead of saying, 'That is just how I am,' he acknowledges how attached he is to having his own way and starts watching that attachment.",
-    "clarification": "An imperfection here is not every personal limitation, illness, or involuntary feeling. One example is an excessive attachment to comfort, praise, or your own way that limits a free response of love.",
+    "id": "imperfections-pattern-v6",
+    "kicker": "From excuses to the first impulse",
+    "title": "When I notice an imperfection, how much room do I knowingly give it?",
+    "example": "Peter wants everyone to notice his help. He may excuse that need for praise, deliberately resist it, or realize afterwards that he sought recognition with only partial awareness. The first brief impulse “I want praise” differs from choosing to keep feeding it.",
+    "clarification": "This concerns a recognized attachment that diminishes love, not every feeling or temptation. Consider your usual pattern over eight weeks. The original source starts here at III, with no separate I–II descriptions. The aim is not to have no inner struggle, but to love God and others more freely. The last description does not establish sanctity or mean there is no further room to grow.",
+    "optionHeadings": [
+      "Excuses, little change",
+      "A real struggle from love",
+      "Faults with partial awareness",
+      "Only the first impulse",
+      "Unsure"
+    ],
     "options": [
-      "I prefer not to examine it, or generally excuse it.",
-      "I acknowledge it, but usually do little beyond wishing to change.",
-      "I watch for it, do not excuse it, and genuinely work against it."
+      "I see what I could change but often excuse or postpone it; I make little actual effort.",
+      "I watch and struggle out of love for God. Sometimes I still knowingly give in, but immediately regret it and return to the good.",
+      "I struggle carefully and lovingly. Recognized faults occur only with partial awareness, not with knowing acceptance.",
+      "I recognize only the first spontaneous impulse: I do not knowingly keep feeding it or act on it.",
+      "I cannot distinguish these descriptions in my experience."
     ],
     "expectations": {
-      "4": "Do not excuse recognized imperfections; watch for them and struggle firmly against them."
-    }
+      "3": "Recognize my response to imperfections; here the source allows excuses and little actual effort.",
+      "4": "Watch and genuinely struggle against imperfections out of love, immediately regretting any knowing acceptance.",
+      "5": "Alongside careful, loving vigilance, recognize faults only with partial awareness, not deliberate consent.",
+      "6": "Recognize only the first spontaneous impulse, without knowingly feeding it or acting on it."
+    },
+    "contextSources": [
+      "three-ways.md: The unitive way",
+      "three-ways.md: Directions (1)"
+    ]
   },
   {
     "id": "imperfections-virtue-v4",
     "kicker": "Practicing a virtue",
-    "title": "Do I turn my struggle with imperfections into regular practice of a specific virtue out of love for God?",
-    "example": "Mary wants to stop insisting on having the last word. Out of love for God, she practices humility: she hears her husband out and accepts his good suggestion, even though it was not hers.",
-    "clarification": "Merely wanting to become a better person is not enough here. This means repeated, concrete choices that practice a virtue such as patience, humility, or generosity. It does not require never falling.",
+    "title": "Do I regularly practise a particular virtue to love God and others more?",
+    "example": "Mary asks God for patience. When her husband speaks, she does not interrupt to prove herself right; she listens to the end. She repeats that small choice over the following days.",
+    "clarification": "This asks about repeated practice, not only wanting to be a better person. A virtue takes concrete form, such as patient listening, honesty or generosity. Spiritual growth involves God's grace and our response, not a competition in self-improvement. It does not require the absence of every fall.",
     "options": [
       "I do not have such a practical habit.",
       "I try occasionally, but without regular, sustained effort.",
@@ -166,14 +208,18 @@
     ],
     "expectations": {
       "4": "Practice a specific virtue courageously and diligently out of greater love for God."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Division of the states or ways",
+      "three-ways.md: The illuminative way"
+    ]
   },
   {
     "id": "imperfections-renunciation-v4",
     "kicker": "Frequent small renunciations",
     "title": "How present is actual, voluntary renunciation of things to which I am excessively attached?",
     "example": "Peter has enough time to rest but finds it hard to put his phone down. He regularly sets it aside to talk calmly with his family, even though he would rather keep watching.",
-    "clarification": "This means frequent small acts of freedom from attachment, not harmful deprivation of sleep, food, treatment, or needed rest. Planning a renunciation is not the same as carrying it out.",
+    "clarification": "This means frequent small acts of freedom from an attachment that interferes with love and duties. Healthy recreation and enjoyment of good things are not themselves attachments. Do not deprive yourself of sleep, food, treatment or necessary rest. Planning self-denial is not the same as actually practising it.",
     "options": [
       "I mostly think about it but do not act.",
       "I make an occasional renunciation, but rarely.",
@@ -181,7 +227,11 @@
     ],
     "expectations": {
       "4": "Frequently make concrete, prudent acts of renunciation of recognized attachments."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The purgative way",
+      "three-ways.md: The illuminative way"
+    ]
   },
   {
     "id": "imperfections-prompt-regret-v4",
@@ -216,27 +266,46 @@
     }
   },
   {
-    "id": "suffering-peace-v4",
-    "kicker": "Peace in difficulty",
-    "title": "While going through such a difficulty, how much acceptance and inner peace was present?",
-    "example": "Anna is waiting for an important medical result. She feels afraid and sometimes cries, but returns to trust in God and calmly does what she can that day.",
-    "clarification": "Relative peace does not mean an absence of sadness, fear, or pain. This asks whether real acceptance and trust are present amid the struggle. Physical or mental health difficulties are not proof of weaker faith.",
+    "id": "suffering-pattern-v6",
+    "kicker": "My response to a real difficulty",
+    "title": "What best describes my usual response to a difficulty I could not avoid?",
+    "example": "Mary’s plans fall apart just when a family member needs her help. She might evade the responsibility, help while complaining, or accept the effort despite an inner struggle. In time she may find meaning, peace and quiet joy in doing good.",
+    "clarification": "Answer about actual difficulties over eight weeks. Peace and quiet joy can coexist with sadness and distress; pleasant feelings or a smile are not required. A lack of consolation is not itself evidence of spiritual regression. Acceptance does not mean tolerating abuse, creating suffering or refusing help. V–VI share an overview here; steadiness in service is checked separately.",
+    "optionHeadings": [
+      "Avoidance and lost peace",
+      "Endurance with complaints",
+      "Acceptance amid struggle",
+      "Meaning, peace and some joy",
+      "Joyful acceptance and service",
+      "No opportunity / unsure"
+    ],
     "options": [
-      "I generally lost all peace and resisted the situation.",
-      "I endured it, but with very little peace and much complaining.",
-      "I accepted it with relative peace, although I still struggled.",
-      "There was no such real difficulty during this period."
+      "I try to escape the difficulty, and when I cannot, it completely disrupts my peace.",
+      "I bear what I must, but mainly with complaints and little peace.",
+      "I accept it with relative peace, although it is hard and I still struggle inwardly.",
+      "I accept it, recognize possible good, and find peace and some quiet joy.",
+      "I habitually accept it with peace and quiet joy, and freely accept reasonable effort for others’ good.",
+      "I had no comparable difficulty or cannot assess this."
     ],
     "expectations": {
-      "3": "Accept and endure real difficulty with relative peace, although an inner struggle remains."
-    }
+      "1": "Reflect on an actual difficulty, including any avoidance or loss of peace.",
+      "2": "Endure an actual difficulty, even with complaints and little peace.",
+      "3": "Accept difficulty with relative peace despite an inner struggle.",
+      "4": "Accept difficulty with an understanding of possible good, peace and some joy.",
+      "5": "Habitually accept existing difficulty with peace and quiet joy, and reasonable effort for others."
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way",
+      "three-ways.md: Consolation",
+      "three-ways.md: Desolation"
+    ]
   },
   {
     "id": "suffering-meaning-joy-v4",
     "kicker": "Meaning, peace, and some joy",
-    "title": "In a real difficulty, was there a clear sense of meaning, peace, and at least some joy in still being able to love God and others?",
-    "example": "Mary is temporarily caring for her sick sister. The work is hard, and she is not glad her sister is ill. Yet she sees the value of that care, accepts it peacefully, and finds quiet joy in being able to love in a practical way.",
-    "clarification": "This does not ask whether you enjoy pain, illness, or another person's misfortune. The source describes accepting difficulty with a clear understanding of the good God can bring from it, some joy, and peace—not simply enduring it.",
+    "title": "In real difficulty, did I recognize good and accept it with peace and at least quiet joy in being able to love?",
+    "example": "Mary cares for her ill sister. She cries and wants her sister to recover. Yet she does not see the care as pointless: she recognizes its good and a quiet joy that her sister is not alone. This does not erase her pain.",
+    "clarification": "This does not ask whether you enjoy pain or another person's misfortune. The original source describes acceptance with an understanding of good, peace and some joy. Deeper trust can coexist with painful feelings. Wanting relief and seeking help do not contradict acceptance. Do not assume peace or joy if you do not recognize them.",
     "options": [
       "I generally only wanted the difficulty to end and did not recognize such meaning.",
       "I could believe there was good, but accepting it with peace and joy was not my actual practice.",
@@ -245,32 +314,56 @@
     ],
     "expectations": {
       "4": "Accept real difficulty with a clear understanding of possible good, peace, and at least some joy."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way",
+      "three-ways.md: Consolation",
+      "three-ways.md: Desolation"
+    ]
   },
   {
-    "id": "prayer-vocal-v4",
-    "kicker": "Regular vocal prayer",
-    "title": "How present is vocal prayer in my actual life?",
-    "example": "Luke says the Our Father in the evening or addresses God in his own words. He does not do this only when a problem arises, but as part of his regular relationship with God.",
-    "clarification": "Vocal prayer includes familiar prayers and speaking to God in your own words; it can be said silently. It is not less valuable because it uses words. For this questionnaire, the source's 'constantly practiced' is checked through stable daily practice; the source does not prescribe a number of minutes. If illness or genuine incapacity prevented the practice and makes this period unassessable, skip. This remains unknown, not deliberate neglect.",
+    "id": "prayer-pattern-v6",
+    "kicker": "From occasional prayer to a life of prayer",
+    "title": "Which description best fits my actual prayer practice?",
+    "example": "John initially prays only when he needs something. Later he establishes regular prayer, then time for the Gospel and a personal response to God even without pleasant feelings. Gradually that relationship also enters his work and relationships. You need not be at the end of this story.",
+    "clarification": "Consider your usual practice over eight weeks. Meditation involves your own prayerful reflection and response to God, not just pages read. Interior prayer is broader than meditation; vocal prayer can also be deeply personal. Comfort and dryness alone do not determine a stage. Allow for illness and duties. These questions consider habits and fruits, not mystical gifts.",
+    "optionHeadings": [
+      "No practice yet",
+      "Occasional prayer",
+      "Regular vocal prayer",
+      "Steady meditation",
+      "Persevering, gladly prolonged prayer",
+      "Prayer throughout daily life",
+      "Unsure"
+    ],
     "options": [
-      "I hardly pray and have no actual practice of prayer.",
-      "I pray occasionally, and prayer still matters to me.",
-      "Vocal prayer is a regular part of my life, but not a daily one.",
-      "Vocal prayer is a stable part of every day of my life."
+      "I have hardly prayed at all in this period.",
+      "I pray occasionally, often when I need something; I have no established practice yet.",
+      "I regularly pray in words but readily abandon meditation when consolation is absent or I have other business.",
+      "I steadily pray in words and meditate at an appointed time; I continue in dryness even when it is hard.",
+      "I steadily practise vocal and mental prayer, continue in dryness, and gladly extend prayer when duties allow.",
+      "Alongside that steady practice, my relationship with God habitually permeates work and relationships, orienting me toward love and detachment.",
+      "I cannot reliably choose a description."
     ],
     "expectations": {
-      "1": "Value prayer at least to some extent and actually pray, even occasionally.",
-      "2": "Practice vocal prayer regularly.",
-      "4": "Continually cultivate vocal prayer; this questionnaire checks that as stable daily practice."
-    }
+      "1": "Actually pray at least occasionally and value prayer.",
+      "2": "Have a regular practice of vocal prayer.",
+      "3": "Maintain steady vocal prayer and meditation, persevering through dryness.",
+      "4": "Practise vocal and mental prayer steadily and gladly prolong it when duties allow.",
+      "5": "Alongside steady prayer, live a relationship with God during work, with a practical orientation toward love and detachment."
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way",
+      "three-ways.md: Spiritual states of consolation and desolation",
+      "three-ways.md: Directions (3)"
+    ]
   },
   {
     "id": "prayer-meditation-v4",
     "kicker": "A set time for meditation",
-    "title": "Do I have an established time and approach to personal prayer that includes meditation?",
-    "example": "Anna sets aside time to pray in the morning. She reads a Gospel passage, reflects on it, and speaks to God about what she has understood. She keeps that time even when she feels less inclined to pray.",
-    "clarification": "Meditation means prayerfully considering the Gospel, a truth of faith, or a spiritual text and responding to God. No exact duration is required. A genuine necessity may alter your schedule; ordinary reluctance is not the same as necessity.",
+    "title": "Do I have an established time and approach to personal prayer that includes my own meditation?",
+    "example": "Anna reads a short, prepared meditation on Jesus' forgiveness. She does not stop at reading: she pauses over one thought, recalls an argument and says to God: “Help me forgive.” She regularly sets aside time for this prayer.",
+    "clarification": "Someone else's text, the Gospel or a truth of faith can be a starting point. Personal meditation means prayerfully reflecting on its meaning and responding to God, not simply reading or listening to the text. Interior prayer may become simpler, with less reasoning and fewer words; you need not force new thoughts. No exact duration or separate topic for each stage is required. A genuine necessity may change the schedule.",
     "options": [
       "I have no set time or actual practice of meditation.",
       "I sometimes meditate, but the time and approach are not yet stable.",
@@ -278,14 +371,18 @@
     ],
     "expectations": {
       "3": "Be consistently faithful to a set time and approach to prayer that includes meditation."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way",
+      "three-ways.md: The unitive way"
+    ]
   },
   {
     "id": "prayer-dryness-v4",
     "kicker": "Faithfulness without pleasant feelings",
     "title": "What do I do with my planned prayer time when there is no pleasant feeling or consolation?",
-    "example": "John sits down to pray, but everything feels dry and his thoughts wander. He does not conclude that prayer is useless. He calmly returns to God and stays for the time he had set aside.",
-    "clarification": "Dryness itself is not evidence of a higher stage, and this does not identify a 'dark night.' This asks only about faithfulness to actual prayer without pleasant feelings. Illness or an urgent duty is not a failure in prayer.",
+    "example": "John feels empty in prayer and struggles to gather his thoughts. Rather than immediately reading this as rejection by God, he says briefly, “God, I am here.” He gently returns his attention and keeps the reasonable time he planned, even if his feelings do not change.",
+    "clarification": "Dryness can occur on different ways and for different reasons; by itself it establishes neither progress, regression nor a 'dark night.' Feeling that God is distant does not prove abandonment. This asks only about faithfulness to prayer without pleasant feelings. Illness and urgent duties are not failures; you may seek help and relief.",
     "options": [
       "I usually shorten or abandon prayer precisely because there is no consolation.",
       "I sometimes remain, but often give up because of the dryness.",
@@ -294,14 +391,18 @@
     ],
     "expectations": {
       "3": "Remain faithful to prayer through actual dryness instead of abandoning it for lack of consolation."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Spiritual states of consolation and desolation",
+      "three-ways.md: Desolation"
+    ]
   },
   {
     "id": "prayer-prolong-v4",
     "kicker": "Gladly remaining in prayer",
     "title": "When my responsibilities genuinely allow it, how do I respond to extending prayer?",
-    "example": "Mary has finished her responsibilities and has some free time left. After her regular prayer, she gladly remains a little longer with God, without hurrying to finish.",
-    "clarification": "This does not require extending prayer at the expense of family, work, sleep, or health. It asks about an actual, repeated willingness to stay gladly in prayer when reasonably possible, not merely a good intention.",
+    "example": "Mary has a free evening and is not exhausted. After regular prayer, she freely chooses to stay a little longer with God. Another evening she needs rest and peacefully finishes prayer; that is not the same as fleeing it.",
+    "clarification": "This asks about an actual, repeated willingness to remain gladly in prayer when reasonably possible. More minutes do not by themselves mean more love. Do not neglect family, work, sleep, health or needed rest; healthy recreation is compatible with recollection. One occasion of not extending prayer does not describe your whole practice.",
     "options": [
       "I generally want to finish as soon as possible, even when I could stay.",
       "I generally keep only my usual time; extending it is rare.",
@@ -309,14 +410,17 @@
     ],
     "expectations": {
       "4": "Continually cultivate prayer and gladly prolong it when responsibilities and health reasonably allow."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way"
+    ]
   },
   {
     "id": "prayer-loving-response-v4",
     "kicker": "A personal response to God",
     "title": "Does my meditation often become a personal response of love, trust, or self-giving to God?",
-    "example": "Anna meditates on how Jesus forgives. Then she stops merely thinking about the text and simply tells him, 'Thank you. I love you. Help me to forgive too.'",
-    "clarification": "This is the simple meaning of affective prayer: the will personally turns to God in love. It does not require intense feelings, unusual experiences, prayer of Quiet, or an ability to identify contemplative graces.",
+    "example": "Anna reflects on how Jesus forgives. She feels no special warmth, but sincerely says, “I want to trust you. Help me forgive.” A personal response is present even without a pleasant feeling.",
+    "clarification": "Affective prayer here means a personal act of the will: love, trust or self-giving to God. It does not require emotional warmth. This asks about your actual response, even in dryness, not unusual experiences, prayer of Quiet or an ability to identify contemplative graces.",
     "options": [
       "My prayer generally remains at words or reflection without such a personal response.",
       "Such a personal response occurs sometimes, but not often.",
@@ -325,32 +429,44 @@
     "expectations": {
       "3": "Meditation often becomes a personal response of love, trust, or self-giving to God; intense feelings are not required.",
       "4": "Prayer often becomes a personal response of love to God rather than reflection alone; special feelings are not required."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Consolation"
+    ]
   },
   {
-    "id": "examen-frequency-v4",
-    "kicker": "Actual frequency of examen",
-    "title": "How often did I actually practice an examination of conscience over the past eight weeks?",
-    "example": "John briefly reviews his day before God each evening. If he does this both at midday and in the evening, those are two separate examinations—not two questions within one evening review.",
-    "clarification": "Examen is an intentional, prayerful review of concrete choices, gratitude, failings, and a next step. 'Every day' is not the same as 'most days.' If your practice had gaps, choose the description that honestly reflects them. If illness or genuine incapacity prevented the practice and makes this period unassessable, skip. This remains unknown, not deliberate neglect.",
+    "id": "examen-pattern-v6",
+    "kicker": "How I review my day",
+    "title": "How do I usually practise an examination of conscience (examen)?",
+    "example": "In the evening Anna pauses before God: she gives thanks, recalls how she spoke to her child, and decides to listen more patiently tomorrow. Later she adds a brief midday review of the same virtue. These are two short, concrete moments, not constant self-checking.",
+    "clarification": "Think of a regular, prayerful review of specific choices before God over the past eight weeks, not just remembering the day's events or preparing for confession. The final description requires both two separate daily reviews and work on a specific virtue. This compares with the source; it is not a universal obligation.",
+    "optionHeadings": [
+      "No practice",
+      "Occasionally",
+      "At least daily",
+      "Twice daily and a particular virtue",
+      "Unsure"
+    ],
     "options": [
-      "I do not practice an examination of conscience.",
-      "I practice it occasionally or most days, but not every day.",
-      "I practice it at least once every day, but not at least twice every day.",
-      "I practice it at least twice every day."
+      "I do not practise an examination of conscience.",
+      "I occasionally review my actions, without a daily rhythm or clear method.",
+      "At least once a day I concretely review my actions and a recurring difficulty, mainly to avoid sin.",
+      "At least twice a day I briefly and concretely review my day and growth in a particular virtue, not only avoidance of sin.",
+      "I cannot assess my usual practice."
     ],
     "expectations": {
-      "2": "Actually practice an examination of conscience at least intermittently.",
-      "3": "Practice an examination of conscience at least once every day.",
-      "4": "Practice an examination of conscience at least twice every day."
+      "1": "Recognize my actual examen practice; the description at I includes having none.",
+      "2": "Practise an examen at least occasionally.",
+      "3": "Concretely examine my conscience at least daily and attend to a recurring difficulty.",
+      "4": "Concretely examine my conscience at least twice daily and work on a particular virtue."
     }
   },
   {
     "id": "examen-method-v4",
     "kicker": "A concrete, orderly review",
     "title": "What is my examination of conscience like when I practice it?",
-    "example": "Peter does not stop at saying, 'The day was so-so.' Before God, he recalls a particular conversation, recognizes how he acted, and decides what to do differently tomorrow.",
-    "clarification": "No single compulsory method is required, and you need not find a fault at any cost. The review should be sufficiently orderly and concrete to recognize your actions and your response to God.",
+    "example": "Peter thanks God for help during the day. He recalls a conversation in which he did not listen to a friend, sincerely asks forgiveness and help, and decides to listen without interrupting tomorrow. He does not finish merely by rating himself 'good' or 'bad.'",
+    "clarification": "An examen is not just asking “how was my day?”. Before God I consider specific free choices, give thanks for good, repent where needed and ask for help with a next step. No single compulsory method or fault found at all costs is required. Humility is not self-contempt.",
     "options": [
       "It generally remains a vague impression of the day.",
       "I recall an occasional event, but the review has no stable approach or clear conclusion.",
@@ -358,14 +474,18 @@
     ],
     "expectations": {
       "3": "Practice examen consistently and concretely, with a recognizable approach to review and response."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The purgative way",
+      "three-ways.md: Directions (1)"
+    ]
   },
   {
     "id": "examen-particular-v4",
     "kicker": "A particular focus in examen",
     "title": "Do I follow one concrete difficulty or virtue in my examen over several days?",
     "example": "Mary regularly reviews her patience. She asks not only whether she snapped today, but also whether she deliberately listened to others and practiced a patient response.",
-    "clarification": "A particular examen has a specific focus. The source distinguishes consistent review aimed at avoiding venial sin from review aimed at growth in a particular virtue.",
+    "clarification": "A particular examen focuses on one specific difficulty or virtue, with prayer and God's help. For example, over several days I follow whether I listen without interrupting. The source distinguishes tracking avoidance of venial sin from actively growing in virtue; it does not require constant monitoring of every thought.",
     "options": [
       "I have no particular focus that I follow regularly.",
       "I sometimes return to the same difficulty, but without consistent review.",
@@ -399,7 +519,7 @@
     "kicker": "Mass during the week",
     "title": "Do I attend Mass on other days too when it is genuinely possible?",
     "example": "Peter has a nearby Mass before work and can attend without neglecting sleep or family. He regularly uses that opportunity. Anna has no such opportunity because she cares for a child; that alone is not a lack of faithfulness.",
-    "clarification": "The source says daily Mass 'if able.' An empty calendar slot alone does not decide ability: consider travel, health, and the duties of your state in life. Inability is different from refusal.",
+    "clarification": "The original source says 'daily Mass if able.' Allow for distance, health, rest and duties; inability is not refusal. Daily Mass is not reserved for a particular spiritual stage. This compares your practice with the original description; it does not decide whether you should or may receive Communion.",
     "options": [
       "I have genuine opportunities but generally do not use them.",
       "I use an occasional opportunity but often pass up others without a real obstacle.",
@@ -408,7 +528,11 @@
     ],
     "expectations": {
       "3": "Alongside Sunday Mass, attend daily Mass when actual circumstances allow."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Directions (4)",
+      "three-ways.md: The illuminative way"
+    ]
   },
   {
     "id": "sacraments-confession-schedule-v4",
@@ -448,19 +572,37 @@
     }
   },
   {
-    "id": "sacraments-fervent-participation-v4",
-    "kicker": "How I participate in Mass",
-    "title": "What is my usual inward participation in Mass like?",
-    "example": "Luke arrives tired and without any special feeling. He nevertheless listens deliberately, brings his attention back when it wanders, and joins in the prayer and Christ's offering instead of simply waiting for the end.",
-    "clarification": "Fervent participation is not emotional excitement or a complete absence of distraction. It means a real, sustained intention to participate with faith and love, returning your attention as you are able.",
+    "id": "sacraments-pattern-v6",
+    "kicker": "Rhythm and manner of participation",
+    "title": "Which description best fits my practice of Mass and confession?",
+    "example": "Luke starts attending Mass and confession regularly. Then he protects Sunday Mass and establishes a rhythm of confession. When possible he also attends daily Mass. In time he participates more attentively and lovingly, and seeks help with known attachments in confession.",
+    "clarification": "For confession schedules, consider actual practice over recent months, not future intentions. Daily Mass means when possible alongside health, rest and duties. Fervor is not an intense feeling, and an imperfection is not automatically sin. These schedules compare practice with the original chart; they do not determine eligibility for Communion or establish holiness.",
+    "optionHeadings": [
+      "Not regular yet",
+      "Regular participation",
+      "Weekly Mass, quarterly confession",
+      "Steady schedule, daily Mass if possible",
+      "Fervent participation, monthly confession",
+      "Unable / unsure"
+    ],
     "options": [
-      "I am generally only present and do not try to participate inwardly.",
-      "I sometimes engage deliberately, but often remain merely outwardly present.",
-      "I consistently seek to participate with faith, attention, and love, returning when I wander."
+      "Even when available, Mass and confession do not have a regular place in my life.",
+      "I regularly attend Mass and seek confession, but do not yet live the whole next description.",
+      "I attend Mass weekly and confess at least once every three months, without a more settled schedule yet.",
+      "I maintain weekly Mass, attend daily when genuinely able, and follow a steady confession schedule.",
+      "I participate attentively and lovingly, maintain weekly and possible daily Mass, and confess at least monthly. I also mention known imperfections to seek help and growth.",
+      "Genuine inability or lack of access prevents choosing a description, or I am unsure."
     ],
     "expectations": {
-      "4": "Participate in Mass consistently and fervently with faith and love, rather than only being physically present."
-    }
+      "1": "Attend Mass regularly and seek confession when available.",
+      "2": "Attend weekly Mass and confess at least quarterly.",
+      "3": "Keep a steady confession schedule, weekly Mass and daily Mass when genuinely possible.",
+      "4": "Participate fervently in Mass, with weekly and possible daily attendance and at least monthly confession including imperfections for growth."
+    },
+    "contextSources": [
+      "three-ways.md: Directions (4)",
+      "three-ways.md: The illuminative way"
+    ]
   },
   {
     "id": "imperfections-consent-v5",
@@ -499,8 +641,8 @@
     "id": "suffering-joyful-acceptance-v5",
     "kicker": "Love within real difficulty",
     "title": "In real difficulties, was acceptance with peace and quiet joy my usual response?",
-    "example": "John spends several weeks helping a sick relative. Fatigue and sadness are real. Alongside them, he usually accepts the care with peace and quiet joy in being able to love—not just during one particularly good moment.",
-    "clarification": "This does not ask whether you enjoy pain or have no sadness, fear or need for help. The source describes joyful acceptance with peace, rather than an occasional sense of meaning. Having no comparable situation is not evidence of less faith.",
+    "example": "John helps an ill family member for weeks. Sometimes he cries and prays for the difficulty to end. Yet he habitually returns to trust and care for that person; alongside pain, he recognizes quiet joy in love. This is not a permanently cheerful mood.",
+    "clarification": "At V the original source describes habitual joyful acceptance with peace, not merely endurance. Deeper peace is distinct from pleasant feelings: sadness, fear or spiritual dryness may remain. Do not manufacture or assume joy; its absence does not let this questionnaire judge your love or sanctity. You may seek help and relief.",
     "options": [
       "I endured the difficulty, but this acceptance was not usual.",
       "There were moments of peace and quiet joy, but not a sustained pattern.",
@@ -509,7 +651,11 @@
     ],
     "expectations": {
       "5": "Usually embrace real difficulty joyfully and with peace, rather than only occasionally recognizing meaning."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Consolation",
+      "three-ways.md: Desolation"
+    ]
   },
   {
     "id": "suffering-service-v5",
@@ -532,8 +678,8 @@
     "id": "prayer-daily-life-v5",
     "kicker": "Prayer beyond prayer time",
     "title": "Does my relationship with God remain present while I carry out everyday work?",
-    "example": "During work, Peter briefly thanks God, asks for help before a difficult conversation and tries to choose lovingly. He does not interrupt his duties to recite prayers all day.",
-    "clarification": "This asks about a habitual prayerful orientation during work and relationships, not constant conscious repetition, a special feeling of God's presence or a mystical experience. Giving work your full attention is compatible with a life of prayer.",
+    "example": "Before work, Peter briefly offers his day to God. He then does his job attentively, responds honestly to a colleague and relaxes with his family in the evening. Sometimes he explicitly gives thanks to God. He need not constantly repeat prayers or monitor his thoughts.",
+    "clarification": "This asks about a habitual orientation toward God and love in work and relationships. Recollection does not mean constantly thinking religious words, feeling God's presence or neglecting work. Healthy recreation and rest are compatible with that relationship too. No mystical experience is being assessed.",
     "options": [
       "Prayer is mostly limited to time set aside for it.",
       "I sometimes turn to God during work, but this is not yet habitual.",
@@ -541,14 +687,18 @@
     ],
     "expectations": {
       "5": "Live a habitual life of prayer during external work without neglecting duties."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way",
+      "three-ways.md: The unitive way"
+    ]
   },
   {
     "id": "prayer-detachment-v5",
     "kicker": "Freedom from my own preferences",
     "title": "How does my desire to love God affect my attachment to preferences, praise and comfort?",
     "example": "Anna wants the last word in a discussion. She sees it is unnecessary and freely lets the other person speak. Another time she lets go of seeking praise. She repeats such choices out of love, not self-hatred.",
-    "clarification": "Detachment does not reject healthy enjoyment, personal worth or necessary self-care. This asks about a sustained desire for freedom from selfish attachments that is visible in concrete choices.",
+    "clarification": "Detachment means greater freedom for love, not less value for yourself or others. Healthy enjoyment, friendship, recreation and self-care are not obstacles to union with God. This asks about a steady desire not to let selfish attachment govern your choices, expressed in prudent actions.",
     "options": [
       "The desire mostly remains an idea; I rarely change my choices.",
       "I sometimes give up a preference, but often put it before love and duties again.",
@@ -556,14 +706,18 @@
     ],
     "expectations": {
       "5": "Show a sustained desire for detachment, prudent self-renunciation and love of God."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The illuminative way",
+      "three-ways.md: The unitive way"
+    ]
   },
   {
     "id": "prayer-desire-v5",
     "kicker": "A longing that shapes life",
     "title": "Is longing for the Eucharist and full communion with God a lasting orientation of my life?",
-    "example": "John looks forward to encountering Christ in the Eucharist and prepares as he can. Hope for life with God encourages him to love his family more patiently today. It does not make him want to escape life or his duties.",
-    "clarification": "This does not require intense feelings every time or Communion more often than is reasonable and appropriate. Longing for heaven here means hope for communion with God, never wishing for death or rejecting present life.",
+    "example": "John prepares for Mass with a short prayer even when he feels no particular enthusiasm. Hope of communion with God encourages him to love his family more patiently today. He does not want to escape life or his responsibilities.",
+    "clarification": "Longing can be a steady intention and orientation even without pleasant feelings. Emotional excitement or Communion as proof of a stage is not required; this result does not determine access to the sacraments. Hope for Heaven here is not a wish for death, but for communion with God while faithfully living the present life.",
     "options": [
       "This is not yet a real orientation of my life.",
       "This desire arises occasionally, but is not sustained.",
@@ -571,14 +725,19 @@
     ],
     "expectations": {
       "5": "Nurture a sustained longing for the Eucharist and full communion with God while living present duties."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: Consolation",
+      "three-ways.md: The unitive way",
+      "three-ways.md: Directions (4)"
+    ]
   },
   {
     "id": "prayer-self-forgetfulness-v5",
     "kicker": "Love without recognition",
     "title": "When the good I do goes unnoticed, how much does seeking recognition direct my next choices?",
     "example": "Mary has helped for a long time, but someone else receives the thanks. She may feel an initial sting of disappointment. She does not turn helping into a search for recognition: she continues to love, with healthy boundaries and care for her own needs.",
-    "clarification": "The source's 'self-forgetfulness' is considered here only through a practical fruit: freedom from preoccupation with one's reputation. It does not mean loss of dignity, suppressed feelings or tolerating exploitation. One selfless act is not a sustained pattern, and this answer cannot confirm contemplation.",
+    "clarification": "The original source's 'self-forgetfulness' is considered here only through a practical fruit: love less dependent on recognition. It is not loss of dignity, suppression of feelings or tolerating exploitation. One act is not a sustained pattern. Charity is central: an extraordinary experience does not establish maturity, and its absence does not mean a lack of love. This answer cannot confirm contemplation.",
     "options": [
       "Recognition strongly determines how much I keep helping.",
       "I return to the other person's good, but the desire for recognition still often directs me.",
@@ -586,7 +745,12 @@
     ],
     "expectations": {
       "6": "Show sustained freedom from seeking personal recognition in serving God and neighbor; this is a limited practical indicator, not confirmation of mystical self-forgetfulness."
-    }
+    },
+    "contextSources": [
+      "three-ways.md: The unitive way",
+      "three-ways.md: Directions (1)",
+      "three-ways.md: Directions (3)"
+    ]
   }
 ]);
 })();
