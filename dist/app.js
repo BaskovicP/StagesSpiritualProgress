@@ -38,6 +38,14 @@
     questionTermsHeading: document.querySelector("#question-terms-heading"),
     questionTermsHint: document.querySelector("#question-terms-hint"),
     questionTermsContent: document.querySelector("#question-terms-content"),
+    glossaryDialog: document.querySelector("#glossary-dialog"),
+    glossaryDialogContent: document.querySelector("#glossary-dialog-content"),
+    glossaryHeading: document.querySelector("#glossary-dialog-heading"),
+    glossaryIntro: document.querySelector("#glossary-dialog-intro"),
+    glossarySearch: document.querySelector("#glossary-search-input"),
+    glossaryGroups: document.querySelector("#glossary-groups"),
+    glossaryEmpty: document.querySelector("#glossary-empty"),
+    glossaryCount: document.querySelector("#glossary-result-count"),
     assessmentMessage: document.querySelector("#assessment-message"),
     reviewButton: document.querySelector("#review-button"),
     printButton: document.querySelector("#print-button"),
@@ -66,6 +74,7 @@
   let selectedStageIndex = 0;
   let stageOpener = null;
   let stageDialogMode = "single";
+  let glossaryOpener = null;
 
   function detectLanguage() {
     const supported = Object.keys(translations);
@@ -141,6 +150,7 @@
     elements.languageSelect.value = state.language;
     elements.languageSelect.setAttribute("aria-label", copy.languageLabel);
     elements.questionProgress.setAttribute("aria-label", copy.yourProgress);
+    elements.glossarySearch.setAttribute("placeholder", copy.glossarySearchPlaceholder);
 
     document.querySelectorAll("[data-i18n]").forEach((element) => {
       const value = copy[element.dataset.i18n];
@@ -149,6 +159,7 @@
 
     renderStagePath();
     if (document.querySelector("#stage-dialog").open) renderStageDetails();
+    if (elements.glossaryDialog.open) renderGlossary();
     renderSourceGuide();
     updateStartLabel();
     if (state.view === "question") renderQuestion();
@@ -232,6 +243,82 @@
     renderStageDetails();
     document.querySelector("#stage-dialog-content").scrollTop = 0;
     document.querySelector("#stage-dialog-heading").focus();
+  }
+
+  function normalizeSearch(value) {
+    return String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase(state.language);
+  }
+
+  function glossarySourceLinks(term) {
+    return term.sources.map(source => source.url && /^https:\/\//.test(source.url)
+      ? `<a href="${escapeHtml(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(source.label)}</a>`
+      : `<span>${escapeHtml(source.label)}</span>`).join(" · ");
+  }
+
+  function glossaryEntry(term, labels) {
+    let use;
+    if (term.category === "core") {
+      const links = term.questionUses.map(({questionNumber}) => `<button type="button" class="glossary-question-link" data-glossary-question="${questionNumber - 1}">${questionNumber}</button>`).join(", ");
+      use = `<p class="glossary-use"><strong>${escapeHtml(labels.usedIn)}:</strong> ${links}</p>`;
+    } else {
+      use = `<p class="glossary-use">${escapeHtml(term.category === "context" ? labels.notAssessed : labels.safetyOnly)}</p>`;
+    }
+    return `<article id="glossary-term-${escapeHtml(term.id)}" class="glossary-entry" data-glossary-term="${escapeHtml(term.id)}" tabindex="-1">
+      <h4>${escapeHtml(term.title)}</h4>
+      <p class="term-meaning">${escapeHtml(term.meaning)}</p>
+      <p class="term-distinction"><strong>${escapeHtml(labels.distinction)}:</strong> ${escapeHtml(term.distinction)}</p>
+      ${use}
+      <details><summary>${escapeHtml(labels.more)}</summary>
+        <p class="term-example"><strong>${escapeHtml(labels.example)}:</strong> ${escapeHtml(term.example)}</p>
+        <p class="term-sources"><span>${escapeHtml(labels.sources)}:</span> ${glossarySourceLinks(term)}</p>
+      </details>
+    </article>`;
+  }
+
+  function renderGlossary() {
+    const copy = translations[state.language];
+    const model = window.spiritualTerminology.describeAll(state.language);
+    const query = normalizeSearch(elements.glossarySearch.value);
+    const definitions = [
+      ["core", model.labels.coreHeading, model.labels.coreIntro],
+      ["context", model.labels.contextHeading, model.labels.contextIntro],
+      ["safety", model.labels.safetyHeading, model.labels.safetyIntro]
+    ];
+    let shown = 0;
+    const groups = definitions.map(([key, heading, intro]) => {
+      const terms = model.groups[key].filter(term => !query || normalizeSearch([
+        term.title, term.meaning, term.distinction, term.example
+      ].join(" ")).includes(query));
+      shown += terms.length;
+      if (!terms.length) return "";
+      return `<section class="glossary-group" data-glossary-group="${key}">
+        <h3>${escapeHtml(heading)}</h3><p>${escapeHtml(intro)}</p>
+        <div class="glossary-entry-list">${terms.map(term => glossaryEntry(term, model.labels)).join("")}</div>
+      </section>`;
+    }).join("");
+    const total = Object.values(model.groups).reduce((sum, terms) => sum + terms.length, 0);
+    elements.glossaryHeading.textContent = model.labels.glossaryTitle;
+    elements.glossaryIntro.textContent = model.labels.glossaryIntro;
+    elements.glossaryGroups.innerHTML = groups;
+    elements.glossaryEmpty.hidden = shown !== 0;
+    elements.glossaryCount.textContent = format(copy.glossaryCount, {shown, total});
+  }
+
+  function openGlossary(opener, termId = null) {
+    glossaryOpener = opener || document.activeElement;
+    elements.glossarySearch.value = "";
+    renderGlossary();
+    elements.glossaryDialog.showModal();
+    elements.glossaryDialogContent.scrollTop = 0;
+    requestAnimationFrame(() => {
+      const term = termId ? document.querySelector(`#glossary-term-${termId}`) : null;
+      if (term) {
+        term.scrollIntoView({block: "start"});
+        term.focus({preventScroll: true});
+      } else {
+        elements.glossaryHeading.focus();
+      }
+    });
   }
 
   function renderQuestion() {
@@ -708,8 +795,14 @@
     returnToIntro();
   });
   document.querySelector("#intro-results-button").addEventListener("click", openResults);
+  document.querySelector("#intro-glossary-button").addEventListener("click", (event) => openGlossary(event.currentTarget));
+  document.querySelector("#question-glossary-button").addEventListener("click", (event) => {
+    const id = questionBlueprints[state.currentIndex].id;
+    openGlossary(event.currentTarget, window.spiritualTerminology.questionTerms[id]?.[0]);
+  });
   document.querySelector("#question-results-button").addEventListener("click", openResults);
   document.querySelector("#result-home-button").addEventListener("click", returnToIntro);
+  document.querySelector("#result-glossary-button").addEventListener("click", (event) => openGlossary(event.currentTarget));
   document.querySelector("#all-stages-button").addEventListener("click", openAllStages);
   document.querySelector("#result-stages-button").addEventListener("click", openAllStages);
   elements.stagePath.addEventListener("click", (event) => {
@@ -725,6 +818,18 @@
   document.querySelector("#stage-dialog-close").addEventListener("click", () => document.querySelector("#stage-dialog").close());
   document.querySelector("#stage-dialog").addEventListener("close", () => {
     stageOpener?.focus();
+  });
+  document.querySelector("#glossary-dialog-close").addEventListener("click", () => elements.glossaryDialog.close());
+  elements.glossaryDialog.addEventListener("close", () => glossaryOpener?.focus());
+  elements.glossarySearch.addEventListener("input", renderGlossary);
+  elements.glossaryGroups.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-glossary-question]");
+    if (!button) return;
+    const index = Number(button.dataset.glossaryQuestion);
+    if (!Number.isInteger(index) || index < 0 || index >= questionBlueprints.length) return;
+    elements.glossaryDialog.close();
+    state.currentIndex = index;
+    openQuestionnaire();
   });
   elements.previousButton.addEventListener("click", movePrevious);
   elements.nextButton.addEventListener("click", moveNext);

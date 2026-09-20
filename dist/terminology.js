@@ -57,9 +57,9 @@
     "sacrifice"
   ],
   "imperfections-prompt-regret-v4": [
-    "impulse",
+    "contrition",
     "imperfections",
-    "contrition"
+    "impulse"
   ],
   "suffering-endure-v4": [
     "acceptance",
@@ -67,8 +67,8 @@
     "peace"
   ],
   "suffering-pattern-v6": [
-    "peace",
     "acceptance",
+    "peace",
     "sacrifice"
   ],
   "suffering-meaning-joy-v4": [
@@ -178,6 +178,14 @@
   ]
 });
   Object.values(questionTerms).forEach(Object.freeze);
+  const contextTermIds = Object.freeze([
+    "piety",
+    "prayerSimplicity",
+    "infusedPrayer",
+    "passivePurification",
+    "mysticism"
+  ]);
+  const safetyTermIds = Object.freeze(["scrupulosity"]);
   const sources = Object.freeze({
   "sin": {
     "label": "CCC 1854–1863",
@@ -251,6 +259,33 @@
     };
   }
 
+  function describeAll(language) {
+    const copy = window.spiritualTerminologyCopy[language] || window.spiritualTerminologyCopy.en;
+    const usage = {};
+    Object.entries(questionTerms).forEach(([questionId, termIds], index) => {
+      termIds.forEach(id => {
+        usage[id] = usage[id] || [];
+        usage[id].push({questionId, questionNumber: index + 1});
+      });
+    });
+    const enrich = (id, category) => ({
+      id,
+      category,
+      ...copy.terms[id],
+      questionUses: usage[id] || [],
+      sources: copy.terms[id].sources.map(key => ({id: key, ...sources[key]}))
+    });
+    const coreIds = Object.keys(copy.terms).filter(id => !contextTermIds.includes(id) && !safetyTermIds.includes(id));
+    return {
+      labels: copy.labels,
+      groups: {
+        core: coreIds.map(id => enrich(id, "core")),
+        context: contextTermIds.map(id => enrich(id, "context")),
+        safety: safetyTermIds.map(id => enrich(id, "safety"))
+      }
+    };
+  }
+
   function sourceLinks(term) {
     return term.sources.map(source => {
       // All URLs come from the reviewed bibliography, never from user answers.
@@ -272,20 +307,24 @@
 
   function render(language, questionId) {
     const {labels, terms} = describe(language, questionId);
-    return terms.map((term, index) => index === 0
-      ? `<article class="term-primary" data-term-id="${escapeHtml(term.id)}">
-          <h4>${escapeHtml(term.title)}</h4>
-          ${explanation(term, labels)}
-          <details class="term-extra"><summary>${escapeHtml(labels.more)}</summary>
-            ${exampleAndSources(term, labels)}
-          </details>
-        </article>`
-      : `<details class="term-related" data-term-id="${escapeHtml(term.id)}">
-          <summary>${escapeHtml(term.title)}</summary>
-          <div class="term-body">${explanation(term, labels)}${exampleAndSources(term, labels)}</div>
+    if (!terms.length) return "";
+    const [primary, ...related] = terms;
+    const relatedHtml = related.length
+      ? `<details class="term-related-group"><summary>${escapeHtml(labels.related)} (${related.length})</summary>
+          <div class="term-related-list">${related.map(term => `<details class="term-related" data-term-id="${escapeHtml(term.id)}">
+            <summary>${escapeHtml(term.title)}</summary>
+            <div class="term-body">${explanation(term, labels)}${exampleAndSources(term, labels)}</div>
+          </details>`).join("")}</div>
         </details>`
-    ).join("");
+      : "";
+    return `<article class="term-primary" data-term-id="${escapeHtml(primary.id)}">
+        <h4>${escapeHtml(primary.title)}</h4>
+        ${explanation(primary, labels)}
+        <details class="term-extra"><summary>${escapeHtml(labels.more)}</summary>
+          ${exampleAndSources(primary, labels)}
+        </details>
+      </article>${relatedHtml}`;
   }
 
-  window.spiritualTerminology = Object.freeze({describe, render, questionTerms, sources});
+  window.spiritualTerminology = Object.freeze({describe, describeAll, render, questionTerms, contextTermIds, safetyTermIds, sources});
 })();

@@ -8,6 +8,19 @@
     "title": "Terms in this question",
     "hint": "The main term is explained below. Tap or click the others to learn more.",
     "singleHint": "A brief explanation is below. Open the example and sources to learn more.",
+    "related": "Related terms",
+    "fullGlossary": "Open the full glossary",
+    "glossaryTitle": "Glossary for this reflection",
+    "glossaryIntro": "Terms that can change how you understand a question or answer come first. Expressions found only in stage descriptions are separated because the questionnaire does not assess them.",
+    "coreHeading": "Terms used in the questions",
+    "coreIntro": "These terms are directly associated with one or more of the 36 questions.",
+    "contextHeading": "Terms found only in stage descriptions",
+    "contextIntro": "They help you read the source description but are not result requirements.",
+    "safetyHeading": "Important safety distinction",
+    "safetyIntro": "This is not another criterion; it helps prevent harmful or anxious interpretation.",
+    "usedIn": "Used with questions",
+    "notAssessed": "Appears in stage descriptions; not assessed.",
+    "safetyOnly": "Safety note; not a criterion.",
     "distinction": "Important distinction",
     "example": "A simple example",
     "more": "Example and sources",
@@ -249,7 +262,7 @@
     "devotionalConfession": {
       "title": "Devotional confession for growth",
       "meaning": "Regular confession even without recognized mortal sin, seeking conversion and grace. You may also mention imperfections for which you seek help.",
-      "distinction": "An imperfection is not automatically a sin or a substitute for confessing sins. Do not invent guilt; your confessor can help clarify what to confess.",
+      "distinction": "An imperfection is not automatically a sin or a substitute for confessing sins. Do not invent guilt. If you struggle with scrupulosity, follow prudent guidance from a regular confessor or another appropriate professional.",
       "example": "Mary confesses recognized sins, then also mentions her attachment to praise, seeking advice and help to grow.",
       "sources": [
         "stages",
@@ -285,6 +298,48 @@
         "stages",
         "ways"
       ]
+    },
+    "piety": {
+      "title": "Piety in the stage names",
+      "meaning": "In the names of the first stages, piety means reverence, devotion and fidelity toward God as expressed in prayer and life.",
+      "distinction": "The names “mediocre,” “intermittent” and “sustained piety” belong to the source model. They are not labels of a person's worth or a separate questionnaire result.",
+      "example": "Someone may sincerely want to live the faith while remaining inconsistent in prayer. The name describes a pattern of practice, not the person's worth.",
+      "sources": ["stages"]
+    },
+    "prayerSimplicity": {
+      "title": "Prayer of simplicity",
+      "meaning": "A simpler form of interior prayer with less discursive reflection and more peaceful attention and love before God.",
+      "distinction": "It is not produced by forcing thoughts to stop and does not prove a stage. When personal prayer naturally becomes simpler, you need not manufacture more reflections.",
+      "example": "After a brief meditation, Anna remains before God in a simple act of trust without needing to keep analyzing the text.",
+      "sources": ["stages", "contemplation"]
+    },
+    "infusedPrayer": {
+      "title": "Infused prayer is received as a gift",
+      "meaning": "The source uses this expression for contemplative prayer that depends on God's initiative rather than a technique or personal effort.",
+      "distinction": "Faithful prayer can prepare a person to receive it, but cannot produce it. This questionnaire does not identify, measure or authenticate it.",
+      "example": "Length of prayer, few words or a strong feeling do not by themselves establish infused prayer.",
+      "sources": ["contemplation", "stages", "ways"]
+    },
+    "passivePurification": {
+      "title": "Passive purification",
+      "meaning": "An expression in the source description for God's purifying work that a person does not produce by a method of their own.",
+      "distinction": "It is not the same as every dryness, illness, emotional pain or life crisis. The questionnaire cannot establish it.",
+      "example": "A difficult period of prayer should not be self-diagnosed as passive purification; an experienced spiritual guide can help with discernment.",
+      "sources": ["stages", "ways", "dryness"]
+    },
+    "mysticism": {
+      "title": "Mysticism and extraordinary phenomena",
+      "meaning": "In descriptions of higher stages, mystical gifts are graces that do not arise from human technique and are not earned by a questionnaire result.",
+      "distinction": "An extraordinary experience is neither necessary nor sufficient evidence of spiritual maturity. Its absence does not lower a result, and its presence does not raise one.",
+      "example": "A person may love God faithfully without extraordinary experiences; another should not automatically interpret an unusual experience as proof of a stage.",
+      "sources": ["stages", "ways"]
+    },
+    "scrupulosity": {
+      "title": "Scrupulosity and anxious searching for guilt",
+      "meaning": "Scrupulosity includes persistently imagining sin or grave guilt where there is no proportionate basis for it.",
+      "distinction": "This questionnaire should not be used for repeated conscience-checking to obtain brief relief. You may mark uncertainty as unknown and speak with a prudent confessor or appropriate professional.",
+      "example": "If someone repeatedly revisits the same answer seeking complete certainty, it can be better to stop checking and follow agreed, prudent guidance.",
+      "sources": ["stages", "penitent"]
     }
   }
 });

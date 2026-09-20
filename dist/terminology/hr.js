@@ -8,6 +8,19 @@
     "title": "Pojmovi u ovom pitanju",
     "hint": "Glavni pojam je objašnjen ispod. Ostale otvori dodirom ili klikom.",
     "singleHint": "Kratko objašnjenje je ispod. Primjer i izvore možeš otvoriti.",
+    "related": "Povezani pojmovi",
+    "fullGlossary": "Otvori cijeli pojmovnik",
+    "glossaryTitle": "Pojmovnik za ovo promišljanje",
+    "glossaryIntro": "Najprije su pojmovi koji mogu promijeniti kako razumiješ pitanje ili odgovor. Izrazi iz opisa stupnjeva odvojeni su jer ih upitnik ne procjenjuje.",
+    "coreHeading": "Pojmovi koji se koriste u pitanjima",
+    "coreIntro": "Ovi su pojmovi izravno povezani s jednim ili više od 36 pitanja.",
+    "contextHeading": "Pojmovi samo iz opisa stupnjeva",
+    "contextIntro": "Pomažu čitanju izvornog opisa, ali nisu uvjeti za rezultat.",
+    "safetyHeading": "Važna sigurnosna razlika",
+    "safetyIntro": "Ovo nije dodatni kriterij, nego pomoć da se izbjegne štetno ili tjeskobno tumačenje.",
+    "usedIn": "Koristi se uz pitanja",
+    "notAssessed": "Pojavljuje se u opisima stupnjeva; ne procjenjuje se.",
+    "safetyOnly": "Sigurnosna napomena; nije kriterij.",
     "distinction": "Važno razlikovati",
     "example": "Jednostavan primjer",
     "more": "Primjer i izvori",
@@ -249,7 +262,7 @@
     "devotionalConfession": {
       "title": "Pobožna ispovijed radi rasta",
       "meaning": "Redovita ispovijed i bez prepoznatoga smrtnog grijeha, radi obraćenja i milosti. U njoj možeš spomenuti i nesavršenosti za koje tražiš pomoć.",
-      "distinction": "Nesavršenost nije automatski grijeh niti zamjena za ispovijed grijeha. Ne izmišljaj krivnju; ispovjednik može pomoći razjasniti što ispovjediti.",
+      "distinction": "Nesavršenost nije automatski grijeh niti zamjena za ispovijed grijeha. Ne izmišljaj krivnju. Ako te muči skrupuloznost, slijedi razboritu uputu stalnog ispovjednika ili druge odgovarajuće stručne osobe.",
       "example": "Marija ispovjedi prepoznate grijehe pa spomene i svoju vezanost uz pohvale, tražeći savjet i pomoć za rast.",
       "sources": [
         "stages",
@@ -285,6 +298,48 @@
         "stages",
         "ways"
       ]
+    },
+    "piety": {
+      "title": "Pobožnost u nazivima stupnjeva",
+      "meaning": "U nazivima prvih stupnjeva pobožnost označava odnos poštovanja, predanja i vjernosti Bogu koji se vidi u molitvi i životu.",
+      "distinction": "Nazivi „osrednja”, „povremena” i „postojana pobožnost” pripadaju izvornom modelu. Nisu etikete vrijednosti osobe niti zaseban rezultat upitnika.",
+      "example": "Netko može iskreno željeti živjeti vjeru, a ipak biti nedosljedan u molitvi. Naziv opisuje obrazac prakse, ne vrijednost osobe.",
+      "sources": ["stages"]
+    },
+    "prayerSimplicity": {
+      "title": "Molitva jednostavnosti",
+      "meaning": "Jednostavnija nutarnja molitva u kojoj se manje razlaže tema, a više mirno ostaje pred Bogom s pažnjom i ljubavlju.",
+      "distinction": "Ne nastaje prisilnim zaustavljanjem misli i nije dokaz određenoga stupnja. Ako osobni odgovor prirodno postane jednostavniji, nije potrebno proizvoditi nova razmišljanja.",
+      "example": "Nakon kratkog razmatranja Ana ostane pred Bogom u jednostavnom činu povjerenja, bez potrebe da nastavi analizirati tekst.",
+      "sources": ["stages", "contemplation"]
+    },
+    "infusedPrayer": {
+      "title": "Ulivenu molitvu primamo kao dar",
+      "meaning": "Izvor tim izrazom govori o kontemplativnoj molitvi koja ovisi o Božjoj inicijativi, a ne o tehnici ili vlastitom naporu.",
+      "distinction": "Može se pripraviti vjernošću molitvi, ali se ne može proizvesti. Ovaj je upitnik ne prepoznaje, ne mjeri i ne potvrđuje.",
+      "example": "Duljina molitve, malo riječi ili snažan osjećaj sami po sebi ne dokazuju ulivenu molitvu.",
+      "sources": ["contemplation", "stages", "ways"]
+    },
+    "passivePurification": {
+      "title": "Pasivno čišćenje",
+      "meaning": "Izraz u izvornom opisu za Božje pročišćavajuće djelovanje koje osoba ne proizvodi vlastitom metodom.",
+      "distinction": "Nije isto što i svaka suhoća, bolest, emocionalna bol ili životna kriza. Upitnik ga ne može utvrditi.",
+      "example": "Teško razdoblje molitve ne treba samostalno proglasiti pasivnim čišćenjem; za razlučivanje je prikladan iskusan duhovni pratitelj.",
+      "sources": ["stages", "ways", "dryness"]
+    },
+    "mysticism": {
+      "title": "Mistika i izvanredne pojave",
+      "meaning": "U opisu viših stupnjeva mistični darovi označavaju milosti koje ne nastaju ljudskom tehnikom niti se zaslužuju rezultatom upitnika.",
+      "distinction": "Izvanredan doživljaj nije nužan ni dovoljan dokaz duhovne zrelosti. Njegov izostanak ne spušta rezultat, a njegovo postojanje ga ne podiže.",
+      "example": "Osoba može vjerno ljubiti Boga bez izvanrednih iskustava; druga ne treba neobičan doživljaj automatski tumačiti kao znak stupnja.",
+      "sources": ["stages", "ways"]
+    },
+    "scrupulosity": {
+      "title": "Skrupuloznost i tjeskobno traženje krivnje",
+      "meaning": "Skrupuloznost uključuje uporno zamišljanje grijeha ili teške krivnje ondje gdje za to nema razmjerne osnove.",
+      "distinction": "Ovaj upitnik ne smije služiti ponavljanom provjeravanju savjesti radi kratkog olakšanja. Nejasnoću je dopušteno označiti kao nepoznatu i razgovarati s razboritim ispovjednikom ili stručnom osobom.",
+      "example": "Ako se osoba stalno vraća istom odgovoru tražeći potpunu sigurnost, korisnije je prekinuti provjeravanje i slijediti dogovorenu razboritu uputu.",
+      "sources": ["stages", "penitent"]
     }
   }
 });

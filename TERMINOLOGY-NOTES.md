@@ -2,7 +2,7 @@
 
 ## Što je promijenjeno
 
-Sva 36 pitanja imaju izričito odabran skup povezanih pojmova. Pojmovnik sadrži 28 dvojezičnih objašnjenja: značenje, važnu razliku, autorski primjer i izvore. Glavno značenje i razlika uvijek su vidljivi; dodatni pojmovi, primjeri i izvori otvaraju se izvornim HTML elementom `details`, tipkovnicom ili dodirom. Nema objašnjenja dostupnih samo prelaskom miša.
+Sva 36 pitanja imaju izričito odabran skup povezanih pojmova. Jezgra sadrži 28 dvojezičnih objašnjenja: značenje, važnu razliku, autorski primjer i izvore. Cijeli pretraživi pojmovnik dodatno odvaja pet izraza koji se pojavljuju samo u opisima stupnjeva i jednu sigurnosnu napomenu o skrupuloznosti. Tih šest zapisa nisu kriteriji procjene. Glavno značenje i razlika uz pitanje uvijek su vidljivi; povezani pojmovi grupirani su u jedan izvorni HTML element `details`. Primjeri i izvori otvaraju se tipkovnicom ili dodirom. Nema objašnjenja dostupnih samo prelaskom miša.
 
 Pojmovi nisu dodatna pitanja ni kriteriji. Verzija ostaje 6; ID-jevi, ponuđeni odgovori, njihovi redni brojevi, očekivanja i algoritam nisu izmijenjeni. Šest pitanja ima jasniji naslov, primjer ili pojašnjenje. Postojeći odgovori ostaju sačuvani; korisnik ih može pregledati i promijeniti nakon čitanja objašnjenja. Ovo nije psihometrijska validacija ni crkvena procjena osobe.
 
@@ -20,8 +20,8 @@ To su sažeta autorska objašnjenja za ovaj upitnik, ne citati, potpuni teološk
 ## Arhitektura i privatnost
 
 - `dist/terminology/{hr,en}.js`: tekstovi, oznake i reference po jeziku.
-- `dist/terminology.js`: izričita mapa pitanje → pojmovi, bibliografija i sigurni HTML prikaz. Ne čita odgovore ni pohranu, ne računa rezultat i ne šalje mrežne zahtjeve.
-- `dist/app.js`: samo povezuje trenutačno pitanje i jezik s prikazom. Ista objašnjenja dostupna su kroz postojeći čitalački alat za pitanja.
+- `dist/terminology.js`: izričita mapa pitanje → pojmovi, kategorije cijelog pojmovnika, bibliografija i sigurni HTML prikaz. Ne čita odgovore ni pohranu, ne računa rezultat i ne šalje mrežne zahtjeve.
+- `dist/app.js`: povezuje trenutačno pitanje i jezik s prikazom, otvara pretraživi pojmovnik i omogućuje povratak na označeno pitanje. Čitanje pojmovnika ne mijenja odgovor.
 - `dist/styles.css`: stil prikaza i vidljiv fokus; `dist/index.html`: lokalno učitavanje modula.
 - Vanjski izvori otvaraju se samo na izričit klik, u novoj kartici bez pristupa izvornoj kartici i bez slanja referrera. Odgovori nisu dio URL-a. Nema automatskog dohvaćanja izvora ni dodatne pohrane. Pritiskom na poveznicu korisnik napušta lokalnu aplikaciju i posjećuje vanjsku stranicu.
 
@@ -42,9 +42,9 @@ Prvi pojam u retku prikazan je odmah; ostali se otvaraju na klik.
 | `imperfections-pattern-v6` | Nesavršenost; Prvi poriv i djelomična svijest; Navezanost, nenavezanost i odricanje |
 | `imperfections-virtue-v4` | Krepost i vježbanje kreposti; Nesavršenost |
 | `imperfections-renunciation-v4` | Navezanost, nenavezanost i odricanje; Nesavršenost; Žrtva i prikazivanje teškoće Bogu |
-| `imperfections-prompt-regret-v4` | Prvi poriv i djelomična svijest; Nesavršenost; Kajanje |
+| `imperfections-prompt-regret-v4` | Kajanje; Nesavršenost; Prvi poriv i djelomična svijest |
 | `suffering-endure-v4` | Prihvaćanje patnje; Žrtva i prikazivanje teškoće Bogu; Mir i tiha radost u teškoći |
-| `suffering-pattern-v6` | Mir i tiha radost u teškoći; Prihvaćanje patnje; Žrtva i prikazivanje teškoće Bogu |
+| `suffering-pattern-v6` | Prihvaćanje patnje; Mir i tiha radost u teškoći; Žrtva i prikazivanje teškoće Bogu |
 | `suffering-meaning-joy-v4` | Mir i tiha radost u teškoći; Prihvaćanje patnje |
 | `prayer-pattern-v6` | Nutarnja (mentalna) molitva; Usmena molitva; Razmatranje i duhovno čitanje; Suhoća i utjeha u molitvi; Sabranost i život molitve; Kontemplativna molitva |
 | `prayer-meditation-v4` | Razmatranje i duhovno čitanje; Nutarnja (mentalna) molitva; Usmena molitva |
@@ -70,7 +70,7 @@ Prvi pojam u retku prikazan je odmah; ostali se otvaraju na klik.
 
 ## Izvori i granice korištenja
 
-Osnovna gradacija ostaje preuzeta iz korisničkog `stages-of-spiritual-progress.md`; `three-ways.md` daje dodatni kontekst. Ove korisničke datoteke nisu mijenjane. Suvremeni Katekizam i Kompendij koriste se za opće definicije, a ne za stvaranje novih uvjeta ocjenjivanja. Povijesni enciklopedijski članak koristi se samo za razliku bliske/daleke prigode, ne za uvođenje povijesnih pravila ispovijedanja.
+Osnovna gradacija ostaje preuzeta iz korisničkog `stages-of-spiritual-progress.md`; `three-ways.md` daje dodatni kontekst, a `Glossary.md` terminološko polazište. Te se datoteke ne prepisuju nekritički u korisničko sučelje. Suvremeni Katekizam i Kompendij koriste se za opće definicije, a ne za stvaranje novih uvjeta ocjenjivanja. Povijesni enciklopedijski članak koristi se samo za razliku bliske/daleke prigode, ne za uvođenje povijesnih pravila ispovijedanja. Pravilo uključivanja i odluke za izostavljene izraze dokumentirani su u `GLOSSARY-AUDIT.hr.md`.
 
 - [CCC 1854–1863](https://www.vatican.va/archive/ENG0015/__P6C.HTM)
 - [CCC 1730–1735](https://www.vatican.va/content/catechism/en/part_three/section_one/chapter_one/article_3/i_freedom_and_responsibility.html)
@@ -86,7 +86,8 @@ Osnovna gradacija ostaje preuzeta iz korisničkog `stages-of-spiritual-progress.
 - [CCC 1024–1029](https://www.vatican.va/content/catechism/en/part_one/section_two/chapter_three/article_12/ii_heaven.html)
 - Korisnički izvor: `stages-of-spiritual-progress.md (I–VI)`.
 - Korisnički izvor: `three-ways.md`.
+- Korisnički izvor: `Glossary.md`.
 
 ## Provjera
 
-Automatizirani testovi provjeravaju svih 36 poveznica, dvojezičnost, 28 dostupnih definicija, sigurnost HTML-a, prikaz bez utjecaja na rezultat i osnovne terminološke razlike. Izolirana provjera u Chromeu obuhvaća oba jezika, sve pojmove na svim pitanjima, uski mobilni i desktop prikaz, otvaranje tipkovnicom, promjenu jezika, odabir odgovora i ponovno učitavanje.
+Automatizirani testovi provjeravaju svih 36 poveznica, dvojezičnost, 28 definicija uz pitanja, pet neprocjenjivanih izraza iz opisa i jednu sigurnosnu napomenu, sigurnost HTML-a, prikaz bez utjecaja na rezultat i osnovne terminološke razlike. Izolirana provjera u Chromeu obuhvaća oba jezika, cijeli pojmovnik i pretraživanje, sve pojmove na svim pitanjima, uski mobilni i desktop prikaz, otvaranje tipkovnicom, promjenu jezika, odabir odgovora i ponovno učitavanje.

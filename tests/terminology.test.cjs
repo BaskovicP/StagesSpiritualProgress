@@ -21,7 +21,7 @@ test('every question has an explicit, bilingual, source-backed set of terms',()=
   const used=new Set();
   const hr=w.spiritualTerminologyCopy.hr,en=w.spiritualTerminologyCopy.en;
   assert.deepEqual(Object.keys(hr.terms).sort(),Object.keys(en.terms).sort());
-  assert.equal(Object.keys(hr.terms).length,28);
+  assert.equal(Object.keys(hr.terms).length,34);
   assert.deepEqual(Object.keys(hr.labels).sort(),Object.keys(en.labels).sort());
   for(const id of ids) {
     const mapping=glossary.questionTerms[id];
@@ -43,7 +43,18 @@ test('every question has an explicit, bilingual, source-backed set of terms',()=
       }
     }
   }
-  assert.equal(used.size,28,'no unreviewed or unreachable dictionary entries');
+  assert.equal(used.size,28,'the question glossary keeps 28 explicitly used entries');
+  assert.equal(Object.keys(hr.terms).length,34);
+  const allHr=glossary.describeAll('hr'),allEn=glossary.describeAll('en');
+  assert.equal(allHr.groups.core.length,28);
+  assert.equal(allHr.groups.context.length,5);
+  assert.equal(allHr.groups.safety.length,1);
+  assert.deepEqual(allHr.groups.core.map(term=>term.id),allEn.groups.core.map(term=>term.id));
+  for(const term of [...allHr.groups.context,...allHr.groups.safety,...allEn.groups.context,...allEn.groups.safety]) {
+    for(const key of ['title','meaning','distinction','example']) assert.ok(typeof term[key]==='string'&&term[key].length>5,term.id+':'+key);
+    assert.ok(term.sources.length>0,term.id);
+    assert.equal(term.questionUses.length,0,term.id);
+  }
 });
 
 test('primary meanings stay visible; related definitions and sources use native disclosures',()=>{
@@ -53,6 +64,7 @@ test('primary meanings stay visible; related definitions and sources use native 
     const html=w.spiritualTerminology.render(lang,id);
     assert.equal((html.match(/class="term-primary"/g)||[]).length,1);
     assert.equal((html.match(/class="term-related"/g)||[]).length,model.terms.length-1);
+    assert.equal((html.match(/class="term-related-group"/g)||[]).length,model.terms.length>1?1:0);
     const opening=html.slice(0,html.indexOf('<details'));
     const escaped=model.terms[0].meaning.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
     assert.ok(opening.includes(escaped));
@@ -61,6 +73,19 @@ test('primary meanings stay visible; related definitions and sources use native 
     assert.doesNotMatch(html,/>undefined</);
     for(const link of html.matchAll(/<a\b[^>]*>/g)) assert.match(link[0],/rel="noopener noreferrer"/);
   }
+});
+
+test('full glossary separates answer-critical, source-only and safety terms',()=>{
+  const w=boot(),t=w.spiritualTerminology;
+  for(const lang of ['hr','en']) {
+    const all=t.describeAll(lang);
+    assert.ok(all.groups.core.every(term=>term.questionUses.length>0));
+    assert.ok(all.groups.context.every(term=>term.category==='context'));
+    assert.ok(all.groups.safety.every(term=>term.category==='safety'));
+    assert.equal(all.groups.safety[0].id,'scrupulosity');
+  }
+  assert.equal(t.describe('hr','suffering-pattern-v6').terms[0].id,'acceptance');
+  assert.equal(t.describe('hr','imperfections-prompt-regret-v4').terms[0].id,'contrition');
 });
 
 test('mental prayer, meditation, reading and occasions retain the essential distinctions in both languages',()=>{

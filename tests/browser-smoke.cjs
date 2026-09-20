@@ -100,6 +100,37 @@ async function main() {
     })()`);
     assert.deepEqual(contextNote,{open:true,translated:true,untouched:true});
     await evaluate(`document.querySelector('.three-ways-context').open=false`);
+    await evaluate(`document.querySelector('#intro-glossary-button').click()`);
+    await evaluate('new Promise(resolve => requestAnimationFrame(resolve))');
+    const glossary = await evaluate(`(() => ({
+      open:document.querySelector('#glossary-dialog').open,
+      focused:document.activeElement.id,
+      groups:document.querySelectorAll('#glossary-groups .glossary-group').length,
+      entries:document.querySelectorAll('#glossary-groups .glossary-entry').length,
+      noAnswers:Object.keys(JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers).length===0
+    }))()`);
+    assert.deepEqual(glossary,{open:true,focused:'glossary-dialog-heading',groups:3,entries:34,noAnswers:true});
+    for (const width of [1440,320]) {
+      await cdp('Emulation.setDeviceMetricsOverride',{width,height:1100,deviceScaleFactor:1,mobile:width<600});
+      const geometry=await evaluate(`(() => { const dialog=document.querySelector('#glossary-dialog'); const rect=dialog.getBoundingClientRect(); return {left:rect.left,right:rect.right,width:innerWidth,scrollWidth:dialog.scrollWidth,clientWidth:dialog.clientWidth,height:rect.height}; })()`);
+      assert.ok(geometry.left>=0&&geometry.right<=width+1&&geometry.scrollWidth<=geometry.clientWidth+1&&geometry.height<=1100,JSON.stringify(geometry));
+      const shot=await cdp('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
+      const file=path.join(screenshotDirectory,language+'-'+width+'-glossary.png');
+      fs.writeFileSync(file,Buffer.from(shot.data,'base64'));console.log('Screenshot: '+file);
+    }
+    await evaluate(`(() => { const input=document.querySelector('#glossary-search-input'); input.value='${language==='hr'?'skrup':'scrup'}'; input.dispatchEvent(new Event('input',{bubbles:true})); })()`);
+    assert.equal(await evaluate(`document.querySelectorAll('#glossary-groups .glossary-entry').length`),2);
+    assert.equal(await evaluate(`document.querySelector('#glossary-groups [data-glossary-term="scrupulosity"]')!==null`),true);
+    await evaluate(`document.querySelector('#glossary-dialog-close').click()`);
+    await evaluate('new Promise(resolve => requestAnimationFrame(resolve))');
+    assert.equal(await evaluate(`document.activeElement.id`),'intro-glossary-button');
+    await evaluate(`document.querySelector('#intro-glossary-button').click()`);
+    await evaluate('new Promise(resolve => requestAnimationFrame(resolve))');
+    await evaluate(`document.querySelector('#glossary-groups [data-glossary-question="0"]').click()`);
+    await evaluate('new Promise(resolve => requestAnimationFrame(resolve))');
+    assert.deepEqual(await evaluate(`({dialogClosed:!document.querySelector('#glossary-dialog').open,questionVisible:!document.querySelector('#question-view').hidden,questionNumber:document.querySelector('#question-number').textContent})`),{dialogClosed:true,questionVisible:true,questionNumber:'1'});
+    await evaluate(`document.querySelector('#exit-button').click()`);
+    await evaluate('new Promise(resolve => requestAnimationFrame(resolve))');
     await evaluate(`document.querySelector('#all-stages-button').click()`);
     assert.equal(await evaluate(`document.querySelectorAll('#stage-all-descriptions .all-stage-entry').length`), 7);
     assert.equal(await evaluate(`getComputedStyle(document.querySelector('#stage-dialog-navigation')).display`), 'none');
@@ -532,6 +563,12 @@ async function main() {
     }
   }
   const beforeTerms=await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6'))`);
+  await evaluate(`document.querySelector('.term-related-group > summary').focus()`);
+  assert.equal(await evaluate(`document.activeElement===document.querySelector('.term-related-group > summary')`),true);
+  await cdp('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r',unmodifiedText:'\r'});
+  await cdp('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  await evaluate('new Promise(resolve=>requestAnimationFrame(resolve))');
+  assert.equal(await evaluate(`document.querySelector('.term-related-group').open`),true);
   await evaluate(`document.querySelector('.term-related summary').focus()`);
   assert.equal(await evaluate(`document.activeElement===document.querySelector('.term-related summary')`),true);
   await cdp('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r',unmodifiedText:'\r'});
@@ -551,7 +588,7 @@ async function main() {
   assert.equal(await evaluate(`document.querySelector('#answer-options input:checked').value`),'0');
   await evaluate(`document.querySelector('#answer-options input[value="1"]').click()`);
   assert.equal(await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers['mortal-occasions-v4']`),1);
-  console.log('Terminology: 36 questions, 28 definitions, both languages, mobile/desktop, keyboard and refresh verified.');
+  console.log('Terminology: 36 questions, 28 question definitions and 6 contextual/safety entries; both languages, search, question links, mobile/desktop, keyboard and refresh verified.');
   await evaluate(`window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({})`);
   await cdp('Emulation.setDeviceMetricsOverride', {width:1440,height:1100,deviceScaleFactor:1,mobile:false});
   await cdp('Emulation.setEmulatedMedia', { media: 'print' });

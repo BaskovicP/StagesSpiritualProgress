@@ -98,7 +98,7 @@ The main result includes an immediate, bilingual next-step overview. It groups e
 
 ### Terms beside every question
 
-All 36 questions have curated terminology from a 28-entry bilingual glossary. The main meaning and important distinction are always visible; related terms and original examples use keyboard-accessible native disclosures. Definitions distinguish interior prayer from meditation and reading, proximate from remote occasions of sin, examen from merely recalling the day, temptation from consent, and Mass from Communion. Read the [terminology audit and sources](TERMINOLOGY-NOTES.md).
+All 36 questions have curated terminology from 28 bilingual question-linked definitions. A searchable full glossary is available before, during and after the questionnaire. It separately includes five expressions used only in stage descriptions and one safety note on scrupulosity; those six entries are explicitly not assessment criteria. Beside a question, the main meaning and important distinction remain visible while related terms are grouped in one keyboard-accessible disclosure. Definitions distinguish interior prayer from meditation and reading, proximate from remote occasions of sin, examen from merely recalling the day, temptation from consent, and Mass from Communion. Read the [terminology implementation and sources](TERMINOLOGY-NOTES.md) and the [Croatian inclusion audit](GLOSSARY-AUDIT.hr.md).
 
 These explanations do not change the answer options, criteria, version-6 storage or scoring. Definitions are available offline after local assets load. Optional source links open only when clicked, in a separate tab with no referrer or answer data; there is no source fetching or telemetry.
 
