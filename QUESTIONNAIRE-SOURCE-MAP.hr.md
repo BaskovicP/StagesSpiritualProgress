@@ -1,14 +1,14 @@
-# Pitanja, priče i uvjeti prema izvornom markdownu — verzija 6
+# Pitanja, priče i uvjeti prema izvornom markdownu — verzija 7
 
-Izvor: `stages-of-spiritual-progress.md`. Pitanja i priče autorske su prilagodbe, ne citati. Ovo je kriterijska pomoć za promišljanje, ne potvrda duhovnog stupnja ili psihometrijski validirani test.
+Izvori: `stages-of-spiritual-progress.md` i odjeljak **Pre-Spiritual Childhood** u `Navitagint.md`. Pitanja i priče autorske su prilagodbe, ne citati. Ovo je kriterijska pomoć za promišljanje, ne potvrda duhovnog stupnja ili psihometrijski validirani test.
 
-Dodatni kontekst: `three-ways.md`. Nakon pregleda svih 36 pitanja dorađeni su naslovi, priče ili pojašnjenja za 20 pitanja. Ponuđeni odgovori, njihovi redni brojevi i uvjeti bodovanja nisu promijenjeni; postojeći odgovori verzije 6 ostaju valjani. Razlike i granice izvora opisane su u `THREE-WAYS-REVIEW.md`.
+Dodatni kontekst: `three-ways.md`. Verzija 7 dodaje tri pitanja o fazi prije puta čišćenja; ranijih 36 pitanja ostaje sadržajno nepromijenjeno. Razlike i granice dodatnog konteksta opisane su u `THREE-WAYS-REVIEW.md`.
 
 ## Kako čitati ovu mapu
 
-Uz svako pitanje sada su povezana konkretna objašnjenja pojmova, s primjerima na hrvatskom i engleskom. Potpuna mapa 36 pitanja prema 28 pojmova i bibliografija nalaze se u `TERMINOLOGY-NOTES.md`. Terminološka dorada šest pitanja ne mijenja odgovore, kriterije ni verziju pohrane.
+Uz svako pitanje povezana su konkretna objašnjenja pojmova, s primjerima na hrvatskom i engleskom. Potpuna mapa 39 pitanja prema 31 pojmu i bibliografija nalaze se u `TERMINOLOGY-NOTES.md`.
 
-- Ukupno je 36 pitanja. Sedam ranijih pitanja zamijenjeno je jasnim preglednim pitanjima, po jednim za svako područje; ostalih 29 ostaje nepromijenjeno.
+- Ukupno je 39 pitanja. Tri nova početna pitanja provjeravaju odnos prema smrtnom grijehu, molitvi i sakramentima prije I. stupnja; ranijih 36 pitanja ostaje nepromijenjeno.
 - Pregledni odgovori imaju kratke naslove i zasebnu vezu s opisima izvora. Na rezultatu se odvojeno označavaju odabrani opis i praktični prag poduprt svim pitanjima tog područja.
 - Viši prag traži sve njegove praktične uvjete i temelje ranijih pragova. Jedan visoki pregledni odgovor ne zamjenjuje detaljne provjere.
 - Slabosti opisane na nižem stupnju nisu uvjet koji treba zadržati: pregledni uvjet I. za ispit savjesti prihvaća i „nema prakse” i više opisane prakse.
@@ -22,6 +22,71 @@ Uz svako pitanje sada su povezana konkretna objašnjenja pojmova, s primjerima n
 Nasljeđivanje uvjeta, pregledna pitanja i pragovi autorske su odluke aplikacije, ne algoritam iz izvora. Praktični savjeti autorske su mogućnosti za rast, ne dodatni bodovi. Vidi `ASSESSMENT-NOTES.md`.
 
 ## Sva pitanja
+
+### Faza prije puta čišćenja
+
+#### Odnos prema teškom grijehu
+
+**ID:** `pre-spiritual-sin-v7`
+
+**Izvori:** `Pre-Spiritual Childhood. Hardened in Sin. Mortal Sin`; `Pre-Spiritual Childhood. Surface Christianity. Mortal Sin`
+
+**Pitanje:** Koji opis najbolje odgovara mojem stvarnom odnosu prema prepoznatom smrtnom grijehu?
+
+**Priča:** Marko zna da ozbiljno vara kupce. Može tvrdoglavo nastaviti i odbijati preispitati savjest, može grijeh smatrati sitnom smetnjom koju će lako riješiti, ili može ozbiljno nastojati oduprijeti mu se i izbjegavati prilike koje ga vode u pad.
+
+**Pojašnjenje:** Ovo pitanje provjerava dva stanja koja izvor smješta prije duhovnog djetinjstva: okorjelost u grijehu i površno kršćanstvo. Za smrtni grijeh trebaju teška stvar, puna spoznaja i slobodan pristanak. Ne proglašavaj dvojbu grijehom; ako nisi siguran, odaberi nesigurnost i razjasni je s ispovjednikom.
+
+**Odgovori:**
+
+- Tvrdoglavo ustrajem u prepoznatom teškom grijehu ili odbijam ozbiljno oblikovati i preispitati savjest.
+- Smrtni grijeh smatram nevažnom smetnjom koja se lako oprosti te mu redovito svjesno popuštam kad se pojavi prilika ili napast; ispovijed, ako joj pristupim, gotovo je bez kajanja.
+- Smrtni grijeh smatram ozbiljnim; želim mu se oduprijeti, kajem se nakon pada i nastojim iskreno pristupiti ispovijedi.
+- Ne mogu procijeniti svoj odnos ili nisam siguran je li neki čin bio smrtni grijeh.
+
+**Uvjet I.:** Smrtni grijeh smatrati ozbiljnim te mu se stvarno nastojati oduprijeti, uz kajanje i iskrenu ispovijed nakon pada.
+
+#### Odnos prema molitvi
+
+**ID:** `pre-spiritual-prayer-v7`
+
+**Izvori:** `Pre-Spiritual Childhood. Hardened in Sin. Prayer`; `Pre-Spiritual Childhood. Surface Christianity. Prayer`
+
+**Pitanje:** Koji opis najbolje odgovara mojem uobičajenom odnosu prema molitvi?
+
+**Priča:** Ana se nađe u teškoći. Može svjesno odbiti obratiti se Bogu, može izgovoriti nekoliko rastresenih riječi tek kad joj ništa drugo ne preostane, ili se može stvarno vratiti Bogu iako joj molitva još nije postojana.
+
+**Pojašnjenje:** Ne pita se za savršenu sabranost niti za snažne osjećaje. Izvor razlikuje namjerno odbijanje obraćanja Bogu od mehaničke, površne i lako napuštene molitve. Treći opis ne traži razvijenu meditaciju, nego stvarno otvaranje Bogu koje više nije samo odbijanje ili vanjska navika.
+
+**Odgovori:**
+
+- Namjerno odbijam obraćati se Bogu za pomoć ili mu dati stvarno mjesto u svojem životu.
+- Molitva mi je uglavnom mehanička, rastresena i zadnja među prioritetima; lako je napustim i rijetko ulazim u iskren osobni razgovor s Bogom.
+- Stvarno se obraćam Bogu i želim moliti; molitva mi možda još nije postojana, ali nije tek namjerno odbijanje ni prazna vanjska navika.
+- Ne mogu pouzdano procijeniti svoj uobičajeni odnos prema molitvi.
+
+**Uvjet I.:** Stvarno se obraćati Bogu u molitvi, makar molitva još nije postala postojana navika.
+
+#### Misa i ispovijed
+
+**ID:** `pre-spiritual-sacraments-v7`
+
+**Izvori:** `Pre-Spiritual Childhood. Hardened in Sin. Sacraments`; `Pre-Spiritual Childhood. Surface Christianity. Sacraments`
+
+**Pitanje:** Koji opis najbolje odgovara mojoj stvarnoj praksi mise i ispovijedi?
+
+**Priča:** Ivan nema zdravstvenu, radnu ni obiteljsku zapreku. Može gotovo nikada ne ići na misu i ne ispovijedati se, može doći samo za velike blagdane, ili može redovito sudjelovati na misi i ispovijedati se češće od blagdanskog minimuma.
+
+**Pojašnjenje:** Uvaži stvarnu dostupnost, zdravlje, posao i skrb za druge. Izvor ovdje razlikuje gotovo potpun izostanak sakramentalne prakse od povremenoga sudjelovanja, često samo za Uskrs i Božić. Nemogućnost nije isto što i svojevoljno zanemarivanje.
+
+**Odgovori:**
+
+- Iako su mi misa i ispovijed razumno dostupne, na misu idem rijetko ili nikada i ne pristupam ispovijedi.
+- Na misu i ispovijed idem sporadično, često samo za Uskrs, Božić ili slične prigode.
+- Na misu idem redovito, a ispovijedi pristupam češće od povremenoga blagdanskog minimuma.
+- Ne mogu procijeniti ili mi misa odnosno ispovijed u ovom razdoblju nisu bile razumno dostupne.
+
+**Uvjet I.:** Redovito sudjelovati na misi i pristupati ispovijedi češće od sporadičnoga blagdanskog minimuma, kada su dostupne.
 
 ### 1. Kako postupam s poznatim bliskim prigodama za smrtni grijeh?
 

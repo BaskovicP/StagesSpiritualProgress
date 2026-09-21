@@ -2,7 +2,7 @@
 
 ## Status ovog dokumenta
 
-Ovo je pregled priloženog `stages-of-spiritual-progress.md`, ažuriran za verziju 6. Izvorni opisi nisu algoritam ni potvrda duhovnoga stupnja. Sedam pitanja preoblikovano je u jasne pregledne opise gradacije, a ostalih 29 ostaje nepromijenjeno. Ukupno je 36 pitanja, uključujući osam praktičnih pitanja za V–VI. Dodatak o mističnim iskustvima uklonjen je.
+Ovo je pregled priloženog `stages-of-spiritual-progress.md`, ažuriran za verziju 7. Izvorni opisi nisu algoritam ni potvrda duhovnoga stupnja. Sedam preglednih pitanja i 29 detaljnih pitanja za I–VI ostaju nepromijenjeni, a dodana su tri početna pitanja prema odjeljku **Pre-Spiritual Childhood** u `Navitagint.md`. Ukupno je 39 pitanja. Predduhovna faza prikazuje se prije I. i ne pretvara se u osmi numerirani stupanj.
 
 Kartice sada zasebno pokazuju najviši praktični prag koji podupiru odgovori u pojedinom području, prema praktičnim uvjetima I–VI i granici opisa svakog područja. Ukupni rezultat i dalje traži sve njegove uvjete; ne računa se prosjek kartica. Na V–VI ispituju se samo ograničeni praktični opisi, ne mistične milosti; VII. u priloženom izvoru nema opis.
 

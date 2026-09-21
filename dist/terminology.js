@@ -3,6 +3,22 @@
 
   // Explicit editorial associations. No inference from words, answers or scores.
   const questionTerms = Object.freeze({
+  "pre-spiritual-sin-v7": [
+    "preSpiritualChildhood",
+    "mortalSin",
+    "conscience",
+    "consent"
+  ],
+  "pre-spiritual-prayer-v7": [
+    "preSpiritualChildhood",
+    "interiorLife",
+    "vocalPrayer"
+  ],
+  "pre-spiritual-sacraments-v7": [
+    "preSpiritualChildhood",
+    "mass",
+    "confession"
+  ],
   "mortal-occasions-v4": [
     "occasions",
     "mortalSin",
@@ -237,6 +253,9 @@
   },
   "stages": {
     "label": "stages-of-spiritual-progress.md (I–VI)"
+  },
+  "navigating": {
+    "label": "Navitagint.md: Pre-Spiritual Childhood"
   },
   "ways": {
     "label": "three-ways.md"

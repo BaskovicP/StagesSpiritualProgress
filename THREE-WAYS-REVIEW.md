@@ -2,7 +2,7 @@
 
 ## Scope
 
-The user-referred `3-ways.md` is present as `three-ways.md`. The whole supplied text was reviewed alongside all 36 questions. The supplied file is preserved as received, including its staged/unstaged state. It supplies theological context, not a new seven-stage scoring table.
+The user-referred `3-ways.md` is present as `three-ways.md`. The whole supplied text was reviewed alongside the 36 version-6 questions. Version 7 later added three questions from `Navitagint.md`; they are outside this three-ways wording review. The supplied file is preserved as received and supplies theological context, not a scoring table.
 
 Twenty questions received clearer titles, examples or clarifications in both Croatian and English. The other sixteen were reviewed and left unchanged where they already express a concrete practice with suitable safeguards. All 36 IDs, answer options, option indices, expectations and scoring rules remain unchanged in this review. Version 6 and its saved answers therefore remain compatible. These changes clarify existing constructs, not validate them.
 

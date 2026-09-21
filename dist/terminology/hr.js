@@ -13,7 +13,7 @@
     "glossaryTitle": "Pojmovnik za ovo promišljanje",
     "glossaryIntro": "Najprije su pojmovi koji mogu promijeniti kako razumiješ pitanje ili odgovor. Izrazi iz opisa stupnjeva odvojeni su jer ih upitnik ne procjenjuje.",
     "coreHeading": "Pojmovi koji se koriste u pitanjima",
-    "coreIntro": "Ovi su pojmovi izravno povezani s jednim ili više od 36 pitanja.",
+    "coreIntro": "Ovi su pojmovi izravno povezani s jednim ili više od 39 pitanja.",
     "contextHeading": "Pojmovi samo iz opisa stupnjeva",
     "contextIntro": "Pomažu čitanju izvornog opisa, ali nisu uvjeti za rezultat.",
     "safetyHeading": "Važna sigurnosna razlika",
@@ -28,6 +28,35 @@
     "sourceNote": "Objašnjenja su pomoć za razumijevanje, ne novi uvjeti za rezultat."
   },
   "terms": {
+    "preSpiritualChildhood": {
+      "title": "Predduhovno djetinjstvo",
+      "meaning": "Naziv iz izvora za fazu prije duhovnog djetinjstva i puta čišćenja, u kojoj osoba još nije ušla u nutarnji život na smislen način.",
+      "distinction": "Nije presuda o vrijednosti osobe ni tvrdnja da Božja milost ne djeluje. Opisuje sadašnji obrazac odnosa prema grijehu, molitvi i sakramentima te poziva na prvi stvarni korak obraćenja.",
+      "example": "Osoba se može nazivati kršćaninom, ali moliti samo mehanički i pristupati sakramentima tek povremeno; izvor to razlikuje od početne, makar još slabe, nutarnje borbe.",
+      "sources": [
+        "navigating"
+      ]
+    },
+    "interiorLife": {
+      "title": "Nutarnji život",
+      "meaning": "Stvaran osobni odnos s Bogom koji postupno oblikuje savjest, molitvu, odluke i sakramentalni život, a nije samo vanjska pripadnost ili navika.",
+      "distinction": "Ne znači stalne osjećaje utjehe ni povlačenje iz svakodnevnih dužnosti. Počinje iskrenim obraćanjem Bogu i spremnošću da se život mijenja pred njim.",
+      "example": "Ana ne izgovara molitvu samo zato što je navikla; iskreno kaže Bogu što je muči i dopušta da to utječe na njezin sljedeći izbor.",
+      "sources": [
+        "navigating",
+        "ways"
+      ]
+    },
+    "conscience": {
+      "title": "Savjest i njezino oblikovanje",
+      "meaning": "Savjest je nutarnji sud razuma o moralnoj kvaliteti konkretnog čina; treba je iskreno i trajno oblikovati u svjetlu istine i dobra.",
+      "distinction": "Savjest nije samo trenutačni osjećaj ugode ili krivnje. Neznanje, navika ili odbijanje preispitivanja mogu je iskriviti; u ozbiljnoj dvojbi traži pouzdan savjet.",
+      "example": "Marko ne zaključuje da je prijevara dobra samo zato što mu više ne stvara nelagodu, nego provjerava svoj postupak i prihvaća ispravak.",
+      "sources": [
+        "navigating",
+        "freedom"
+      ]
+    },
     "mortalSin": {
       "title": "Smrtni grijeh",
       "meaning": "Za smrtni grijeh moraju zajedno postojati ozbiljno pogrešan čin (teška stvar), puna svijest o njegovoj težini i slobodan, promišljen pristanak.",

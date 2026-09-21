@@ -26,6 +26,13 @@
       if (question.unknownOptions !== undefined && !validateOptions(question.unknownOptions)) {
         throw new TypeError(`Invalid uncertain options for ${question.id}.`);
       }
+      if (question.preSpiritualOptions !== undefined) {
+        const options = question.preSpiritualOptions;
+        if (!options || !validateOptions(options.hardenedInSin) || !validateOptions(options.surfaceChristianity) ||
+            options.hardenedInSin.some(option => options.surfaceChristianity.includes(option))) {
+          throw new TypeError(`Invalid pre-spiritual options for ${question.id}.`);
+        }
+      }
       for (const [stage, rule] of Object.entries(question.requirements)) {
         if (!/^[1-6]$/.test(stage) || Number(stage) > highest || !rule || !validateOptions(rule.accepted) ||
             (rule.exempt !== undefined && !validateOptions(rule.exempt))) {
@@ -105,6 +112,28 @@
       status: counts.notMetCount > 0 ? "notSupported"
         : counts.unknownCount > 0 || checks.length === 0 ? "incomplete" : "supported"
     };
+  }
+
+  function describePreSpiritual(assessment, questions, answers) {
+    const ids = assessment.preSpiritualQuestionIds || [];
+    if (!ids.length) return { status: "notAssessed", pattern: null, checks: [] };
+    const checks = ids.map(id => {
+      const question = questions.get(id);
+      if (!question?.preSpiritualOptions) {
+        throw new TypeError(`Missing pre-spiritual question configuration for ${id}.`);
+      }
+      const answer = answerState(question, answers);
+      if (answer.reason) return { id, domain: question.domain, selected: answer.selected, status: "unknown", reason: answer.reason };
+      const pattern = question.preSpiritualOptions.hardenedInSin.includes(answer.selected) ? "hardenedInSin"
+        : question.preSpiritualOptions.surfaceChristianity.includes(answer.selected) ? "surfaceChristianity" : null;
+      return pattern
+        ? { id, domain: question.domain, selected: answer.selected, status: "preSpiritual", pattern }
+        : { id, domain: question.domain, selected: answer.selected, status: "beyondPreSpiritual" };
+    });
+    if (checks.some(check => check.status === "unknown")) return { status: "incomplete", pattern: null, checks };
+    if (checks.some(check => check.status === "beyondPreSpiritual")) return { status: "notSupported", pattern: null, checks };
+    const patterns = new Set(checks.map(check => check.pattern));
+    return { status: "supported", pattern: patterns.size === 1 ? checks[0].pattern : "mixed", checks };
   }
 
   // Describe each area independently using the already evaluated checks. This
@@ -204,6 +233,7 @@
     }
     return {
       stage,
+      preSpiritual: describePreSpiritual(assessment, questions, answers),
       targetStage: target.stage,
       stageChecks,
       domainChecks,

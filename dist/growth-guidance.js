@@ -4,6 +4,9 @@
   // Selection is driven by each area's first unresolved practical threshold.
   const tips = {
   "hr": {
+    "pre-spiritual-sin-v7": "Ako prepoznaješ tvrdoglavo ustrajanje ili umanjivanje teškog grijeha, iznesi jedan konkretan obrazac pred Boga i ispovjednika. Prvi korak nije dokazivanje vlastite vrijednosti, nego iskreno priznanje i odluka da ne ostaneš sam u borbi.",
+    "pre-spiritual-prayer-v7": "Započni kratkim, iskrenim obraćanjem Bogu svaki dan, primjerice: 'Bože, pomozi mi da ti danas stvarno odgovorim.' Važniji je stvaran odnos i ustrajan mali početak nego mnogo izgovorenih riječi.",
+    "pre-spiritual-sacraments-v7": "Provjeri dostupne termine mise i ispovijedi te odaberi jedan konkretan, ostvariv korak. Ako te sprječavaju zdravlje, posao ili skrb za druge, zatraži razborit savjet umjesto da nemogućnost smatraš krivnjom.",
     "mortal-occasions-v4": "Prepoznaj jednu okolnost u kojoj lako pristaneš na poznato teško zlo. Unaprijed odredi razuman način da je izbjegneš ili promijeniš, umjesto da se osloniš samo na snagu volje u tom trenutku.",
     "mortal-fall-v4": "S ispovjednikom razjasni prepoznate svjesne padove i ponavljajuće okolnosti. Ne proglašavaj svaku sumnju smrtnim grijehom; usmjeri se na slobodne izbore koje možeš mijenjati.",
     "mortal-response-v4": {
@@ -104,6 +107,9 @@
     }
   },
   "en": {
+    "pre-spiritual-sin-v7": "If you recognize stubborn persistence or minimization of grave sin, bring one concrete pattern honestly before God and a confessor. The first step is not proving your worth, but admitting the truth and choosing not to face the struggle alone.",
+    "pre-spiritual-prayer-v7": "Begin with one short, sincere turning to God each day, such as: 'God, help me truly respond to you today.' A real relationship and a small persevering beginning matter more than many spoken words.",
+    "pre-spiritual-sacraments-v7": "Check available times for Mass and confession and choose one concrete, achievable step. If health, work or care for others prevents access, seek prudent guidance rather than treating inability as guilt.",
     "mortal-occasions-v4": "Identify one circumstance in which you readily consent to known grave wrongdoing. Plan a reasonable way to avoid or change it instead of relying only on willpower in the moment.",
     "mortal-fall-v4": "Discuss recognized deliberate falls and recurring circumstances with your confessor. Do not label every doubt a mortal sin; focus on free choices you can change.",
     "mortal-response-v4": {

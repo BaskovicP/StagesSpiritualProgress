@@ -5,6 +5,72 @@
   window.spiritualQuestions = window.spiritualQuestions || {};
   window.spiritualQuestions.en = Object.freeze([
   {
+    "id": "pre-spiritual-sin-v7",
+    "kicker": "Before the interior life — grave sin",
+    "title": "Which description best matches my actual attitude toward recognized mortal sin?",
+    "example": "Mark knows that he is seriously defrauding customers. He may stubbornly continue and refuse to examine his conscience, treat the sin as a minor nuisance that is easily settled, or seriously try to resist it and avoid situations that lead him to fall.",
+    "clarification": "This question checks two conditions that the source places before spiritual childhood: hardened in sin and surface Christianity. Mortal sin requires grave matter, full knowledge and deliberate consent. Do not turn doubt into a verdict; if you are unsure, choose uncertainty and discuss it with a confessor.",
+    "optionHeadings": [
+      "Stubbornly persist",
+      "Minimize and yield",
+      "Seriously resist",
+      "Unsure"
+    ],
+    "options": [
+      "I stubbornly persist in recognized grave sin or refuse seriously to form and examine my conscience.",
+      "I treat mortal sin as an insignificant nuisance that is easily forgiven and repeatedly consent when an occasion or temptation appears; confession, if practiced, is almost without remorse.",
+      "I regard mortal sin as serious; I want to resist it, repent after a fall and seek an honest confession.",
+      "I cannot assess my attitude or am unsure whether an act was mortal sin."
+    ],
+    "expectations": {
+      "1": "Regard mortal sin as serious and genuinely try to resist it, with repentance and an honest confession after a fall."
+    }
+  },
+  {
+    "id": "pre-spiritual-prayer-v7",
+    "kicker": "Before the interior life — prayer",
+    "title": "Which description best matches my usual relationship with prayer?",
+    "example": "Anna encounters a difficulty. She may deliberately refuse to turn to God, recite a few distracted words only when nothing else remains, or genuinely return to God even though her prayer is not yet consistent.",
+    "clarification": "This does not ask for perfect attention or strong feelings. The source distinguishes deliberate refusal to have recourse to God from mechanical, superficial prayer that is easily abandoned. The third description does not require developed meditation, only a real opening to God that is no longer refusal or mere outward habit.",
+    "optionHeadings": [
+      "Deliberately refuse",
+      "Mechanical and superficial",
+      "Genuinely turn to God",
+      "Unsure"
+    ],
+    "options": [
+      "I deliberately refuse to turn to God for help or give him a real place in my life.",
+      "My prayer is mostly mechanical, inattentive and last among my priorities; I abandon it easily and rarely enter a sincere personal conversation with God.",
+      "I genuinely turn to God and desire to pray; prayer may not yet be consistent, but it is not deliberate refusal or an empty outward habit.",
+      "I cannot reliably assess my usual relationship with prayer."
+    ],
+    "expectations": {
+      "1": "Genuinely turn to God in prayer, even if prayer has not yet become a consistent habit."
+    }
+  },
+  {
+    "id": "pre-spiritual-sacraments-v7",
+    "kicker": "Before the interior life — Mass and confession",
+    "title": "Which description best matches my actual practice of Mass and confession?",
+    "example": "John has no health, work or family obstacle. He may almost never attend Mass and never go to confession, come only for major feasts, or regularly attend Mass and confess more often than a holiday minimum.",
+    "clarification": "Take actual access, health, work and care for others into account. Here the source distinguishes an almost complete absence of sacramental practice from sporadic participation, often only at Easter and Christmas. Inability is not the same as deliberate neglect.",
+    "optionHeadings": [
+      "Rarely or never",
+      "Only sporadically",
+      "Regular practice",
+      "Unsure or no access"
+    ],
+    "options": [
+      "Although Mass and confession are reasonably available to me, I rarely or never attend Mass and do not go to confession.",
+      "I attend Mass and confession sporadically, often only at Easter, Christmas or similar occasions.",
+      "I attend Mass regularly and approach confession more often than a sporadic holiday minimum.",
+      "I cannot assess this, or Mass or confession was not reasonably available to me in this period."
+    ],
+    "expectations": {
+      "1": "Attend Mass regularly and approach confession more often than a sporadic holiday minimum when they are available."
+    }
+  },
+  {
     "id": "mortal-occasions-v4",
     "kicker": "Avoiding occasions",
     "title": "How do I respond to known proximate occasions of mortal sin?",

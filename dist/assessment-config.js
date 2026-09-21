@@ -4,7 +4,12 @@
   // Source-linked practical requirements, never averaged.
   // Gradation links an overview answer to a source description, not an awarded stage.
   window.spiritualAssessment = Object.freeze({
-    "questionnaireVersion": 6,
+    "questionnaireVersion": 7,
+    "preSpiritualQuestionIds": [
+      "pre-spiritual-sin-v7",
+      "pre-spiritual-prayer-v7",
+      "pre-spiritual-sacraments-v7"
+    ],
     "domainOrder": [
       "seriousSin",
       "venialSin",
@@ -25,6 +30,87 @@
       "sacraments": 4
     },
     "questionBlueprints": [
+      {
+        "id": "pre-spiritual-sin-v7",
+        "domain": "seriousSin",
+        "sources": [
+          "Pre-Spiritual Childhood. Hardened in Sin. Mortal Sin",
+          "Pre-Spiritual Childhood. Surface Christianity. Mortal Sin"
+        ],
+        "requirements": {
+          "1": {
+            "accepted": [
+              2
+            ]
+          }
+        },
+        "preSpiritualOptions": {
+          "hardenedInSin": [
+            0
+          ],
+          "surfaceChristianity": [
+            1
+          ]
+        },
+        "unknownOptions": [
+          3
+        ],
+        "optionCount": 4
+      },
+      {
+        "id": "pre-spiritual-prayer-v7",
+        "domain": "prayer",
+        "sources": [
+          "Pre-Spiritual Childhood. Hardened in Sin. Prayer",
+          "Pre-Spiritual Childhood. Surface Christianity. Prayer"
+        ],
+        "requirements": {
+          "1": {
+            "accepted": [
+              2
+            ]
+          }
+        },
+        "preSpiritualOptions": {
+          "hardenedInSin": [
+            0
+          ],
+          "surfaceChristianity": [
+            1
+          ]
+        },
+        "unknownOptions": [
+          3
+        ],
+        "optionCount": 4
+      },
+      {
+        "id": "pre-spiritual-sacraments-v7",
+        "domain": "sacraments",
+        "sources": [
+          "Pre-Spiritual Childhood. Hardened in Sin. Sacraments",
+          "Pre-Spiritual Childhood. Surface Christianity. Sacraments"
+        ],
+        "requirements": {
+          "1": {
+            "accepted": [
+              2
+            ]
+          }
+        },
+        "preSpiritualOptions": {
+          "hardenedInSin": [
+            0
+          ],
+          "surfaceChristianity": [
+            1
+          ]
+        },
+        "unknownOptions": [
+          3
+        ],
+        "optionCount": 4
+      },
       {
         "id": "mortal-occasions-v4",
         "domain": "seriousSin",

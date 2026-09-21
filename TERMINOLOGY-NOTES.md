@@ -2,9 +2,9 @@
 
 ## Što je promijenjeno
 
-Sva 36 pitanja imaju izričito odabran skup povezanih pojmova. Jezgra sadrži 28 dvojezičnih objašnjenja: značenje, važnu razliku, autorski primjer i izvore. Cijeli pretraživi pojmovnik dodatno odvaja pet izraza koji se pojavljuju samo u opisima stupnjeva i jednu sigurnosnu napomenu o skrupuloznosti. Tih šest zapisa nisu kriteriji procjene. Glavno značenje i razlika uz pitanje uvijek su vidljivi; povezani pojmovi grupirani su u jedan izvorni HTML element `details`. Primjeri i izvori otvaraju se tipkovnicom ili dodirom. Nema objašnjenja dostupnih samo prelaskom miša.
+Svih 39 pitanja ima izričito odabran skup povezanih pojmova. Jezgra sadrži 31 dvojezično objašnjenje: značenje, važnu razliku, autorski primjer i izvore. Tri nova pojma — predduhovno djetinjstvo, nutarnji život i oblikovanje savjesti — prate nova početna pitanja. Cijeli pretraživi pojmovnik dodatno odvaja pet izraza koji se pojavljuju samo u opisima stupnjeva i jednu sigurnosnu napomenu o skrupuloznosti. Tih šest zapisa nisu kriteriji procjene.
 
-Pojmovi nisu dodatna pitanja ni kriteriji. Verzija ostaje 6; ID-jevi, ponuđeni odgovori, njihovi redni brojevi, očekivanja i algoritam nisu izmijenjeni. Šest pitanja ima jasniji naslov, primjer ili pojašnjenje. Postojeći odgovori ostaju sačuvani; korisnik ih može pregledati i promijeniti nakon čitanja objašnjenja. Ovo nije psihometrijska validacija ni crkvena procjena osobe.
+Pojmovi nisu dodatna pitanja ni kriteriji. Verzija 7 dodaje tri pitanja i njihove izričite veze s pojmovima; ostale veze ostaju nepromijenjene. Ovo nije psihometrijska validacija ni crkvena procjena osobe.
 
 ## Ključne razlike
 
@@ -31,6 +31,9 @@ Prvi pojam u retku prikazan je odmah; ostali se otvaraju na klik.
 
 | ID pitanja | Pojmovi |
 | --- | --- |
+| `pre-spiritual-sin-v7` | Predduhovno djetinjstvo; Smrtni grijeh; Savjest i njezino oblikovanje; Napast, svijest i slobodan pristanak |
+| `pre-spiritual-prayer-v7` | Predduhovno djetinjstvo; Nutarnji život; Usmena molitva |
+| `pre-spiritual-sacraments-v7` | Predduhovno djetinjstvo; Misa, Euharistija i pričest; Ispovijed (sakrament pomirenja) |
 | `mortal-occasions-v4` | Bliska i daleka grešna prigoda; Smrtni grijeh; Napast, svijest i slobodan pristanak |
 | `mortal-pattern-v6` | Smrtni grijeh; Bliska i daleka grešna prigoda; Napast, svijest i slobodan pristanak |
 | `mortal-fall-v4` | Napast, svijest i slobodan pristanak; Smrtni grijeh |
@@ -70,7 +73,7 @@ Prvi pojam u retku prikazan je odmah; ostali se otvaraju na klik.
 
 ## Izvori i granice korištenja
 
-Osnovna gradacija ostaje preuzeta iz korisničkog `stages-of-spiritual-progress.md`; `three-ways.md` daje dodatni kontekst, a `Glossary.md` terminološko polazište. Te se datoteke ne prepisuju nekritički u korisničko sučelje. Suvremeni Katekizam i Kompendij koriste se za opće definicije, a ne za stvaranje novih uvjeta ocjenjivanja. Povijesni enciklopedijski članak koristi se samo za razliku bliske/daleke prigode, ne za uvođenje povijesnih pravila ispovijedanja. Pravilo uključivanja i odluke za izostavljene izraze dokumentirani su u `GLOSSARY-AUDIT.hr.md`.
+Osnovna gradacija ostaje preuzeta iz korisničkog `stages-of-spiritual-progress.md`, a faza prije puta iz odjeljka **Pre-Spiritual Childhood** u `Navitagint.md`; `three-ways.md` daje dodatni kontekst, a `Glossary.md` terminološko polazište. Te se datoteke ne prepisuju nekritički u korisničko sučelje. Suvremeni Katekizam i Kompendij koriste se za opće definicije, a ne za stvaranje novih uvjeta ocjenjivanja. Povijesni enciklopedijski članak koristi se samo za razliku bliske/daleke prigode, ne za uvođenje povijesnih pravila ispovijedanja.
 
 - [CCC 1854–1863](https://www.vatican.va/archive/ENG0015/__P6C.HTM)
 - [CCC 1730–1735](https://www.vatican.va/content/catechism/en/part_three/section_one/chapter_one/article_3/i_freedom_and_responsibility.html)

@@ -29,7 +29,7 @@ test('seven explicit progressions follow the supplied ranges, without filling so
   };
   const anchors = config.questionBlueprints.filter(q=>q.gradation);
   assert.equal(anchors.length,7);
-  assert.equal(config.questionBlueprints.length,36);
+  assert.equal(config.questionBlueprints.length,39);
   for (const q of anchors) {
     assert.deepEqual(clone(q.gradation.map(s=>[s.from,s.to,s.option])),expected[q.domain]);
     for (const lang of ['hr','en']) {

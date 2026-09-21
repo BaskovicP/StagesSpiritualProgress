@@ -13,7 +13,7 @@
     "glossaryTitle": "Glossary for this reflection",
     "glossaryIntro": "Terms that can change how you understand a question or answer come first. Expressions found only in stage descriptions are separated because the questionnaire does not assess them.",
     "coreHeading": "Terms used in the questions",
-    "coreIntro": "These terms are directly associated with one or more of the 36 questions.",
+    "coreIntro": "These terms are directly associated with one or more of the 39 questions.",
     "contextHeading": "Terms found only in stage descriptions",
     "contextIntro": "They help you read the source description but are not result requirements.",
     "safetyHeading": "Important safety distinction",
@@ -28,6 +28,35 @@
     "sourceNote": "These explanations help with understanding; they add no new scoring requirements."
   },
   "terms": {
+    "preSpiritualChildhood": {
+      "title": "Pre-Spiritual Childhood",
+      "meaning": "The source's name for the phase before spiritual childhood and the purgative way, in which a person has not yet entered the interior life in a meaningful way.",
+      "distinction": "It is not a verdict on a person's worth or a claim that grace is absent. It describes a present pattern concerning sin, prayer and the sacraments and invites a first real step of conversion.",
+      "example": "A person may identify as Christian while praying only mechanically and approaching the sacraments sporadically; the source distinguishes this from an initial, even if still weak, interior struggle.",
+      "sources": [
+        "navigating"
+      ]
+    },
+    "interiorLife": {
+      "title": "Interior life",
+      "meaning": "A real personal relationship with God that gradually shapes conscience, prayer, choices and sacramental life, rather than merely outward affiliation or habit.",
+      "distinction": "It does not mean constant consolation or withdrawal from ordinary duties. It begins with sincerely turning to God and becoming willing to let life change before him.",
+      "example": "Anna does not say a prayer only from habit; she honestly tells God what troubles her and allows that encounter to shape her next choice.",
+      "sources": [
+        "navigating",
+        "ways"
+      ]
+    },
+    "conscience": {
+      "title": "Conscience and its formation",
+      "meaning": "Conscience is a judgment of reason about the moral quality of a concrete act; it needs sincere and continuing formation in truth and goodness.",
+      "distinction": "Conscience is not merely a passing feeling of comfort or guilt. Ignorance, habit or refusal to examine oneself can distort it; seek reliable guidance in serious doubt.",
+      "example": "Mark does not decide that fraud is good merely because it no longer makes him uncomfortable; he examines his conduct and accepts correction.",
+      "sources": [
+        "navigating",
+        "freedom"
+      ]
+    },
     "mortalSin": {
       "title": "Mortal sin",
       "meaning": "Mortal sin requires all three together: a seriously wrong act (grave matter), full awareness of its gravity, and free, deliberate consent.",

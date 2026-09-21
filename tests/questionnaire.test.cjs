@@ -89,10 +89,10 @@ function testBank() {
     const questions=app.call('get_spiritual_reflection_questions').questions;
     const bank=app.window.spiritualQuestions[lang];
     const config=app.window.spiritualAssessment;
-    assert.equal(config.questionnaireVersion,6);
+    assert.equal(config.questionnaireVersion,7);
     assert.equal(config.highestAssessedStage,6);
-    assert.equal(questions.length,36);
-    assert.equal(new Set(questions.map(q=>q.id)).size,36);
+    assert.equal(questions.length,39);
+    assert.equal(new Set(questions.map(q=>q.id)).size,39);
     assert.equal(copy.stages.length,7);
     assert.match(app.element('#stage-path').innerHTML,/VII\./);
     assert.ok(app.element('#advanced-source-guide').innerHTML.includes(copy.stages[5].name));
@@ -144,7 +144,7 @@ function testPatterns() {
     const allSkipped=Object.fromEntries(app.window.spiritualAssessment.questionBlueprints.map(q=>[q.id,'skip']));
     const unknown=resultFor(app,allSkipped);
     assert.equal(unknown.stage,null);
-    assert.equal(unknown.skipped,36);
+    assert.equal(unknown.skipped,39);
     assert.ok(unknown.stageChecks[0].checks.every(c=>c.status==='unknown'));
   }
 }
@@ -211,7 +211,7 @@ function testCircumstances() {
 function testPersistence() {
   const storage=new Map([['spiritual-progress-reflection:v3',JSON.stringify({version:3,language:'en',view:'result',answers:{'examen-daily':4}})]]);
   const app=boot('hr',storage);
-  const key='spiritual-progress-reflection:v6';
+  const key='spiritual-progress-reflection:v7';
   assert.equal(app.element('#intro-view').hidden,false);
   assert.deepEqual(JSON.parse(storage.get(key)).answers,{});
   const before=resultFor(app,{...strongAnswers(app),'examen-pattern-v6':2});
@@ -235,10 +235,38 @@ function testPersistence() {
 
 test("both languages have aligned explicit question options, stories and requirements", testBank);
 test("null and I–VI practical patterns render without numerical scores or a VII result", testPatterns);
+test("pre-spiritual childhood is a real result with hardened, surface and mixed patterns", () => {
+  for (const language of ['hr', 'en']) {
+    const app = boot(language);
+    const strong = strongAnswers(app);
+    const ids = app.window.spiritualAssessment.preSpiritualQuestionIds;
+    for (const [pattern, options] of [
+      ['hardenedInSin', [0, 0, 0]],
+      ['surfaceChristianity', [1, 1, 1]],
+      ['mixed', [0, 1, 1]]
+    ]) {
+      const answers = {...strong, ...Object.fromEntries(ids.map((id, index) => [id, options[index]]))};
+      const result = resultFor(app, answers);
+      const copy = app.window.spiritualLocales[language];
+      assert.equal(result.stage, null);
+      assert.equal(result.preSpiritual.status, 'supported');
+      assert.equal(result.preSpiritual.pattern, pattern);
+      assert.equal(app.element('#result-number').textContent, copy.preSpiritual.badge);
+      assert.equal(app.element('#result-heading').textContent, `${copy.preSpiritual.name} — ${copy.preSpiritual.patterns[pattern].name}`);
+      assert.equal(app.element('#result-ascent-marker').attributes.visibility, 'visible');
+      assert.equal(result.sourceDescription.describedStage, 'preSpiritual');
+    }
+    const beyond = resultFor(app, {...strong, [ids[0]]: 0, [ids[1]]: 2, [ids[2]]: 1});
+    assert.equal(beyond.preSpiritual.status, 'notSupported');
+    assert.equal(app.element('#result-number').textContent, '—');
+    const uncertain = resultFor(app, {...strong, [ids[0]]: 0, [ids[1]]: 'skip', [ids[2]]: 1});
+    assert.equal(uncertain.preSpiritual.status, 'incomplete');
+  }
+});
 test("each real-bank required condition fails closed on a contrary or skipped answer", testEveryGate);
 test("rare deliberate venial sin, daily examen, quarterly confession or merely regular prayer cannot pass IV", testExactThresholds);
 test("actual-event exemptions, contradictions, inaccessible sacraments and no suffering evidence are distinct", testCircumstances);
-test("v6 answers survive refresh, translation, criterion review and restart; v3 is not reused", testPersistence);
+test("v7 answers survive refresh, translation, criterion review and restart; v3 is not reused", testPersistence);
 
 test('the maintained source map matches every current Croatian question, story, option and expectation', () => {
   const app = boot('hr');
@@ -254,6 +282,11 @@ test('the maintained source map matches every current Croatian question, story, 
       if (section && topic) validReferences.add(`${section}. ${topic[1]}`);
     }
   }
+  for (const state of ['Hardened in Sin', 'Surface Christianity']) {
+    for (const topic of ['Mortal Sin', 'Prayer', 'Sacraments']) {
+      validReferences.add(`Pre-Spiritual Childhood. ${state}. ${topic}`);
+    }
+  }
   for (const [index, question] of app.window.spiritualQuestions.hr.entries()) {
     for (const text of [question.title, question.example, question.clarification,
       ...question.options, ...Object.values(question.expectations)]) {
@@ -266,7 +299,7 @@ test('the maintained source map matches every current Croatian question, story, 
   }
 });
 
-const reflectionStorageKey = 'spiritual-progress-reflection:v6';
+const reflectionStorageKey = 'spiritual-progress-reflection:v7';
 
 function stored(app) {
   return JSON.parse(app.storage.get(reflectionStorageKey));
@@ -305,11 +338,11 @@ function assertStageDialog(app, language, index) {
   }
   assert.equal(app.element('#stage-dialog-reference').textContent,
     copy.sourceDescriptionReference.replaceAll('{stage}', roman));
-  assert.equal(app.element('#stage-dialog-previous').disabled, index === 0);
+  assert.equal(app.element('#stage-dialog-previous').disabled, false);
   assert.equal(app.element('#stage-dialog-next').disabled, index === 6);
 }
 
-test('all seven source stages are browsable from the start without answering or calculating', () => {
+test('the prior phase and all seven source stages are browsable from the start without answering or calculating', () => {
   for (const language of ['hr', 'en']) {
     const app = boot(language);
     const stageButtons = [...app.element('#stage-path').innerHTML.matchAll(/<button\b[^>]*data-stage-index="(\d)"[^>]*>/g)];
@@ -331,10 +364,13 @@ test('all seven source stages are browsable from the start without answering or 
   }
 });
 
-test('stage dialog paging stops at I and VII and follows an in-place language switch', () => {
+test('stage dialog paging stops at the prior phase and VII and follows an in-place language switch', () => {
   const app = boot('hr');
   openStage(app, 0);
   app.element('#stage-dialog-previous').listeners.click();
+  assert.equal(app.element('#stage-dialog-heading').textContent, 'Prije I. Predduhovno djetinjstvo');
+  assert.equal(app.element('#stage-dialog-previous').disabled, true);
+  app.element('#stage-dialog-next').listeners.click();
   assertStageDialog(app, 'hr', 0);
   for (let index = 1; index < 7; index++) {
     app.element('#stage-dialog-next').listeners.click();
@@ -429,7 +465,7 @@ test('returning to results recalculates edits and preserves all practical answer
   assert.deepEqual(stored(fromQuestion).answers, {});
 });
 
-test('all-stages buttons expose all seven source descriptions without changing answers', () => {
+test('all-stages buttons expose the prior phase and all seven source descriptions without changing answers', () => {
   for (const lang of ['hr','en']) {
     const app=boot(lang);
     for (const id of ['#all-stages-button','#result-stages-button']) {
@@ -438,7 +474,8 @@ test('all-stages buttons expose all seven source descriptions without changing a
       assert.equal(app.element('#stage-single-content').hidden,true);
       assert.equal(app.element('#stage-dialog-navigation').hidden,true);
       const content=app.element('#stage-all-descriptions').innerHTML;
-      assert.equal([...content.matchAll(/class="all-stage-entry"/g)].length,7);
+      assert.equal([...content.matchAll(/class="all-stage-entry"/g)].length,8);
+      assert.ok(content.includes(escaped(app.window.spiritualLocales[lang].preSpiritual.name)));
       for(const stage of app.window.spiritualLocales[lang].stages) assert.ok(content.includes(escaped(stage.name)));
       app.element('#stage-dialog-close').listeners.click();
     }
@@ -461,7 +498,7 @@ test('v4 practical answers migrate unchanged, removed experience reports are dis
   const app=boot('hr',storage);
   assert.deepEqual(stored(app).answers,answers);
   assert.equal(stored(app).language,'en');
-  assert.equal(stored(app).currentIndex,1);
+  assert.equal(stored(app).currentIndex,0);
   assert.equal(app.element('#question-view').hidden,false);
   assert.equal(stored(app).mysticalAnswers,undefined);
   assert.equal(storage.has('spiritual-progress-reflection:v4'),false);
@@ -477,7 +514,7 @@ test('v4 practical answers migrate unchanged, removed experience reports are dis
 test('v5 migration retains 29 unchanged answers, never reuses seven rewritten option indices, and survives another refresh', () => {
   const original=boot('hr');
   const current=strongAnswers(original);
-  const unchanged=Object.fromEntries(Object.entries(current).filter(([id])=>!id.endsWith('-v6')));
+  const unchanged=Object.fromEntries(Object.entries(current).filter(([id])=>!id.endsWith('-v6')&&!id.endsWith('-v7')));
   const oldIds=['mortal-resistance-v4','venial-vigilance-v4','imperfections-watch-v4','suffering-peace-v4','prayer-vocal-v4','examen-frequency-v4','sacraments-fervent-participation-v4'];
   assert.equal(Object.keys(unchanged).length,29);
   for(const view of ['intro','question','result']) {
@@ -489,7 +526,7 @@ test('v5 migration retains 29 unchanged answers, never reuses seven rewritten op
     assert.equal(stored(app).reviewUpdatedQuestions,true);
     assert.equal(app.element('#intro-results-button').hidden,true);
     assert.equal(storage.has('spiritual-progress-reflection:v5'),false);
-    if(view!=='intro')assert.equal(stored(app).currentIndex,1);
+    if(view!=='intro')assert.equal(stored(app).currentIndex,0);
     app=boot('en',storage);
     assert.deepEqual(stored(app).answers,unchanged);
     assert.equal(app.element('#migration-notice').hidden,false);
@@ -500,6 +537,25 @@ test('v5 migration retains 29 unchanged answers, never reuses seven rewritten op
     assert.deepEqual(stored(app).answers,{});
     assert.equal(app.element('#migration-notice').hidden,true);
   }
+});
+
+test('v6 migration retains all 36 earlier answers and requests only the three new pre-spiritual answers', () => {
+  const original = boot('hr');
+  const current = strongAnswers(original);
+  const legacyAnswers = Object.fromEntries(Object.entries(current).filter(([id]) => !id.endsWith('-v7')));
+  assert.equal(Object.keys(legacyAnswers).length, 36);
+  const storage = new Map([['spiritual-progress-reflection:v6', JSON.stringify({
+    version: 6, language: 'hr', currentIndex: 35, view: 'result', answers: legacyAnswers
+  })]]);
+  const app = boot('en', storage);
+  assert.deepEqual(stored(app).answers, legacyAnswers);
+  assert.equal(stored(app).currentIndex, 0);
+  assert.equal(app.element('#question-view').hidden, false);
+  assert.equal(app.element('#migration-notice').hidden, false);
+  assert.equal(storage.has('spiritual-progress-reflection:v6'), false);
+  assert.throws(() => app.call('calculate_spiritual_reflection_result'));
+  assert.equal(resultFor(app, current).stage, 6);
+  assert.equal(app.element('#migration-notice').hidden, true);
 });
 
 test('graduated overview questions show localized short headings and results show seven separate source ladders', () => {
@@ -546,7 +602,7 @@ test('next-stage overview opens the exact question and criteria, then recalculat
   for(const language of ['hr','en']) {
     const app=boot(language),answers={...strongAnswers(app),'prayer-pattern-v6':1};
     resultFor(app,answers);
-    const saved=JSON.parse(app.storage.get('spiritual-progress-reflection:v6')).answers;
+    const saved=JSON.parse(app.storage.get('spiritual-progress-reflection:v7')).answers;
     const summary=app.element('#next-stage-summary');
     assert.match(summary.innerHTML,/data-next-domain="prayer"/);
     summary.listeners.click({target:{closest:selector=>selector==='[data-next-criteria]'?{dataset:{nextCriteria:'2'}}:null}});
@@ -557,7 +613,7 @@ test('next-stage overview opens the exact question and criteria, then recalculat
     assert.equal(app.element('#question-title').textContent,app.window.spiritualQuestions[language][index].title);
     assert.equal(app.element('#question-view').hidden,false);
     assert.equal(app.element('#question-results-button').hidden,false);
-    assert.deepEqual(JSON.parse(app.storage.get('spiritual-progress-reflection:v6')).answers,saved);
+    assert.deepEqual(JSON.parse(app.storage.get('spiritual-progress-reflection:v7')).answers,saved);
     app.element('#question-results-button').listeners.click();
     assert.equal(app.element('#result-view').hidden,false);
     assert.match(summary.innerHTML,/data-next-domain="prayer"/);

@@ -14,10 +14,10 @@ const review = fs.readFileSync(path.join(root,'THREE-WAYS-REVIEW.md'),'utf8');
 
 test('twenty bilingual contextual refinements cite real passages without replacing the original scoring references', () => {
   const hr=window.spiritualQuestions.hr, en=window.spiritualQuestions.en;
-  assert.equal(hr.length,36);
+  assert.equal(hr.length,39);
   assert.equal(hr.filter(q=>q.contextSources).length,20);
   assert.equal(en.filter(q=>q.contextSources).length,20);
-  assert.equal(window.spiritualAssessment.questionnaireVersion,6);
+  assert.equal(window.spiritualAssessment.questionnaireVersion,7);
   for(const [i,q] of hr.entries()) {
     assert.deepEqual(Array.from(q.contextSources||[]),Array.from(en[i].contextSources||[]));
     assert.equal(q.id,en[i].id);

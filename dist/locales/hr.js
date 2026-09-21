@@ -21,14 +21,14 @@
   "restart": "Počni ispočetka",
   "restartConfirm": "Početi ispočetka i izbrisati sve spremljene odgovore?",
   "privacyNote": "Tvoji odgovori ostaju u ovoj kartici i nestaju kada je zatvoriš.",
-  "pathEyebrow": "Sedam stupnjeva",
+  "pathEyebrow": "Faza prije puta i sedam stupnjeva",
   "pathTitle": "Put, a ne rang-lista",
   "pathHint": "Klikni ili dodirni bilo koji stupanj: otvara se opis i konkretna obilježja.",
   "exploreStageLabel": "Pročitaj opis: {stage}. {name}",
-  "stageDetailsTitle": "Stupnjevi prema izvornom tekstu",
+  "stageDetailsTitle": "Faza i stupnjevi prema izvornom tekstu",
   "closeStageDetails": "Zatvori opis",
-  "previousStage": "Prethodni stupanj",
-  "nextStage": "Sljedeći stupanj",
+  "previousStage": "Prethodna faza",
+  "nextStage": "Sljedeća faza",
   "backToResults": "Natrag na rezultate",
   "viewResults": "Prikaži rezultate",
   "openGlossary": "Najprije pročitaj pojmovnik",
@@ -40,7 +40,7 @@
   "glossaryNoResults": "Nijedan pojam ne odgovara pretraživanju.",
   "glossaryCount": "Prikazano {shown} od {total} pojmova.",
   "homeLabel": "Početna",
-  "pathAssessmentNote": "Upitnik uspoređuje praktične obrasce I–VI. Ne potvrđuje cjelovit duhovni stupanj ni mistične milosti. VII. je prikazan samo prema nazivu jer za njega nema opisa u priloženom izvoru.",
+  "pathAssessmentNote": "Upitnik sada prepoznaje i fazu predduhovnog djetinjstva prije puta čišćenja te uspoređuje praktične obrasce I–VI. Ne potvrđuje cjelovito duhovno stanje ni mistične milosti. VII. je prikazan samo prema nazivu jer za njega nema opisa u priloženom izvoru.",
   "backToIntro": "Natrag",
   "yourProgress": "Tvoj napredak",
   "chooseClosest": "Misli na proteklih osam tjedana, osim kada pitanje izričito pita za ustaljeni raspored. Odaberi opis onoga što se stvarno događalo, a ne svoje namjere ili najbolji dan. Ako nijedan opis ne odgovara ili nisi siguran, preskoči. Priča samo pojašnjava pitanje.",
@@ -53,7 +53,7 @@
   "footerIdentity": "Stupnjevi duhovnog napretka",
   "resultEyebrow": "Praktična očekivanja koja odgovori podupiru",
   "ascentTitle": "Usporedba s izvornim opisom",
-  "ascentUnassessedNote": "I–VI: praktična usporedba, ne potvrda duhovnoga stanja. VII: bez procjene.",
+  "ascentUnassessedNote": "Prije I.: procjena triju izvornih obilježja predduhovne faze. I–VI: praktična usporedba, ne potvrda duhovnoga stanja. VII: bez procjene.",
   "ascentPosition": "Odgovori podupiru praktične uvjete povezane s {stage}. stupnjem. To nije potvrda duhovnog stupnja.",
   "calculatedLocally": "Izračunato na ovom uređaju",
   "resultRangeLabel": "Granica ove provjere",
@@ -69,11 +69,12 @@
   "printResult": "Ispiši rezultat",
   "retake": "Izbriši i ponovi",
   "methodTitle": "Kako se provjeravaju uvjeti",
-  "methodBody": "Nema zbrajanja bodova, prosjeka ni zaokruživanja. Za svaki prag I–VI svi njegovi praktični uvjeti i pozitivni temelji nižih pragova moraju biti poduprti. Nepoduprt ili nepoznat obavezni uvjet zaustavlja viši rezultat. Dopuštene neprimjenjive okolnosti navode se odvojeno i nisu dokaz napretka. Slabosti nižih stupnjeva nisu zahtjevi koje treba zadržati. Izvor ne daje ovaj algoritam: pragovi, nasljeđivanje pozitivnih temelja i razlikovanje povremene od postojane žrtve autorske su operacionalizacije. Za V–VI dodatno se provjeravaju praktični opisi nesavršenosti, patnje i molitvenoga života; mistični elementi izvora izostavljeni su iz procjene i time nisu potvrđeni. Pojedinačno područje ne dobiva viši broj samo zato što se isti uvjeti nasljeđuju. VII. se ne procjenjuje. Nema postotka sigurnosti ni potvrde svetosti.",
+  "methodBody": "Nema zbrajanja bodova, prosjeka ni zaokruživanja. Tri početna pitanja mogu poduprijeti fazu predduhovnog djetinjstva samo kada sva tri odgovora odgovaraju jednom od njezina dva stanja; mješavina tih stanja prikazuje se kao miješan predduhovni obrazac. Za svaki prag I–VI svi njegovi praktični uvjeti i pozitivni temelji nižih pragova moraju biti poduprti. Nepoduprt ili nepoznat obavezni uvjet zaustavlja viši rezultat. Dopuštene neprimjenjive okolnosti navode se odvojeno i nisu dokaz napretka. Slabosti nižih stupnjeva nisu zahtjevi koje treba zadržati. Izvor ne daje ovaj algoritam: pragovi, nasljeđivanje pozitivnih temelja i razlikovanje povremene od postojane žrtve autorske su operacionalizacije. Za V–VI dodatno se provjeravaju praktični opisi nesavršenosti, patnje i molitvenoga života; mistični elementi izvora izostavljeni su iz procjene i time nisu potvrđeni. Pojedinačno područje ne dobiva viši broj samo zato što se isti uvjeti nasljeđuju. VII. se ne procjenjuje. Nema postotka sigurnosti ni potvrde svetosti.",
   "methodPrivacy": "Odgovori, napredak, rezultat i jezik čuvaju se samo u privremenoj memoriji ove kartice kako bi preživjeli osvježavanje stranice. Nikada se ne šalju i brišu se zatvaranjem kartice. Ne upotrebljavaju se kolačići, analitika ni identifikatori.",
   "notAnswered": "Bez odgovora",
   "answeredSummary": "Odabrano {answered} od {total} odgovora · preskočeno {skipped}. Odabran nejasan odgovor također ostaje nepoznat za provjeru.",
   "families": {
+    "preInterior": "Prije puta čišćenja",
     "purgative": "Put čišćenja",
     "illuminative": "Put prosvjetljenja",
     "unitive": "Put sjedinjenja"
@@ -86,6 +87,53 @@
     "prayer": "Molitva",
     "examen": "Ispit savjesti",
     "sacraments": "Sakramenti"
+  },
+  "preSpiritual": {
+    "label": "Prije I.",
+    "badge": "← I",
+    "name": "Predduhovno djetinjstvo",
+    "family": "preInterior",
+    "assessmentNote": "Procjenjuje se samo kada sva tri početna odgovora odgovaraju opisima prije ulaska u nutarnji život.",
+    "summary": "Izvor ovu fazu stavlja prije duhovnog djetinjstva i puta čišćenja. Opisuje osobe koje još nisu ušle u nutarnji život na smislen način te razlikuje okorjelost u grijehu i površno kršćanstvo.",
+    "sourceDescription": [
+      {
+        "domain": "seriousSin",
+        "text": "U okorjelosti postoji tvrdoglavo ustrajanje u grijehu zbog neznanja ili teško iskrivljene ili nerazvijene savjesti. U površnom kršćanstvu smrtni se grijeh smatra nevažnom smetnjom koja se lako oprašta te mu se redovito popušta; ispovijed je, ako se prakticira, gotovo bez kajanja."
+      },
+      {
+        "domain": "prayer",
+        "text": "Okorjelost uključuje namjerno odbijanje obraćanja Bogu za pomoć. U površnom kršćanstvu molitva je mehanička, rastresena, zadnja među prioritetima i lako se napušta."
+      },
+      {
+        "domain": "sacraments",
+        "text": "U okorjelosti se na misu ide rijetko ili nikada i ne pristupa se ispovijedi. U površnom kršćanstvu misa i ispovijed ostaju sporadične, često samo za Uskrs i Božić."
+      }
+    ],
+    "patterns": {
+      "hardenedInSin": {
+        "name": "Okorjelost u grijehu",
+        "summary": "Sva tri početna odgovora odgovaraju izvorovu opisu okorjelosti u grijehu. To nije etiketa vrijednosti osobe, nego ozbiljan poziv da se uz pomoć milosti, ispovjednika ili pouzdane osobe napravi prvi stvarni korak prema Bogu.",
+        "sourceDescription": [
+          { "domain": "seriousSin", "text": "Tvrdoglavo ustrajanje u grijehu zbog neznanja ili teško iskrivljene ili nerazvijene savjesti." },
+          { "domain": "prayer", "text": "Namjerno odbijanje obraćanja Bogu za bilo kakvu pomoć ili providnost." },
+          { "domain": "sacraments", "text": "Na misu se ide rijetko ili nikada, a ispovijedi se ne pristupa." }
+        ]
+      },
+      "surfaceChristianity": {
+        "name": "Površno kršćanstvo",
+        "summary": "Sva tri početna odgovora odgovaraju izvorovu opisu površnog kršćanstva: vjera je prisutna izvana, ali još rijetko ulazi u savjest, osobnu molitvu i redovitu sakramentalnu praksu.",
+        "sourceDescription": [
+          { "domain": "seriousSin", "text": "Smrtni grijeh smatra se nevažnom smetnjom koja se lako oprašta te mu se redovito popušta pri prilici ili napasti; ispovijed je, ako se prakticira, gotovo bez kajanja." },
+          { "domain": "prayer", "text": "Molitva je mehanička, rastresena, zadnja među prioritetima ili se lako napušta; ulazak u sebe pred Bogom rijedak je i površan." },
+          { "domain": "sacraments", "text": "Na misu i ispovijed ide se sporadično, često samo za Uskrs i Božić." }
+        ]
+      },
+      "mixed": {
+        "name": "Miješan predduhovni obrazac",
+        "summary": "Početni odgovori ostaju unutar faze prije nutarnjeg života, ali ne odgovaraju svi istom od dvaju izvornih stanja. Pregledaj svaki od triju odgovora zasebno i razluči prvi konkretan korak prema ozbiljnoj borbi protiv grijeha, stvarnoj molitvi i redovitoj sakramentalnoj praksi."
+      }
+    },
+    "sourceReference": "Prepričano prema tekstu Self-Diagnosis of Your Current Spiritual Progress, odjeljak Pre-Spiritual Childhood."
   },
   "stages": [
     {
@@ -350,7 +398,7 @@
   "advancedSourceTitle": "Što praktična usporedba može, a što ne može pokazati",
   "readStage": "Pročitaj opis",
   "allStagesButton": "Istraži sve faze",
-  "allStagesTitle": "Svih sedam faza na jednom mjestu",
+  "allStagesTitle": "Faza prije puta i svih sedam stupnjeva",
   "advancedPracticalNote": "V. i VI. ovdje su samo praktične usporedbe. Izvorna tablica spominje kontemplaciju i pasivno čišćenje. Dodatni tekst izričito kaže da dar kontemplacije nije dan svima koji su uznapredovali u ljubavi, a izvanredna iskustva mogu se javiti i kod početnika. Njihov izostanak nije razlog za niži rezultat. Upitnik ih ne provjerava niti potvrđuje postignutu relativnu ili herojsku savršenost.",
   "growthIntro": "Prijedlozi su usmjereni na ljubav i konkretne kreposti, ne na postizanje višeg broja. Za svako područje odaberi jedan ostvariv korak. To nisu dodatni uvjeti, jamstvo napretka ni zamjena za duhovno vodstvo.",
   "growth": {
@@ -403,7 +451,7 @@
     "questionHint": "Opisi pokazuju različite obrasce. Odaberi onaj koji kao cjelina odgovara tvojoj uobičajenoj praksi, ne najviši koji ti je ponekad uspio.",
     "detail": "Što opis znači"
   },
-  "migrationNotice": "Sedam pitanja ima nove opise. Sačuvani su odgovori na nepromijenjena pitanja; nova i preoblikovana pitanja treba odgovoriti prije ponovnog izračuna.",
+  "migrationNotice": "Dodana su tri pitanja o fazi prije puta čišćenja. Sačuvani su odgovori na nepromijenjena pitanja; nova pitanja treba odgovoriti prije ponovnog izračuna.",
   "threeWaysTitle": "Kako razumjeti tri duhovna puta?",
   "threeWaysBody": "Dodatni tekst o trima putovima naglašava rast u ljubavi uz Božju milost i naš odgovor. Čišćenje, rast u krepostima i sjedinjenje s Bogom preklapaju se: na svim putovima ostaju borba i mogućnost daljnjeg rasta. Utjeha ili suhoća same ne određuju stupanj. Izvanredna iskustva nisu ni nužan ni dovoljan dokaz zrelosti. Sedam opisa ovdje služi promišljanju, ne određivanju tvojega odnosa s Bogom."
 });

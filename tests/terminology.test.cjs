@@ -17,11 +17,11 @@ test('every question has an explicit, bilingual, source-backed set of terms',()=
   const w=boot(), glossary=w.spiritualTerminology;
   const ids=w.spiritualAssessment.questionBlueprints.map(q=>q.id);
   assert.deepEqual(Object.keys(glossary.questionTerms).sort(),Array.from(ids).sort());
-  assert.equal(ids.length,36);
+  assert.equal(ids.length,39);
   const used=new Set();
   const hr=w.spiritualTerminologyCopy.hr,en=w.spiritualTerminologyCopy.en;
   assert.deepEqual(Object.keys(hr.terms).sort(),Object.keys(en.terms).sort());
-  assert.equal(Object.keys(hr.terms).length,34);
+  assert.equal(Object.keys(hr.terms).length,37);
   assert.deepEqual(Object.keys(hr.labels).sort(),Object.keys(en.labels).sort());
   for(const id of ids) {
     const mapping=glossary.questionTerms[id];
@@ -43,10 +43,10 @@ test('every question has an explicit, bilingual, source-backed set of terms',()=
       }
     }
   }
-  assert.equal(used.size,28,'the question glossary keeps 28 explicitly used entries');
-  assert.equal(Object.keys(hr.terms).length,34);
+  assert.equal(used.size,31,'the question glossary keeps 31 explicitly used entries');
+  assert.equal(Object.keys(hr.terms).length,37);
   const allHr=glossary.describeAll('hr'),allEn=glossary.describeAll('en');
-  assert.equal(allHr.groups.core.length,28);
+  assert.equal(allHr.groups.core.length,31);
   assert.equal(allHr.groups.context.length,5);
   assert.equal(allHr.groups.safety.length,1);
   assert.deepEqual(allHr.groups.core.map(term=>term.id),allEn.groups.core.map(term=>term.id));
@@ -135,7 +135,7 @@ test('opening or describing terminology cannot change criteria, question options
   }
   const after=JSON.stringify({config,answers,questions:w.spiritualQuestions,result:w.spiritualAssessmentEngine.evaluate(config,answers)});
   assert.equal(after,before);
-  assert.equal(config.questionnaireVersion,6);
+  assert.equal(config.questionnaireVersion,7);
   assert.equal(w.spiritualAssessmentEngine.evaluate(config,answers).stage,6);
 });
 

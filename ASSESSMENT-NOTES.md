@@ -12,6 +12,12 @@ The additional supplied text describes overlapping ways whose characteristic emp
 
 Twenty bilingual questions therefore have clearer examples, titles or explanations about free consent, grace, practical charity, distress, prayerful attention, rest and sacramental practice. Answer choices, IDs, criterion expectations, configuration and version-6 answer compatibility are unchanged. The strict conjunction is still only an author-defined practical comparison, not a verdict that the user occupies a particular spiritual way. The original source descriptions remain separately attributed rather than being silently harmonized. See `THREE-WAYS-REVIEW.md` for the full passage-to-item audit.
 
+## Version 7: pre-spiritual childhood before the seven-stage progression
+
+Version 7 adds three opening items from `Navitagint.md`, section “Pre-Spiritual Childhood”: relation to mortal sin, prayer and the sacraments. Each distinguishes “Hardened in Sin,” “Surface Christianity,” a practical foundation beyond those states, and uncertainty. All three practical foundations are required for Stage I. When all three answers remain within the two pre-spiritual descriptions, the engine reports pre-spiritual childhood and identifies a uniform or mixed pattern. This conjunction is an application rule, not an algorithm supplied by the source.
+
+All 36 version-6 answers retain their IDs and option indices. The storage version is 7; v6 sessions migrate those answers and request only the three new items.
+
 ## Version 6: seven explicit progressions
 
 The questionnaire still has 36 items. Seven v4 items are replaced by overview items with new `-pattern-v6` IDs, one per area; the other 29 questions and their detailed checks remain unchanged. Each overview offers concrete adjacent descriptions, short choice headings, a fictional everyday example, and an uncertainty option. These deliberately ordered descriptions improve comprehensibility; they do not disguise desirability or establish psychometric validity.
@@ -93,7 +99,7 @@ The original detailed descriptions remain visible separately, including the sour
 - A general intention to improve does not substitute for repeated virtue practice, prudent renunciation and prompt return after a recognized imperfection.
 - An average response category has no stage value at all.
 
-The 36 questions are distributed according to these needs rather than forced into four equal items per area. The current complete question, story, option and criterion mapping is in QUESTIONNAIRE-SOURCE-MAP.hr.md.
+The 39 questions are distributed according to these needs rather than forced into equal item counts per area. The current complete question, story, option and criterion mapping is in QUESTIONNAIRE-SOURCE-MAP.hr.md.
 
 ## Conditional, inaccessible and uncertain situations
 
@@ -112,7 +118,7 @@ Illness, emotional pain, unwanted impulses, necessary care, leaving abuse, rest 
 - The configuration contains stable question IDs, source references and accepted/exempt/unknown answer indices.
 - The pure engine evaluates configured criteria; the application renders results and handles navigation.
 - Version 4 has new question IDs and session version. Version 3 answers are never reinterpreted as answers to the new questions.
-- Version 6 preserves the 29 unchanged v5 items (21 from v4 plus eight advanced v5 items). Seven rewritten questions receive new IDs; their old option indices are never remapped. Same-tab v4/v5 answers migrate only by unchanged valid IDs into the v6 session record. Old v4/v5 records are removed only after a successful save. A bilingual notice explains the missing rewritten answers, and resuming opens the first unanswered item; incomplete results cannot reopen until completion. Refresh preserves this notice and the retained answers; restart clears them. Removed mystical reports and incompatible v3 answers are never reused.
+- Version 7 preserves all 36 v6 items and adds three `-v7` items. Same-tab v4/v5/v6 answers migrate only by unchanged valid IDs into the v7 session record. Old records are removed only after a successful save. A bilingual notice explains the new unanswered items, and resuming opens the first unanswered item; incomplete results cannot reopen until completion. Refresh preserves this notice and the retained answers; restart clears them. Removed mystical reports and incompatible v3 answers are never reused.
 - Current progress and language survive refresh in the same tab through sessionStorage. There is no server, analytics, remote calculation or transmission of answers.
 - Static Cloudflare packaging includes all runtime files. No clinical or psychometric validation claim is made.
 

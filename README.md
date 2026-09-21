@@ -1,6 +1,6 @@
 # Spiritual Progress Reflection
 
-A private, independent, bilingual (English/Croatian) browser questionnaire for reflecting on the seven named stages of spiritual progress. Version 5 compares practical expectations associated with I–VI, without averaging or authenticating spiritual or mystical states. V–VI use explicitly limited practical proxies, not the full source descriptions; VII is named only in the source. It is not an official publication or assessment of any organization.
+A private, independent, bilingual (English/Croatian) browser questionnaire for reflecting on pre-spiritual childhood and the seven named stages of spiritual progress. Version 7 can return the pre-spiritual phase or compare practical expectations associated with I–VI, without averaging or authenticating spiritual or mystical states. V–VI use explicitly limited practical proxies, not the full source descriptions; VII is named only in the source. It is not an official publication or assessment of any organization.
 
 ## Privacy
 
@@ -98,19 +98,19 @@ The main result includes an immediate, bilingual next-step overview. It groups e
 
 ### Terms beside every question
 
-All 36 questions have curated terminology from 28 bilingual question-linked definitions. A searchable full glossary is available before, during and after the questionnaire. It separately includes five expressions used only in stage descriptions and one safety note on scrupulosity; those six entries are explicitly not assessment criteria. Beside a question, the main meaning and important distinction remain visible while related terms are grouped in one keyboard-accessible disclosure. Definitions distinguish interior prayer from meditation and reading, proximate from remote occasions of sin, examen from merely recalling the day, temptation from consent, and Mass from Communion. Read the [terminology implementation and sources](TERMINOLOGY-NOTES.md) and the [Croatian inclusion audit](GLOSSARY-AUDIT.hr.md).
+All 39 questions have curated terminology from 31 bilingual question-linked definitions. A searchable full glossary is available before, during and after the questionnaire. It separately includes five expressions used only in stage descriptions and one safety note on scrupulosity; those six entries are explicitly not assessment criteria. The new definitions explain pre-spiritual childhood, interior life and formation of conscience. Beside a question, the main meaning and important distinction remain visible while related terms are grouped in one keyboard-accessible disclosure. Read the [terminology implementation and sources](TERMINOLOGY-NOTES.md) and the [Croatian inclusion audit](GLOSSARY-AUDIT.hr.md).
 
-These explanations do not change the answer options, criteria, version-6 storage or scoring. Definitions are available offline after local assets load. Optional source links open only when clicked, in a separate tab with no referrer or answer data; there is no source fetching or telemetry.
+The definitions explain the version-7 questions without adding hidden criteria or scoring. They are available offline after local assets load. Optional source links open only when clicked, in a separate tab with no referrer or answer data; there is no source fetching or telemetry.
 
 ### Supplementary three-ways review
 
-`three-ways.md` supplies context for overlapping spiritual ways, grace and charity, consolation/desolation, ordinary duties, recreation and sacramental practice. All 36 questions were reviewed; 20 have refined titles, stories or clarifications in HR and EN. Options, IDs and scoring remain unchanged, so saved version-6 answers are preserved. Each revised item carries non-scoring `contextSources` references; see [the review audit](THREE-WAYS-REVIEW.md) and [the full question/source map](QUESTIONNAIRE-SOURCE-MAP.hr.md). The introduction and results clarify that the checklist cannot establish a person's actual spiritual way or eligibility for Communion.
+`three-ways.md` supplies context for overlapping spiritual ways, grace and charity, consolation/desolation, ordinary duties, recreation and sacramental practice. The 36 earlier questions retain their reviewed wording; version 7 adds three source-linked questions before them. Saved version-6 answers are preserved and only the new questions require answers. See [the review audit](THREE-WAYS-REVIEW.md) and [the full question/source map](QUESTIONNAIRE-SOURCE-MAP.hr.md).
 
 ### Exploring stages and returning to results
 
-All seven home-page stages have visible buttons, arrows and “Read description” labels. “Explore all stages” opens a single dialog with seven expandable descriptions, also available from results. Individual stages open their own descriptions with previous/next controls. Escape and Close return focus to the opener; browsing changes no answers. VII retains its missing-source notice.
+Pre-spiritual childhood and all seven home-page stages have visible buttons, arrows and “Read description” labels. “Explore all stages” opens a single dialog with eight expandable descriptions, also available from results. Individual phases open their own descriptions with previous/next controls. Escape and Close return focus to the opener; browsing changes no answers. VII retains its missing-source notice.
 
-After all 36 questions have an answer or explicit skip, **View results** appears on the home page and **Back to results** appears while reviewing answers. Returning always recalculates from the current answers. Home navigation and refresh preserve practical answers; restarting clears them and hides the result shortcuts.
+After all 39 questions have an answer or explicit skip, **View results** appears on the home page and **Back to results** appears while reviewing answers. Returning always recalculates from the current answers. Home navigation and refresh preserve practical answers; restarting clears them and hides the result shortcuts.
 
 Result overview cards show only nonzero condition counts with four distinct icons and text labels: supported, unsupported, unclear, and inapplicable. A legend explains these meanings; each area links to its exact expanded requirements. Exemptions are not counted as supported, and the UI introduces no score or percentage. No mystical-experience questionnaire is loaded or displayed.
 
@@ -122,7 +122,7 @@ The [seven-area gradation guide](GRADATION-PROPOSAL.hr.md) documents the impleme
 
 ### Core questions
 
-The questionnaire contains 36 concrete questions across seven areas. Each has its own answer descriptions rather than a generic frequency scale:
+The questionnaire contains 39 concrete questions across seven areas. The first three distinguish the source's pre-spiritual states in relation to grave sin, prayer and the sacraments; the remaining 36 compare I–VI. Each has its own answer descriptions rather than a generic frequency scale:
 
 1. serious sin;
 2. venial sin;
@@ -134,9 +134,9 @@ The questionnaire contains 36 concrete questions across seven areas. Each has it
 
 Every question includes an always-visible short fictional story and clarification in both languages. Answer about actual practice during the past eight weeks, except where a question explicitly asks about an established schedule (quarterly confession cannot be judged from an eight-week event count). Skipping is always possible; unknown evidence cannot support a required criterion.
 
-See [the complete question–story–source review](QUESTIONNAIRE-SOURCE-MAP.hr.md) for the current Croatian items, answer descriptions, criteria and exact source sections. Version 6 replaces seven overview questions, one per area, and retains the other 29 questions. New IDs prevent reuse of old option indices. Same-tab v5 answers preserve those 29 unchanged items; v4 preserves 21. A bilingual update notice asks for the rewritten answers, resuming opens the first unanswered item, and incomplete results cannot be reopened. After a successful v6 save, old v4/v5 records are removed. Refresh preserves progress; restart clears it. Removed experience reports and incompatible v3 answers are not reused.
+See [the complete question–story–source review](QUESTIONNAIRE-SOURCE-MAP.hr.md) for the current Croatian items, answer descriptions, criteria and exact source sections. Version 7 adds three new `-v7` questions and preserves all 36 version-6 answers. Same-tab v4/v5/v6 answers migrate by unchanged valid IDs; incomplete results cannot reopen until the new questions are answered or skipped. After a successful v7 save, old records are removed. Refresh preserves progress; restart clears it. Removed experience reports and incompatible v3 answers are not reused.
 
-No average, fractional stage, confidence percentage or bootstrap interval is calculated. The result reports the highest consecutive set of practical requirements supported, or no sufficiently supported pattern. Each condition is supported, unsupported, unknown or explicitly inapplicable. Strong answers elsewhere cannot compensate for a failed condition. The result includes a selectable I–VI criterion review with the exact expectation, chosen answer and a link back to that question. Even fully supported VI practical criteria do not establish the full spiritual stage or any mystical grace. A conspicuous V–VI result notice explains this limitation. VII is never assigned.
+No average, fractional stage, confidence percentage or bootstrap interval is calculated. When all three opening answers remain within the pre-spiritual descriptions, the result reports pre-spiritual childhood as hardened in sin, surface Christianity or a mixed pre-spiritual pattern. Otherwise it reports the highest consecutive set of practical requirements supported, or no sufficiently supported pattern. Each condition is supported, unsupported, unknown or explicitly inapplicable. Strong answers elsewhere cannot compensate for a failed condition. VII is never assigned.
 
 See [`ASSESSMENT-NOTES.md`](./ASSESSMENT-NOTES.md) for the design rationale, interpretation limits, and the validation work required before making psychometric claims.
 

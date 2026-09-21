@@ -2,7 +2,7 @@
 
 ## Svrha i granice
 
-Ovaj audit određuje koji izrazi trebaju pomoć pri čitanju 36 pitanja, a koji se pojavljuju samo u opisima duhovnih stupnjeva. Pojmovnik objašnjava jezik; ne dodaje pitanje, uvjet, bod ili dokaz duhovnoga stupnja. Pitanja, odgovori, očekivanja, algoritam i verzija pohrane ostaju nepromijenjeni.
+Ovaj audit određuje koji izrazi trebaju pomoć pri čitanju 39 pitanja, a koji se pojavljuju samo u opisima duhovnih stupnjeva. Pojmovnik objašnjava jezik; ne dodaje pitanje, uvjet, bod ili dokaz duhovnoga stupnja.
 
 Izvorni `Glossary.md` koristi se kao terminološko polazište, ne kao tekst za doslovno prepisivanje. Opće definicije provjeravaju se prema suvremenim crkvenim izvorima navedenima u `TERMINOLOGY-NOTES.md`. Uža značenja potrebna ovom upitniku izričito su označena riječima „ovdje” ili „u ovom upitniku”.
 
@@ -21,6 +21,7 @@ Izraz koji se pojavljuje samo u opisu stupnja ide u odvojenu skupinu „ne procj
 
 | Područje | Pojmovi | Urednička odluka |
 | --- | --- | --- |
+| Faza prije nutarnjeg života | Predduhovno djetinjstvo; nutarnji život; savjest i njezino oblikovanje | Razlikovati opis obrasca od vrijednosti osobe te vanjsku pripadnost od stvarnoga osobnog odgovora Bogu. |
 | Smrtni grijeh | Smrtni grijeh; napast, svijest i slobodan pristanak; bliska i daleka grešna prigoda; kajanje; ispovijed; pokora i popravak štete | Razlikovati osjećaj krivnje od uvjeta čina, napast od pristanka te kajanje od emocionalnog intenziteta. |
 | Laki grijeh | Laki grijeh; kajanje; prvi poriv i djelomična svijest; popravak štete | „Laki” ne znači nevažan; nenamjerna misao i nesavršenost nisu automatski laki grijeh. |
 | Nesavršenosti | Nesavršenost; krepost; navezanost i nenavezanost; odricanje; prvi poriv; žrtva | Nesavršenost se ne proglašava automatski grijehom. Odricanje ne isključuje zdravlje, odnose, odmor i dužnosti. |
@@ -30,7 +31,7 @@ Izraz koji se pojavljuje samo u opisu stupnja ide u odvojenu skupinu „ne procj
 | Sakramenti | Misa, Euharistija i pričest; ispovijed; pobožna ispovijed; žar | Razlikovati misu od pričesti i ispit savjesti od ispovijedi. Rasporedi su usporedba s izvorom, ne nove obveze. |
 | Viši praktični opisi | Čežnja za nebom; samozaborav; nenavezanost; sabranost; služenje | Čežnja za nebom nije želja za smrću, a samozaborav nije gubitak dostojanstva, potreba ili zdravih granica. |
 
-Ukupno je 28 pojmova u jezgri. Svaki je izričito povezan s barem jednim pitanjem u `dist/terminology.js`; nema automatskog povezivanja po riječima.
+Ukupno je 31 pojam u jezgri. Svaki je izričito povezan s barem jednim pitanjem u `dist/terminology.js`; nema automatskog povezivanja po riječima.
 
 ## Pojmovi samo iz opisa stupnjeva
 
@@ -63,8 +64,8 @@ Svaki zapis ima:
 
 ## Kriteriji prihvaćanja
 
-- svih 36 pitanja ima barem jedan odabrani pojam;
-- svih 28 ključnih pojmova dostupno je uz pitanja i u cijelom pojmovniku;
+- svih 39 pitanja ima barem jedan odabrani pojam;
+- svih 31 ključnih pojmova dostupno je uz pitanja i u cijelom pojmovniku;
 - pet pojmova iz opisa i jedna sigurnosna napomena odvojeni su od procjene;
 - hrvatski i engleski zapisi imaju iste ID-jeve, skupine i izvore;
 - otvaranje, pretraživanje ili čitanje pojmovnika ne mijenja odgovore, pohranu ni rezultat;

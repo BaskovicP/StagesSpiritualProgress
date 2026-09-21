@@ -1030,7 +1030,7 @@ body:has(.stage-dialog[open]) { overflow: hidden; }
 
 .ascent-plot {
   position: relative;
-  height: 465px;
+  height: 520px;
   margin-top: 12px;
 }
 
@@ -1067,6 +1067,7 @@ body:has(.stage-dialog[open]) { overflow: hidden; }
 }
 
 .ascent-node-purgative { fill: var(--burgundy); }
+.ascent-node-pre { fill: var(--olive); }
 .ascent-node-illuminative { fill: var(--gold); }
 .ascent-node-unitive { fill: var(--paper); }
 .ascent-node-unassessed { opacity: 0.62; }
@@ -1104,13 +1105,14 @@ body:has(.stage-dialog[open]) { overflow: hidden; }
   transition: opacity 180ms ease, transform 180ms ease;
 }
 
-.ascent-stage-1 { top: 94.64%; }
-.ascent-stage-2 { top: 79.64%; }
-.ascent-stage-3 { top: 64.64%; }
-.ascent-stage-4 { top: 49.64%; }
-.ascent-stage-5 { top: 34.64%; }
-.ascent-stage-6 { top: 19.64%; }
-.ascent-stage-7 { top: 4.64%; }
+.ascent-stage-pre { top: 95.31%; }
+.ascent-stage-1 { top: 82.81%; }
+.ascent-stage-2 { top: 69.69%; }
+.ascent-stage-3 { top: 56.56%; }
+.ascent-stage-4 { top: 43.44%; }
+.ascent-stage-5 { top: 30.31%; }
+.ascent-stage-6 { top: 17.19%; }
+.ascent-stage-7 { top: 4.06%; }
 
 .ascent-stage strong {
   display: flex;
@@ -1533,7 +1535,7 @@ body:has(.stage-dialog[open]) { overflow: hidden; }
   .local-result-badge { margin-top: 10px; }
   .result-overview { grid-template-columns: 1fr; align-items: start; }
   .result-ascent { width: min(100%, 360px); margin: 0 auto; }
-  .ascent-plot { height: 435px; }
+  .ascent-plot { height: 485px; }
   .stage-result { grid-template-columns: 68px 1fr; gap: 18px; margin-top: 34px; }
   .result-copy .stage-result { margin-top: 0; }
   .result-number { width: 68px; height: 68px; font-size: 1.7rem; }

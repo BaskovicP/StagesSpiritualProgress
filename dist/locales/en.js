@@ -21,14 +21,14 @@
   "restart": "Start over",
   "restartConfirm": "Start over and clear all saved answers?",
   "privacyNote": "Your answers stay in this tab and disappear when you close it.",
-  "pathEyebrow": "Seven stages",
+  "pathEyebrow": "A prior phase and seven stages",
   "pathTitle": "A path, not a rank",
   "pathHint": "Click or tap any stage to open its description and concrete characteristics.",
   "exploreStageLabel": "Read about Stage {stage}: {name}",
-  "stageDetailsTitle": "Stages in the source text",
+  "stageDetailsTitle": "The prior phase and stages in the source text",
   "closeStageDetails": "Close description",
-  "previousStage": "Previous stage",
-  "nextStage": "Next stage",
+  "previousStage": "Previous phase",
+  "nextStage": "Next phase",
   "backToResults": "Back to results",
   "viewResults": "View results",
   "openGlossary": "Read the glossary first",
@@ -40,7 +40,7 @@
   "glossaryNoResults": "No terms match this search.",
   "glossaryCount": "Showing {shown} of {total} terms.",
   "homeLabel": "Home",
-  "pathAssessmentNote": "This questionnaire compares practical patterns for I–VI. It cannot confirm a complete spiritual stage or mystical graces. VII is shown by name only because the supplied source gives no description.",
+  "pathAssessmentNote": "This questionnaire now recognizes pre-spiritual childhood before the purgative way and compares practical patterns for I–VI. It cannot confirm a complete spiritual state or mystical graces. VII is shown by name only because the supplied source gives no description.",
   "backToIntro": "Back",
   "yourProgress": "Your progress",
   "chooseClosest": "Think about the past eight weeks, unless a question explicitly asks about your established schedule. Choose what actually happened, not your intentions or your best day. Skip if no description fits or you are unsure. The story only explains the question.",
@@ -53,7 +53,7 @@
   "footerIdentity": "Stages of Spiritual Progress",
   "resultEyebrow": "Practical expectations supported by your answers",
   "ascentTitle": "Comparison with the source",
-  "ascentUnassessedNote": "I–VI: practical comparison, not confirmation of a spiritual state. VII: unassessed.",
+  "ascentUnassessedNote": "Before I: assessment of three source features of the pre-spiritual phase. I–VI: practical comparison, not confirmation of a spiritual state. VII: unassessed.",
   "ascentPosition": "Your answers support the practical requirements associated with Stage {stage}. This does not confirm your spiritual stage.",
   "calculatedLocally": "Calculated on this device",
   "resultRangeLabel": "Limit of this review",
@@ -69,11 +69,12 @@
   "printResult": "Print result",
   "retake": "Clear & retake",
   "methodTitle": "How the requirements are checked",
-  "methodBody": "There is no point total, averaging or rounding. Every threshold I–VI requires all its practical criteria and the positive foundations of earlier thresholds. Any unsupported or unknown required condition blocks a higher result. Permitted inapplicable circumstances are listed separately and do not prove progress. Weaknesses in lower descriptions are not requirements to retain. The source does not supply this algorithm: thresholds, inheritance of positive foundations and the distinction between occasional and sustained sacrifice are author-defined operationalizations. V–VI additionally check practical descriptions of imperfections, suffering and prayerful life; mystical elements are excluded from assessment and are not confirmed. An individual area is not given a higher number merely because the same requirements are inherited. VII is not assessed. There is no confidence percentage or confirmation of holiness.",
+  "methodBody": "There is no point total, averaging or rounding. The three opening questions can support pre-spiritual childhood only when all three answers match one of its two conditions; a combination of those conditions is shown as a mixed pre-spiritual pattern. Every threshold I–VI requires all its practical criteria and the positive foundations of earlier thresholds. Any unsupported or unknown required condition blocks a higher result. Permitted inapplicable circumstances are listed separately and do not prove progress. Weaknesses in lower descriptions are not requirements to retain. The source does not supply this algorithm: thresholds, inheritance of positive foundations and the distinction between occasional and sustained sacrifice are author-defined operationalizations. V–VI additionally check practical descriptions of imperfections, suffering and prayerful life; mystical elements are excluded from assessment and are not confirmed. An individual area is not given a higher number merely because the same requirements are inherited. VII is not assessed. There is no confidence percentage or confirmation of holiness.",
   "methodPrivacy": "Answers, progress, result, and language are kept only in this tab’s temporary session storage so they survive a refresh. They are never transmitted and are cleared when the tab is closed. No cookies, analytics, or identifiers are used.",
   "notAnswered": "Not answered",
   "answeredSummary": "{answered} of {total} answers selected · {skipped} skipped. An explicit uncertain answer also remains unknown for the relevant check.",
   "families": {
+    "preInterior": "Before the purgative way",
     "purgative": "Purgative way",
     "illuminative": "Illuminative way",
     "unitive": "Unitive way"
@@ -86,6 +87,53 @@
     "prayer": "Prayer",
     "examen": "Examination of conscience",
     "sacraments": "Sacraments"
+  },
+  "preSpiritual": {
+    "label": "Before I",
+    "badge": "← I",
+    "name": "Pre-Spiritual Childhood",
+    "family": "preInterior",
+    "assessmentNote": "Assessed only when all three opening answers match descriptions from before entry into the interior life.",
+    "summary": "The source places this phase before spiritual childhood and the purgative way. It describes people who have not yet entered the interior life in a meaningful way and distinguishes hardened in sin from surface Christianity.",
+    "sourceDescription": [
+      {
+        "domain": "seriousSin",
+        "text": "Hardened in sin involves stubborn persistence because of ignorance or a warped or severely underdeveloped conscience. Surface Christianity treats mortal sin as an insignificant nuisance that is easily forgiven and repeatedly yields to it; confession, if practiced, is almost without remorse."
+      },
+      {
+        "domain": "prayer",
+        "text": "The hardened condition deliberately refuses recourse to God. In surface Christianity prayer is mechanical, inattentive, last among priorities and easily abandoned."
+      },
+      {
+        "domain": "sacraments",
+        "text": "The hardened condition rarely or never attends Mass and does not go to confession. Surface Christianity participates sporadically, often only at Easter and Christmas."
+      }
+    ],
+    "patterns": {
+      "hardenedInSin": {
+        "name": "Hardened in Sin",
+        "summary": "All three opening answers match the source's description of being hardened in sin. This is not a label of a person's worth, but a serious invitation to take a first real step toward God with grace and the help of a confessor or trusted person.",
+        "sourceDescription": [
+          { "domain": "seriousSin", "text": "Stubborn persistence in sin because of ignorance or a warped or severely underdeveloped conscience." },
+          { "domain": "prayer", "text": "Deliberate refusal to have recourse to God for help or provision." },
+          { "domain": "sacraments", "text": "Rarely attends Mass, if at all, and does not participate in confession." }
+        ]
+      },
+      "surfaceChristianity": {
+        "name": "Surface Christianity",
+        "summary": "All three opening answers match the source's description of surface Christianity: faith remains present outwardly but rarely enters conscience, personal prayer and regular sacramental practice.",
+        "sourceDescription": [
+          { "domain": "seriousSin", "text": "Mortal sin is treated as an insignificant nuisance that is easily forgiven and repeatedly chosen when occasion or temptation appears; confession, if practiced, is almost without remorse." },
+          { "domain": "prayer", "text": "Prayer is mechanical, inattentive, last among priorities or easily abandoned; interior prayer is rare and superficial." },
+          { "domain": "sacraments", "text": "Mass and confession are sporadic, often only at Easter and Christmas." }
+        ]
+      },
+      "mixed": {
+        "name": "Mixed pre-spiritual pattern",
+        "summary": "The opening answers remain within the phase before the interior life, but do not all match the same one of the source's two conditions. Review the three answers separately and discern a first concrete step toward serious resistance to sin, genuine prayer and regular sacramental practice."
+      }
+    },
+    "sourceReference": "Paraphrased from Self-Diagnosis of Your Current Spiritual Progress, section Pre-Spiritual Childhood."
   },
   "stages": [
     {
@@ -349,8 +397,8 @@
   "upperLimitNote": "VI is the highest practical comparison in this questionnaire. Answers do not confirm contemplation, infused prayer, passive purification or a complete spiritual stage. The supplied source gives no descriptive criteria for VII, so it is not assessed.",
   "advancedSourceTitle": "What this practical comparison can and cannot tell you",
   "readStage": "Read description",
-  "allStagesButton": "Explore all stages",
-  "allStagesTitle": "All seven stages in one place",
+  "allStagesButton": "Explore all phases",
+  "allStagesTitle": "The prior phase and all seven stages",
   "advancedPracticalNote": "V and VI here are practical comparisons only. The original chart mentions contemplation and passive purification. The additional text explicitly says the gift of contemplation is not received by everyone advanced in charity, while extraordinary experiences can occur even in beginners. Their absence is not a reason for a lower result. This questionnaire neither assesses them nor confirms attainment of relative or heroic perfection.",
   "growthIntro": "These suggestions aim at charity and concrete virtues, not a higher number. Choose one achievable step for each area. They are not additional criteria, a guarantee of progress or a substitute for spiritual direction.",
   "growth": {
@@ -403,7 +451,7 @@
     "questionHint": "These descriptions show different patterns. Choose the whole description that fits your usual practice, not the highest you have occasionally managed.",
     "detail": "What this description means"
   },
-  "migrationNotice": "Seven questions have new descriptions. Answers to unchanged questions are preserved; new and rewritten questions need answers before recalculating.",
+  "migrationNotice": "Three questions about the phase before the purgative way were added. Answers to unchanged questions are preserved; the new questions need answers before recalculating.",
   "threeWaysTitle": "How should I understand the three ways?",
   "threeWaysBody": "The additional text on the three ways emphasizes growth in charity through God's grace and our response. Purification, growth in virtue and union with God overlap: struggle and the possibility of further growth remain on every way. Consolation or dryness alone do not determine a stage. Extraordinary experiences are neither necessary nor sufficient evidence of maturity. The seven descriptions here aid reflection; they do not establish your relationship with God."
 });

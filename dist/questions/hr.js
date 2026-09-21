@@ -5,6 +5,72 @@
   window.spiritualQuestions = window.spiritualQuestions || {};
   window.spiritualQuestions.hr = Object.freeze([
   {
+    "id": "pre-spiritual-sin-v7",
+    "kicker": "Prije nutarnjeg života — odnos prema teškom grijehu",
+    "title": "Koji opis najbolje odgovara mojem stvarnom odnosu prema prepoznatom smrtnom grijehu?",
+    "example": "Marko zna da ozbiljno vara kupce. Može tvrdoglavo nastaviti i odbijati preispitati savjest, može grijeh smatrati sitnom smetnjom koju će lako riješiti, ili može ozbiljno nastojati oduprijeti mu se i izbjegavati prilike koje ga vode u pad.",
+    "clarification": "Ovo pitanje provjerava dva stanja koja izvor smješta prije duhovnog djetinjstva: okorjelost u grijehu i površno kršćanstvo. Za smrtni grijeh trebaju teška stvar, puna spoznaja i slobodan pristanak. Ne proglašavaj dvojbu grijehom; ako nisi siguran, odaberi nesigurnost i razjasni je s ispovjednikom.",
+    "optionHeadings": [
+      "Tvrdoglavo ustrajem",
+      "Umanjujem i lako popuštam",
+      "Ozbiljno se borim",
+      "Nisam siguran"
+    ],
+    "options": [
+      "Tvrdoglavo ustrajem u prepoznatom teškom grijehu ili odbijam ozbiljno oblikovati i preispitati savjest.",
+      "Smrtni grijeh smatram nevažnom smetnjom koja se lako oprosti te mu redovito svjesno popuštam kad se pojavi prilika ili napast; ispovijed, ako joj pristupim, gotovo je bez kajanja.",
+      "Smrtni grijeh smatram ozbiljnim; želim mu se oduprijeti, kajem se nakon pada i nastojim iskreno pristupiti ispovijedi.",
+      "Ne mogu procijeniti svoj odnos ili nisam siguran je li neki čin bio smrtni grijeh."
+    ],
+    "expectations": {
+      "1": "Smrtni grijeh smatrati ozbiljnim te mu se stvarno nastojati oduprijeti, uz kajanje i iskrenu ispovijed nakon pada."
+    }
+  },
+  {
+    "id": "pre-spiritual-prayer-v7",
+    "kicker": "Prije nutarnjeg života — molitva",
+    "title": "Koji opis najbolje odgovara mojem uobičajenom odnosu prema molitvi?",
+    "example": "Ana se nađe u teškoći. Može svjesno odbiti obratiti se Bogu, može izgovoriti nekoliko rastresenih riječi tek kad joj ništa drugo ne preostane, ili se može stvarno vratiti Bogu iako joj molitva još nije postojana.",
+    "clarification": "Ne pita se za savršenu sabranost niti za snažne osjećaje. Izvor razlikuje namjerno odbijanje obraćanja Bogu od mehaničke, površne i lako napuštene molitve. Treći opis ne traži razvijenu meditaciju, nego stvarno otvaranje Bogu koje više nije samo odbijanje ili vanjska navika.",
+    "optionHeadings": [
+      "Namjerno odbijam",
+      "Mehanički i površno",
+      "Stvarno se obraćam Bogu",
+      "Nisam siguran"
+    ],
+    "options": [
+      "Namjerno odbijam obraćati se Bogu za pomoć ili mu dati stvarno mjesto u svojem životu.",
+      "Molitva mi je uglavnom mehanička, rastresena i zadnja među prioritetima; lako je napustim i rijetko ulazim u iskren osobni razgovor s Bogom.",
+      "Stvarno se obraćam Bogu i želim moliti; molitva mi možda još nije postojana, ali nije tek namjerno odbijanje ni prazna vanjska navika.",
+      "Ne mogu pouzdano procijeniti svoj uobičajeni odnos prema molitvi."
+    ],
+    "expectations": {
+      "1": "Stvarno se obraćati Bogu u molitvi, makar molitva još nije postala postojana navika."
+    }
+  },
+  {
+    "id": "pre-spiritual-sacraments-v7",
+    "kicker": "Prije nutarnjeg života — misa i ispovijed",
+    "title": "Koji opis najbolje odgovara mojoj stvarnoj praksi mise i ispovijedi?",
+    "example": "Ivan nema zdravstvenu, radnu ni obiteljsku zapreku. Može gotovo nikada ne ići na misu i ne ispovijedati se, može doći samo za velike blagdane, ili može redovito sudjelovati na misi i ispovijedati se češće od blagdanskog minimuma.",
+    "clarification": "Uvaži stvarnu dostupnost, zdravlje, posao i skrb za druge. Izvor ovdje razlikuje gotovo potpun izostanak sakramentalne prakse od povremenoga sudjelovanja, često samo za Uskrs i Božić. Nemogućnost nije isto što i svojevoljno zanemarivanje.",
+    "optionHeadings": [
+      "Gotovo nikada",
+      "Samo povremeno",
+      "Redovita praksa",
+      "Nisam siguran ili nemam pristup"
+    ],
+    "options": [
+      "Iako su mi misa i ispovijed razumno dostupne, na misu idem rijetko ili nikada i ne pristupam ispovijedi.",
+      "Na misu i ispovijed idem sporadično, često samo za Uskrs, Božić ili slične prigode.",
+      "Na misu idem redovito, a ispovijedi pristupam češće od povremenoga blagdanskog minimuma.",
+      "Ne mogu procijeniti ili mi misa odnosno ispovijed u ovom razdoblju nisu bile razumno dostupne."
+    ],
+    "expectations": {
+      "1": "Redovito sudjelovati na misi i pristupati ispovijedi češće od sporadičnoga blagdanskog minimuma, kada su dostupne."
+    }
+  },
+  {
     "id": "mortal-occasions-v4",
     "kicker": "Izbjegavanje prilika",
     "title": "Kako postupam s poznatim bliskim prigodama za smrtni grijeh?",

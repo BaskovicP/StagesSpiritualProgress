@@ -7,8 +7,8 @@ const path = require('node:path');
 const { spawn } = require('node:child_process');
 
 const root = path.resolve(__dirname, '../dist');
-const profile = fs.mkdtempSync('/private/tmp/spiritual-v6-browser-');
-const screenshotDirectory = fs.mkdtempSync('/private/tmp/spiritual-v6-screenshots-');
+const profile = fs.mkdtempSync('/private/tmp/spiritual-v7-browser-');
+const screenshotDirectory = fs.mkdtempSync('/private/tmp/spiritual-v7-screenshots-');
 const chromePath = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 let browser;
@@ -85,21 +85,35 @@ async function main() {
     if (await evaluate('Boolean(window.__reflectionTools?.has("calculate_spiritual_reflection_result"))')) break;
     await pause(100);
   }
-  assert.equal(await evaluate('window.spiritualAssessment.questionnaireVersion'), 6);
+  assert.equal(await evaluate('window.spiritualAssessment.questionnaireVersion'), 7);
   await evaluate(`document.documentElement.style.scrollBehavior = 'auto'`);
   for (const language of ['hr', 'en']) {
     await evaluate(`(() => { const select = document.querySelector('#language-select'); select.value = '${language}'; select.dispatchEvent(new Event('change', { bubbles: true })); })()`);
-    assert.equal(await evaluate(`document.querySelectorAll('#stage-path button[data-stage-index]').length`), 7);
+    assert.equal(await evaluate(`document.querySelectorAll('#stage-path button[data-stage-index]').length`), 8);
     assert.equal(await evaluate(`document.querySelector('#intro-results-button').hidden`), true);
     const contextNote = await evaluate(`(() => {
       const note=document.querySelector('.three-ways-context');
       note.querySelector('summary').click();
       const copy=window.spiritualLocales['${language}'];
       return {open:note.open,translated:note.querySelector('p').textContent===copy.threeWaysBody,
-        untouched:Object.keys(JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers).length===0};
+        untouched:Object.keys(JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7')).answers).length===0};
     })()`);
     assert.deepEqual(contextNote,{open:true,translated:true,untouched:true});
     await evaluate(`document.querySelector('.three-ways-context').open=false`);
+    for (const width of [1440, 390]) {
+      await cdp('Emulation.setDeviceMetricsOverride',{width,height:1100,deviceScaleFactor:1,mobile:width<600});
+      const pathVisual = await evaluate(`(() => {
+        const copy=window.spiritualLocales['${language}'];
+        const buttons=[...document.querySelectorAll('#stage-path button[data-stage-index]')];
+        return {count:buttons.length,pre:buttons[0].textContent.includes(copy.preSpiritual.name),
+          labels:buttons.every(button=>button.textContent.trim().length>0),width:innerWidth,scrollWidth:document.documentElement.scrollWidth};
+      })()`);
+      assert.deepEqual({count:pathVisual.count,pre:pathVisual.pre,labels:pathVisual.labels},{count:8,pre:true,labels:true});
+      assert.ok(pathVisual.scrollWidth<=pathVisual.width+1,JSON.stringify(pathVisual));
+      const shot=await cdp('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
+      const file=path.join(screenshotDirectory,`${language}-${width}-home-path.png`);
+      fs.writeFileSync(file,Buffer.from(shot.data,'base64'));console.log('Screenshot: '+file);
+    }
     await evaluate(`document.querySelector('#intro-glossary-button').click()`);
     await evaluate('new Promise(resolve => requestAnimationFrame(resolve))');
     const glossary = await evaluate(`(() => ({
@@ -107,9 +121,9 @@ async function main() {
       focused:document.activeElement.id,
       groups:document.querySelectorAll('#glossary-groups .glossary-group').length,
       entries:document.querySelectorAll('#glossary-groups .glossary-entry').length,
-      noAnswers:Object.keys(JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers).length===0
+      noAnswers:Object.keys(JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7')).answers).length===0
     }))()`);
-    assert.deepEqual(glossary,{open:true,focused:'glossary-dialog-heading',groups:3,entries:34,noAnswers:true});
+    assert.deepEqual(glossary,{open:true,focused:'glossary-dialog-heading',groups:3,entries:37,noAnswers:true});
     for (const width of [1440,320]) {
       await cdp('Emulation.setDeviceMetricsOverride',{width,height:1100,deviceScaleFactor:1,mobile:width<600});
       const geometry=await evaluate(`(() => { const dialog=document.querySelector('#glossary-dialog'); const rect=dialog.getBoundingClientRect(); return {left:rect.left,right:rect.right,width:innerWidth,scrollWidth:dialog.scrollWidth,clientWidth:dialog.clientWidth,height:rect.height}; })()`);
@@ -132,7 +146,7 @@ async function main() {
     await evaluate(`document.querySelector('#exit-button').click()`);
     await evaluate('new Promise(resolve => requestAnimationFrame(resolve))');
     await evaluate(`document.querySelector('#all-stages-button').click()`);
-    assert.equal(await evaluate(`document.querySelectorAll('#stage-all-descriptions .all-stage-entry').length`), 7);
+    assert.equal(await evaluate(`document.querySelectorAll('#stage-all-descriptions .all-stage-entry').length`), 8);
     assert.equal(await evaluate(`getComputedStyle(document.querySelector('#stage-dialog-navigation')).display`), 'none');
     await evaluate(`document.querySelector('#stage-dialog-close').click()`);
     await evaluate('new Promise(resolve => requestAnimationFrame(resolve))');
@@ -145,12 +159,12 @@ async function main() {
           titleMatches: document.querySelector('#stage-dialog-heading').textContent.endsWith(stage.name),
           sourceMatches: stage.sourceDescription.every(item => document.querySelector('#stage-dialog-description').textContent.includes(item.text)),
           first: document.querySelector('#stage-dialog-previous').disabled, last: document.querySelector('#stage-dialog-next').disabled,
-          noAnswers: Object.keys(JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers).length === 0 };
+          noAnswers: Object.keys(JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7')).answers).length === 0 };
       })()`);
       assert.equal(dialog.open, true);
       assert.equal(dialog.focused, 'stage-dialog-heading');
       assert.equal(dialog.titleMatches && dialog.sourceMatches && dialog.noAnswers, true);
-      assert.equal(dialog.first, stageIndex === 0);
+      assert.equal(dialog.first, false);
       assert.equal(dialog.last, stageIndex === 6);
       await evaluate(`document.querySelector('#stage-dialog-close').click()`);
     }
@@ -206,7 +220,7 @@ async function main() {
       assert.ok(result.criteria.length > 40);
       if (stage === 2) {
         const independentProfiles = await evaluate(`(() => {
-          const saved = sessionStorage.getItem('spiritual-progress-reflection:v6');
+          const saved = sessionStorage.getItem('spiritual-progress-reflection:v7');
           const cards = document.querySelectorAll('#domain-profile [data-domain-level]');
           const prayerButton = document.querySelector('[data-review-domain="prayer"]');
           const examenButton = document.querySelector('[data-review-domain="examen"]');
@@ -222,7 +236,7 @@ async function main() {
           return { count: cards.length, prayer: prayer.dataset.domainLevel, examen: examen.dataset.domainLevel,
             named: prayer.textContent.includes(window.spiritualLocales['${language}'].stages[5].name),
             prayerTarget, examenTarget, prayerOpen, examenOpen, overall: api.stage, apiCount: api.domainProfiles.length,
-            unchanged: saved === sessionStorage.getItem('spiritual-progress-reflection:v6') };
+            unchanged: saved === sessionStorage.getItem('spiritual-progress-reflection:v7') };
         })()`);
         assert.deepEqual(independentProfiles, { count: 7, prayer: '6-6', examen: '2-2', named: true,
           prayerTarget: '6', examenTarget: '3', prayerOpen: true, examenOpen: true,
@@ -259,8 +273,49 @@ async function main() {
       console.log(`Screenshot: ${file}`);
     }
 
+    const preSpiritualResult = await evaluate(`(() => {
+      const answers={...window.__strongAnswers};
+      for(const id of window.spiritualAssessment.preSpiritualQuestionIds)answers[id]=1;
+      window.__reflectionTools.get('set_spiritual_reflection_answers').execute({answers:Object.entries(answers).map(([questionId,optionIndex])=>({questionId,optionIndex}))});
+      const result=window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({});
+      const copy=window.spiritualLocales['${language}'];
+      const number=document.querySelector('#result-number');
+      return {stage:result.stage,status:result.preSpiritual.status,pattern:result.preSpiritual.pattern,
+        number:number.textContent,expectedNumber:copy.preSpiritual.badge,
+        numberFits:number.scrollWidth<=number.clientWidth+1&&number.scrollHeight<=number.clientHeight+1,
+        numberBox:{clientWidth:number.clientWidth,scrollWidth:number.scrollWidth,clientHeight:number.clientHeight,scrollHeight:number.scrollHeight},
+        heading:document.querySelector('#result-heading').textContent,
+        expectedHeading:copy.preSpiritual.name+' — '+copy.preSpiritual.patterns.surfaceChristianity.name,
+        marker:document.querySelector('#result-ascent-marker').getAttribute('visibility'),
+        closest:document.querySelector('.ascent-stage-pre').classList.contains('is-closest'),
+        labels:document.querySelectorAll('#result-ascent-labels .ascent-stage').length,
+        nodes:document.querySelectorAll('.ascent-nodes .ascent-node').length,
+        source:document.querySelector('#source-description-heading').textContent.includes(copy.preSpiritual.patterns.surfaceChristianity.name)};
+    })()`);
+    assert.equal(preSpiritualResult.stage,null);
+    assert.equal(preSpiritualResult.status,'supported');
+    assert.equal(preSpiritualResult.pattern,'surfaceChristianity');
+    assert.equal(preSpiritualResult.number,preSpiritualResult.expectedNumber);
+    assert.equal(preSpiritualResult.numberFits,true,JSON.stringify(preSpiritualResult.numberBox));
+    assert.equal(preSpiritualResult.heading,preSpiritualResult.expectedHeading);
+    assert.deepEqual({marker:preSpiritualResult.marker,closest:preSpiritualResult.closest,labels:preSpiritualResult.labels,nodes:preSpiritualResult.nodes,source:preSpiritualResult.source},
+      {marker:'visible',closest:true,labels:8,nodes:8,source:true});
+    for (const width of [1440,390]) {
+      await cdp('Emulation.setDeviceMetricsOverride',{width,height:1100,deviceScaleFactor:1,mobile:width<600});
+      await evaluate('new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))');
+      const geometry=await evaluate(`({width:innerWidth,scrollWidth:document.documentElement.scrollWidth})`);
+      assert.ok(geometry.scrollWidth<=geometry.width+1,JSON.stringify({language,width,geometry}));
+      const shot=await cdp('Page.captureScreenshot',{format:'png',captureBeyondViewport:false});
+      const file=path.join(screenshotDirectory,`${language}-${width}-pre-spiritual-result.png`);
+      fs.writeFileSync(file,Buffer.from(shot.data,'base64'));console.log('Screenshot: '+file);
+    }
+
   }
 
+  await evaluate(`(() => {
+    window.__reflectionTools.get('set_spiritual_reflection_answers').execute({answers:Object.entries(window.__strongAnswers).map(([questionId,optionIndex])=>({questionId,optionIndex}))});
+    window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({});
+  })()`);
   assert.equal(await evaluate(`document.querySelector('#mystical-section')`), null);
   assert.equal(await evaluate(`document.querySelectorAll('.domain-growth').length`), 7);
   assert.equal(await evaluate(`document.querySelector('#result-scope').hidden`), false);
@@ -271,18 +326,18 @@ async function main() {
   await evaluate(`document.querySelector('#stage-dialog-close').click()`);
   await evaluate('new Promise(resolve => requestAnimationFrame(resolve))');
   assert.equal(await evaluate(`document.activeElement.dataset.resultStageIndex`), '5');
-  const savedBeforeReload = await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6'))`);
+  const savedBeforeReload = await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7'))`);
   const blocksBeforeReload = await evaluate(`[...document.querySelectorAll('.stage-block-item')].map(e => e.dataset.stageStatus)`);
   await cdp('Page.reload', { ignoreCache: true });
   for (let attempt = 0; attempt < 100; attempt += 1) {
     if (await evaluate('Boolean(window.__reflectionTools?.has("calculate_spiritual_reflection_result"))')) break;
     await pause(100);
   }
-  const savedAfterReload = await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6'))`);
+  const savedAfterReload = await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7'))`);
   assert.deepEqual(savedAfterReload.answers, savedBeforeReload.answers);
   assert.equal(blocksBeforeReload.length, 49);
   assert.deepEqual(await evaluate(`[...document.querySelectorAll('.stage-block-item')].map(e => e.dataset.stageStatus)`), blocksBeforeReload);
-  await evaluate(`window.__strongAnswers = JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers`);
+  await evaluate(`window.__strongAnswers = JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7')).answers`);
   await cdp('Emulation.setDeviceMetricsOverride', { width: 1440, height: 1100, deviceScaleFactor: 1, mobile: false });
   const review = await evaluate(`(() => {
     const select = document.querySelector('#language-select'); select.value = 'hr'; select.dispatchEvent(new Event('change', { bubbles: true }));
@@ -332,13 +387,13 @@ async function main() {
   const growthNavigation = await evaluate(`(() => {
     const button = document.querySelector('[data-review-domain="examen"]').closest('.domain-row').querySelector('[data-growth-question]');
     const index = Number(button.dataset.growthQuestion);
-    const before = JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers;
+    const before = JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7')).answers;
     button.click();
     const prompt = document.querySelector('#question-title').textContent;
     const expected = window.spiritualQuestions.hr[index].title;
     document.querySelector('#question-results-button').click();
     return { correct: prompt === expected, returned: !document.querySelector('#result-view').hidden,
-      unchanged: JSON.stringify(before) === JSON.stringify(JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers) };
+      unchanged: JSON.stringify(before) === JSON.stringify(JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7')).answers) };
   })()`);
   assert.deepEqual(growthNavigation, {correct:true,returned:true,unchanged:true});
   const lowerArea = await evaluate(`(() => {
@@ -403,7 +458,7 @@ async function main() {
         return {headings:document.querySelectorAll('.answer-heading').length,radios:inputs.length,checked:inputs[1].checked,
           hint:!document.querySelector('#gradation-question-hint').hidden,
           fits:document.documentElement.scrollWidth<=innerWidth+1,
-          saved:JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers['venial-pattern-v6']};
+          saved:JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7')).answers['venial-pattern-v6']};
       })()`);
       assert.deepEqual(question,{headings:5,radios:6,checked:true,hint:true,fits:true,saved:1});
       await evaluate(`document.querySelector('#answer-options').scrollIntoView({block:'start'})`);
@@ -485,13 +540,13 @@ async function main() {
         window.__reflectionTools.get('set_spiritual_reflection_answers').execute({answers:Object.entries(answers).map(([questionId,optionIndex])=>({questionId,optionIndex}))});
         const result=window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({});
         const panel=document.querySelector('#next-stage-summary');
-        const saved=sessionStorage.getItem('spiritual-progress-reflection:v6');
+        const saved=sessionStorage.getItem('spiritual-progress-reflection:v7');
         const domains=[...panel.querySelectorAll('[data-next-domain]')].map(e=>e.dataset.nextDomain);
         const primaryVisible=[...panel.querySelectorAll('.next-stage-area')].every(e=>e.querySelector('.next-stage-action').getBoundingClientRect().height>0);
         const toggles=[...panel.querySelectorAll('summary')];toggles.forEach(e=>e.click());
         const allVisible=[...panel.querySelectorAll('.next-stage-item')].every(e=>e.getBoundingClientRect().height>0);
         const fits=document.documentElement.scrollWidth<=innerWidth+1&&[...panel.querySelectorAll('*')].every(e=>e.getBoundingClientRect().right<=innerWidth+1);
-        const untouched=saved===sessionStorage.getItem('spiritual-progress-reflection:v6');
+        const untouched=saved===sessionStorage.getItem('spiritual-progress-reflection:v7');
         toggles.forEach(e=>e.click());
         panel.scrollIntoView({block:'start',behavior:'instant'});
         return {stage:result.stage,target:panel.querySelector('[data-next-criteria]').dataset.nextCriteria,domains,primaryVisible,allVisible,fits,untouched};
@@ -512,14 +567,14 @@ async function main() {
     const button=document.querySelector('[data-next-domain="prayer"] [data-next-question]');
     const index=Number(button.dataset.nextQuestion);
     button.focus();
-    return {index,title:window.spiritualQuestions.en[index].title,answers:JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers};
+    return {index,title:window.spiritualQuestions.en[index].title,answers:JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7')).answers};
   })()`);
   await cdp('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r',unmodifiedText:'\r'});
   await cdp('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
   await evaluate('new Promise(resolve=>requestAnimationFrame(resolve))');
   assert.equal(await evaluate(`document.querySelector('#question-view').hidden`),false);
   assert.equal(await evaluate(`document.querySelector('#question-title').textContent`),pendingQuestion.title);
-  assert.deepEqual(await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers`),pendingQuestion.answers);
+  assert.deepEqual(await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7')).answers`),pendingQuestion.answers);
   await evaluate(`document.querySelector('#answer-options input[value="5"]').click();document.querySelector('#question-results-button').click()`);
   assert.equal(await evaluate(`document.querySelector('#result-number').textContent`),'VI');
   assert.equal(await evaluate(`document.querySelectorAll('#next-stage-summary [data-next-question]').length`),0);
@@ -536,7 +591,7 @@ async function main() {
           const model=window.spiritualTerminology.describe('${language}',q.id);
           const section=document.querySelector('#question-terminology');
           const primary=section.querySelector('.term-primary');
-          const saved=sessionStorage.getItem('spiritual-progress-reflection:v6');
+          const saved=sessionStorage.getItem('spiritual-progress-reflection:v7');
           const rows=[...section.querySelectorAll('[data-term-id]')];
           const summaries=[...section.querySelectorAll('summary')];
           summaries.forEach(s=>s.click());
@@ -547,10 +602,10 @@ async function main() {
             [...section.querySelectorAll('*')].every(el=>el.getBoundingClientRect().right<=innerWidth+1);
           summaries.forEach(s=>s.click());
           return {id:q.id,correct,fits,visible:primary.querySelector('.term-meaning').getBoundingClientRect().height>0,
-            count:rows.length===model.terms.length,untouched:saved===sessionStorage.getItem('spiritual-progress-reflection:v6')};
+            count:rows.length===model.terms.length,untouched:saved===sessionStorage.getItem('spiritual-progress-reflection:v7')};
         });
       })()`);
-      assert.equal(definitions.length,36);
+      assert.equal(definitions.length,39);
       assert.ok(definitions.every(q=>q.correct&&q.fits&&q.visible&&q.count&&q.untouched),JSON.stringify(definitions));
       for(const [id,label] of [['prayer-meditation-v4','meditation'],['examen-method-v4','examen'],['mortal-occasions-v4','occasions']]) {
         await evaluate(`window.__reflectionTools.get('set_spiritual_reflection_answers').execute({answers:[{questionId:'${id}',optionIndex:0}]});
@@ -562,7 +617,7 @@ async function main() {
       }
     }
   }
-  const beforeTerms=await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6'))`);
+  const beforeTerms=await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7'))`);
   await evaluate(`document.querySelector('.term-related-group > summary').focus()`);
   assert.equal(await evaluate(`document.activeElement===document.querySelector('.term-related-group > summary')`),true);
   await cdp('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r',unmodifiedText:'\r'});
@@ -577,18 +632,18 @@ async function main() {
   assert.equal(await evaluate(`document.querySelector('.term-related').open`),true);
   await evaluate(`(() => {const select=document.querySelector('#language-select');select.value='hr';select.dispatchEvent(new Event('change',{bubbles:true}));})()`);
   assert.equal(await evaluate(`document.querySelector('.term-primary h4').textContent`),'Bliska i daleka grešna prigoda');
-  assert.deepEqual(await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers`),beforeTerms.answers);
+  assert.deepEqual(await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7')).answers`),beforeTerms.answers);
   await cdp('Page.reload',{ignoreCache:true});
   for(let attempt=0;attempt<100;attempt+=1) {
     if(await evaluate('Boolean(window.__reflectionTools?.has("calculate_spiritual_reflection_result"))'))break;
     await pause(100);
   }
-  assert.deepEqual(await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers`),beforeTerms.answers);
+  assert.deepEqual(await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7')).answers`),beforeTerms.answers);
   assert.equal(await evaluate(`document.querySelector('.term-primary').dataset.termId`),'occasions');
   assert.equal(await evaluate(`document.querySelector('#answer-options input:checked').value`),'0');
   await evaluate(`document.querySelector('#answer-options input[value="1"]').click()`);
-  assert.equal(await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v6')).answers['mortal-occasions-v4']`),1);
-  console.log('Terminology: 36 questions, 28 question definitions and 6 contextual/safety entries; both languages, search, question links, mobile/desktop, keyboard and refresh verified.');
+  assert.equal(await evaluate(`JSON.parse(sessionStorage.getItem('spiritual-progress-reflection:v7')).answers['mortal-occasions-v4']`),1);
+  console.log('Terminology: 39 questions, 31 question definitions and 6 contextual/safety entries; both languages, search, question links, mobile/desktop, keyboard and refresh verified.');
   await evaluate(`window.__reflectionTools.get('calculate_spiritual_reflection_result').execute({})`);
   await cdp('Emulation.setDeviceMetricsOverride', {width:1440,height:1100,deviceScaleFactor:1,mobile:false});
   await cdp('Emulation.setEmulatedMedia', { media: 'print' });
@@ -618,7 +673,7 @@ async function main() {
   })()`);
   assert.deepEqual(printBlocks,{count:49,visible:true,marked:true,legends:true});
   assert.deepEqual(exceptions, []);
-  console.log('PASS: seven source dialogs, Escape/focus, home/result navigation, independent domain levels and their own detail targets, criteria icons, tailored practical guidance and bilingual results; desktop/mobile without overflow, refresh/print, strict I–VI practical thresholds, no uncaught exceptions.');
+  console.log('PASS: the prior phase and seven source-stage dialogs, Escape/focus, home/result navigation, independent domain levels and their own detail targets, criteria icons, tailored practical guidance and bilingual results; desktop/mobile without overflow, refresh/print, strict I–VI practical thresholds, no uncaught exceptions.');
 }
 
 main().catch((error) => { console.error(error); process.exitCode = 1; }).finally(async () => {

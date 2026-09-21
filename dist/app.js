@@ -89,8 +89,8 @@
   function readStoredState() {
     try {
       const current = sessionStorage.getItem(storageKey);
-      const saved = JSON.parse(current || sessionStorage.getItem("spiritual-progress-reflection:v5") || sessionStorage.getItem("spiritual-progress-reflection:v4") || "null");
-      if (!saved || ![4, 5, storageVersion].includes(saved.version)) return null;
+      const saved = JSON.parse(current || sessionStorage.getItem("spiritual-progress-reflection:v6") || sessionStorage.getItem("spiritual-progress-reflection:v5") || sessionStorage.getItem("spiritual-progress-reflection:v4") || "null");
+      if (!saved || ![4, 5, 6, storageVersion].includes(saved.version)) return null;
 
       const answers = {};
       questionBlueprints.forEach((question) => {
@@ -119,7 +119,7 @@
   }
 
   function persistState() {
-    if (questionBlueprints.filter(question => question.gradation).every(question => state.answers[question.id] !== undefined)) {
+    if ((assessment.preSpiritualQuestionIds || []).every(id => state.answers[id] !== undefined)) {
       state.reviewUpdatedQuestions = false;
     }
     document.querySelector("#migration-notice").hidden = !state.reviewUpdatedQuestions;
@@ -133,6 +133,7 @@
         reviewUpdatedQuestions: state.reviewUpdatedQuestions
       }));
       // Preserve only unchanged, stable IDs; rewritten questions must be answered again.
+      sessionStorage.removeItem("spiritual-progress-reflection:v6");
       sessionStorage.removeItem("spiritual-progress-reflection:v5");
       sessionStorage.removeItem("spiritual-progress-reflection:v4");
     } catch {
@@ -168,7 +169,20 @@
 
   function renderStagePath() {
     const copy = translations[state.language];
-    elements.stagePath.innerHTML = copy.stages
+    const pre = copy.preSpiritual;
+    elements.stagePath.innerHTML = `
+        <li class="is-pre-spiritual">
+          <button type="button" class="stage-explore-button" data-stage-index="-1" aria-haspopup="dialog" aria-label="${escapeHtml(format(copy.exploreStageLabel, {stage:pre.label,name:pre.name}))}">
+          <span class="stage-dot" aria-hidden="true"></span>
+          <span class="stage-copy">
+            <strong>${escapeHtml(pre.label)} ${escapeHtml(pre.name)}</strong>
+            <span>${escapeHtml(copy.families[pre.family])}</span>
+            <span class="stage-explore-label">${escapeHtml(copy.readStage)}</span>
+            <small>${escapeHtml(pre.assessmentNote)}</small>
+          </span>
+          <svg class="stage-explore-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" /></svg>
+          </button>
+        </li>` + copy.stages
       .map((stage, index) => `
         <li class="${index >= highestAssessedStage ? "is-unassessed" : ""}">
           <button type="button" class="stage-explore-button" data-stage-index="${index}" aria-haspopup="dialog" aria-label="${escapeHtml(format(copy.exploreStageLabel, {stage:toRoman(index + 1),name:stage.name}))}">
@@ -195,7 +209,12 @@
     if (all) {
       document.querySelector("#stage-dialog-heading").textContent = copy.allStagesTitle;
       document.querySelector("#stage-dialog-family").textContent = copy.pathEyebrow;
-      document.querySelector("#stage-all-descriptions").innerHTML = copy.stages.map((item, index) =>
+      const pre = copy.preSpiritual;
+      document.querySelector("#stage-all-descriptions").innerHTML =
+        `<details class="all-stage-entry"><summary><span>${escapeHtml(pre.label)} ${escapeHtml(pre.name)}</span><span class="stage-open-hint">${escapeHtml(copy.readStage)}</span></summary>
+        <p class="all-stage-family">${escapeHtml(copy.families[pre.family])}</p><p class="stage-dialog-note">${escapeHtml(pre.assessmentNote)}</p>
+        ${sourceParagraphs(pre, copy)}<p class="source-description-reference">${escapeHtml(pre.sourceReference)}</p></details>`
+        + copy.stages.map((item, index) =>
         `<details class="all-stage-entry"><summary><span>${toRoman(index + 1)}. ${escapeHtml(item.name)}</span><span class="stage-open-hint">${escapeHtml(copy.readStage)}</span></summary>
         <p class="all-stage-family">${escapeHtml(copy.families[item.family])}</p>${item.assessmentNote ? `<p class="stage-dialog-note">${escapeHtml(item.assessmentNote)}</p>` : ""}
         ${item.sourceDescription.length ? sourceParagraphs(item, copy) : `<p>${escapeHtml(item.summary)}</p>`}
@@ -203,21 +222,22 @@
         + `<p class="source-description-caution">${escapeHtml(copy.sourceDescriptionCaution)}</p>`;
       return;
     }
-    const stage = copy.stages[selectedStageIndex];
-    document.querySelector("#stage-dialog-heading").textContent = `${toRoman(selectedStageIndex + 1)}. ${stage.name}`;
+    const isPre = selectedStageIndex === -1;
+    const stage = isPre ? copy.preSpiritual : copy.stages[selectedStageIndex];
+    document.querySelector("#stage-dialog-heading").textContent = isPre ? `${stage.label} ${stage.name}` : `${toRoman(selectedStageIndex + 1)}. ${stage.name}`;
     document.querySelector("#stage-dialog-family").textContent = copy.families[stage.family];
     document.querySelector("#stage-dialog-description").innerHTML = stage.sourceDescription.length
       ? sourceParagraphs(stage, copy) : `<p>${escapeHtml(stage.summary)}</p>`;
     document.querySelector("#stage-dialog-note").textContent = stage.assessmentNote || "";
     document.querySelector("#stage-dialog-note").hidden = !stage.assessmentNote;
-    document.querySelector("#stage-dialog-reference").textContent = format(copy.sourceDescriptionReference, {stage:toRoman(selectedStageIndex + 1)});
-    document.querySelector("#stage-dialog-position").textContent = `${selectedStageIndex + 1} / ${copy.stages.length}`;
-    document.querySelector("#stage-dialog-previous").disabled = selectedStageIndex === 0;
+    document.querySelector("#stage-dialog-reference").textContent = isPre ? stage.sourceReference : format(copy.sourceDescriptionReference, {stage:toRoman(selectedStageIndex + 1)});
+    document.querySelector("#stage-dialog-position").textContent = `${selectedStageIndex + 2} / ${copy.stages.length + 1}`;
+    document.querySelector("#stage-dialog-previous").disabled = selectedStageIndex === -1;
     document.querySelector("#stage-dialog-next").disabled = selectedStageIndex === copy.stages.length - 1;
   }
 
   function openStageDetails(index, opener) {
-    if (!Number.isInteger(index) || index < 0 || index >= translations[state.language].stages.length) return;
+    if (!Number.isInteger(index) || index < -1 || index >= translations[state.language].stages.length) return;
     selectedStageIndex = index;
     stageDialogMode = "single";
     stageOpener = opener || document.activeElement;
@@ -238,7 +258,7 @@
 
   function moveStageDetails(offset) {
     const next = selectedStageIndex + offset;
-    if (next < 0 || next >= translations[state.language].stages.length) return;
+    if (next < -1 || next >= translations[state.language].stages.length) return;
     selectedStageIndex = next;
     renderStageDetails();
     document.querySelector("#stage-dialog-content").scrollTop = 0;
@@ -479,19 +499,29 @@
     const copy=translations[state.language];
     const result=calculateResult();
     const stage=result.stage ? copy.stages[result.stage - 1] : null;
+    const hasPreSpiritualResult=result.stage===null && result.preSpiritual.status==="supported";
+    const prePattern=hasPreSpiritualResult ? copy.preSpiritual.patterns[result.preSpiritual.pattern] : null;
     renderAscent(result,copy);
-    document.querySelector("#result-number").textContent=result.stage ? toRoman(result.stage) : "—";
-    document.querySelector("#result-family").textContent=stage ? copy.families[stage.family] : copy.mixedFamily;
-    document.querySelector("#result-heading").textContent=stage ? stage.name : copy.mixedTitle;
-    document.querySelector("#result-summary").textContent=stage ? copy.resultSummary : copy.mixedSummary;
+    const resultNumber=document.querySelector("#result-number");
+    resultNumber.textContent=result.stage ? toRoman(result.stage) : hasPreSpiritualResult ? copy.preSpiritual.badge : "—";
+    document.querySelector("#result-family").textContent=stage ? copy.families[stage.family]
+      : hasPreSpiritualResult ? copy.families[copy.preSpiritual.family] : copy.mixedFamily;
+    document.querySelector("#result-heading").textContent=stage ? stage.name
+      : hasPreSpiritualResult ? `${copy.preSpiritual.name} — ${prePattern.name}` : copy.mixedTitle;
+    document.querySelector("#result-summary").textContent=stage ? copy.resultSummary
+      : hasPreSpiritualResult ? prePattern.summary : copy.mixedSummary;
     document.querySelector("#result-scope").hidden = !(result.stage >= 5);
     document.querySelector("#result-scope").textContent = copy.advancedPracticalNote;
     const describedStage=result.stage || result.targetStage;
-    const description=copy.stages[describedStage - 1];
-    document.querySelector("#source-description-heading").textContent=`${toRoman(describedStage)}. ${description.name}`;
-    document.querySelector("#source-description-intro").textContent=stage ? copy.sourceDescriptionIntro : copy.sourceDescriptionFallback;
+    const description=hasPreSpiritualResult
+      ? {...copy.preSpiritual, sourceDescription: prePattern.sourceDescription || copy.preSpiritual.sourceDescription}
+      : copy.stages[describedStage - 1];
+    document.querySelector("#source-description-heading").textContent=hasPreSpiritualResult
+      ? `${copy.preSpiritual.label} ${prePattern.name}` : `${toRoman(describedStage)}. ${description.name}`;
+    document.querySelector("#source-description-intro").textContent=stage || hasPreSpiritualResult ? copy.sourceDescriptionIntro : copy.sourceDescriptionFallback;
     document.querySelector("#source-description-body").innerHTML=sourceParagraphs(description,copy);
-    document.querySelector("#source-description-reference").textContent=format(copy.sourceDescriptionReference,{stage:toRoman(describedStage)});
+    document.querySelector("#source-description-reference").textContent=hasPreSpiritualResult
+      ? copy.preSpiritual.sourceReference : format(copy.sourceDescriptionReference,{stage:toRoman(describedStage)});
     document.querySelector("#criteria-badge").textContent=copy.ruleBased;
     document.querySelector("#result-range").textContent=result.stage===highestAssessedStage
       ? copy.upperLimitNote : format(copy.nextThreshold,{stage:toRoman(result.targetStage)});
@@ -520,16 +550,26 @@
       { x: 46, y: 110 },
       { x: 54, y: 26 }
     ];
+    const hasPreSpiritualResult=result.stage===null && result.preSpiritual.status==="supported";
     const marker = document.querySelector("#result-ascent-marker");
-    marker.setAttribute("visibility", result.stage ? "visible" : "hidden");
+    marker.setAttribute("visibility", result.stage || hasPreSpiritualResult ? "visible" : "hidden");
     if (result.stage) {
       const point = stagePoints[result.stage - 1];
       positionAscentMarker(marker, point.x, point.y);
+    } else if (hasPreSpiritualResult) {
+      positionAscentMarker(marker, 30, 610);
     }
     document.querySelector("#result-ascent").setAttribute("aria-label", result.stage
-      ? format(copy.ascentPosition, { stage: toRoman(result.stage) }) : copy.mixedTitle);
+      ? format(copy.ascentPosition, { stage: toRoman(result.stage) })
+      : hasPreSpiritualResult ? `${copy.preSpiritual.label}. ${copy.preSpiritual.name}` : copy.mixedTitle);
 
-    document.querySelector("#result-ascent-labels").innerHTML = stagePoints
+    document.querySelector("#result-ascent-labels").innerHTML = `
+      <li class="ascent-stage ascent-stage-pre ${hasPreSpiritualResult ? "is-closest" : ""}">
+        <button type="button" class="ascent-stage-button" data-result-stage-index="-1" aria-haspopup="dialog" aria-label="${escapeHtml(format(copy.exploreStageLabel,{stage:copy.preSpiritual.label,name:copy.preSpiritual.name}))}">
+        <strong><span>${escapeHtml(copy.preSpiritual.label)}</span>${escapeHtml(copy.preSpiritual.name)}</strong>
+        <small>${escapeHtml(copy.families[copy.preSpiritual.family])}</small>
+        </button>
+      </li>` + stagePoints
       .map((point, index) => {
         const stageNumber = index + 1;
         const item = copy.stages[index];
@@ -756,15 +796,20 @@
         renderResult();
         return {
           stage: result.stage,
-          stageName: result.stage ? copy.stages[result.stage - 1].name : null,
-          interpretation: result.stage ? copy.resultSummary : copy.mixedSummary,
+          preSpiritual: result.preSpiritual,
+          stageName: result.stage ? copy.stages[result.stage - 1].name
+            : result.preSpiritual.status === "supported" ? `${copy.preSpiritual.name} — ${copy.preSpiritual.patterns[result.preSpiritual.pattern].name}` : null,
+          interpretation: result.stage ? copy.resultSummary
+            : result.preSpiritual.status === "supported" ? copy.preSpiritual.patterns[result.preSpiritual.pattern].summary : copy.mixedSummary,
           targetStage: result.targetStage,
           stageChecks: result.stageChecks,
           domainProfiles: result.domainProfiles,
           sourceDescription: {
-            describedStage: result.stage || result.targetStage,
+            describedStage: result.stage || (result.preSpiritual.status === "supported" ? "preSpiritual" : result.targetStage),
             note: copy.sourceDescriptionIntro,
-            areas: copy.stages[(result.stage || result.targetStage) - 1].sourceDescription.map(({ domain, text }) => ({
+            areas: (result.preSpiritual.status === "supported" && result.stage === null
+              ? copy.preSpiritual.patterns[result.preSpiritual.pattern].sourceDescription || copy.preSpiritual.sourceDescription
+              : copy.stages[(result.stage || result.targetStage) - 1].sourceDescription).map(({ domain, text }) => ({
               domain, label: copy.domains[domain], text
             })),
             caution: copy.sourceDescriptionCaution
